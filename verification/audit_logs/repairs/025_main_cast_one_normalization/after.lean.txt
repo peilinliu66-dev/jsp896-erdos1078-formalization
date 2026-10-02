@@ -1,0 +1,141 @@
+import JSP896.EvenSufficiency
+import JSP896.CriticalEdge
+import JSP896.CellStructure
+import JSP896.OddComponents
+import JSP896.SmallCases
+import JSP896.ThresholdAsymptotics
+
+/-!
+# JSP896 / Erdős1078: complete original finite and asymptotic resolution
+
+The exported theorem quantifies over every r ≥ 2 and n ≥ 1, using literal
+balanced graphs on Fin r × Fin n. It includes strict sufficiency, an actual
+sharpness graph, the fixed-r normalized limit and the large-r limit.
+
+All matching configurations, cells and switches are constructed in the local
+dependency chain. No certificate, structure theorem, or source-paper theorem
+is an extra assumption of the final result. This is UNCOMPILED proof source.
+-/
+
+namespace JSP896
+
+open FiniteTransversal MatchingConfiguration
+open Filter
+open scoped Topology
+
+/-- Odd sufficiency is obtained by contradiction in an actual edge-minimal
+counterexample. An independent transversal of a subgraph is never transferred
+to the original graph. -/
+theorem independentTransversal_of_odd_bound {t n : ℕ}
+    (G : SimpleGraph (Vertex (2 * t + 1) n)) (d : ℕ)
+    (ht : 2 ≤ t) (hn : 0 < n) (hpart : IsPartite G)
+    (hdegree : ∀ v, degree G v ≤ d)
+    (hthreshold : (2 * t - 1) * d < t * n) :
+    HasIndependentTransversal G := by
+  classical
+  apply (hasFull_iff_independentTransversal G).mp
+  by_contra hno
+  letI : Nonempty (Fin (2 * t + 1)) := ⟨⟨0, by omega⟩⟩
+  obtain ⟨H, hHG, hminimal⟩ := CriticalEdge.exists_edgeMinimal G Prod.fst hno
+  have hpartH : IsPartite H := fun _ _ h => hpart (hHG h)
+  have hdegreeH : ∀ v, FiniteGraphCounting.degree H v ≤ d := by
+    intro v
+    exact (CriticalEdge.degree_mono hHG v).trans (by simpa using hdegree v)
+  have hparts : ∀ i : Fin (2 * t + 1),
+      (FiniteGraphCounting.fiber (Prod.fst : Vertex (2 * t + 1) n → Fin (2 * t + 1)) i).card = n :=
+    balanced_fiber_card (2 * t + 1) n
+  have hr3 : 3 ≤ Fintype.card (Fin (2 * t + 1)) := by simp; omega
+  have hr5 : 5 ≤ Fintype.card (Fin (2 * t + 1)) := by simp; omega
+  have hthresholdR : (2 * (t : ℝ) - 1) * d < (t : ℝ) * n := by
+    have h : (((2 * t - 1 : ℕ) : ℝ) * d) < (t : ℝ) * n := by
+      exact_mod_cast hthreshold
+    rw [Nat.cast_sub (by omega), Nat.cast_mul] at h
+    norm_num at h ⊢
+    exact h
+  have hstructure : (2 * (Fintype.card (Fin (2 * t + 1)) : ℝ) - 4) * d <
+      ((Fintype.card (Fin (2 * t + 1)) : ℝ) - 1) * n := by
+    simp only [Fintype.card_fin, Nat.cast_add, Nat.cast_mul, Nat.cast_ofNat, Nat.cast_one]
+    nlinarith
+  obtain ⟨I, M, _, _⟩ := FeasiblePair.exists_matching_configuration
+    H Prod.fst n d hr3 hn hpartH hparts hdegreeH hstructure hminimal.1
+  have hcritical := CriticalEdge.every_edge_in_matching H Prod.fst n d
+    hr3 hn hpartH hparts hdegreeH hstructure hminimal
+  obtain ⟨B⟩ := M.bipartiteModel_of_edges_in_imcs hminimal.1 n d hr5
+    hparts hdegreeH hstructure hcritical
+  apply hminimal.1
+  apply OddComponents.hasFull_of_odd_components (by omega) hn H M B
+  · simpa only [generic_degree_eq] using hdegreeH
+  · exact hthreshold
+
+/-- The literal independent-transversal theorem at the exact integer ceiling,
+for every number of parts and every positive part size. -/
+theorem independentTransversal_of_degree_lt_threshold (r n : ℕ)
+    (hr : 2 ≤ r) (hn : 0 < n)
+    (G : SimpleGraph (Vertex r n)) (hpart : IsPartite G)
+    (hdegree : ∀ v, degree G v < independentThreshold r n) :
+    HasIndependentTransversal G := by
+  classical
+  by_cases hr2 : r = 2
+  · subst r
+    exact independentTransversal_two n hn G hpart (by simpa using hdegree)
+  by_cases hr3 : r = 3
+  · subst r
+    exact independentTransversal_three n hn G hpart (by simpa using hdegree)
+  let d := independentThreshold r n - 1
+  have hDpos := independentThreshold_pos hr hn
+  have hdD : d < independentThreshold r n := by dsimp only [d]; omega
+  have hbound : ∀ v, degree G v ≤ d := by intro v; have hv := hdegree v; dsimp only [d]; omega
+  have hthreshold : (2 * (r / 2) - 1) * d < (r / 2) * n :=
+    (lt_independentThreshold_iff r n d hr).mp hdD
+  have hhalf : 0 < r / 2 := half_parts_pos hr
+  have hthresholdR : (2 * ((r / 2 : ℕ) : ℝ) - 1) * d < ((r / 2 : ℕ) : ℝ) * n := by
+    have h : (((2 * (r / 2) - 1 : ℕ) : ℝ) * d) < ((r / 2 : ℕ) : ℝ) * n := by
+      exact_mod_cast hthreshold
+    rw [Nat.cast_sub (by omega), Nat.cast_mul] at h
+    norm_num at h ⊢
+    exact h
+  by_cases heven : r % 2 = 0
+  · have hrform : r = 2 * (r / 2) := by omega
+    apply independentTransversal_of_even_bound G d hr hn hpart hbound
+    have hrformR : (r : ℝ) = 2 * ((r / 2 : ℕ) : ℝ) := by exact_mod_cast hrform
+    rw [hrformR]
+    nlinarith
+  · have hrform : r = 2 * (r / 2) + 1 := by omega
+    have ht : 2 ≤ r / 2 := by omega
+    generalize htdef : r / 2 = t at hrform ht hthreshold
+    subst r
+    exact independentTransversal_of_odd_bound G d ht hn hpart hbound hthreshold
+
+/-- Strict sufficiency in the original clique formulation. -/
+theorem transversalClique_of_degree_gt_threshold (r n : ℕ)
+    (hr : 2 ≤ r) (hn : 0 < n)
+    (G : SimpleGraph (Vertex r n)) (hpart : IsPartite G)
+    (hdegree : ∀ v, cliqueThreshold r n < degree G v) :
+    HasTransversalClique G := by
+  apply (independent_crossComplement_iff G).mp
+  apply independentTransversal_of_degree_lt_threshold r n hr hn
+    (crossComplement G) (crossComplement_isPartite G)
+  intro v
+  exact (complement_lt_independentThreshold_iff G hpart v hr).mpr (hdegree v)
+
+/-- Exact original finite resolution, with an actual counterexample at equality. -/
+theorem full_resolution : FullResolution := by
+  intro r n hr hn
+  exact ⟨fun G hpart hdegree => transversalClique_of_degree_gt_threshold r n hr hn G hpart hdegree,
+    exists_sharpness_at_threshold r n hr hn⟩
+
+/-- Complete original finite and asymptotic scope; no graph-theoretic assumption
+or paper result is an input. -/
+theorem full_resolution_with_original_limits :
+    FullResolution ∧
+    (∀ r : ℕ, 2 ≤ r →
+      Tendsto (fun n : ℕ => (independentThreshold r n : ℝ) / n)
+        atTop (𝓝 (independentCoefficient r)) ∧
+      Tendsto (fun n : ℕ => (cliqueThreshold r n : ℝ) / n)
+        atTop (𝓝 (cliqueCoefficient r))) ∧
+    Tendsto independentCoefficient atTop (𝓝 (1 / 2 : ℝ)) ∧
+    Tendsto (fun r : ℕ => ((r - 1 : ℕ) : ℝ) - cliqueCoefficient r)
+      atTop (𝓝 (1 / 2 : ℝ)) :=
+  fullResolution_with_asymptotics full_resolution
+
+end JSP896

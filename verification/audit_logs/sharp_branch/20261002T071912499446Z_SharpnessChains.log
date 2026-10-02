@@ -1,0 +1,150 @@
+JSP896/SharpnessChains.lean:47:32: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+JSP896/SharpnessChains.lean:47:47: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+JSP896/SharpnessChains.lean:49:32: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+JSP896/SharpnessChains.lean:49:47: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+JSP896/SharpnessChains.lean:52:32: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+JSP896/SharpnessChains.lean:52:47: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+JSP896/SharpnessChains.lean:56:32: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+JSP896/SharpnessChains.lean:56:47: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+JSP896/SharpnessChains.lean:73:33: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+JSP896/SharpnessChains.lean:73:44: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+JSP896/SharpnessChains.lean:91:63: warning: Unused tactic linter: `omega` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+JSP896/SharpnessChains.lean:91:63: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+JSP896/SharpnessChains.lean:126:59: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  k ≤ -2
+  j ≥ 0
+  h ≥ 0
+  g ≥ 0
+  g - j ≥ 0
+  f ≥ 0
+  b ≥ 0
+  b - 2*g + j ≥ 1
+  b - 2*g + 2*j ≥ 0
+  b - g ≥ 1
+  b - g - h + j ≤ 0
+  b - g + j ≥ 0
+  b - h ≥ 1
+where
+ b := ↑n
+ f := ↑↑e
+ g := ↑↑x
+ h := ↑↑y
+ j := ↑(↑y - d) % ↑i
+ k := ↑(↑x - d) / ↑i
+JSP896/SharpnessChains.lean:127:58: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  k ≥ 0
+  j ≥ 0
+  j - k ≥ 1
+  h ≥ 0
+  g ≥ 0
+  g - j ≥ 0
+  f ≥ 0
+  b ≥ 0
+  b - 2*g + j ≥ 1
+  b - 2*g + 2*j ≥ 0
+  b - g ≥ 1
+  b - g - h + j ≤ 0
+  b - g + j ≥ 0
+  b - h ≥ 1
+where
+ b := ↑n
+ f := ↑↑e
+ g := ↑↑x
+ h := ↑↑y
+ j := ↑(↑y - d) % ↑i
+ k := ↑(↑x - d) % ↑i
+JSP896/SharpnessChains.lean:129:6: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  h ≥ 0
+  g ≥ 0
+  g - h ≥ 1
+  g ≥ 0
+  f ≥ 0
+  f - g ≤ -1
+  f - g - h ≤ 0
+  f - g ≤ -1
+  f - h ≥ 0
+  f - h ≥ 1
+  f + g - h ≥ 0
+  b ≥ 0
+where
+ b := ↑↑e
+ f := ↑↑x
+ g := ↑↑y
+ h := ↑(↑x - d) % ↑i
+case neg.snd
+q d a i n : ℕ
+hd : d = a + i
+hn : n = d + a
+c : Fin (q + 1)
+x : Fin n
+e : Fin (q + 1)
+y : Fin n
+hcBound : ↑c < q + 1
+heBound : ↑e < q + 1
+hxBound : ↑x < n
+hyBound : ↑y < n
+hc : ¬↑c < q
+he : ¬↑e < q
+hx : ↑x < d
+hy : ¬↑y < d
+hcomp : 0 = 1 + (↑y - d) / i
+hside : True
+hpos : ↑x = a + (↑y - d) % i
+⊢ ↑x = ↑y
+case neg.snd
+q d a i n : ℕ
+hd : d = a + i
+hn : n = d + a
+c : Fin (q + 1)
+x : Fin n
+e : Fin (q + 1)
+y : Fin n
+hcBound : ↑c < q + 1
+heBound : ↑e < q + 1
+hxBound : ↑x < n
+hyBound : ↑y < n
+hc : ¬↑c < q
+he : ¬↑e < q
+hx : ¬↑x < d
+hy : ¬↑y < d
+hcomp : (↑x - d) / i = (↑y - d) / i
+hside : True
+hpos : (↑x - d) % i = (↑y - d) % i
+⊢ ↑x = ↑y

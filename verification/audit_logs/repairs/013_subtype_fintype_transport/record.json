@@ -1,0 +1,10 @@
+{
+  "module": "JSP896.CertificateSize",
+  "label": "013_subtype_fintype_transport",
+  "recorded_utc": "2026-10-02T07:23:30.345928+00:00",
+  "reason": "Transport equality between extensionally identical finite subtype instances supplied by FinsetCoe.fintype versus Subtype.fintype; statements unchanged.",
+  "diagnostic_log": "verification/build/fourteenth_11_JSP896_CertificateSize.log",
+  "before_sha256": "8fc4ecc75fde00a3281dde3de5a23d6fb5bca65f89a94ca2d414c754f7b1e520",
+  "after_sha256": "bc979afb35e191c9eb67168f1eb9757ea08873731672791d20bd8126a41d33d0",
+  "statement_changed": false
+}

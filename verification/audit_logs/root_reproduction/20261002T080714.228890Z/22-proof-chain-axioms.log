@@ -1,0 +1,38 @@
+JSP896.independentTransversal_of_degree_lt_threshold (r n : ℕ) (hr : 2 ≤ r) (hn : 0 < n)
+  (G : SimpleGraph (JSP896.Vertex r n)) (hpart : JSP896.IsPartite G)
+  (hdegree : ∀ (v : JSP896.Vertex r n), JSP896.degree G v < JSP896.independentThreshold r n) :
+  JSP896.HasIndependentTransversal G
+JSP896.transversalClique_of_degree_gt_threshold (r n : ℕ) (hr : 2 ≤ r) (hn : 0 < n)
+  (G : SimpleGraph (JSP896.Vertex r n)) (hpart : JSP896.IsPartite G)
+  (hdegree : ∀ (v : JSP896.Vertex r n), JSP896.cliqueThreshold r n < JSP896.degree G v) : JSP896.HasTransversalClique G
+JSP896.exists_independent_sharpness_at_threshold (r n : ℕ) (hr : 2 ≤ r) (hn : 0 < n) :
+  ∃ G,
+    JSP896.IsPartite G ∧
+      (∀ (v : JSP896.Vertex r n), JSP896.degree G v ≤ JSP896.independentThreshold r n) ∧
+        ¬JSP896.HasIndependentTransversal G
+JSP896.exists_sharpness_at_threshold (r n : ℕ) (hr : 2 ≤ r) (hn : 0 < n) :
+  ∃ G,
+    JSP896.IsPartite G ∧
+      (∀ (v : JSP896.Vertex r n), JSP896.cliqueThreshold r n ≤ JSP896.degree G v) ∧ ¬JSP896.HasTransversalClique G
+JSP896.full_resolution : JSP896.FullResolution
+JSP896.full_resolution_with_original_limits :
+  JSP896.FullResolution ∧
+    (∀ (r : ℕ),
+        2 ≤ r →
+          Filter.Tendsto (fun n => ↑(JSP896.independentThreshold r n) / ↑n) Filter.atTop
+              (nhds (JSP896.independentCoefficient r)) ∧
+            Filter.Tendsto (fun n => ↑(JSP896.cliqueThreshold r n) / ↑n) Filter.atTop
+              (nhds (JSP896.cliqueCoefficient r))) ∧
+      Filter.Tendsto JSP896.independentCoefficient Filter.atTop (nhds (1 / 2)) ∧
+        Filter.Tendsto (fun r => ↑(r - 1) - JSP896.cliqueCoefficient r) Filter.atTop (nhds (1 / 2))
+'JSP896.FeasiblePair.exists_feasible_dominating' depends on axioms: [propext, Classical.choice, Quot.sound]
+'JSP896.FeasiblePair.exists_matching_configuration' depends on axioms: [propext, Classical.choice, Quot.sound]
+'JSP896.CriticalEdge.every_edge_in_matching' depends on axioms: [propext, Classical.choice, Quot.sound]
+'JSP896.MatchingConfiguration.Tree.bipartiteModel_of_edges_in_imcs' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'JSP896.OddComponents.hasFull_of_odd_components' depends on axioms: [propext, Classical.choice, Quot.sound]
+'JSP896.independentTransversal_of_degree_lt_threshold' depends on axioms: [propext, Classical.choice, Quot.sound]
+'JSP896.exists_sharpness_at_threshold' depends on axioms: [propext, Classical.choice, Quot.sound]
+'JSP896.full_resolution' depends on axioms: [propext, Classical.choice, Quot.sound]
+'JSP896.full_resolution_with_original_limits' depends on axioms: [propext, Classical.choice, Quot.sound]

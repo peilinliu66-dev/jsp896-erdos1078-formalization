@@ -1,0 +1,71 @@
+--- before/JSP896.FaithfulExtension
++++ after/JSP896.FaithfulExtension
+@@ -60,7 +60,7 @@
+       rw [← hxx]
+       exact Finset.mem_image.mpr ⟨x, hOld.1, rfl⟩
+   · rcases hLeft with ⟨heq, hyL⟩
+- subst x
++    subst x
+     rcases hcases' with hOld' | hLeft' | hRight'
+     · have hbad := new_leaf_inactive hF hU c havoid hyL
+       apply False.elim
+@@ -68,14 +68,14 @@
+       rw [hyy]
+       exact Finset.mem_image.mpr ⟨y', hOld'.2, rfl⟩
+     · rcases hLeft' with ⟨heq, hy'L⟩
+- subst x'
++      subst x'
+       exact ⟨rfl, hU.partial.2 y (mem_leaves G U c y |>.mp hyL).1
+         y' (mem_leaves G U c y' |>.mp hy'L).1 hyy⟩
+     · rcases hRight' with ⟨heq, hx'L⟩
+- subst y'
++      subst y'
+       exact False.elim (hpart (mem_leaves G U c x' |>.mp hx'L).2 hxx)
+   · rcases hRight with ⟨heq, hxL⟩
+- subst y
++    subst y
+     rcases hcases' with hOld' | hLeft' | hRight'
+     · have hbad := new_leaf_inactive hF hU c havoid hxL
+       apply False.elim
+@@ -83,10 +83,10 @@
+       rw [hxx]
+       exact Finset.mem_image.mpr ⟨x', hOld'.1, rfl⟩
+     · rcases hLeft' with ⟨heq, hy'L⟩
+- subst x'
++      subst x'
+       exact False.elim (hpart (mem_leaves G U c y' |>.mp hy'L).2 hyy)
+     · rcases hRight' with ⟨heq, hx'L⟩
+- subst y'
++      subst y'
+       exact ⟨hU.partial.2 x (mem_leaves G U c x |>.mp hxL).1
+         x' (mem_leaves G U c x' |>.mp hx'L).1 hxx, rfl⟩
+ 
+@@ -102,24 +102,22 @@
+     rcases extension_edge_cases hF hU c havoid hx hy hxy with hOld | hLeft | hRight
+     · exact Or.inl ⟨hne, x, hOld.1, y, hOld.2, hxy, hxi, hyj⟩
+     · rcases hLeft with ⟨heq, hyL⟩
+- subst x
++      subst x
+       exact Or.inr (Or.inl ⟨hxi.symm, Finset.mem_image.mpr ⟨y, hyL, hyj⟩, hne⟩)
+     · rcases hRight with ⟨heq, hxL⟩
+- subst y
++      subst y
+       exact Or.inr (Or.inr ⟨hyj.symm, Finset.mem_image.mpr ⟨x, hxL, hxi⟩, hne⟩)
+   · rintro (hOld | hLeft | hRight)
+     · rcases hOld with ⟨hne, x, hx, y, hy, hxy, hxi, hyj⟩
+       exact ⟨hne, x, Finset.mem_union_left _ hx, y, Finset.mem_union_left _ hy,
+         hxy, hxi, hyj⟩
+-    · rcases hLeft with ⟨heq, hj, hne⟩
+- subst x
++    · rcases hLeft with ⟨rfl, hj, hne⟩
+       obtain ⟨y, hyL, hyj⟩ := Finset.mem_image.mp hj
+       exact ⟨hne, c, Finset.mem_union_right _ ((mem_star G U c c).mpr (Or.inl rfl)),
+         y, Finset.mem_union_right _ ((mem_star G U c y).mpr
+           (Or.inr ((mem_leaves G U c y).mp hyL))),
+         (mem_leaves G U c y |>.mp hyL).2, rfl, hyj⟩
+-    · rcases hRight with ⟨heq, hi, hne⟩
+- subst y
++    · rcases hRight with ⟨rfl, hi, hne⟩
+       obtain ⟨x, hxL, hxi⟩ := Finset.mem_image.mp hi
+       exact ⟨hne, x, Finset.mem_union_right _ ((mem_star G U c x).mpr
+           (Or.inr ((mem_leaves G U c x).mp hxL))),

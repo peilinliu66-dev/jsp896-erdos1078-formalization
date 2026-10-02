@@ -1,0 +1,13 @@
+--- before/JSP896.MatchingCells
++++ after/JSP896.MatchingCells
+@@ -140,8 +140,8 @@
+   have hablabel : label a ≠ label b := by
+     intro h
+     apply hsep
+-    rw [h]
+-    exact .rfl
++    simpa only [h] using
++      (SimpleGraph.Reachable.rfl : H.Reachable (label b) (label b))
+   have hB : Partial G label (insert b T) := partial_insert hT b
+     (by rw [hcolors]; simp) (fun v hv => hb v (hTJ hv))
+   have hA : Partial G label (insert a (insert b T)) := partial_insert hB a

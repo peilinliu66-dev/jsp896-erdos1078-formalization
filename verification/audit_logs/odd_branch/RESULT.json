@@ -1,0 +1,78 @@
+{
+  "status": "SIX_MODULES_COMPILED_AND_FROZEN",
+  "sealed_at": "2026-10-02T07:33:00.231110+00:00",
+  "source_files_owned": [
+    "OddComponentsOrientation",
+    "OddComponentsCentroid",
+    "OddComponentsSwitching",
+    "OddComponentsCounting",
+    "OddComponentsTerminal",
+    "OddComponents"
+  ],
+  "toolchain": "leanprover/lean4:v4.35.0-rc3",
+  "version_adjustments": [],
+  "module_results": [
+    {
+      "module": "OddComponentsOrientation",
+      "original_sha256": "a9004f4f7f315de7183477918efc46284bfb2ee3513605f6e7f739967551ff07",
+      "final_sha256": "a9004f4f7f315de7183477918efc46284bfb2ee3513605f6e7f739967551ff07",
+      "source_changed": false,
+      "success_meta": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\verification\\odd_branch\\OddComponentsOrientation_01_meta.json",
+      "success_log": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\verification\\odd_branch\\OddComponentsOrientation_01.log",
+      "natural_exit_code": 0,
+      "statements_definitions_hypotheses_unchanged": true
+    },
+    {
+      "module": "OddComponentsCentroid",
+      "original_sha256": "7a2e66b3813c73b566052d2277fda50633b1edb35474ce359b863506ae90ebae",
+      "final_sha256": "7a2e66b3813c73b566052d2277fda50633b1edb35474ce359b863506ae90ebae",
+      "source_changed": false,
+      "success_meta": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\verification\\odd_branch\\OddComponentsCentroid_01_meta.json",
+      "success_log": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\verification\\odd_branch\\OddComponentsCentroid_01.log",
+      "natural_exit_code": 0,
+      "statements_definitions_hypotheses_unchanged": true
+    },
+    {
+      "module": "OddComponentsSwitching",
+      "original_sha256": "013d0a61a718c526d34cab8c6dfd12bdbe84c04f1878aa02e5bbfee758321832",
+      "final_sha256": "6773d822717ee26d969b8a880ab136b3c318253a33b2924b3ba64e9fe45b5082",
+      "source_changed": true,
+      "success_meta": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\verification\\odd_branch\\OddComponentsSwitching_02_meta.json",
+      "success_log": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\verification\\odd_branch\\OddComponentsSwitching_02.log",
+      "natural_exit_code": 0,
+      "statements_definitions_hypotheses_unchanged": true
+    },
+    {
+      "module": "OddComponentsCounting",
+      "original_sha256": "1c08e221ad45307beec3ff64120bbcae730c9996a44f858843dee2051c729410",
+      "final_sha256": "1c08e221ad45307beec3ff64120bbcae730c9996a44f858843dee2051c729410",
+      "source_changed": false,
+      "success_meta": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\verification\\odd_branch\\OddComponentsCounting_01_meta.json",
+      "success_log": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\verification\\odd_branch\\OddComponentsCounting_01.log",
+      "natural_exit_code": 0,
+      "statements_definitions_hypotheses_unchanged": true
+    },
+    {
+      "module": "OddComponentsTerminal",
+      "original_sha256": "fd7f8f97bc236ae735125b2b56d061bf05fadaf1bd873d9d599f7ce8ece81622",
+      "final_sha256": "fd7f8f97bc236ae735125b2b56d061bf05fadaf1bd873d9d599f7ce8ece81622",
+      "source_changed": false,
+      "success_meta": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\verification\\odd_branch\\OddComponentsTerminal_01_meta.json",
+      "success_log": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\verification\\odd_branch\\OddComponentsTerminal_01.log",
+      "natural_exit_code": 0,
+      "statements_definitions_hypotheses_unchanged": true
+    },
+    {
+      "module": "OddComponents",
+      "original_sha256": "808cb78ed801786bcba868fe46adaab9e8b00a9242b3c8b784967244e9eaa06f",
+      "final_sha256": "808cb78ed801786bcba868fe46adaab9e8b00a9242b3c8b784967244e9eaa06f",
+      "source_changed": false,
+      "success_meta": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\verification\\odd_branch\\OddComponents_01_meta.json",
+      "success_log": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\verification\\odd_branch\\OddComponents_01.log",
+      "natural_exit_code": 0,
+      "statements_definitions_hypotheses_unchanged": true
+    }
+  ],
+  "repair_reason": "OddComponentsSwitching.terminal_switch: retain vertex variables and membership proofs by splitting the four insertion cases explicitly and rewriting equality only in the adjacency proof. This repairs elaboration of the original proof without changing its statement or mathematical argument. Five other owned modules are byte-identical to their originals.",
+  "full_project_build_and_axiom_audit": "Parent build agent will perform the remaining whole-project stages."
+}

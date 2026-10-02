@@ -1,0 +1,11 @@
+--- before/JSP896.PairedCellTransversal
++++ after/JSP896.PairedCellTransversal
+@@ -43,7 +43,7 @@
+       _ ≤ d := hremoved
+   have hsizeS : (S.card : ℝ) * d - (∑ i ∈ S, δ i) - (∑ i ∈ S, ρ i) ≤
+       ((activeVertices label S).card : ℝ) := by
+-    have h : (∑ i ∈ S, d - δ i - ρ i) ≤
++    have h : (∑ i ∈ S, (d - δ i - ρ i)) ≤
+         ∑ i ∈ S, ((fiber label i).card : ℝ) :=
+       Finset.sum_le_sum (fun i hi => hsize i)
+     have hcards : (∑ i ∈ S, ((fiber label i).card : ℝ)) =

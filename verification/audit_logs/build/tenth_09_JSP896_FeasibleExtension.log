@@ -1,0 +1,13 @@
+JSP896/FeasibleExtension.lean:72:32: error(lean.unknownIdentifier): Unknown identifier `c`
+JSP896/FeasibleExtension.lean:76:44: error: Application type mismatch: The argument
+  hx
+has type
+  x ∈ insert y (I \ T)
+but is expected to have type
+  x ∈ I \ ?m.736
+in the application
+  Finset.mem_sdiff.mp hx
+JSP896/FeasibleExtension.lean:81:67: error(lean.unknownIdentifier): Unknown identifier `c`
+JSP896/FeasibleExtension.lean:83:23: error(lean.unknownIdentifier): Unknown identifier `c`
+JSP896/FeasibleExtension.lean:90:52: error(lean.unknownIdentifier): Unknown identifier `c`
+JSP896/FeasibleExtension.lean:127:21: error(lean.unknownIdentifier): Unknown identifier `c`

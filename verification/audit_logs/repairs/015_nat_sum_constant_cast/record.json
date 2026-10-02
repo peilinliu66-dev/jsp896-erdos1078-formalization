@@ -1,0 +1,10 @@
+{
+  "module": "JSP896.CertificateIMC",
+  "label": "015_nat_sum_constant_cast",
+  "recorded_utc": "2026-10-02T07:25:40.964789+00:00",
+  "reason": "Normalize redundant Nat-to-Nat cardinal cast in constant fiber sum, preserving numerical and certificate statements.",
+  "diagnostic_log": "verification/build/sixteenth_15_JSP896_CertificateIMC.log",
+  "before_sha256": "1cb9e113f0e8e3f45eb4cf834db9a48aed18cf0250b04300e985b080da18d7f2",
+  "after_sha256": "a209ea24936ca8b48bbf352be5c7387801096edd7a37996c5a76a6bab5715cd2",
+  "statement_changed": false
+}

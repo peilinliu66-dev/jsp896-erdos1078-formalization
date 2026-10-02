@@ -1,0 +1,19 @@
+--- original/JSP896/MatchingOrientationCentroid.lean
++++ candidate/JSP896/MatchingOrientationCentroid.lean
+@@ -74,7 +74,7 @@
+     split_ifs with hlt <;> rcases hstep with hstep | hstep <;> omega
+   have hcount : (∑ c ∈ S, if K.dist c child < K.dist c root then 1 else 0) =
+       (branch K S root child).card := by
+-    simp [branch, Finset.card_eq_sum_ones, Finset.sum_filter]
++    simp only [branch, Finset.card_eq_sum_ones, Finset.sum_filter]
+   calc
+     distanceScore K S child + 2 * (branch K S root child).card =
+         ∑ c ∈ S, (K.dist c child +
+@@ -108,6 +108,6 @@
+     (M : Tree G label I S) (t : ℕ) (hcard : S.card = 2 * t + 1) :
+     ∃ root ∈ S, ∀ child ∈ S, (FeasiblePair.classGraph G label I).Adj root child →
+       (branch (FeasiblePair.classGraph G label I) S root child).card ≤ t :=
+-  exists_centroid _ S t hcard M.acyclic M.connected
++  JSP896.MatchingConfiguration.exists_centroid _ S t hcard M.acyclic M.connected
+ 
+ end JSP896.MatchingConfiguration

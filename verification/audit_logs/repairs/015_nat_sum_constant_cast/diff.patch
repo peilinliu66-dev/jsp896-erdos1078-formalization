@@ -1,0 +1,11 @@
+--- before/JSP896.CertificateIMC
++++ after/JSP896.CertificateIMC
+@@ -41,7 +41,7 @@
+   have hsize : (activeVertices label (I.image label)).card =
+       (I.image label).card * n := by
+     rw [← sum_fiber_card]
+-    simp only [hparts, Finset.sum_const, nsmul_eq_mul]
++    simp only [hparts, Finset.sum_const, nsmul_eq_mul, Nat.cast_id]
+   have h₁ := dominated_card_le_sum_degree G (activeVertices label (I.image label)) I
+     (fun v hv => hdom v ((mem_activeVertices _ _ _).mp hv))
+   have h₂ : (∑ w ∈ I, degree G w) ≤ I.card * d := by

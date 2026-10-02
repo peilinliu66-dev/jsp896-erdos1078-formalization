@@ -1,0 +1,25 @@
+{
+  "module": "OddComponentsTerminal",
+  "command": [
+    "elan",
+    "run",
+    "leanprover/lean4:v4.35.0-rc3",
+    "lake",
+    "env",
+    "lean",
+    "-o",
+    ".lake\\build\\lib\\lean\\JSP896\\OddComponentsTerminal.olean",
+    "JSP896\\OddComponentsTerminal.lean"
+  ],
+  "cwd": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate",
+  "started_at": "2026-10-02T07:31:07.781851+00:00",
+  "source_before_sha256": "fd7f8f97bc236ae735125b2b56d061bf05fadaf1bd873d9d599f7ce8ece81622",
+  "natural_exit_code": 0,
+  "state": "COMPLETED",
+  "pid": 13668,
+  "ended_at": "2026-10-02T07:31:23.184868+00:00",
+  "source_after_sha256": "fd7f8f97bc236ae735125b2b56d061bf05fadaf1bd873d9d599f7ce8ece81622",
+  "log_sha256": "b459533dc19a9155b46a7ebbfc761355c10d395bb996048aec4f054f5fb9fcc7",
+  "olean_exists": true,
+  "source_unchanged_during_run": true
+}

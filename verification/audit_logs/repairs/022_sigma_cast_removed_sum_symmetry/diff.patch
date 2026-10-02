@@ -1,0 +1,36 @@
+--- before/JSP896.CellDeletion
++++ after/JSP896.CellDeletion
+@@ -29,10 +29,11 @@
+   have hvalue (x : W) : value x ∈ C (index x) := (Finset.mem_sdiff.mp x.2.2).1
+   have hinj : Function.Injective value := by
+     rintro ⟨i, v⟩ ⟨j, w⟩ hvw
++    have hvalues : v.1 = w.1 := hvw
+     have hij : i = j := by
+       by_contra h
+       exact Finset.disjoint_left.mp (hdis i j h)
+-        (Finset.mem_sdiff.mp v.2).1 (hvw.symm ▸ (Finset.mem_sdiff.mp w.2).1)
++        (Finset.mem_sdiff.mp v.2).1 (hvalues.symm ▸ (Finset.mem_sdiff.mp w.2).1)
+     subst j
+     have hvw' : v = w := Subtype.ext hvw
+     subst w
+@@ -89,7 +90,9 @@
+     have h : ((C i).card : ℝ) ≤ d := by exact_mod_cast hcard i
+     linarith
+   have hρ (i : κ) : 0 ≤ ρ i := Nat.cast_nonneg _
+-  have hremoved : (∑ i, ρ i) ≤ (d : ℝ) := by exact_mod_cast hremove
++  have hremoved : (∑ i, ρ i) ≤ (d : ℝ) := by
++    dsimp only [ρ]
++    exact_mod_cast hremove
+   have hsize (i : κ) : (d : ℝ) - δ i - ρ i ≤ (fiber index i).card := by
+     rw [hfiber]
+     have h := Finset.card_sdiff_add_card_eq_card (hR i)
+@@ -127,7 +130,8 @@
+     apply hT.1 (f' i) (hf' i).1 (f' j) (hf' j).1
+     refine ⟨hadj, ?_, ?_⟩
+     · simpa only [(hf' i).2, (hf' j).2] using hij
+-    · simpa only [(hf' i).2, (hf' j).2] using hpartner.symm
++    · simpa only [(hf' i).2, (hf' j).2] using
++        (fun h : j = P.partner i => hpartner h.symm)
+   · intro h
+     subst j
+     exact hcomplete i (f i) (Finset.mem_sdiff.mp (hf i)).1

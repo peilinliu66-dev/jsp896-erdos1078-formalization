@@ -1,0 +1,923 @@
+{
+  "timestamp_utc": "2026-10-02T07:14:18.812525+00:00",
+  "reviewer": "/root/math896/odd_structure",
+  "status": "SOURCE_REVIEWED_COMPILATION_PENDING",
+  "lean_invoked_by_reviewer": false,
+  "candidate_modified_by_reviewer": false,
+  "math_fatal_gap_found": false,
+  "scope": "actual finite maximum -> feasible domination -> IMC -> paired deficits -> expanded partition -> critical edges -> BipartiteModel",
+  "report_sha256": "5e533083956a49d6a314572a416bf574296f341f20884e665736a6578b62c940",
+  "snapshot_note": "Snapshot at report save; build896 may edit candidate source afterwards. Compare hashes before reusing line ranges.",
+  "files": {
+    "candidate/JSP896/FiniteTransversal.lean": {
+      "sha256": "1b39db58319cd8acaf487ef88c7bc542b4e6e80b71f21c94b989ae725b3b4123",
+      "size_bytes": 6364,
+      "line_count": 162,
+      "declarations": [
+        {
+          "line": 14,
+          "declaration": "def Partial (G : SimpleGraph V) (label : V → ι) (T : Finset V) : Prop :="
+        },
+        {
+          "line": 18,
+          "declaration": "def Full (G : SimpleGraph V) (label : V → ι) (T : Finset V) : Prop :="
+        },
+        {
+          "line": 21,
+          "declaration": "def HasFull (G : SimpleGraph V) (label : V → ι) : Prop :="
+        },
+        {
+          "line": 24,
+          "declaration": "def Maximum (G : SimpleGraph V) (label : V → ι) (T : Finset V) : Prop :="
+        },
+        {
+          "line": 27,
+          "declaration": "theorem partial_empty (G : SimpleGraph V) (label : V → ι) :"
+        },
+        {
+          "line": 31,
+          "declaration": "theorem Partial.subset {G : SimpleGraph V} {label : V → ι} {T U : Finset V}"
+        },
+        {
+          "line": 39,
+          "declaration": "theorem Partial.card_image {G : SimpleGraph V} {label : V → ι} {T : Finset V}"
+        },
+        {
+          "line": 45,
+          "declaration": "theorem exists_maximum (G : SimpleGraph V) (label : V → ι) :"
+        },
+        {
+          "line": 58,
+          "declaration": "theorem partial_insert {G : SimpleGraph V} {label : V → ι} {T : Finset V}"
+        },
+        {
+          "line": 86,
+          "declaration": "theorem Maximum.missing_vertex_has_neighbour {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 102,
+          "declaration": "theorem Partial.card_lt_of_no_full {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 118,
+          "declaration": "theorem partial_swap {G : SimpleGraph V} {label : V → ι} {T : Finset V}"
+        },
+        {
+          "line": 130,
+          "declaration": "theorem swap_colors {label : V → ι} {T : Finset V} {u x : V}"
+        },
+        {
+          "line": 149,
+          "declaration": "theorem Partial.card_eq_of_colors_eq {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 154,
+          "declaration": "theorem Maximum.of_colors_eq {G : SimpleGraph V} {label : V → ι}"
+        }
+      ],
+      "original_path": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\original\\JSP896\\FiniteTransversal.lean",
+      "matches_original_now": false
+    },
+    "candidate/JSP896/FeasiblePair.lean": {
+      "sha256": "9267b5436faf0f35823d2278ac2a58d369f2b6019558df5784322c8275aec887",
+      "size_bytes": 7191,
+      "line_count": 170,
+      "declarations": [
+        {
+          "line": 23,
+          "declaration": "noncomputable def leaves (G : SimpleGraph V) (T : Finset V) (w : V) : Finset V := by"
+        },
+        {
+          "line": 27,
+          "declaration": "noncomputable def star (G : SimpleGraph V) (T : Finset V) (w : V) : Finset V :="
+        },
+        {
+          "line": 40,
+          "declaration": "def classGraph (G : SimpleGraph V) (label : V → ι) (I : Finset V) : SimpleGraph ι where"
+        },
+        {
+          "line": 48,
+          "declaration": "theorem classGraph_empty (G : SimpleGraph V) (label : V → ι) :"
+        },
+        {
+          "line": 53,
+          "declaration": "structure Feasible (G : SimpleGraph V) (label : V → ι) (I T : Finset V) : Prop where"
+        },
+        {
+          "line": 69,
+          "declaration": "structure Compatible (G : SimpleGraph V) (label : V → ι)"
+        },
+        {
+          "line": 76,
+          "declaration": "theorem feasible_empty (G : SimpleGraph V) (label : V → ι) (T : Finset V)"
+        },
+        {
+          "line": 91,
+          "declaration": "theorem Feasible.nonisolated {G : SimpleGraph V} {label : V → ι} {I T : Finset V}"
+        },
+        {
+          "line": 100,
+          "declaration": "theorem Feasible.compatible_self {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 107,
+          "declaration": "theorem leaf_mem_of_compatible {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 119,
+          "declaration": "theorem active_T_vertex_mem_compatible {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 130,
+          "declaration": "theorem compatible_vertex_on_active_mem_T {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 144,
+          "declaration": "theorem exists_minimum_compatible_star {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 159,
+          "declaration": "theorem Compatible.maximum {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 163,
+          "declaration": "theorem Feasible.undominated_not_mem {G : SimpleGraph V} {label : V → ι}"
+        }
+      ],
+      "original_path": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\original\\JSP896\\FeasiblePair.lean",
+      "matches_original_now": false
+    },
+    "candidate/JSP896/FeasibleGrowth.lean": {
+      "sha256": "329ed7c41c0e0983af9007d6d069661fd2585d27c37c4a79e90f126c66483352",
+      "size_bytes": 4796,
+      "line_count": 109,
+      "declarations": [
+        {
+          "line": 11,
+          "declaration": "theorem leaves_swap_of_nonadjacent (G : SimpleGraph V) (T : Finset V)"
+        },
+        {
+          "line": 25,
+          "declaration": "theorem star_swap_of_nonadjacent (G : SimpleGraph V) (T : Finset V)"
+        },
+        {
+          "line": 34,
+          "declaration": "theorem active_T_vertex_mem_I {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 46,
+          "declaration": "theorem undominated_extension_has_leaf {G : SimpleGraph V} {label : V → ι}"
+        }
+      ],
+      "original_path": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\original\\JSP896\\FeasibleGrowth.lean",
+      "matches_original_now": true
+    },
+    "candidate/JSP896/CompatibleStars.lean": {
+      "sha256": "3ffda5e1043cef10ca964303e7659b3faa01e8f4df604acaf50fb1635eaaf452",
+      "size_bytes": 4990,
+      "line_count": 116,
+      "declarations": [
+        {
+          "line": 11,
+          "declaration": "theorem Feasible.star_subset {G : SimpleGraph V} {label : V → ι} {I T : Finset V}"
+        },
+        {
+          "line": 18,
+          "declaration": "theorem compatible_inter_eq {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 32,
+          "declaration": "theorem compatible_center_neighbors_mem_I {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 39,
+          "declaration": "theorem new_center_not_mem_compatible {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 51,
+          "declaration": "theorem new_leaf_inactive {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 61,
+          "declaration": "theorem new_star_disjoint {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 70,
+          "declaration": "theorem old_avoids_new_star {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 85,
+          "declaration": "theorem extended_centers {G : SimpleGraph V} {label : V → ι}"
+        }
+      ],
+      "original_path": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\original\\JSP896\\CompatibleStars.lean",
+      "matches_original_now": false
+    },
+    "candidate/JSP896/FaithfulExtension.lean": {
+      "sha256": "fd2a4d19c203dc9da7012b8851e0f8f401445a94c48f521419251e64b1f2572a",
+      "size_bytes": 7463,
+      "line_count": 154,
+      "declarations": [
+        {
+          "line": 12,
+          "declaration": "theorem adjacent_in_star {G : SimpleGraph V} {label : V → ι} {U : Finset V}"
+        },
+        {
+          "line": 24,
+          "declaration": "theorem extension_edge_cases {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 38,
+          "declaration": "theorem extension_faithful {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 84,
+          "declaration": "theorem extension_classGraph {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 116,
+          "declaration": "theorem extension_classTree {G : SimpleGraph V} {label : V → ι}"
+        }
+      ],
+      "original_path": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\original\\JSP896\\FaithfulExtension.lean",
+      "matches_original_now": true
+    },
+    "candidate/JSP896/FeasibleExtension.lean": {
+      "sha256": "fcea85ab6f6c08bfc6db373713af616f303ab5d621f626332a0b060bdc430fc5",
+      "size_bytes": 7130,
+      "line_count": 157,
+      "declarations": [
+        {
+          "line": 11,
+          "declaration": "theorem feasible_attach {G : SimpleGraph V} {label : V → ι} {I T U : Finset V}"
+        },
+        {
+          "line": 136,
+          "declaration": "theorem exists_feasible_extension {G : SimpleGraph V} {label : V → ι} {I T : Finset V}"
+        }
+      ],
+      "original_path": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\original\\JSP896\\FeasibleExtension.lean",
+      "matches_original_now": true
+    },
+    "candidate/JSP896/ClassTreeGrowth.lean": {
+      "sha256": "ec633ad0622a384c784740c881cac8dae464da0dc38024934dfcca5249c82aca",
+      "size_bytes": 4183,
+      "line_count": 102,
+      "declarations": [
+        {
+          "line": 12,
+          "declaration": "structure TreeOn (G : SimpleGraph ι) (S : Finset ι) : Prop where"
+        },
+        {
+          "line": 17,
+          "declaration": "theorem singleton_tree (a : ι) : TreeOn (⊥ : SimpleGraph ι) {a} := by"
+        },
+        {
+          "line": 28,
+          "declaration": "theorem TreeOn.add_leaf {G : SimpleGraph ι} {S : Finset ι}"
+        },
+        {
+          "line": 62,
+          "declaration": "def attachStar (G : SimpleGraph ι) (a : ι) (L : Finset ι) : SimpleGraph ι :="
+        },
+        {
+          "line": 69,
+          "declaration": "theorem attachStar_insert (G : SimpleGraph ι) (a b : ι) (L : Finset ι) :"
+        },
+        {
+          "line": 74,
+          "declaration": "theorem attachStar_adj (G : SimpleGraph ι) (a : ι) (L : Finset ι) (i j : ι) :"
+        },
+        {
+          "line": 84,
+          "declaration": "theorem TreeOn.attach_star {G : SimpleGraph ι} {S : Finset ι}"
+        }
+      ],
+      "original_path": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\original\\JSP896\\ClassTreeGrowth.lean",
+      "matches_original_now": true
+    },
+    "candidate/JSP896/DominationCertificate.lean": {
+      "sha256": "e57f83f46381eeaf98560ee02dc570b664c4bf68707141fa4c03b457768cc1e4",
+      "size_bytes": 5126,
+      "line_count": 114,
+      "declarations": [
+        {
+          "line": 12,
+          "declaration": "def ExtendsSeed (label : V → ι) (I₀ T₀ I T : Finset V) : Prop :="
+        },
+        {
+          "line": 15,
+          "declaration": "theorem extendsSeed_self (label : V → ι) (I T : Finset V) :"
+        },
+        {
+          "line": 18,
+          "declaration": "theorem extendsSeed_compatible {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 33,
+          "declaration": "theorem exists_dominating_extension (G : SimpleGraph V) (label : V → ι)"
+        },
+        {
+          "line": 85,
+          "declaration": "theorem exists_feasible_dominating (G : SimpleGraph V) (label : V → ι)"
+        },
+        {
+          "line": 96,
+          "declaration": "theorem Feasible.two_le_active_card {G : SimpleGraph V} {label : V → ι}"
+        }
+      ],
+      "original_path": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\original\\JSP896\\DominationCertificate.lean",
+      "matches_original_now": true
+    },
+    "candidate/JSP896/CertificateMultiplicity.lean": {
+      "sha256": "e269ca7d58a244a6f4c2ae87c01f7edc26094c0987561224fcfa13e61450b92c",
+      "size_bytes": 4605,
+      "line_count": 98,
+      "declarations": [
+        {
+          "line": 21,
+          "declaration": "def certificateMultiplicity (J : Finset V) (label : V → ι) (i : ι) : ℕ :="
+        },
+        {
+          "line": 26,
+          "declaration": "def FaithfulClassEdges (G : SimpleGraph V) (J : Finset V) (label : V → ι) : Prop :="
+        },
+        {
+          "line": 31,
+          "declaration": "theorem fibre_card_le_erase_partner (P : Pairing ι) (G : SimpleGraph V)"
+        },
+        {
+          "line": 67,
+          "declaration": "theorem multiplicityBound_of_faithful_edges (P : Pairing ι) (G : SimpleGraph V)"
+        }
+      ],
+      "original_path": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\original\\JSP896\\CertificateMultiplicity.lean",
+      "matches_original_now": true
+    },
+    "candidate/JSP896/CertificateSize.lean": {
+      "sha256": "d400932a75de1b25ea7aba900c130ac731a1ef93fd3d00551044488485feb647",
+      "size_bytes": 3456,
+      "line_count": 72,
+      "declarations": [
+        {
+          "line": 12,
+          "declaration": "theorem acyclic_supported_edge_bound (H : SimpleGraph ι) (S : Finset ι)"
+        },
+        {
+          "line": 33,
+          "declaration": "theorem card_le_twice_class_edges (G : SimpleGraph V) (label : V → ι) (J : Finset V)"
+        },
+        {
+          "line": 57,
+          "declaration": "theorem Feasible.card_le_twice_active_sub_one {G : SimpleGraph V} {label : V → ι}"
+        }
+      ],
+      "original_path": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\original\\JSP896\\CertificateSize.lean",
+      "matches_original_now": true
+    },
+    "candidate/JSP896/CertificateMatching.lean": {
+      "sha256": "4ae0a57e3524e595933671720d4455795bea16a507326cc024d5ef71d54ee18a",
+      "size_bytes": 3598,
+      "line_count": 85,
+      "declarations": [
+        {
+          "line": 16,
+          "declaration": "theorem Feasible.matching_or_small {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 70,
+          "declaration": "theorem Feasible.toMatchingTree {G : SimpleGraph V} {label : V → ι}"
+        }
+      ],
+      "original_path": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\original\\JSP896\\CertificateMatching.lean",
+      "matches_original_now": true
+    },
+    "candidate/JSP896/CertificateIMC.lean": {
+      "sha256": "1cb9e113f0e8e3f45eb4cf834db9a48aed18cf0250b04300e985b080da18d7f2",
+      "size_bytes": 6285,
+      "line_count": 130,
+      "declarations": [
+        {
+          "line": 15,
+          "declaration": "theorem smaller_active_set_impossible {q r n d : ℝ}"
+        },
+        {
+          "line": 25,
+          "declaration": "theorem matching_budget {r n d : ℝ} (hr : 3 ≤ r) (hd : 0 ≤ d)"
+        },
+        {
+          "line": 35,
+          "declaration": "theorem domination_count (G : SimpleGraph V) (label : V → ι)"
+        },
+        {
+          "line": 54,
+          "declaration": "theorem Feasible.full_active_of_degree {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 88,
+          "declaration": "theorem Feasible.matched_of_degree {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 107,
+          "declaration": "theorem exists_matching_configuration (G : SimpleGraph V) (label : V → ι)"
+        }
+      ],
+      "original_path": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\original\\JSP896\\CertificateIMC.lean",
+      "matches_original_now": true
+    },
+    "candidate/JSP896/CriticalEdge.lean": {
+      "sha256": "4a3b8026b12331700d8324d4f744545c51b2920fc8ea5fabb546d9440152f7bf",
+      "size_bytes": 12396,
+      "line_count": 305,
+      "declarations": [
+        {
+          "line": 21,
+          "declaration": "def deletePair (G : SimpleGraph V) (a b : V) : SimpleGraph V where"
+        },
+        {
+          "line": 31,
+          "declaration": "theorem deletePair_le (G : SimpleGraph V) (a b : V) : deletePair G a b ≤ G := by"
+        },
+        {
+          "line": 35,
+          "declaration": "theorem deletePair_not_adj (G : SimpleGraph V) (a b : V) :"
+        },
+        {
+          "line": 40,
+          "declaration": "noncomputable def adjacencyPairs (G : SimpleGraph V) : Finset (V × V) := by"
+        },
+        {
+          "line": 44,
+          "declaration": "theorem adjacencyPairs_delete_lt (G : SimpleGraph V) (a b : V) (hab : G.Adj a b) :"
+        },
+        {
+          "line": 57,
+          "declaration": "def IsEdgeMinimal (G : SimpleGraph V) (label : V → ι) : Prop :="
+        },
+        {
+          "line": 60,
+          "declaration": "theorem exists_edgeMinimal (G : SimpleGraph V) (label : V → ι)"
+        },
+        {
+          "line": 79,
+          "declaration": "theorem degree_mono {G H : SimpleGraph V} (hHG : H ≤ G) (v : V) :"
+        },
+        {
+          "line": 88,
+          "declaration": "theorem endpoints_mem {G : SimpleGraph V} {label : V → ι} {a b : V}"
+        },
+        {
+          "line": 113,
+          "declaration": "theorem exists_critical_seed (G : SimpleGraph V) (label : V → ι)"
+        },
+        {
+          "line": 267,
+          "declaration": "theorem critical_edge_in_matching (G : SimpleGraph V) (label : V → ι)"
+        },
+        {
+          "line": 292,
+          "declaration": "theorem every_edge_in_matching (G : SimpleGraph V) (label : V → ι)"
+        }
+      ],
+      "original_path": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\original\\JSP896\\CriticalEdge.lean",
+      "matches_original_now": true
+    },
+    "candidate/JSP896/MatchingTree.lean": {
+      "sha256": "713c470bbd8306b011760a33e5b22aff4a7ed77d8ee374a5d7ba78f39d01fe82",
+      "size_bytes": 3743,
+      "line_count": 81,
+      "declarations": [
+        {
+          "line": 14,
+          "declaration": "structure Tree (G : SimpleGraph V) (label : V → ι) (I : Finset V) (S : Finset ι) : Prop where"
+        },
+        {
+          "line": 22,
+          "declaration": "noncomputable def Tree.partner {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 26,
+          "declaration": "theorem Tree.partner_adj {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 31,
+          "declaration": "theorem Tree.partner_unique {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 36,
+          "declaration": "theorem Tree.partner_involutive {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 42,
+          "declaration": "theorem Tree.partner_ne {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 50,
+          "declaration": "noncomputable def Tree.pairing {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 57,
+          "declaration": "theorem Tree.adj_iff_partner {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 70,
+          "declaration": "structure BipartiteModel {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 76,
+          "declaration": "theorem BipartiteModel.index_on_matching {G : SimpleGraph V} {label : V → ι}"
+        }
+      ],
+      "original_path": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\original\\JSP896\\MatchingTree.lean",
+      "matches_original_now": true
+    },
+    "candidate/JSP896/MatchingOrientation.lean": {
+      "sha256": "f0e83af73226cde82b897d80b9f06a508b7f7680296dd0ca0c72cff0e8c33d79",
+      "size_bytes": 6686,
+      "line_count": 149,
+      "declarations": [
+        {
+          "line": 22,
+          "declaration": "theorem exists_downhill_neighbor (K : SimpleGraph ι) {c root : ι}"
+        },
+        {
+          "line": 31,
+          "declaration": "theorem Tree.exists_downhill_vertex {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 48,
+          "declaration": "theorem Tree.exists_rooted_partial {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 108,
+          "declaration": "theorem Tree.exists_rooted_partial_card {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 122,
+          "declaration": "theorem full_of_rooted_partial_and_undominated {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 136,
+          "declaration": "theorem BipartiteModel.index_mem_rooted_partial {G : SimpleGraph V} {label : V → ι}"
+        }
+      ],
+      "original_path": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\original\\JSP896\\MatchingOrientation.lean",
+      "matches_original_now": true
+    },
+    "candidate/JSP896/MatchingFacts.lean": {
+      "sha256": "2e27b785e6f841f3219e4f6d8f42a70349f799dc16c952802ff610c0d6c0e88b",
+      "size_bytes": 2590,
+      "line_count": 65,
+      "declarations": [
+        {
+          "line": 12,
+          "declaration": "theorem Tree.card_eq_twice_class_edges {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 41,
+          "declaration": "theorem Tree.full_classGraph_isTree {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 47,
+          "declaration": "theorem Tree.full_card {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 54,
+          "declaration": "theorem Tree.dominates {G : SimpleGraph V} {label : V → ι}"
+        }
+      ],
+      "original_path": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\original\\JSP896\\MatchingFacts.lean",
+      "matches_original_now": true
+    },
+    "candidate/JSP896/MatchingCells.lean": {
+      "sha256": "1111a2d6548329ed2fdf5365c6f66e32a7ffd4978cf9abcae6882004ae5da6e8",
+      "size_bytes": 14705,
+      "line_count": 340,
+      "declarations": [
+        {
+          "line": 21,
+          "declaration": "noncomputable def cell (G : SimpleGraph V) (I : Finset V) (i : IVertex I) : Finset V := by"
+        },
+        {
+          "line": 30,
+          "declaration": "theorem cell_adj {G : SimpleGraph V} {I : Finset V} {i : IVertex I} {v : V}"
+        },
+        {
+          "line": 33,
+          "declaration": "theorem cells_disjoint (G : SimpleGraph V) (I : Finset V) {i j : IVertex I} (hij : i ≠ j) :"
+        },
+        {
+          "line": 40,
+          "declaration": "theorem Tree.partner_mem_cell {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 48,
+          "declaration": "theorem Tree.cell_nonempty {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 52,
+          "declaration": "theorem cell_card_le_degree (G : SimpleGraph V) (I : Finset V) (i : IVertex I) :"
+        },
+        {
+          "line": 61,
+          "declaration": "theorem two_root_completion {G : SimpleGraph V} {label : V → ι} {J : Finset V}"
+        },
+        {
+          "line": 159,
+          "declaration": "noncomputable def Tree.strip {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 170,
+          "declaration": "theorem Tree.strip_matched {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 193,
+          "declaration": "theorem Tree.strip_classGraph {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 245,
+          "declaration": "theorem reachable_to_deleted_endpoint (K : SimpleGraph ι) {c e z : ι}"
+        },
+        {
+          "line": 263,
+          "declaration": "theorem Tree.strip_separates {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 273,
+          "declaration": "theorem Tree.strip_cover {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 281,
+          "declaration": "theorem Tree.cell_across_cut {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 310,
+          "declaration": "theorem Tree.opposite_cells_complete {G : SimpleGraph V} {label : V → ι}"
+        }
+      ],
+      "original_path": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\original\\JSP896\\MatchingCells.lean",
+      "matches_original_now": true
+    },
+    "candidate/JSP896/MatchingExchange.lean": {
+      "sha256": "78dbe156133753334b77af2598f0cd305b20a7a42340649c0ef1a9415c7fa5ab",
+      "size_bytes": 12587,
+      "line_count": 269,
+      "declarations": [
+        {
+          "line": 13,
+          "declaration": "theorem Tree.exchange_pair {G : SimpleGraph V} {label : V → ι} {I : Finset V}"
+        },
+        {
+          "line": 153,
+          "declaration": "theorem Tree.exchange_all {G : SimpleGraph V} {label : V → ι} {I : Finset V}"
+        }
+      ],
+      "original_path": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\original\\JSP896\\MatchingExchange.lean",
+      "matches_original_now": true
+    },
+    "candidate/JSP896/PairedDeficit.lean": {
+      "sha256": "79ab95e7c3bb3797e0c7193078a0f7ffec10fd27b8e3d8df4e0e49660dbc8f4b",
+      "size_bytes": 4481,
+      "line_count": 105,
+      "declarations": [
+        {
+          "line": 29,
+          "declaration": "structure Pairing (ι : Type*) where"
+        },
+        {
+          "line": 37,
+          "declaration": "def MultiplicityBound (P : Pairing ι) (S : Finset ι) (t : ι → ℕ) : Prop :="
+        },
+        {
+          "line": 41,
+          "declaration": "theorem coefficient_le (P : Pairing ι) (S : Finset ι) (t : ι → ℕ)"
+        },
+        {
+          "line": 64,
+          "declaration": "theorem weighted_certificate_bound (P : Pairing ι) (S : Finset ι)"
+        },
+        {
+          "line": 92,
+          "declaration": "theorem no_dominating_certificate (P : Pairing ι) (S : Finset ι)"
+        }
+      ],
+      "original_path": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\original\\JSP896\\PairedDeficit.lean",
+      "matches_original_now": false
+    },
+    "candidate/JSP896/PairedCellTransversal.lean": {
+      "sha256": "a5bd86bc1a65bd1f98a5afe43236761d0edfd843bc6764348815b9f3efebd41c",
+      "size_bytes": 3470,
+      "line_count": 73,
+      "declarations": [
+        {
+          "line": 21,
+          "declaration": "theorem hasFull_of_paired_deficit (P : Pairing ι) (G : SimpleGraph V) (label : V → ι)"
+        }
+      ],
+      "original_path": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\original\\JSP896\\PairedCellTransversal.lean",
+      "matches_original_now": true
+    },
+    "candidate/JSP896/StructureBounds.lean": {
+      "sha256": "53ebdaafbab9e74bf137c86a8df2421eeec8c716663167a0c040e14a388af27c",
+      "size_bytes": 1036,
+      "line_count": 31,
+      "declarations": [
+        {
+          "line": 8,
+          "declaration": "theorem structure_budget {r n d : ℝ} (hr : 5 ≤ r) (hd : 0 ≤ d)"
+        },
+        {
+          "line": 20,
+          "declaration": "theorem core_deficit_lt {r n d mass : ℝ}"
+        },
+        {
+          "line": 26,
+          "declaration": "theorem expanded_cell_larger_than_exceptional_bound {r n d : ℝ}"
+        }
+      ],
+      "original_path": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\original\\JSP896\\StructureBounds.lean",
+      "matches_original_now": true
+    },
+    "candidate/JSP896/CellCounting.lean": {
+      "sha256": "987697608da0a5aab9b7d1c6eb549fe18806893c09459fa1ec18bc84f8ca9397",
+      "size_bytes": 7668,
+      "line_count": 181,
+      "declarations": [
+        {
+          "line": 13,
+          "declaration": "theorem disjoint_family_card (C : κ → Finset V)"
+        },
+        {
+          "line": 29,
+          "declaration": "theorem disjoint_family_sum_le (C : κ → Finset V)"
+        },
+        {
+          "line": 38,
+          "declaration": "noncomputable def core (G : SimpleGraph V) (I : Finset V) : Finset V := by"
+        },
+        {
+          "line": 47,
+          "declaration": "theorem core_card (G : SimpleGraph V) (I : Finset V) :"
+        },
+        {
+          "line": 51,
+          "declaration": "noncomputable def matchingNeighbors (G : SimpleGraph V) (I : Finset V) (v : V) :"
+        },
+        {
+          "line": 61,
+          "declaration": "theorem mem_core_iff_one (G : SimpleGraph V) (I : Finset V) (v : V) :"
+        },
+        {
+          "line": 76,
+          "declaration": "theorem incidence_sum (G : SimpleGraph V) (I : Finset V) :"
+        },
+        {
+          "line": 89,
+          "declaration": "theorem core_mass_bound (G : SimpleGraph V) (I : Finset V) (d : ℕ)"
+        },
+        {
+          "line": 116,
+          "declaration": "noncomputable def multiplyDominated (G : SimpleGraph V) (I : Finset V) : Finset V := by"
+        },
+        {
+          "line": 125,
+          "declaration": "theorem multiple_domination_bound (G : SimpleGraph V) (I : Finset V) (d : ℕ)"
+        },
+        {
+          "line": 151,
+          "declaration": "theorem equal_parts_card (label : V → ι) (n : ℕ)"
+        },
+        {
+          "line": 158,
+          "declaration": "theorem Tree.total_cell_deficit_lt {G : SimpleGraph V} {label : V → ι}"
+        }
+      ],
+      "original_path": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\original\\JSP896\\CellCounting.lean",
+      "matches_original_now": true
+    },
+    "candidate/JSP896/CellDeletion.lean": {
+      "sha256": "f7c93c7cc7862b6187009b2595af2b0774f30f4fb271cd2195a6a71a467fca76",
+      "size_bytes": 6709,
+      "line_count": 156,
+      "declarations": [
+        {
+          "line": 14,
+          "declaration": "theorem representatives_after_deletion (G : SimpleGraph V) (P : PairedDeficit.Pairing κ)"
+        },
+        {
+          "line": 139,
+          "declaration": "theorem Tree.imc_after_deletion {G : SimpleGraph V} {label : V → ι} {I : Finset V}"
+        }
+      ],
+      "original_path": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\original\\JSP896\\CellDeletion.lean",
+      "matches_original_now": true
+    },
+    "candidate/JSP896/ExpandedCells.lean": {
+      "sha256": "698570597835ec64c1d95abfdddb95aebbf77630ff8f46a18a6cd485ad98bbd6",
+      "size_bytes": 12208,
+      "line_count": 258,
+      "declarations": [
+        {
+          "line": 12,
+          "declaration": "def CompleteTo (G : SimpleGraph V) (v : V) (A : Finset V) : Prop :="
+        },
+        {
+          "line": 15,
+          "declaration": "theorem deficit_subset_lt {κ : Type*} [Fintype κ] [DecidableEq κ]"
+        },
+        {
+          "line": 21,
+          "declaration": "theorem Tree.complete_to_some_cell {G : SimpleGraph V} {label : V → ι} {I : Finset V}"
+        },
+        {
+          "line": 47,
+          "declaration": "theorem Tree.complete_cell_unique {G : SimpleGraph V} {label : V → ι} {I : Finset V}"
+        },
+        {
+          "line": 71,
+          "declaration": "theorem Tree.expanded_opposite_complete {G : SimpleGraph V} {label : V → ι} {I : Finset V}"
+        },
+        {
+          "line": 230,
+          "declaration": "structure ExpandedPartition {G : SimpleGraph V} {label : V → ι} {I : Finset V}"
+        },
+        {
+          "line": 237,
+          "declaration": "theorem Tree.exists_expanded_partition {G : SimpleGraph V} {label : V → ι} {I : Finset V}"
+        }
+      ],
+      "original_path": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\original\\JSP896\\ExpandedCells.lean",
+      "matches_original_now": true
+    },
+    "candidate/JSP896/CellStructure.lean": {
+      "sha256": "f20b72e8a871dd96ee83ca37767142992d4c00ec8c1b3fcd0bb8e82cdcc94da2",
+      "size_bytes": 8651,
+      "line_count": 178,
+      "declarations": [
+        {
+          "line": 19,
+          "declaration": "theorem ExpandedPartition.index_on_matching {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 25,
+          "declaration": "theorem ExpandedPartition.fiber_nonempty {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 31,
+          "declaration": "theorem ExpandedPartition.fiber_card_le {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 41,
+          "declaration": "theorem ExpandedPartition.fiber_mass_lower {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 68,
+          "declaration": "theorem ExpandedPartition.index_injective_on_imc {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 107,
+          "declaration": "theorem ExpandedPartition.edge_in_imc_opposite {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 133,
+          "declaration": "noncomputable def ExpandedPartition.to_bipartiteModel {G : SimpleGraph V} {label : V → ι}"
+        },
+        {
+          "line": 159,
+          "declaration": "theorem Tree.bipartiteModel_of_edges_in_imcs {G : SimpleGraph V} {label : V → ι}"
+        }
+      ],
+      "original_path": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\original\\JSP896\\CellStructure.lean",
+      "matches_original_now": true
+    },
+    "candidate/JSP896/Main.lean": {
+      "sha256": "eb68ea71f8cda5c2e84244c1245ead49d04bcd542c1fa7cd600911b41144cf10",
+      "size_bytes": 6425,
+      "line_count": 141,
+      "declarations": [
+        {
+          "line": 29,
+          "declaration": "theorem independentTransversal_of_odd_bound {t n : ℕ}"
+        },
+        {
+          "line": 72,
+          "declaration": "theorem independentTransversal_of_degree_lt_threshold (r n : ℕ)"
+        },
+        {
+          "line": 110,
+          "declaration": "theorem transversalClique_of_degree_gt_threshold (r n : ℕ)"
+        },
+        {
+          "line": 122,
+          "declaration": "theorem full_resolution : FullResolution := by"
+        },
+        {
+          "line": 129,
+          "declaration": "theorem full_resolution_with_original_limits :"
+        }
+      ],
+      "original_path": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\original\\JSP896\\Main.lean",
+      "matches_original_now": true
+    }
+  }
+}

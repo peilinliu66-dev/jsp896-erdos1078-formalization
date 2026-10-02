@@ -1,0 +1,23 @@
+JSP896/DominationCertificate.lean:15:0: warning: automatically included section variable(s) unused in theorem `JSP896.FeasiblePair.extendsSeed_self`:
+  [Fintype V]
+  [Fintype ι]
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [Fintype ι] [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+JSP896/DominationCertificate.lean:24:40: error: Function expected at
+  Finset.image_subset_image ?m.44 ?m.48
+but this term has type
+  ?m.45 ∈ Finset.image ?m.41 ?m.43
+
+Note: Expected a function because this term is being applied to the argument
+  hv
+JSP896/DominationCertificate.lean:24:72: error: Application type mismatch: The argument
+  hseed.left
+has type
+  I₀ ⊆ I
+but is expected to have type
+  ?m.45 ∈ Finset.image ?m.41 ?m.42
+in the application
+  Finset.image_subset_image ?m.44 hseed.left

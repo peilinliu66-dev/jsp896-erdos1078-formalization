@@ -1,0 +1,340 @@
+import JSP896.MatchingFacts
+import JSP896.PairedCellTransversal
+import JSP896.StructureBounds
+
+/-!
+# Literal unique-neighbour cells and single-edge exchange
+
+Cells are indexed by the old matching neighbour, not by the class of the
+vertex.  All exchanges below are exchanges in the actual host graph.  The
+two-root orientation is constructed explicitly; it does not posit a
+transversal or a replacement configuration.
+-/
+
+namespace JSP896.MatchingConfiguration
+
+open FiniteTransversal FiniteGraphCounting
+open scoped BigOperators
+
+variable {V ι : Type*} [Fintype V] [Fintype ι] [DecidableEq V] [DecidableEq ι]
+
+noncomputable def cell (G : SimpleGraph V) (I : Finset V) (i : IVertex I) : Finset V := by
+  classical
+  exact Finset.univ.filter fun v => ∀ j : IVertex I, G.Adj v j.1 ↔ j = i
+
+@[simp] theorem mem_cell (G : SimpleGraph V) (I : Finset V) (i : IVertex I) (v : V) :
+    v ∈ cell G I i ↔ ∀ j : IVertex I, G.Adj v j.1 ↔ j = i := by
+  classical
+  simp [cell]
+
+theorem cell_adj {G : SimpleGraph V} {I : Finset V} {i : IVertex I} {v : V}
+    (hv : v ∈ cell G I i) : G.Adj v i.1 := (mem_cell G I i v).mp hv i |>.mpr rfl
+
+theorem cells_disjoint (G : SimpleGraph V) (I : Finset V) {i j : IVertex I} (hij : i ≠ j) :
+    Disjoint (cell G I i) (cell G I j) := by
+  classical
+  apply Finset.disjoint_left.mpr
+  intro v hvi hvj
+  exact hij (((mem_cell G I j v).mp hvj i).mp (cell_adj hvi))
+
+theorem Tree.partner_mem_cell {G : SimpleGraph V} {label : V → ι}
+    {I : Finset V} {S : Finset ι} (M : Tree G label I S) (i : IVertex I) :
+    (M.partner i).1 ∈ cell G I i := by
+  apply (mem_cell G I i _).mpr
+  intro j
+  rw [M.adj_iff_partner, M.partner_involutive]
+  exact eq_comm
+
+theorem Tree.cell_nonempty {G : SimpleGraph V} {label : V → ι}
+    {I : Finset V} {S : Finset ι} (M : Tree G label I S) (i : IVertex I) :
+    (cell G I i).Nonempty := ⟨(M.partner i).1, M.partner_mem_cell i⟩
+
+theorem cell_card_le_degree (G : SimpleGraph V) (I : Finset V) (i : IVertex I) :
+    (cell G I i).card ≤ degree G i.1 := by
+  apply Finset.card_le_card
+  intro v hv
+  exact (mem_neighbors G i.1 v).mpr (G.adj_symm (cell_adj hv))
+
+/-- A matching with precisely two class components can be oriented away from
+two specified roots.  Adding independent vertices at those roots then gives
+a full transversal. -/
+theorem two_root_completion {G : SimpleGraph V} {label : V → ι} {J : Finset V}
+    (hpart : ∀ ⦃x y⦄, G.Adj x y → label x ≠ label y)
+    (hmatch : ∀ v ∈ J, ∃! w, w ∈ J ∧ G.Adj v w)
+    (a b : V) (hab : ¬ G.Adj a b)
+    (ha : ∀ v ∈ J, ¬ G.Adj a v) (hb : ∀ v ∈ J, ¬ G.Adj b v)
+    (hsep : ¬ (FeasiblePair.classGraph G label J).Reachable (label a) (label b))
+    (hcover : ∀ c, (FeasiblePair.classGraph G label J).Reachable c (label a) ∨
+      (FeasiblePair.classGraph G label J).Reachable c (label b)) :
+    HasFull G label := by
+  classical
+  let H := FeasiblePair.classGraph G label J
+  let root : ι → ι := fun c => if H.Reachable c (label a) then label a else label b
+  have hroot (c : ι) : H.Reachable c (root c) := by
+    dsimp [root]
+    split_ifs with h
+    · exact h
+    · exact (hcover c).resolve_left h
+  have hroot_edge {c e : ι} (h : H.Adj c e) : root c = root e := by
+    have heq : H.Reachable c (label a) ↔ H.Reachable e (label a) :=
+      ⟨fun hc => h.symm.reachable.trans hc, fun he => h.reachable.trans he⟩
+    simp only [root, heq]
+  let C := {c // c ∈ (Finset.univ.erase (label a)).erase (label b)}
+  have hex (c : C) : ∃ v ∈ J, ∃ w ∈ J, G.Adj v w ∧ label v = c.1 ∧
+      H.dist (label w) (root c.1) < H.dist c.1 (root c.1) := by
+    have hne : c.1 ≠ root c.1 := by
+      dsimp [root]
+      split_ifs
+      · exact (Finset.mem_erase.mp (Finset.mem_erase.mp c.2).2).1
+      · exact (Finset.mem_erase.mp c.2).1
+    obtain ⟨j, hj, hd⟩ := exists_downhill_neighbor H (hroot c.1) hne
+    obtain ⟨_, v, hv, w, hw, hvw, hvc, hwj⟩ := hj
+    exact ⟨v, hv, w, hw, hvw, hvc, by simpa only [hwj] using hd⟩
+  let choose : C → V := fun c => Classical.choose (hex c)
+  have hs (c : C) : choose c ∈ J ∧ ∃ w ∈ J, G.Adj (choose c) w ∧
+      label (choose c) = c.1 ∧
+      H.dist (label w) (root c.1) < H.dist c.1 (root c.1) :=
+    Classical.choose_spec (hex c)
+  have hlabel (c : C) : label (choose c) = c.1 := by
+    obtain ⟨w, hw, hadj, hl, hd⟩ := (hs c).2
+    exact hl
+  let T := Finset.univ.image choose
+  have hmem (v : V) : v ∈ T ↔ ∃ c : C, choose c = v := by simp [T]
+  have hTJ : T ⊆ J := by
+    intro v hv
+    obtain ⟨c, rfl⟩ := (hmem v).mp hv
+    exact (hs c).1
+  have hT : Partial G label T := by
+    constructor
+    · intro v hv w hw hadj
+      obtain ⟨c, rfl⟩ := (hmem v).mp hv
+      obtain ⟨e, rfl⟩ := (hmem w).mp hw
+      obtain ⟨z, hz, hvz, _, hdz⟩ := (hs c).2
+      obtain ⟨u, hu, hwu, _, hdu⟩ := (hs e).2
+      obtain ⟨p, hp, hpuniq⟩ := hmatch (choose c) (hs c).1
+      have hzw : z = choose e := (hpuniq z ⟨hz, hvz⟩).trans
+        (hpuniq (choose e) ⟨(hs e).1, hadj⟩).symm
+      obtain ⟨q, hq, hquniq⟩ := hmatch (choose e) (hs e).1
+      have huv : u = choose c := (hquniq u ⟨hu, hwu⟩).trans
+        (hquniq (choose c) ⟨(hs c).1, G.adj_symm hadj⟩).symm
+      have hce : H.Adj c.1 e.1 := ⟨by simpa only [← hlabel c, ← hlabel e] using hpart hadj,
+        choose c, (hs c).1, choose e, (hs e).1, hadj, hlabel c, hlabel e⟩
+      rw [hzw, hlabel e, hroot_edge hce] at hdz
+      rw [huv, hlabel c] at hdu
+      omega
+    · intro v hv w hw h
+      obtain ⟨c, rfl⟩ := (hmem v).mp hv
+      obtain ⟨e, rfl⟩ := (hmem w).mp hw
+      have hce : c = e := Subtype.ext ((hlabel c).symm.trans (h.trans (hlabel e)))
+      exact congrArg choose hce
+  have hcolors : T.image label = (Finset.univ.erase (label a)).erase (label b) := by
+    ext c
+    constructor
+    · intro hc
+      obtain ⟨v, hv, hvc⟩ := Finset.mem_image.mp hc
+      obtain ⟨e, rfl⟩ := (hmem v).mp hv
+      exact ((hlabel e).symm.trans hvc) ▸ e.2
+    · intro hc
+      exact Finset.mem_image.mpr ⟨choose ⟨c, hc⟩, (hmem _).mpr ⟨⟨c, hc⟩, rfl⟩,
+        hlabel ⟨c, hc⟩⟩
+  have hablabel : label a ≠ label b := by
+    intro h
+    apply hsep
+    simpa only [h] using
+      (SimpleGraph.Reachable.rfl : H.Reachable (label b) (label b))
+  have hB : Partial G label (insert b T) := partial_insert hT b
+    (by rw [hcolors]; simp) (fun v hv => hb v (hTJ hv))
+  have hA : Partial G label (insert a (insert b T)) := partial_insert hB a
+    (by rw [Finset.image_insert, hcolors]; simp [hablabel]) (by
+      intro v hv
+      rcases Finset.mem_insert.mp hv with rfl | hv
+      · exact hab
+      · exact ha v (hTJ hv))
+  refine ⟨insert a (insert b T), hA, ?_⟩
+  rw [Finset.image_insert, Finset.image_insert, hcolors]
+  ext c
+  simp only [Finset.mem_insert, Finset.mem_erase, Finset.mem_univ, and_true]
+  tauto
+
+noncomputable def Tree.strip {G : SimpleGraph V} {label : V → ι}
+    {I : Finset V} {S : Finset ι} (M : Tree G label I S) (i : IVertex I) : Finset V :=
+  (I.erase i.1).erase (M.partner i).1
+
+@[simp] theorem Tree.mem_strip {G : SimpleGraph V} {label : V → ι}
+    {I : Finset V} {S : Finset ι} (M : Tree G label I S) (i : IVertex I) (v : V) :
+    v ∈ M.strip i ↔ v ∈ I ∧ v ≠ i.1 ∧ v ≠ (M.partner i).1 := by
+  classical
+  simp only [Tree.strip, Finset.mem_erase]
+  tauto
+
+theorem Tree.strip_matched {G : SimpleGraph V} {label : V → ι}
+    {I : Finset V} {S : Finset ι} (M : Tree G label I S) (i : IVertex I) :
+    ∀ v ∈ M.strip i, ∃! w, w ∈ M.strip i ∧ G.Adj v w := by
+  intro v hv
+  obtain ⟨hvI, hvi, hvp⟩ := (M.mem_strip i v).mp hv
+  let j : IVertex I := ⟨v, hvI⟩
+  have hpI := (M.partner j).2
+  have hpi : (M.partner j).1 ≠ i.1 := by
+    intro h
+    have he : M.partner j = i := Subtype.ext h
+    have hj : j = M.partner i := by rw [← he, M.partner_involutive]
+    exact hvp (congrArg Subtype.val hj)
+  have hpp : (M.partner j).1 ≠ (M.partner i).1 := by
+    intro h
+    have he : M.partner j = M.partner i := Subtype.ext h
+    have hj := congrArg M.partner he
+    simp only [M.partner_involutive] at hj
+    exact hvi (congrArg Subtype.val hj)
+  refine ⟨(M.partner j).1, ⟨(M.mem_strip i _).mpr ⟨hpI, hpi, hpp⟩,
+    M.partner_adj j⟩, ?_⟩
+  intro w hw
+  exact M.partner_unique j ((M.mem_strip i w).mp hw.1).1 hw.2
+
+theorem Tree.strip_classGraph {G : SimpleGraph V} {label : V → ι}
+    {I : Finset V} {S : Finset ι} (M : Tree G label I S) (i : IVertex I) :
+    FeasiblePair.classGraph G label (M.strip i) =
+      (FeasiblePair.classGraph G label I).deleteEdges
+        {s(label i.1, label (M.partner i).1)} := by
+  classical
+  ext c e
+  simp only [SimpleGraph.deleteEdges_adj, Set.mem_singleton_iff]
+  constructor
+  · rintro ⟨hne, v, hv, w, hw, hadj, hvc, hwe⟩
+    have hvI := (M.mem_strip i v).mp hv
+    have hwI := (M.mem_strip i w).mp hw
+    refine ⟨⟨hne, v, hvI.1, w, hwI.1, hadj, hvc, hwe⟩, ?_⟩
+    intro heq
+    rcases Sym2.eq_iff.mp heq with h | h
+    · have hf := M.faithful v hvI.1 w hwI.1 i.1 i.2
+        (M.partner i).1 (M.partner i).2 hadj (M.partner_adj i)
+        (hvc.trans h.1) (hwe.trans h.2)
+      exact hvI.2.1 hf.1
+    · have hf := M.faithful v hvI.1 w hwI.1 (M.partner i).1 (M.partner i).2
+        i.1 i.2 hadj (G.adj_symm (M.partner_adj i))
+        (hvc.trans h.1) (hwe.trans h.2)
+      exact hvI.2.2 hf.1
+  · rintro ⟨⟨hne, v, hv, w, hw, hadj, hvc, hwe⟩, heq⟩
+    have hvne : v ≠ i.1 ∧ v ≠ (M.partner i).1 := by
+      constructor
+      · intro h
+        subst v
+        have hw' := M.partner_unique i hw hadj
+        apply heq
+        simp only [← hvc, ← hwe, hw']
+      · intro h
+        subst v
+        have hw' := M.partner_unique (M.partner i) hw hadj
+        simp only [M.partner_involutive] at hw'
+        apply heq
+        simp only [← hvc, ← hwe, hw', Sym2.eq_swap]
+    have hwne : w ≠ i.1 ∧ w ≠ (M.partner i).1 := by
+      constructor
+      · intro h
+        subst w
+        exact hvne.2 (M.partner_unique i hv (G.adj_symm hadj))
+      · intro h
+        subst w
+        have he := M.partner_unique (M.partner i) hv (G.adj_symm hadj)
+        simp only [M.partner_involutive] at he
+        exact hvne.1 he
+    exact ⟨hne, v, (M.mem_strip i v).mpr ⟨hv, hvne⟩,
+      w, (M.mem_strip i w).mpr ⟨hw, hwne⟩, hadj, hvc, hwe⟩
+
+/-- Deleting an edge from a connected graph leaves every vertex connected to
+at least one endpoint. This direct walk induction also covers singleton sides. -/
+theorem reachable_to_deleted_endpoint (K : SimpleGraph ι) {c e z : ι}
+    (h : K.Reachable z c) :
+    (K.deleteEdges {s(c,e)}).Reachable z c ∨
+      (K.deleteEdges {s(c,e)}).Reachable z e := by
+  classical
+  obtain ⟨p⟩ := h
+  induction p with
+  | nil => exact Or.inl .rfl
+  | @cons u v w huv p ih =>
+    by_cases he : s(u,v) = s(w,e)
+    · rcases Sym2.eq_iff.mp he with he | he
+      · exact Or.inl (he.1 ▸ SimpleGraph.Reachable.rfl)
+      · exact Or.inr (he.1 ▸ SimpleGraph.Reachable.rfl)
+    · have hd : (K.deleteEdges {s(w,e)}).Adj u v :=
+        SimpleGraph.deleteEdges_adj.mpr ⟨huv, by simpa using he⟩
+      exact ih.elim (fun h => Or.inl (hd.reachable.trans h))
+        (fun h => Or.inr (hd.reachable.trans h))
+
+theorem Tree.strip_separates {G : SimpleGraph V} {label : V → ι}
+    {I : Finset V} {S : Finset ι} (M : Tree G label I S) (i : IVertex I) :
+    ¬ (FeasiblePair.classGraph G label (M.strip i)).Reachable
+      (label i.1) (label (M.partner i).1) := by
+  rw [M.strip_classGraph]
+  apply SimpleGraph.isBridge_iff.mp
+  apply SimpleGraph.isAcyclic_iff_forall_adj_isBridge.mp M.acyclic
+  exact ⟨M.partite (M.partner_adj i), i.1, i.2, (M.partner i).1,
+    (M.partner i).2, M.partner_adj i, rfl, rfl⟩
+
+theorem Tree.strip_cover {G : SimpleGraph V} {label : V → ι}
+    {I : Finset V} (M : Tree G label I Finset.univ) (i : IVertex I) (c : ι) :
+    (FeasiblePair.classGraph G label (M.strip i)).Reachable c (label i.1) ∨
+      (FeasiblePair.classGraph G label (M.strip i)).Reachable c (label (M.partner i).1) := by
+  rw [M.strip_classGraph]
+  exact reachable_to_deleted_endpoint _ (M.connected c (Finset.mem_univ _)
+    (label i.1) (Finset.mem_univ _))
+
+theorem Tree.cell_across_cut {G : SimpleGraph V} {label : V → ι}
+    {I : Finset V} (M : Tree G label I Finset.univ)
+    (hno : ¬ HasFull G label) (i : IVertex I) {a : V} (ha : a ∈ cell G I i) :
+    (FeasiblePair.classGraph G label (M.strip i)).Reachable
+      (label a) (label (M.partner i).1) := by
+  let H := FeasiblePair.classGraph G label (M.strip i)
+  rcases M.strip_cover i (label a) with hc | hd
+  · exfalso
+    apply hno
+    apply two_root_completion M.partite (M.strip_matched i) a (M.partner i).1
+    · intro hadj
+      have he := ((mem_cell G I i a).mp ha (M.partner i)).mp hadj
+      exact M.partner_ne i he
+    · intro v hv hadj
+      have hv' := (M.mem_strip i v).mp hv
+      have he := ((mem_cell G I i a).mp ha ⟨v, hv'.1⟩).mp hadj
+      exact hv'.2.1 (congrArg Subtype.val he)
+    · intro v hv hadj
+      have hv' := (M.mem_strip i v).mp hv
+      have he := M.partner_unique (M.partner i) hv'.1 hadj
+      simp only [M.partner_involutive] at he
+      exact hv'.2.1 he
+    · intro h
+      exact M.strip_separates i (hc.symm.trans h)
+    · intro c
+      exact (M.strip_cover i c).elim (fun h => Or.inl (h.trans hc.symm)) Or.inr
+  · exact hd
+
+/-- Lemma 3.1(i), proved on the literal graph by a two-root transversal. -/
+theorem Tree.opposite_cells_complete {G : SimpleGraph V} {label : V → ι}
+    {I : Finset V} (M : Tree G label I Finset.univ)
+    (hno : ¬ HasFull G label) (i : IVertex I) {a b : V}
+    (ha : a ∈ cell G I i) (hb : b ∈ cell G I (M.partner i)) : G.Adj a b := by
+  by_contra hab
+  have har := M.cell_across_cut hno i ha
+  have hbr : (FeasiblePair.classGraph G label (M.strip i)).Reachable
+      (label b) (label i.1) := by
+    have h := M.cell_across_cut hno (M.partner i) hb
+    have heq : M.strip (M.partner i) = M.strip i := by
+      ext v
+      simp only [M.mem_strip, M.partner_involutive]
+      tauto
+    simpa only [heq, M.partner_involutive] using h
+  apply hno
+  apply two_root_completion M.partite (M.strip_matched i) a b hab
+  · intro v hv hadj
+    have hv' := (M.mem_strip i v).mp hv
+    exact hv'.2.1 (congrArg Subtype.val
+      (((mem_cell G I i a).mp ha ⟨v, hv'.1⟩).mp hadj))
+  · intro v hv hadj
+    have hv' := (M.mem_strip i v).mp hv
+    exact hv'.2.2 (congrArg Subtype.val
+      (((mem_cell G I (M.partner i) b).mp hb ⟨v, hv'.1⟩).mp hadj))
+  · intro h
+    exact M.strip_separates i (hbr.symm.trans (h.symm.trans har))
+  · intro c
+    exact (M.strip_cover i c).elim
+      (fun h => Or.inr (h.trans hbr.symm)) (fun h => Or.inl (h.trans har.symm))
+
+end JSP896.MatchingConfiguration

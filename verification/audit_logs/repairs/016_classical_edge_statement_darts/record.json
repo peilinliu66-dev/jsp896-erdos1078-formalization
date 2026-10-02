@@ -1,0 +1,10 @@
+{
+  "module": "JSP896.MatchingFacts",
+  "label": "016_classical_edge_statement_darts",
+  "recorded_utc": "2026-10-02T07:27:58.968855+00:00",
+  "reason": "Scope classical finite edge-set instances for theorem statements and use inherited Dart projections through typed lambdas. No mathematical statement changes.",
+  "diagnostic_log": "verification/build/eighteenth_20_JSP896_MatchingFacts.log",
+  "before_sha256": "2e27b785e6f841f3219e4f6d8f42a70349f799dc16c952802ff610c0d6c0e88b",
+  "after_sha256": "cc86ad5b6e213d41404490433129a4a5bf67168bbb4f12962796c0c77f1664a0",
+  "statement_changed": false
+}

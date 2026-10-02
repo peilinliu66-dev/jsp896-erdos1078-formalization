@@ -1,0 +1,10 @@
+{
+  "module": "JSP896.CriticalEdge",
+  "label": "critical_02",
+  "recorded_utc": "2026-10-02T07:28:57.809815+00:00",
+  "reason": "Specify the finite carrier type of the local two-class membership expressions so insert/singleton elaboration is determined. The class graph, seed, hypotheses, and theorem statement are unchanged.",
+  "diagnostic_log": "critical_repaired_01.log",
+  "before_sha256": "cdafc6faf917abf25c44f1c57058b2e56282db64d66269859b3e04d186ccbe90",
+  "after_sha256": "b65ced03c9845a0b3df9aec96d96130997267ffbf9be6511b6b8adc96d295487",
+  "statement_changed": false
+}

@@ -1,0 +1,11 @@
+--- before/JSP896.CertificateSize
++++ after/JSP896.CertificateSize
+@@ -29,7 +29,7 @@
+   have hle := Finset.card_le_card (SimpleGraph.edgeFinset_mono hHR)
+   have heq : (H.induce (S : Set ι)).edgeFinset.card = H.edgeFinset.card := by
+     convert H.card_edgeFinset_induce_of_support_subset hsupport using 1 <;>
+-      congr 1
++      congr 1 <;> ext e <;> simp
+   have hle' : H.edgeFinset.card ≤ R.edgeFinset.card := heq ▸ hle
+   omega
+ 

@@ -1,0 +1,104 @@
+import Mathlib.Algebra.Order.BigOperators.Group.Finset
+import Mathlib.Data.Fintype.BigOperators
+import Mathlib.Data.Real.Basic
+import Mathlib.Tactic.Linarith
+import Mathlib.Tactic.NormNum
+import Mathlib.Tactic.Ring
+import Mathlib.Tactic.SplitIfs
+
+/-!
+# Weighted counting for paired unique-neighbour cells
+
+This is the numerical heart of the independently reviewed five-part argument.
+The multiplicity bound is the exact one obtained from a feasible-pair class
+tree: certificate vertices are nonisolated; opposite cells have no auxiliary
+edge. A certificate in s selected cells consequently uses at most s−2 vertices
+of a cell whose opposite is selected, and at most s−1 otherwise.
+
+The future graph-to-certificate adapter must PROVE this bound. A mere total
+cardinality bound of 2s−2 does not suffice and must not replace that adapter.
+This file proves an actual finite-sum inequality and its contradiction, without
+assuming an independent-transversal existence theorem.
+-/
+
+open scoped BigOperators
+
+namespace JSP896.PairedDeficit
+
+structure Pairing (ι : Type*) where
+  partner : ι ≃ ι
+  involutive : ∀ i, partner (partner i) = i
+  fixedPointFree : ∀ i, partner i ≠ i
+
+variable {ι : Type*} [Fintype ι] [DecidableEq ι]
+
+/-- Real cast of the exact class-tree degree upper bound. -/
+def MultiplicityBound (P : Pairing ι) (S : Finset ι) (t : ι → ℕ) : Prop :=
+  ∀ i ∈ S, (t i : ℝ) ≤ (S.card : ℝ) - 1 -
+    (if P.partner i ∈ S then (1 : ℝ) else 0)
+
+theorem coefficient_le (P : Pairing ι) (S : Finset ι) (t : ι → ℕ)
+    (hs : 2 ≤ S.card) (ht : MultiplicityBound P S t) (j : ι) :
+    (if j ∈ S then (1 : ℝ) else 0) +
+        (if P.partner j ∈ S then (t (P.partner j) : ℝ) else 0) ≤
+      (S.card : ℝ) - 1 := by
+  have hs' : (2 : ℝ) ≤ S.card := by exact_mod_cast hs
+  by_cases hj : j ∈ S
+  · by_cases hp : P.partner j ∈ S
+    · have h := ht (P.partner j) hp
+      simp only [P.involutive, if_pos hj] at h
+      simp only [if_pos hj, if_pos hp]
+      linarith
+    · simp only [if_pos hj, if_neg hp]
+      linarith
+  · by_cases hp : P.partner j ∈ S
+    · have h := ht (P.partner j) hp
+      simp only [P.involutive, if_neg hj] at h
+      simp only [if_neg hj, if_pos hp]
+      linarith
+    · simp only [if_neg hj, if_neg hp]
+      linarith
+
+/-- The key deficit sum bound, including every selected opposite-pair case. -/
+theorem weighted_certificate_bound (P : Pairing ι) (S : Finset ι)
+    (t : ι → ℕ) (δ : ι → ℝ) (hδ : ∀ j, 0 ≤ δ j)
+    (hs : 2 ≤ S.card) (ht : MultiplicityBound P S t) :
+    (∑ j, if j ∈ S then δ j else 0) +
+        (∑ i, if i ∈ S then (t i : ℝ) * δ (P.partner i) else 0) ≤
+      ((S.card : ℝ) - 1) * ∑ j, δ j := by
+  have hreindex :
+      (∑ i, if i ∈ S then (t i : ℝ) * δ (P.partner i) else 0) =
+        ∑ j, if P.partner j ∈ S then (t (P.partner j) : ℝ) * δ j else 0 := by
+    have h := P.partner.sum_comp
+      (fun i => if i ∈ S then (t i : ℝ) * δ (P.partner i) else 0)
+    simpa only [P.involutive] using h.symm
+  rw [hreindex, ← Finset.sum_add_distrib]
+  calc
+    _ = ∑ j, ((if j ∈ S then (1 : ℝ) else 0) +
+          (if P.partner j ∈ S then (t (P.partner j) : ℝ) else 0)) * δ j := by
+      apply Finset.sum_congr rfl
+      intro j hj
+      split_ifs <;> ring
+    _ ≤ ∑ j, ((S.card : ℝ) - 1) * δ j := by
+      apply Finset.sum_le_sum
+      intro j hj
+      exact mul_le_mul_of_nonneg_right (coefficient_le P S t hs ht j) (hδ j)
+    _ = ((S.card : ℝ) - 1) * ∑ j, δ j := by
+      rw [mul_sum]
+
+/-- No such paired-cell domination certificate can cover the residual cells
+after deletion of at most d vertices when the total deficit is below d. -/
+theorem no_dominating_certificate (P : Pairing ι) (S : Finset ι)
+    (t : ι → ℕ) (δ : ι → ℝ) (d removed : ℝ)
+    (hδ : ∀ j, 0 ≤ δ j) (hs : 2 ≤ S.card)
+    (ht : MultiplicityBound P S t) (hdeficit : (∑ j, δ j) < d)
+    (hremoved : removed ≤ d)
+    (hdom : (S.card : ℝ) * d - (∑ j, if j ∈ S then δ j else 0) - removed ≤
+      ∑ i, if i ∈ S then (t i : ℝ) * δ (P.partner i) else 0) : False := by
+  have hbound := weighted_certificate_bound P S t δ hδ hs ht
+  have hs' : (2 : ℝ) ≤ S.card := by exact_mod_cast hs
+  have hpos : 0 < (S.card : ℝ) - 1 := by linarith
+  have hstrict := mul_lt_mul_of_pos_left hdeficit hpos
+  nlinarith
+
+end JSP896.PairedDeficit

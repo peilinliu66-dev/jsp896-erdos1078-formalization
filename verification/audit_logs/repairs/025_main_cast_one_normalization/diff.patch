@@ -1,0 +1,11 @@
+--- before/JSP896.Main
++++ after/JSP896.Main
+@@ -54,7 +54,7 @@
+     exact h
+   have hstructure : (2 * (Fintype.card (Fin (2 * t + 1)) : ℝ) - 4) * d <
+       ((Fintype.card (Fin (2 * t + 1)) : ℝ) - 1) * n := by
+-    simp only [Fintype.card_fin, Nat.cast_add, Nat.cast_mul, Nat.cast_ofNat]
++    simp only [Fintype.card_fin, Nat.cast_add, Nat.cast_mul, Nat.cast_ofNat, Nat.cast_one]
+     nlinarith
+   obtain ⟨I, M, _, _⟩ := FeasiblePair.exists_matching_configuration
+     H Prod.fst n d hr3 hn hpartH hparts hdegreeH hstructure hminimal.1

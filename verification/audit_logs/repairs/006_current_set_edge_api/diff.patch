@@ -1,0 +1,29 @@
+--- before/JSP896.ClassTreeGrowth
++++ after/JSP896.ClassTreeGrowth
+@@ -32,7 +32,7 @@
+     intro h
+     exact hb (h ▸ ha)
+   have hzero : G.neighborSet b = ∅ := by
+-    apply Set.eq_empty_iff_forall_not_mem.mpr
++    apply Set.eq_empty_iff_forall_notMem.mpr
+     intro v hv
+     exact hb (hT.supported hv).1
+   have hnr : ¬ G.Reachable a b :=
+@@ -42,7 +42,7 @@
+     rcases (SimpleGraph.sup_adj _ _ _ _).mp h with h | h
+     · exact ⟨Finset.mem_insert_of_mem (hT.supported h).1,
+         Finset.mem_insert_of_mem (hT.supported h).2⟩
+-    · rcases (SimpleGraph.edge_adj _ _).mp h with ⟨h | h, _⟩
++    · rcases (SimpleGraph.edge_adj a b i j).mp h with ⟨h | h, _⟩
+       · rcases h with ⟨rfl, rfl⟩
+         exact ⟨Finset.mem_insert_of_mem ha, Finset.mem_insert_self _ _⟩
+       · rcases h with ⟨rfl, rfl⟩
+@@ -50,7 +50,7 @@
+   · have hedge : (G ⊔ SimpleGraph.edge a b).Adj a b := by
+       apply (SimpleGraph.sup_adj _ _ _ _).mpr
+       right
+-      exact (SimpleGraph.edge_adj _ _).mpr ⟨Or.inl ⟨rfl, rfl⟩, hab⟩
++      exact (SimpleGraph.edge_adj a b a b).mpr ⟨Or.inl ⟨rfl, rfl⟩, hab⟩
+     have hroot : ∀ i ∈ insert b S, (G ⊔ SimpleGraph.edge a b).Reachable i a := by
+       intro i hi
+       rcases Finset.mem_insert.mp hi with rfl | hi

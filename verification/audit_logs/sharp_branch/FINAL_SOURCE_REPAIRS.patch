@@ -1,0 +1,120 @@
+--- original/JSP896/SmallCases.lean
++++ candidate/JSP896/SmallCases.lean
+@@ -158,8 +158,9 @@
+     simp [f, prev_ne_self, Ne.symm (next_ne_prev i)]
+   refine ⟨f, ?_⟩
+   intro a b hab
+-  rcases part_cases i a with rfl | rfl | rfl <;>
+-    rcases part_cases i b with rfl | rfl | rfl <;>
++  rcases part_cases i a with ha | ha | ha <;>
++    rcases part_cases i b with hb | hb | hb <;>
++    subst a <;> subst b <;>
+     simp only [hfi, hfn, hfp, ne_self_iff_false] at hab ⊢
+   all_goals first
+     | exact hxy
+--- original/JSP896/SharpnessTools.lean
++++ candidate/JSP896/SharpnessTools.lean
+@@ -70,7 +70,7 @@
+     intro v w h
+     apply Prod.ext
+     · exact e.injective (congrArg Prod.fst h)
+-    · exact congrArg Prod.snd h
++    · exact congrArg (fun z : C × Fin n => z.2) h
+   refine ⟨G, ?_, ?_, ?_⟩
+   · intro v w h hpart
+     apply h.2
+@@ -122,7 +122,7 @@
+     · apply Fin.ext
+       have hh := congrArg (fun z : Vertex r n => z.1.val) h
+       simpa only [lower, if_pos hv, if_pos hw] using hh
+-    · exact congrArg Prod.snd h
++    · exact congrArg (fun z : Vertex r n => z.2) h
+   refine ⟨H, ?_, ?_, ?_⟩
+   · intro v w h heq
+     apply hpart h.2.2
+@@ -153,7 +153,7 @@
+     have hne : incl i ≠ incl j := by
+       intro h
+       apply hij
+-      exact Fin.ext (congrArg Fin.val h)
++      exact Fin.ext (congrArg (fun z : Fin s => z.val) h)
+     apply hf (incl i) (incl j) hne
+     refine ⟨i.isLt, j.isLt, ?_⟩
+     have hli : lower (incl i, f (incl i)) = (i, f (incl i)) := by
+@@ -183,7 +183,7 @@
+       (fun _ _ _ _ => rfl)
+       (by
+         intro f
+-        exact ⟨false, true, by decide, rfl, by decide⟩)
++        exact ⟨false, true, by decide, rfl, by change (false : Bool) ≠ true; decide⟩)
+   exact pad_example (by norm_num) hr G hpart hdeg hno
+ 
+ end Sharpness
+--- original/JSP896/SharpnessChains.lean
++++ candidate/JSP896/SharpnessChains.lean
+@@ -118,12 +118,14 @@
+       at hcomp hside hpos
+   all_goals
+     apply Prod.ext <;> apply Fin.ext
++  all_goals dsimp only [Prod.fst, Prod.snd] at *
+   all_goals
+     first
+     | omega
+-    | have hquot : (x.val - d) / i = (y.val - d) / i := by omega
+-      have hrem : (x.val - d) % i = (y.val - d) % i := by omega
+-      have htail := quotient_remainder_injective hquot hrem
++    | have hbad : 0 = Nat.succ ((y.val - d) / i) := by
++        simpa only [Nat.succ_eq_add_one, Nat.add_comm] using hcomp
++      exact Nat.noConfusion hbad
++    | have htail := quotient_remainder_injective hcomp hpos
+       omega
+ 
+ /-- A choice from every half-class, with no two choices on opposite sides
+@@ -202,8 +204,8 @@
+   · change halfComponent q d i (c, x) = halfComponent q d i (z, y) at hcomp
+     change halfSide q d (c, x) = halfSide q d (z, y) at hside
+     have h := half_labels_injective hd hn (c, x) (z, y) hcomp hside hpos
+-    have hc := congrArg Prod.fst h
+-    have hx := congrArg Prod.snd h
++    have hc : c = z := congrArg (fun t : HalfVertex q n => t.1) h
++    have hx : x = y := congrArg (fun t : HalfVertex q n => t.2) h
+     subst z
+     subst y
+     rfl
+@@ -215,7 +217,7 @@
+     have hws := halfSide_true_at_center (z, y) hw
+     simp [hvs, hws] at hside
+   · change 2 * q - halfComponent q d i (c, x) = halfComponent q d i (z, y) at hcomp
+-    change !(halfSide q d (c, x)) = halfSide q d (z, y) at hside
++    change (!(halfSide q d (c, x))) = halfSide q d (z, y) at hside
+     have hv : halfComponent q d i (c, x) = q := by omega
+     have hw : halfComponent q d i (z, y) = q := by omega
+     have hvs := halfSide_true_at_center (c, x) hv
+@@ -223,13 +225,13 @@
+     simp [hvs, hws] at hside
+   · change 2 * q - halfComponent q d i (c, x) =
+       2 * q - halfComponent q d i (z, y) at hcomp
+-    change !(halfSide q d (c, x)) = !(halfSide q d (z, y)) at hside
++    change (!(halfSide q d (c, x))) = (!(halfSide q d (z, y))) at hside
+     have hc : halfComponent q d i (c, x) = halfComponent q d i (z, y) := by
+       omega
+     have hs := not_injective_bool _ _ hside
+     have h := half_labels_injective hd hn (c, x) (z, y) hc hs hpos
+-    have hc' := congrArg Prod.fst h
+-    have hx := congrArg Prod.snd h
++    have hc' : c = z := congrArg (fun t : HalfVertex q n => t.1) h
++    have hx : x = y := congrArg (fun t : HalfVertex q n => t.2) h
+     subst z
+     subst y
+     rfl
+--- original/JSP896/ThresholdAsymptotics.lean
++++ candidate/JSP896/ThresholdAsymptotics.lean
+@@ -135,7 +135,7 @@
+       atTop (𝓝 (1 / 2 : ℝ)) := by
+     have h := tendsto_add_mul_div_add_mul_atTop_nhds
+       (0 : ℝ) (-1) 1 (d := 2) (by norm_num)
+-    simpa only [zero_add, one_mul, sub_eq_add_neg, add_comm] using h
++    simpa only [zero_add, add_zero, one_mul, sub_eq_add_neg, add_comm] using h
+   have hcompose := hraw.comp half_parts_tendsto_atTop
+   have heq : (fun r : ℕ => ((r / 2 : ℕ) : ℝ) /
+       (2 * ((r / 2 : ℕ) : ℝ) - 1)) =ᶠ[atTop] independentCoefficient := by

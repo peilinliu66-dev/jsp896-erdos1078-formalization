@@ -1,0 +1,36 @@
+JSP896/CertificateSize.lean:17:2: warning: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+JSP896/CertificateSize.lean:30:75: error: unsolved goals
+ι : Type u_2
+inst✝¹ : Fintype ι
+inst✝ : DecidableEq ι
+H : SimpleGraph ι
+S : Finset ι
+hS : S.Nonempty
+hacyclic : H.IsAcyclic
+hsupported : ∀ ⦃i j : ι⦄, H.Adj i j → i ∈ S ∧ j ∈ S
+this : Nonempty ↥S := Nonempty.intro ⟨Classical.choose hS, Classical.choose_spec hS⟩
+hsupport : H.support ⊆ ↑S
+hInduced : (SimpleGraph.induce (↑S) H).IsAcyclic
+htop : ⊤.Connected
+R : SimpleGraph ↥S
+hHR : SimpleGraph.induce (↑S) H ≤ R
+left✝ : R ≤ ⊤
+hR : R.IsTree
+hcard : R.edgeFinset.card + 1 = S.card
+hle : (SimpleGraph.induce (↑S) H).edgeFinset.card ≤ R.edgeFinset.card
+⊢ (SimpleGraph.induce (↑S) H).edgeFinset = (SimpleGraph.induce (↑S) H).edgeFinset
+JSP896/CertificateSize.lean:36:0: warning: automatically included section variable(s) unused in theorem `JSP896.FeasiblePair.card_le_twice_class_edges`:
+  [Fintype V]
+  [DecidableEq V]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [DecidableEq V] [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`

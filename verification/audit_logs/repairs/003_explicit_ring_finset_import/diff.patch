@@ -1,0 +1,17 @@
+--- before/JSP896.PairedDeficit
++++ after/JSP896.PairedDeficit
+@@ -1,4 +1,5 @@
+ import Mathlib.Algebra.Order.BigOperators.Group.Finset
++import Mathlib.Algebra.BigOperators.Ring.Finset
+ import Mathlib.Data.Fintype.BigOperators
+ import Mathlib.Data.Real.Basic
+ import Mathlib.Tactic.Linarith
+@@ -84,7 +85,7 @@
+       intro j hj
+       exact mul_le_mul_of_nonneg_right (coefficient_le P S t hs ht j) (hδ j)
+     _ = ((S.card : ℝ) - 1) * ∑ j, δ j := by
+-      rw [mul_sum]
++      rw [Finset.mul_sum]
+ 
+ /-- No such paired-cell domination certificate can cover the residual cells
+ after deletion of at most d vertices when the total deficit is below d. -/

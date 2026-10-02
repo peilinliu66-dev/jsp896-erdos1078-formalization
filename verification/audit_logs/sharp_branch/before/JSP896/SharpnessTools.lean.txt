@@ -1,0 +1,190 @@
+import JSP896.Statement
+import Mathlib.Data.Fintype.EquivFin
+import Mathlib.Tactic
+
+/-!
+# Elementary tools for the literal sharpness examples
+
+Only the project's `Statement` module is used.  In particular, the construction
+does not depend on the sufficiency theorem or on a graph-existence oracle.
+
+This source is prepared for the pinned project and has not been compiled.
+-/
+
+namespace JSP896
+namespace Sharpness
+
+def labelGraph {r n : ℕ} (component : Vertex r n → ℕ)
+    (side : Vertex r n → Bool) : SimpleGraph (Vertex r n) where
+  Adj v w := component v = component w ∧ side v ≠ side w
+  symm := ⟨fun _ _ h => ⟨h.1.symm, Ne.symm h.2⟩⟩
+  loopless := ⟨fun _ h => h.2 rfl⟩
+
+private theorem bool_eq_of_common_opposite (a b c : Bool)
+    (hab : a ≠ b) (hac : a ≠ c) : b = c := by
+  cases a <;> cases b <;> cases c <;> simp_all
+
+/-- Distinct neighbors of a vertex have distinct positions in the opposite
+bipartite side.  This proves the actual filtered-universe degree bound. -/
+theorem degree_labelGraph_le {r n d : ℕ}
+    (component : Vertex r n → ℕ) (side : Vertex r n → Bool)
+    (position : Vertex r n → ℕ)
+    (hposition : ∀ v, position v < d)
+    (hinj : ∀ v w, component v = component w → side v = side w →
+      position v = position w → v = w) (v : Vertex r n) :
+    degree (labelGraph component side) v ≤ d := by
+  classical
+  change (neighbors (labelGraph component side) v).card ≤ d
+  rw [← Finset.card_range d]
+  apply Finset.card_le_card_of_injOn position
+  · intro w _hw
+    exact Finset.mem_range.mpr (hposition w)
+  · intro w hw z hz hpos
+    have hw' := (mem_neighbors _ _ _).mp hw
+    have hz' := (mem_neighbors _ _ _).mp hz
+    exact hinj w z (hw'.1.symm.trans hz'.1)
+      (bool_eq_of_common_opposite _ _ _ hw'.2 hz'.2) hpos
+
+/-- Enumerate an arbitrary finite set of equally sized classes by `Fin r`.
+The labels describe actual complete bipartite components, and an injection of
+the component/side/position triples bounds their side sizes by `d`. -/
+theorem exists_of_labeled_classes {C : Type*} [Fintype C]
+    {r n d : ℕ} (hcard : Fintype.card C = r)
+    (component : C × Fin n → ℕ) (side : C × Fin n → Bool)
+    (position : C × Fin n → ℕ)
+    (hposition : ∀ v, position v < d)
+    (hinj : ∀ v w, component v = component w → side v = side w →
+      position v = position w → v = w)
+    (hclass : ∀ c x y, component (c, x) = component (c, y) →
+      side (c, x) = side (c, y))
+    (hobstruction : ∀ f : C → Fin n,
+      ∃ c e, c ≠ e ∧ component (c, f c) = component (e, f e) ∧
+        side (c, f c) ≠ side (e, f e)) :
+    ∃ G : SimpleGraph (Vertex r n), IsPartite G ∧
+      (∀ v, degree G v ≤ d) ∧ ¬ HasIndependentTransversal G := by
+  classical
+  let e : Fin r ≃ C := (Fintype.equivFinOfCardEq hcard).symm
+  let lift : Vertex r n → C × Fin n := fun v => (e v.1, v.2)
+  let G := labelGraph (component ∘ lift) (side ∘ lift)
+  have hlift : Function.Injective lift := by
+    intro v w h
+    apply Prod.ext
+    · exact e.injective (congrArg Prod.fst h)
+    · exact congrArg Prod.snd h
+  refine ⟨G, ?_, ?_, ?_⟩
+  · intro v w h hpart
+    apply h.2
+    change side (e v.1, v.2) = side (e w.1, w.2)
+    rw [← hpart]
+    apply hclass
+    simpa only [Function.comp_apply, lift, hpart] using h.1
+  · intro v
+    apply degree_labelGraph_le (component ∘ lift) (side ∘ lift)
+      (position ∘ lift) (fun w => hposition (lift w))
+    intro w z hcomp hside hpos
+    exact hlift (hinj (lift w) (lift z) hcomp hside hpos)
+  · rintro ⟨f, hf⟩
+    obtain ⟨c, z, hcz, hcomp, hside⟩ :=
+      hobstruction (fun c => f (e.symm c))
+    have hne : e.symm c ≠ e.symm z := by
+      intro h
+      exact hcz (e.symm.injective h)
+    apply hf (e.symm c) (e.symm z) hne
+    change component (e (e.symm c), f (e.symm c)) =
+        component (e (e.symm z), f (e.symm z)) ∧
+      side (e (e.symm c), f (e.symm c)) ≠
+        side (e (e.symm z), f (e.symm z))
+    simpa only [Equiv.apply_symm_apply] using And.intro hcomp hside
+
+/-- Add independent classes of the same size.  Their vertices really are
+isolated; the old graph is retained on the initial classes. -/
+theorem pad_example {r s n d : ℕ} (hr : 0 < r) (hrs : r ≤ s)
+    (G : SimpleGraph (Vertex r n)) (hpart : IsPartite G)
+    (hdegree : ∀ v, degree G v ≤ d)
+    (hno : ¬ HasIndependentTransversal G) :
+    ∃ H : SimpleGraph (Vertex s n), IsPartite H ∧
+      (∀ v, degree H v ≤ d) ∧ ¬ HasIndependentTransversal H := by
+  classical
+  let lower : Vertex s n → Vertex r n := fun v =>
+    (⟨if v.1.val < r then v.1.val else 0, by
+      split_ifs with h
+      · exact h
+      · exact hr⟩, v.2)
+  let H : SimpleGraph (Vertex s n) := {
+    Adj := fun v w => v.1.val < r ∧ w.1.val < r ∧
+      G.Adj (lower v) (lower w)
+    symm := ⟨fun _ _ h => ⟨h.2.1, h.1, G.adj_symm h.2.2⟩⟩
+    loopless := ⟨fun _ h => G.loopless.irrefl _ h.2.2⟩ }
+  have hlower_inj : ∀ v w : Vertex s n, v.1.val < r → w.1.val < r →
+      lower v = lower w → v = w := by
+    intro v w hv hw h
+    apply Prod.ext
+    · apply Fin.ext
+      have hh := congrArg (fun z : Vertex r n => z.1.val) h
+      simpa only [lower, if_pos hv, if_pos hw] using hh
+    · exact congrArg Prod.snd h
+  refine ⟨H, ?_, ?_, ?_⟩
+  · intro v w h heq
+    apply hpart h.2.2
+    apply Fin.ext
+    simp only [lower, heq]
+  · intro v
+    by_cases hv : v.1.val < r
+    · have hle : degree H v ≤ degree G (lower v) := by
+        unfold degree
+        apply Finset.card_le_card_of_injOn lower
+        · intro w hw
+          exact (mem_neighbors _ _ _).mpr ((mem_neighbors _ _ _).mp hw).2.2
+        · intro w hw z hz heq
+          have hw' := (mem_neighbors _ _ _).mp hw
+          have hz' := (mem_neighbors _ _ _).mp hz
+          exact hlower_inj w z hw'.2.1 hz'.2.1 heq
+      exact hle.trans (hdegree (lower v))
+    · have hempty : neighbors H v = ∅ := by
+        apply Finset.eq_empty_iff_forall_notMem.mpr
+        intro w hw
+        exact hv ((mem_neighbors _ _ _).mp hw).1
+      simp only [degree, hempty, Finset.card_empty, Nat.zero_le]
+  · rintro ⟨f, hf⟩
+    let incl : Fin r → Fin s := fun j => ⟨j.val, j.isLt.trans_le hrs⟩
+    apply hno
+    refine ⟨fun j => f (incl j), ?_⟩
+    intro i j hij hadj
+    have hne : incl i ≠ incl j := by
+      intro h
+      apply hij
+      exact Fin.ext (congrArg Fin.val h)
+    apply hf (incl i) (incl j) hne
+    refine ⟨i.isLt, j.isLt, ?_⟩
+    have hli : lower (incl i, f (incl i)) = (i, f (incl i)) := by
+      apply Prod.ext
+      · apply Fin.ext
+        simp only [lower, incl, if_pos i.isLt]
+      · rfl
+    have hlj : lower (incl j, f (incl j)) = (j, f (incl j)) := by
+      apply Prod.ext
+      · apply Fin.ext
+        simp only [lower, incl, if_pos j.isLt]
+      · rfl
+    simpa only [hli, hlj] using hadj
+
+/-- One `K_{n,n}` and isolated extra classes handle `n ≤ d`. -/
+theorem exists_small_example {r n d : ℕ} (hr : 2 ≤ r) (hnd : n ≤ d) :
+    ∃ G : SimpleGraph (Vertex r n), IsPartite G ∧
+      (∀ v, degree G v ≤ d) ∧ ¬ HasIndependentTransversal G := by
+  classical
+  obtain ⟨G, hpart, hdeg, hno⟩ :=
+    exists_of_labeled_classes (C := Bool) (r := 2) (n := n) (d := d)
+      (by simp) (fun _ => 0) (fun v => v.1) (fun v => v.2.val)
+      (fun v => v.2.isLt.trans_le hnd)
+      (by
+        intro v w _hs hside hpos
+        exact Prod.ext hside (Fin.ext hpos))
+      (fun _ _ _ _ => rfl)
+      (by
+        intro f
+        exact ⟨false, true, by decide, rfl, by decide⟩)
+  exact pad_example (by norm_num) hr G hpart hdeg hno
+
+end Sharpness
+end JSP896

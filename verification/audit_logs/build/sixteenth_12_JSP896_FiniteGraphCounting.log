@@ -1,0 +1,35 @@
+JSP896/FiniteGraphCounting.lean:23:8: warning: automatically included section variable(s) unused in theorem `JSP896.FiniteGraphCounting.mem_neighbors`:
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+JSP896/FiniteGraphCounting.lean:28:8: warning: automatically included section variable(s) unused in theorem `JSP896.FiniteGraphCounting.mem_fiber`:
+  [Fintype ι]
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+JSP896/FiniteGraphCounting.lean:31:8: warning: automatically included section variable(s) unused in theorem `JSP896.FiniteGraphCounting.mem_activeVertices`:
+  [Fintype ι]
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+JSP896/FiniteGraphCounting.lean:44:0: warning: automatically included section variable(s) unused in theorem `JSP896.FiniteGraphCounting.sum_fiber_card`:
+  [Fintype ι]
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+JSP896/FiniteGraphCounting.lean:48:0: warning: automatically included section variable(s) unused in theorem `JSP896.FiniteGraphCounting.sum_by_label`:
+  [Fintype V]
+  [Fintype ι]
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [Fintype ι] [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`

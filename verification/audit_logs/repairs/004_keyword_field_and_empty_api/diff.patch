@@ -1,0 +1,20 @@
+--- before/JSP896.FeasiblePair
++++ after/JSP896.FeasiblePair
+@@ -68,7 +68,7 @@
+ 
+ structure Compatible (G : SimpleGraph V) (label : V → ι)
+     (I T U : Finset V) : Prop where
+-  partial : Partial G label U
++  «partial» : Partial G label U
+   colors : U.image label = T.image label
+   avoidsCenters : Disjoint U (I \ T)
+   stars : ∀ w ∈ I \ T, star G U w = star G T w
+@@ -85,7 +85,7 @@
+     exact SimpleGraph.isAcyclic_bot
+   · simp
+   · intro v hv
+-    exact False.elim (Finset.not_mem_empty v hv)
++    exact False.elim (Finset.notMem_empty v hv)
+   · simp
+ 
+ theorem Feasible.nonisolated {G : SimpleGraph V} {label : V → ι} {I T : Finset V}

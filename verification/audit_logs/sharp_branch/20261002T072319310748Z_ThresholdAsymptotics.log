@@ -1,0 +1,33 @@
+JSP896/ThresholdAsymptotics.lean:49:60: warning: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+JSP896/ThresholdAsymptotics.lean:53:81: warning: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+JSP896/ThresholdAsymptotics.lean:58:69: warning: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+JSP896/ThresholdAsymptotics.lean:49:60: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+JSP896/ThresholdAsymptotics.lean:53:81: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+JSP896/ThresholdAsymptotics.lean:58:69: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+JSP896/ThresholdAsymptotics.lean:89:27: warning: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+JSP896/ThresholdAsymptotics.lean:89:27: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+JSP896/ThresholdAsymptotics.lean:128:14: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+JSP896/ThresholdAsymptotics.lean:138:4: error: Type mismatch: After simplification, term
+  h
+ has type
+  Tendsto (fun k => (↑k + 0) / (-1 + 2 * ↑k)) atTop (𝓝 (1 / 2))
+but is expected to have type
+  Tendsto (fun k => ↑k / (-1 + 2 * ↑k)) atTop (𝓝 (1 / 2))

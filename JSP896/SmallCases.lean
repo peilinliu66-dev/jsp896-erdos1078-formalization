@@ -1,0 +1,226 @@
+import JSP896.Complement
+import Mathlib.Data.Finset.Max
+import Mathlib.Tactic
+
+/-!
+# Literal two- and three-class sufficiency
+
+The three-class proof uses a vertex of maximal cyclic forward degree in the
+cross-part complement.  All neighbor sets, cardinalities, and triangle
+vertices are constructed here.  No external graph theorem is assumed.
+Pinned execution records are in VERIFICATION.md.
+-/
+
+namespace JSP896
+
+theorem exists_nonneighbor_in_part {r n : ℕ}
+    (G : SimpleGraph (Vertex r n)) (v : Vertex r n) (j : Fin r)
+    (hdegree : degree G v < n) : ∃ x : Fin n, ¬ G.Adj v (j, x) := by
+  classical
+  by_contra hnone
+  push_neg at hnone
+  have hcard : (Finset.univ : Finset (Fin n)).card ≤ (neighbors G v).card := by
+    apply Finset.card_le_card_of_injOn (fun x : Fin n => (j, x))
+    · intro x _hx
+      exact (mem_neighbors _ _ _).mpr (hnone x)
+    · intro x _hx y _hy h
+      exact congrArg Prod.snd h
+  have hle : n ≤ degree G v := by simpa only [Finset.card_univ, Fintype.card_fin, degree] using hcard
+  omega
+
+theorem independentTransversal_two (n : ℕ) (hn : 0 < n)
+    (G : SimpleGraph (Vertex 2 n)) (_hpart : IsPartite G)
+    (hdegree : ∀ v, degree G v < n) : HasIndependentTransversal G := by
+  let x : Fin n := ⟨0, hn⟩
+  obtain ⟨y, hy⟩ := exists_nonneighbor_in_part G (0, x) 1 (hdegree (0, x))
+  refine ⟨fun j => if j = 0 then x else y, ?_⟩
+  intro i j hij
+  fin_cases i <;> fin_cases j
+  · exact False.elim (hij rfl)
+  · simpa using hy
+  · intro h
+    apply hy
+    simpa using G.adj_symm h
+  · exact False.elim (hij rfl)
+
+namespace SmallCases
+
+def nextPart (j : Fin 3) : Fin 3 := j + 1
+def prevPart (j : Fin 3) : Fin 3 := j + 2
+
+theorem next_ne_self (j : Fin 3) : nextPart j ≠ j := by
+  fin_cases j <;> decide
+
+theorem prev_ne_self (j : Fin 3) : prevPart j ≠ j := by
+  fin_cases j <;> decide
+
+theorem next_ne_prev (j : Fin 3) : nextPart j ≠ prevPart j := by
+  fin_cases j <;> decide
+
+@[simp] theorem next_prev (j : Fin 3) : nextPart (prevPart j) = j := by
+  fin_cases j <;> decide
+
+@[simp] theorem prev_prev (j : Fin 3) : prevPart (prevPart j) = nextPart j := by
+  fin_cases j <;> decide
+
+theorem part_cases (i j : Fin 3) : j = i ∨ j = nextPart i ∨ j = prevPart i := by
+  fin_cases i <;> fin_cases j <;> decide
+
+theorem other_part_cases {i j : Fin 3} (h : i ≠ j) :
+    j = nextPart i ∨ j = prevPart i := by
+  rcases part_cases i j with h' | h'
+  · exact False.elim (h h'.symm)
+  · exact h'
+
+noncomputable def forward {n : ℕ} (G : SimpleGraph (Vertex 3 n))
+    (v : Vertex 3 n) : Finset (Fin n) := by
+  classical
+  exact Finset.univ.filter (fun x => G.Adj v (nextPart v.1, x))
+
+noncomputable def backward {n : ℕ} (G : SimpleGraph (Vertex 3 n))
+    (v : Vertex 3 n) : Finset (Fin n) := by
+  classical
+  exact Finset.univ.filter (fun x => G.Adj v (prevPart v.1, x))
+
+@[simp] theorem mem_forward {n : ℕ} (G : SimpleGraph (Vertex 3 n))
+    (v : Vertex 3 n) (x : Fin n) :
+    x ∈ forward G v ↔ G.Adj v (nextPart v.1, x) := by
+  classical
+  simp [forward]
+
+@[simp] theorem mem_backward {n : ℕ} (G : SimpleGraph (Vertex 3 n))
+    (v : Vertex 3 n) (x : Fin n) :
+    x ∈ backward G v ↔ G.Adj v (prevPart v.1, x) := by
+  classical
+  simp [backward]
+
+theorem card_forward_le {n : ℕ} (G : SimpleGraph (Vertex 3 n))
+    (v : Vertex 3 n) : (forward G v).card ≤ n := by
+  classical
+  simpa using Finset.card_le_card (Finset.subset_univ (forward G v))
+
+theorem degree_eq_forward_add_backward {n : ℕ}
+    (G : SimpleGraph (Vertex 3 n)) (hpart : IsPartite G) (v : Vertex 3 n) :
+    degree G v = (forward G v).card + (backward G v).card := by
+  classical
+  let F := (forward G v).image (fun x => (nextPart v.1, x))
+  let B := (backward G v).image (fun x => (prevPart v.1, x))
+  have hF : F.card = (forward G v).card := by
+    apply Finset.card_image_iff.mpr
+    intro x _hx y _hy h
+    exact congrArg Prod.snd h
+  have hB : B.card = (backward G v).card := by
+    apply Finset.card_image_iff.mpr
+    intro x _hx y _hy h
+    exact congrArg Prod.snd h
+  have hdis : Disjoint F B := by
+    apply Finset.disjoint_left.mpr
+    intro w hw hw'
+    obtain ⟨x, hx, hxeq⟩ := Finset.mem_image.mp hw
+    obtain ⟨y, hy, hyeq⟩ := Finset.mem_image.mp hw'
+    exact next_ne_prev v.1 (congrArg Prod.fst (hxeq.trans hyeq.symm))
+  have hunion : neighbors G v = F ∪ B := by
+    ext w
+    rw [mem_neighbors, Finset.mem_union]
+    constructor
+    · intro h
+      rcases other_part_cases (hpart h) with hw | hw
+      · left
+        apply Finset.mem_image.mpr
+        refine ⟨w.2, ?_, ?_⟩
+        · apply (mem_forward _ _ _).mpr
+          simpa only [← hw] using h
+        · exact Prod.ext hw.symm rfl
+      · right
+        apply Finset.mem_image.mpr
+        refine ⟨w.2, ?_, ?_⟩
+        · apply (mem_backward _ _ _).mpr
+          simpa only [← hw] using h
+        · exact Prod.ext hw.symm rfl
+    · rintro (h | h)
+      · obtain ⟨x, hx, rfl⟩ := Finset.mem_image.mp h
+        exact (mem_forward _ _ _).mp hx
+      · obtain ⟨x, hx, rfl⟩ := Finset.mem_image.mp h
+        exact (mem_backward _ _ _).mp hx
+  change (neighbors G v).card = _
+  rw [hunion, Finset.card_union_of_disjoint hdis, hF, hB]
+
+theorem transversalClique_of_cyclic_triangle {n : ℕ}
+    (G : SimpleGraph (Vertex 3 n)) (i : Fin 3) (x y z : Fin n)
+    (hxy : G.Adj (i, x) (nextPart i, y))
+    (hyz : G.Adj (nextPart i, y) (prevPart i, z))
+    (hzx : G.Adj (prevPart i, z) (i, x)) : HasTransversalClique G := by
+  classical
+  let f : Fin 3 → Fin n := fun j => if j = i then x else if j = nextPart i then y else z
+  have hfi : f i = x := by simp [f]
+  have hfn : f (nextPart i) = y := by simp [f, next_ne_self]
+  have hfp : f (prevPart i) = z := by
+    simp [f, prev_ne_self, Ne.symm (next_ne_prev i)]
+  refine ⟨f, ?_⟩
+  intro a b hab
+  rcases part_cases i a with ha | ha | ha <;>
+    rcases part_cases i b with hb | hb | hb <;>
+    subst a <;> subst b <;>
+    simp only [hfi, hfn, hfp, ne_self_iff_false] at hab ⊢
+  all_goals first
+    | exact hxy
+    | exact G.adj_symm hxy
+    | exact hyz
+    | exact G.adj_symm hyz
+    | exact hzx
+    | exact G.adj_symm hzx
+
+/-- The maximal-forward-degree argument proves the actual tripartite
+triangle theorem at the strict degree threshold n. -/
+theorem transversalClique_three_of_degree_gt (n : ℕ) (hn : 0 < n)
+    (G : SimpleGraph (Vertex 3 n)) (hpart : IsPartite G)
+    (hdegree : ∀ v, n < degree G v) : HasTransversalClique G := by
+  classical
+  let v₀ : Vertex 3 n := (0, ⟨0, hn⟩)
+  obtain ⟨v, _hv, hmax⟩ := (Finset.univ : Finset (Vertex 3 n)).exists_max_image
+    (fun w => (forward G w).card) ⟨v₀, Finset.mem_univ _⟩
+  have hmax' : ∀ w, (forward G w).card ≤ (forward G v).card := by
+    intro w
+    exact hmax w (Finset.mem_univ _)
+  have hvsum := degree_eq_forward_add_backward G hpart v
+  have hvlarge := hdegree v
+  have hvforward := card_forward_le G v
+  have hbpos : 0 < (backward G v).card := by omega
+  obtain ⟨z, hz⟩ := Finset.card_pos.mp hbpos
+  let w : Vertex 3 n := (prevPart v.1, z)
+  have hvw : G.Adj v w := (mem_backward _ _ _).mp hz
+  have hwsum := degree_eq_forward_add_backward G hpart w
+  have hwlarge := hdegree w
+  have hwforward := hmax' w
+  have hsum : n < (forward G v).card + (backward G w).card := by omega
+  have hunion : (forward G v ∪ backward G w).card ≤ n := by
+    simpa using Finset.card_le_card
+      (Finset.subset_univ (forward G v ∪ backward G w))
+  have hinter := Finset.card_union_add_card_inter (forward G v) (backward G w)
+  have hinterpos : 0 < (forward G v ∩ backward G w).card := by omega
+  obtain ⟨y, hy⟩ := Finset.card_pos.mp hinterpos
+  have hyv := (mem_forward _ _ _).mp (Finset.mem_inter.mp hy).1
+  have hyw := (mem_backward _ _ _).mp (Finset.mem_inter.mp hy).2
+  have hwy : G.Adj w (nextPart v.1, y) := by
+    simpa only [w, prev_prev] using hyw
+  apply transversalClique_of_cyclic_triangle G v.1 v.2 y z
+  · exact hyv
+  · exact G.adj_symm hwy
+  · exact G.adj_symm hvw
+
+end SmallCases
+
+theorem independentTransversal_three (n : ℕ) (hn : 0 < n)
+    (G : SimpleGraph (Vertex 3 n)) (hpart : IsPartite G)
+    (hdegree : ∀ v, degree G v < n) : HasIndependentTransversal G := by
+  have hlarge : ∀ v, n < degree (crossComplement G) v := by
+    intro v
+    have hsum := degree_add_complement G hpart v
+    have hsmall := hdegree v
+    norm_num at hsum
+    omega
+  have hclique := SmallCases.transversalClique_three_of_degree_gt n hn
+    (crossComplement G) (crossComplement_isPartite G) hlarge
+  exact (clique_crossComplement_iff G).mp hclique
+
+end JSP896

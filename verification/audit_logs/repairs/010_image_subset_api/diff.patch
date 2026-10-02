@@ -1,0 +1,11 @@
+--- before/JSP896.DominationCertificate
++++ after/JSP896.DominationCertificate
+@@ -21,7 +21,7 @@
+     (hU : Compatible G label I T U) : ExtendsSeed label I₀ T₀ I' U := by
+   refine ⟨hseed.1.trans hII', ?_⟩
+   intro v hv
+-  have hvI : label v ∈ I.image label := Finset.image_subset label hseed.1 hv
++  have hvI : label v ∈ I.image label := Finset.image_subset_image label hseed.1 hv
+   have hsame : v ∈ U ↔ v ∈ T := by
+     constructor
+     · intro h

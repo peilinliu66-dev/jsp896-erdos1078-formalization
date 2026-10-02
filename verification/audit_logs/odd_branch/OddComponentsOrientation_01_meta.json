@@ -1,0 +1,25 @@
+{
+  "module": "OddComponentsOrientation",
+  "command": [
+    "elan",
+    "run",
+    "leanprover/lean4:v4.35.0-rc3",
+    "lake",
+    "env",
+    "lean",
+    "-o",
+    ".lake\\build\\lib\\lean\\JSP896\\OddComponentsOrientation.olean",
+    "JSP896\\OddComponentsOrientation.lean"
+  ],
+  "cwd": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate",
+  "started_at": "2026-10-02T07:28:48.929415+00:00",
+  "source_before_sha256": "a9004f4f7f315de7183477918efc46284bfb2ee3513605f6e7f739967551ff07",
+  "natural_exit_code": 0,
+  "state": "COMPLETED",
+  "pid": 10848,
+  "ended_at": "2026-10-02T07:29:05.515751+00:00",
+  "source_after_sha256": "a9004f4f7f315de7183477918efc46284bfb2ee3513605f6e7f739967551ff07",
+  "log_sha256": "7deebdda6d418d9662a987754a38a96fce3536432e4a92dcb8b4c55517f5a2e6",
+  "olean_exists": true,
+  "source_unchanged_during_run": true
+}

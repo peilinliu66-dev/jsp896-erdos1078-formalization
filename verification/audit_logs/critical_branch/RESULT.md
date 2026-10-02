@@ -1,0 +1,9 @@
+# Even sufficiency and critical-edge branch: PASSED
+
+Both modules have actual natural exit code 0 with the supplied Lean 4.35.0-rc3 and pinned dependencies. EvenSufficiency is byte-identical to the original and accepts the already recorded sequential build. CriticalEdge was repaired only in proof-body elaboration: explicit substitution preserves named seed endpoints, image_insert/image_singleton replaces a removed image_pair name, two local finite carriers have explicit types, and FeasiblePair.star is qualified. Exported declaration headers are checked identical to the originals.
+
+The ordinary domination proof constructs its nonempty feasible certificate from the contradiction assumption, counts the dominated active classes, and combines the certificate size bound with the smaller active class count. It does not posit certificate existence as a theorem hypothesis.
+
+The edge-minimal graph is selected from the finite set of actual subgraphs without a full transversal by minimizing its adjacency-pair cardinality. Deleting any actual edge strictly decreases this cardinality, so the deletion has a full transversal. The seed then uses that actual deletion transversal, proves both endpoints occur, erases one endpoint to produce a maximum partial transversal, and proves every feasible-pair invariant, including faithful class edges and local star minimality. The local star lower bound follows from an actual neighbor in every maximum partial transversal with the same missing class. No oracle or postulated critical-edge property replaces this construction.
+
+Raw compiler outputs, natural status metadata, source hashes, the original failure, both repair diffs, and the two modules are preserved in CRC- and member-hash-verified branch checkpoints. No full-project completion is asserted by this branch result.

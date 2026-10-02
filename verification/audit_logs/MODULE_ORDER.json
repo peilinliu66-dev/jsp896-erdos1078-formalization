@@ -1,0 +1,195 @@
+{
+  "order": [
+    "JSP896.FiniteTransversal",
+    "JSP896.PairedDeficit",
+    "JSP896.CertificateMultiplicity",
+    "JSP896.FeasiblePair",
+    "JSP896.FeasibleGrowth",
+    "JSP896.CompatibleStars",
+    "JSP896.ClassTreeGrowth",
+    "JSP896.FaithfulExtension",
+    "JSP896.FeasibleExtension",
+    "JSP896.DominationCertificate",
+    "JSP896.CertificateSize",
+    "JSP896.FiniteGraphCounting",
+    "JSP896.MatchingTree",
+    "JSP896.CertificateMatching",
+    "JSP896.CertificateIMC",
+    "JSP896.Statement",
+    "JSP896.EvenSufficiency",
+    "JSP896.CriticalEdge",
+    "JSP896.MatchingOrientation",
+    "JSP896.MatchingFacts",
+    "JSP896.PairedCellTransversal",
+    "JSP896.StructureBounds",
+    "JSP896.MatchingCells",
+    "JSP896.MatchingExchange",
+    "JSP896.CellCounting",
+    "JSP896.CellDeletion",
+    "JSP896.ExpandedCells",
+    "JSP896.CellStructure",
+    "JSP896.MatchingOrientationCentroid",
+    "JSP896.OddComponentsReachability",
+    "JSP896.OddComponentsOrientation",
+    "JSP896.OddComponentsCentroid",
+    "JSP896.OddComponentsSwitching",
+    "JSP896.OddComponentsCounting",
+    "JSP896.OddComponentsTerminal",
+    "JSP896.OddComponents",
+    "JSP896.Complement",
+    "JSP896.SmallCases",
+    "JSP896.SharpnessTools",
+    "JSP896.SharpnessChains",
+    "JSP896.Sharpness",
+    "JSP896.ThresholdArithmetic",
+    "JSP896.ThresholdAsymptotics",
+    "JSP896.Main",
+    "JSP896"
+  ],
+  "imports": {
+    "JSP896": [
+      "JSP896.Main"
+    ],
+    "JSP896.CellCounting": [
+      "JSP896.MatchingExchange"
+    ],
+    "JSP896.CellDeletion": [
+      "JSP896.CellCounting"
+    ],
+    "JSP896.CellStructure": [
+      "JSP896.ExpandedCells"
+    ],
+    "JSP896.CertificateIMC": [
+      "JSP896.CertificateMatching"
+    ],
+    "JSP896.CertificateMatching": [
+      "JSP896.CertificateSize",
+      "JSP896.FiniteGraphCounting",
+      "JSP896.MatchingTree"
+    ],
+    "JSP896.CertificateMultiplicity": [
+      "JSP896.PairedDeficit"
+    ],
+    "JSP896.CertificateSize": [
+      "JSP896.DominationCertificate"
+    ],
+    "JSP896.ClassTreeGrowth": [],
+    "JSP896.CompatibleStars": [
+      "JSP896.FeasibleGrowth"
+    ],
+    "JSP896.Complement": [
+      "JSP896.Statement"
+    ],
+    "JSP896.CriticalEdge": [
+      "JSP896.CertificateIMC",
+      "JSP896.ClassTreeGrowth"
+    ],
+    "JSP896.DominationCertificate": [
+      "JSP896.FeasibleExtension"
+    ],
+    "JSP896.EvenSufficiency": [
+      "JSP896.CertificateIMC",
+      "JSP896.Statement"
+    ],
+    "JSP896.ExpandedCells": [
+      "JSP896.CellDeletion"
+    ],
+    "JSP896.FaithfulExtension": [
+      "JSP896.CompatibleStars",
+      "JSP896.ClassTreeGrowth"
+    ],
+    "JSP896.FeasibleExtension": [
+      "JSP896.FaithfulExtension"
+    ],
+    "JSP896.FeasibleGrowth": [
+      "JSP896.FeasiblePair"
+    ],
+    "JSP896.FeasiblePair": [
+      "JSP896.FiniteTransversal",
+      "JSP896.CertificateMultiplicity"
+    ],
+    "JSP896.FiniteGraphCounting": [
+      "JSP896.CertificateMultiplicity"
+    ],
+    "JSP896.FiniteTransversal": [],
+    "JSP896.Main": [
+      "JSP896.EvenSufficiency",
+      "JSP896.CriticalEdge",
+      "JSP896.CellStructure",
+      "JSP896.OddComponents",
+      "JSP896.SmallCases",
+      "JSP896.ThresholdAsymptotics"
+    ],
+    "JSP896.MatchingCells": [
+      "JSP896.MatchingFacts",
+      "JSP896.PairedCellTransversal",
+      "JSP896.StructureBounds"
+    ],
+    "JSP896.MatchingExchange": [
+      "JSP896.MatchingCells"
+    ],
+    "JSP896.MatchingFacts": [
+      "JSP896.CertificateIMC",
+      "JSP896.MatchingOrientation"
+    ],
+    "JSP896.MatchingOrientation": [
+      "JSP896.MatchingTree"
+    ],
+    "JSP896.MatchingOrientationCentroid": [
+      "JSP896.MatchingOrientation"
+    ],
+    "JSP896.MatchingTree": [
+      "JSP896.FeasiblePair"
+    ],
+    "JSP896.OddComponents": [
+      "JSP896.OddComponentsCentroid",
+      "JSP896.OddComponentsTerminal"
+    ],
+    "JSP896.OddComponentsCentroid": [
+      "JSP896.OddComponentsOrientation"
+    ],
+    "JSP896.OddComponentsCounting": [
+      "JSP896.MatchingOrientationCentroid",
+      "JSP896.Statement"
+    ],
+    "JSP896.OddComponentsOrientation": [
+      "JSP896.MatchingFacts",
+      "JSP896.MatchingOrientationCentroid",
+      "JSP896.OddComponentsReachability"
+    ],
+    "JSP896.OddComponentsReachability": [],
+    "JSP896.OddComponentsSwitching": [
+      "JSP896.OddComponentsOrientation"
+    ],
+    "JSP896.OddComponentsTerminal": [
+      "JSP896.OddComponentsSwitching",
+      "JSP896.OddComponentsCounting"
+    ],
+    "JSP896.PairedCellTransversal": [
+      "JSP896.DominationCertificate",
+      "JSP896.FiniteGraphCounting"
+    ],
+    "JSP896.PairedDeficit": [],
+    "JSP896.Sharpness": [
+      "JSP896.SharpnessChains"
+    ],
+    "JSP896.SharpnessChains": [
+      "JSP896.SharpnessTools"
+    ],
+    "JSP896.SharpnessTools": [
+      "JSP896.Statement"
+    ],
+    "JSP896.SmallCases": [
+      "JSP896.Complement"
+    ],
+    "JSP896.Statement": [],
+    "JSP896.StructureBounds": [],
+    "JSP896.ThresholdArithmetic": [
+      "JSP896.Complement",
+      "JSP896.Sharpness"
+    ],
+    "JSP896.ThresholdAsymptotics": [
+      "JSP896.ThresholdArithmetic"
+    ]
+  }
+}

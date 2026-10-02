@@ -1,0 +1,686 @@
+⚠ [806/818] Replayed JSP896.FiniteTransversal
+warning: JSP896\FiniteTransversal.lean: imports `Mathlib.Combinatorics.SimpleGraph.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: JSP896\FiniteTransversal.lean: imports `Mathlib.Data.Finset.Card` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: JSP896\FiniteTransversal.lean: imports `Mathlib.Data.Finset.Max` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: JSP896\FiniteTransversal.lean: imports `Mathlib.Data.Finset.Powerset` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: JSP896\FiniteTransversal.lean: imports `Mathlib.Tactic.Order` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: JSP896/FiniteTransversal.lean:27:0: automatically included section variable(s) unused in theorem `JSP896.FiniteTransversal.partial_empty`:
+  [Fintype V]
+  [Fintype ι]
+  [DecidableEq V]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [Fintype ι] [DecidableEq V] [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: JSP896/FiniteTransversal.lean:31:0: automatically included section variable(s) unused in theorem `JSP896.FiniteTransversal.Partial.subset`:
+  [Fintype V]
+  [Fintype ι]
+  [DecidableEq V]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [Fintype ι] [DecidableEq V] [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: JSP896/FiniteTransversal.lean:39:0: automatically included section variable(s) unused in theorem `JSP896.FiniteTransversal.Partial.card_image`:
+  [Fintype V]
+  [Fintype ι]
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [Fintype ι] [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: JSP896/FiniteTransversal.lean:58:0: automatically included section variable(s) unused in theorem `JSP896.FiniteTransversal.partial_insert`:
+  [Fintype V]
+  [Fintype ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [Fintype ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: JSP896/FiniteTransversal.lean:130:0: automatically included section variable(s) unused in theorem `JSP896.FiniteTransversal.swap_colors`:
+  [Fintype V]
+  [Fintype ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [Fintype ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [1057/1084] Replayed JSP896.PairedDeficit
+warning: JSP896\PairedDeficit.lean: imports `Mathlib.Algebra.Order.BigOperators.Group.Finset` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: JSP896\PairedDeficit.lean: imports `Mathlib.Algebra.BigOperators.Ring.Finset` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: JSP896\PairedDeficit.lean: imports `Mathlib.Data.Fintype.BigOperators` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: JSP896\PairedDeficit.lean: imports `Mathlib.Data.Real.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: JSP896\PairedDeficit.lean: imports `Mathlib.Tactic.Linarith` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: JSP896\PairedDeficit.lean: imports `Mathlib.Tactic.NormNum` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: JSP896\PairedDeficit.lean: imports `Mathlib.Tactic.Ring` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: JSP896\PairedDeficit.lean: imports `Mathlib.Tactic.SplitIfs` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: JSP896/PairedDeficit.lean:4:0: 'Mathlib.Data.Real.Basic' has been deprecated: please replace this import by
+
+import Mathlib.Basic.Real.Basic
+warning: JSP896/PairedDeficit.lean:50:31: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: JSP896/PairedDeficit.lean:51:17: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: JSP896/PairedDeficit.lean:51:28: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: JSP896/PairedDeficit.lean:53:17: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: JSP896/PairedDeficit.lean:53:28: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: JSP896/PairedDeficit.lean:57:31: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: JSP896/PairedDeficit.lean:58:17: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: JSP896/PairedDeficit.lean:58:28: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: JSP896/PairedDeficit.lean:60:17: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: JSP896/PairedDeficit.lean:60:28: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: JSP896/PairedDeficit.lean:41:0: automatically included section variable(s) unused in theorem `JSP896.PairedDeficit.coefficient_le`:
+  [Fintype ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [1058/1084] Replayed JSP896.CertificateMultiplicity
+warning: JSP896\CertificateMultiplicity.lean: imports `Mathlib.Combinatorics.SimpleGraph.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: JSP896\CertificateMultiplicity.lean: imports `Mathlib.Data.Finset.Card` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: JSP896\CertificateMultiplicity.lean: imports `Mathlib.Tactic.Order` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: JSP896/CertificateMultiplicity.lean:31:0: automatically included section variable(s) unused in theorem `JSP896.PairedDeficit.fibre_card_le_erase_partner`:
+  [Fintype V]
+  [DecidableEq V]
+  [Fintype ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [DecidableEq V] [Fintype ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: JSP896/CertificateMultiplicity.lean:86:15: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: JSP896/CertificateMultiplicity.lean:96:16: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+⚠ [1326/1344] Replayed JSP896.FiniteGraphCounting
+warning: JSP896\FiniteGraphCounting.lean: imports `Mathlib.Algebra.BigOperators.Group.Finset.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: JSP896/FiniteGraphCounting.lean:23:8: automatically included section variable(s) unused in theorem `JSP896.FiniteGraphCounting.mem_neighbors`:
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: JSP896/FiniteGraphCounting.lean:28:8: automatically included section variable(s) unused in theorem `JSP896.FiniteGraphCounting.mem_fiber`:
+  [Fintype ι]
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: JSP896/FiniteGraphCounting.lean:31:8: automatically included section variable(s) unused in theorem `JSP896.FiniteGraphCounting.mem_activeVertices`:
+  [Fintype ι]
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: JSP896/FiniteGraphCounting.lean:44:0: automatically included section variable(s) unused in theorem `JSP896.FiniteGraphCounting.sum_fiber_card`:
+  [Fintype ι]
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: JSP896/FiniteGraphCounting.lean:48:0: automatically included section variable(s) unused in theorem `JSP896.FiniteGraphCounting.sum_by_label`:
+  [Fintype V]
+  [Fintype ι]
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [Fintype ι] [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [1327/1344] Replayed JSP896.Statement
+warning: JSP896\Statement.lean: imports `Mathlib.Combinatorics.SimpleGraph.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: JSP896\Statement.lean: imports `Mathlib.Data.Finset.Card` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: JSP896\Statement.lean: imports `Mathlib.Data.Fintype.Prod` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [1332/1367] Replayed JSP896.FeasiblePair
+warning: JSP896\FeasiblePair.lean: imports `Mathlib.Combinatorics.SimpleGraph.Acyclic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: JSP896/FeasiblePair.lean:30:8: automatically included section variable(s) unused in theorem `JSP896.FeasiblePair.mem_leaves`:
+  [Fintype V]
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: JSP896/FeasiblePair.lean:48:0: automatically included section variable(s) unused in theorem `JSP896.FeasiblePair.classGraph_empty`:
+  [Fintype V]
+  [Fintype ι]
+  [DecidableEq V]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [Fintype ι] [DecidableEq V] [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: JSP896/FeasiblePair.lean:91:0: automatically included section variable(s) unused in theorem `JSP896.FeasiblePair.Feasible.nonisolated`:
+  [Fintype V]
+  [Fintype ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [Fintype ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: JSP896/FeasiblePair.lean:100:0: automatically included section variable(s) unused in theorem `JSP896.FeasiblePair.Feasible.compatible_self`:
+  [Fintype V]
+  [Fintype ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [Fintype ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: JSP896/FeasiblePair.lean:107:0: automatically included section variable(s) unused in theorem `JSP896.FeasiblePair.leaf_mem_of_compatible`:
+  [Fintype ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [1333/1367] Replayed JSP896.FeasibleGrowth
+warning: JSP896/FeasibleGrowth.lean:34:0: automatically included section variable(s) unused in theorem `JSP896.FeasiblePair.active_T_vertex_mem_I`:
+  [Fintype V]
+  [Fintype ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [Fintype ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [1334/1367] Replayed JSP896.CompatibleStars
+warning: JSP896/CompatibleStars.lean:11:0: automatically included section variable(s) unused in theorem `JSP896.FeasiblePair.Feasible.star_subset`:
+  [Fintype ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [1335/1367] Replayed JSP896.ClassTreeGrowth
+warning: JSP896\ClassTreeGrowth.lean: imports `Mathlib.Combinatorics.SimpleGraph.Acyclic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: JSP896\ClassTreeGrowth.lean: imports `Mathlib.Data.Finset.Lattice.Fold` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: JSP896/ClassTreeGrowth.lean:17:0: automatically included section variable(s) unused in theorem `JSP896.ClassTreeGrowth.singleton_tree`:
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: JSP896/ClassTreeGrowth.lean:65:8: automatically included section variable(s) unused in theorem `JSP896.ClassTreeGrowth.attachStar_empty`:
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [1336/1367] Replayed JSP896.FaithfulExtension
+warning: JSP896/FaithfulExtension.lean:12:0: automatically included section variable(s) unused in theorem `JSP896.FeasiblePair.adjacent_in_star`:
+  [Fintype ι]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [1338/1367] Replayed JSP896.DominationCertificate
+warning: JSP896/DominationCertificate.lean:15:0: automatically included section variable(s) unused in theorem `JSP896.FeasiblePair.extendsSeed_self`:
+  [Fintype V]
+  [Fintype ι]
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [Fintype ι] [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [1339/1367] Replayed JSP896.CertificateSize
+warning: JSP896\CertificateSize.lean: imports `Mathlib.Combinatorics.SimpleGraph.DegreeSum` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: JSP896/CertificateSize.lean:17:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: JSP896/CertificateSize.lean:31:72: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: JSP896/CertificateSize.lean:32:14: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: JSP896/CertificateSize.lean:32:24: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: JSP896/CertificateSize.lean:36:0: automatically included section variable(s) unused in theorem `JSP896.FeasiblePair.card_le_twice_class_edges`:
+  [Fintype V]
+  [DecidableEq V]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [DecidableEq V] [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [1340/1367] Replayed JSP896.MatchingTree
+warning: JSP896/MatchingTree.lean:26:0: automatically included section variable(s) unused in theorem `JSP896.MatchingConfiguration.Tree.partner_adj`:
+  [Fintype V]
+  [Fintype ι]
+  [DecidableEq V]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [Fintype ι] [DecidableEq V] [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: JSP896/MatchingTree.lean:31:0: automatically included section variable(s) unused in theorem `JSP896.MatchingConfiguration.Tree.partner_unique`:
+  [Fintype V]
+  [Fintype ι]
+  [DecidableEq V]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [Fintype ι] [DecidableEq V] [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [1341/1367] Replayed JSP896.CertificateMatching
+warning: JSP896\CertificateMatching.lean: imports `Mathlib.Data.Fintype.EquivFin` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: JSP896\CertificateMatching.lean: imports `Mathlib.Tactic.Linarith` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: JSP896/CertificateMatching.lean:70:0: automatically included section variable(s) unused in theorem `JSP896.FeasiblePair.Feasible.toMatchingTree`:
+  [Fintype V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [1342/1367] Replayed JSP896.CertificateIMC
+warning: JSP896\CertificateIMC.lean: imports `Mathlib.Tactic.NormNum` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [3192/3221] Replayed JSP896.StructureBounds
+warning: JSP896\StructureBounds.lean: imports `Mathlib.Data.Real.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: JSP896\StructureBounds.lean: imports `Mathlib.Tactic.Linarith` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: JSP896/StructureBounds.lean:1:0: 'Mathlib.Data.Real.Basic' has been deprecated: please replace this import by
+
+import Mathlib.Basic.Real.Basic
+⚠ [3193/3221] Replayed JSP896.Complement
+warning: JSP896\Complement.lean: imports `Mathlib.Data.Finset.Prod` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: JSP896\Complement.lean: imports `Mathlib.Tactic.Order` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [3195/3221] Replayed JSP896.EvenSufficiency
+warning: JSP896\EvenSufficiency.lean: imports `Mathlib.Tactic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: JSP896/EvenSufficiency.lean:93:15: Variable name `hr` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hr
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [3196/3221] Replayed JSP896.CriticalEdge
+warning: JSP896\CriticalEdge.lean: imports `Mathlib.Tactic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: JSP896/CriticalEdge.lean:31:0: automatically included section variable(s) unused in theorem `JSP896.CriticalEdge.deletePair_le`:
+  [Fintype V]
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: JSP896/CriticalEdge.lean:35:0: automatically included section variable(s) unused in theorem `JSP896.CriticalEdge.deletePair_not_adj`:
+  [Fintype V]
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: JSP896/CriticalEdge.lean:88:0: automatically included section variable(s) unused in theorem `JSP896.CriticalEdge.endpoints_mem`:
+  [Fintype V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [3197/3221] Replayed JSP896.MatchingOrientation
+warning: JSP896\MatchingOrientation.lean: imports `Mathlib.Combinatorics.SimpleGraph.Metric` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: JSP896\MatchingOrientation.lean: imports `Mathlib.Tactic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: JSP896/MatchingOrientation.lean:22:0: automatically included section variable(s) unused in theorem `JSP896.MatchingConfiguration.exists_downhill_neighbor`:
+  [Fintype ι]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [3198/3221] Replayed JSP896.MatchingFacts
+warning: JSP896/MatchingFacts.lean:43:0: automatically included section variable(s) unused in theorem `JSP896.MatchingConfiguration.Tree.full_classGraph_isTree`:
+  [Fintype V]
+  [DecidableEq V]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [DecidableEq V] [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [3199/3221] Replayed JSP896.MatchingCells
+warning: JSP896/MatchingCells.lean:163:8: automatically included section variable(s) unused in theorem `JSP896.MatchingConfiguration.Tree.mem_strip`:
+  [Fintype V]
+  [Fintype ι]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [Fintype ι] [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: JSP896/MatchingCells.lean:245:0: automatically included section variable(s) unused in theorem `JSP896.MatchingConfiguration.reachable_to_deleted_endpoint`:
+  [Fintype ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [3200/3221] Replayed JSP896.MatchingExchange
+warning: JSP896/MatchingExchange.lean:122:27: This simp argument is unused:
+  L
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: JSP896/MatchingExchange.lean:129:29: This simp argument is unused:
+  L
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: JSP896/MatchingExchange.lean:136:29: This simp argument is unused:
+  L
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hw.1]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: JSP896/MatchingExchange.lean:203:26: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: JSP896/MatchingExchange.lean:205:66: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: JSP896/MatchingExchange.lean:219:51: `if_false` has been deprecated: Use `ite_false` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵f̵a̵l̵s̵e̵i̲t̲e̲_̲f̲a̲l̲s̲e̲
+warning: JSP896/MatchingExchange.lean:222:50: `if_false` has been deprecated: Use `ite_false` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵f̵a̵l̵s̵e̵i̲t̲e̲_̲f̲a̲l̲s̲e̲
+warning: JSP896/MatchingExchange.lean:239:10: `simp` already closes the goal
+
+Hint: Use `simp` instead of `simpa`:
+  [apply] simp only [u, ← hj, hji]
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: JSP896/MatchingExchange.lean:285:49: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+⚠ [3201/3221] Replayed JSP896.CellCounting
+warning: JSP896/CellCounting.lean:13:0: automatically included section variable(s) unused in theorem `JSP896.MatchingConfiguration.disjoint_family_card`:
+  [Fintype V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: JSP896/CellCounting.lean:56:8: automatically included section variable(s) unused in theorem `JSP896.MatchingConfiguration.mem_matchingNeighbors`:
+  [Fintype V]
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: JSP896/CellCounting.lean:76:0: automatically included section variable(s) unused in theorem `JSP896.MatchingConfiguration.incidence_sum`:
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: JSP896/CellCounting.lean:100:10: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: JSP896/CellCounting.lean:102:10: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: JSP896/CellCounting.lean:123:8: automatically included section variable(s) unused in theorem `JSP896.MatchingConfiguration.mem_multiplyDominated`:
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: JSP896/CellCounting.lean:139:10: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: JSP896/CellCounting.lean:141:10: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+⚠ [3203/3221] Replayed JSP896.ExpandedCells
+warning: JSP896/ExpandedCells.lean:38:4: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+warning: JSP896/ExpandedCells.lean:47:0: automatically included section variable(s) unused in theorem `JSP896.MatchingConfiguration.Tree.complete_cell_unique`:
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: JSP896/ExpandedCells.lean:48:5: Variable name `M` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _M
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [3205/3221] Replayed JSP896.MatchingOrientationCentroid
+warning: JSP896\MatchingOrientationCentroid.lean: imports `Mathlib.Combinatorics.SimpleGraph.Acyclic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: JSP896\MatchingOrientationCentroid.lean: imports `Mathlib.Algebra.BigOperators.Group.Finset.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: JSP896\MatchingOrientationCentroid.lean: imports `Mathlib.Data.Finset.Max` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: JSP896/MatchingOrientationCentroid.lean:28:8: automatically included section variable(s) unused in theorem `JSP896.MatchingConfiguration.mem_branch`:
+  [Fintype ι]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: JSP896/MatchingOrientationCentroid.lean:36:0: automatically included section variable(s) unused in theorem `JSP896.MatchingConfiguration.tree_dist_step`:
+  [Fintype ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [3206/3221] Replayed JSP896.OddComponentsReachability
+warning: JSP896\OddComponentsReachability.lean: imports `Mathlib.Data.Finset.Max` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: JSP896\OddComponentsReachability.lean: imports `Mathlib.Tactic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: JSP896/OddComponentsReachability.lean:182:8: automatically included section variable(s) unused in theorem `JSP896.OddComponents.Directed.mem_future`:
+  [DecidableEq α]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq α] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: JSP896/OddComponentsReachability.lean:202:0: automatically included section variable(s) unused in theorem `JSP896.OddComponents.Directed.Dominates.comparable`:
+  [Fintype α]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype α] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [3207/3221] Replayed JSP896.OddComponentsOrientation
+warning: JSP896/OddComponentsOrientation.lean:30:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: JSP896/OddComponentsOrientation.lean:120:0: automatically included section variable(s) unused in theorem `JSP896.MatchingConfiguration.RootOrientation.black_injective`:
+  [Fintype V]
+  [DecidableEq V]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [DecidableEq V] [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: JSP896/OddComponentsOrientation.lean:137:0: automatically included section variable(s) unused in theorem `JSP896.MatchingConfiguration.RootOrientation.parent_reachable`:
+  [Fintype V]
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: JSP896/OddComponentsOrientation.lean:161:0: automatically included section variable(s) unused in theorem `JSP896.MatchingConfiguration.hasFull_of_independent_cover`:
+  [Fintype V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [3209/3221] Replayed JSP896.OddComponentsSwitching
+warning: JSP896/OddComponentsSwitching.lean:16:45: Ambiguous namespace `Directed`: it is interpreted as `_root_.JSP896.OddComponents.Directed` because this `open` occurs inside `namespace JSP896.OddComponents`, while `_root_.Directed` is silently not opened. Specify the namespace unambiguously, e.g. `_root_.JSP896.OddComponents.Directed`. The warning can sometimes also be addressed by moving the `open` outside of the surrounding `namespace`.
+
+Note: This linter can be disabled with `set_option linter.ambiguousOpen false`
+⚠ [3210/3221] Replayed JSP896.OddComponentsCounting
+warning: JSP896\OddComponentsCounting.lean: imports `Mathlib.Data.Finset.Prod` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: JSP896\OddComponentsCounting.lean: imports `Mathlib.Algebra.Order.BigOperators.Group.Finset` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: JSP896/OddComponentsCounting.lean:128:4: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+⚠ [3211/3221] Replayed JSP896.OddComponentsTerminal
+warning: JSP896/OddComponentsTerminal.lean:16:45: Ambiguous namespace `Directed`: it is interpreted as `_root_.JSP896.OddComponents.Directed` because this `open` occurs inside `namespace JSP896.OddComponents`, while `_root_.Directed` is silently not opened. Specify the namespace unambiguously, e.g. `_root_.JSP896.OddComponents.Directed`. The warning can sometimes also be addressed by moving the `open` outside of the surrounding `namespace`.
+
+Note: This linter can be disabled with `set_option linter.ambiguousOpen false`
+⚠ [3213/3221] Replayed JSP896.SmallCases
+warning: JSP896\SmallCases.lean: imports `Mathlib.Data.Finset.Max` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: JSP896\SmallCases.lean: imports `Mathlib.Tactic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: JSP896/SmallCases.lean:21:2: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+⚠ [3214/3221] Replayed JSP896.SharpnessTools
+warning: JSP896\SharpnessTools.lean: imports `Mathlib.Data.Fintype.EquivFin` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: JSP896\SharpnessTools.lean: imports `Mathlib.Tactic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: JSP896/SharpnessTools.lean:124:25: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: JSP896/SharpnessTools.lean:124:36: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: JSP896/SharpnessTools.lean:162:32: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: JSP896/SharpnessTools.lean:167:32: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+⚠ [3215/3221] Replayed JSP896.SharpnessChains
+warning: JSP896/SharpnessChains.lean:47:32: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: JSP896/SharpnessChains.lean:47:47: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: JSP896/SharpnessChains.lean:49:32: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: JSP896/SharpnessChains.lean:49:47: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: JSP896/SharpnessChains.lean:52:32: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: JSP896/SharpnessChains.lean:52:47: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: JSP896/SharpnessChains.lean:56:32: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: JSP896/SharpnessChains.lean:56:47: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: JSP896/SharpnessChains.lean:73:33: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: JSP896/SharpnessChains.lean:73:44: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: JSP896/SharpnessChains.lean:91:63: Unused tactic linter: `omega` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: JSP896/SharpnessChains.lean:91:63: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+⚠ [3218/3221] Replayed JSP896.ThresholdAsymptotics
+warning: JSP896\ThresholdAsymptotics.lean: imports `Mathlib.Analysis.SpecificLimits.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: JSP896\ThresholdAsymptotics.lean: imports `Mathlib.Topology.Order.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: JSP896/ThresholdAsymptotics.lean:49:60: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: JSP896/ThresholdAsymptotics.lean:53:81: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: JSP896/ThresholdAsymptotics.lean:58:69: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: JSP896/ThresholdAsymptotics.lean:49:60: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: JSP896/ThresholdAsymptotics.lean:53:81: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: JSP896/ThresholdAsymptotics.lean:58:69: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: JSP896/ThresholdAsymptotics.lean:89:27: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: JSP896/ThresholdAsymptotics.lean:89:27: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: JSP896/ThresholdAsymptotics.lean:128:14: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [3219/3221] Replayed JSP896.Main
+warning: JSP896/Main.lean:38:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+Build completed successfully (3221 jobs).

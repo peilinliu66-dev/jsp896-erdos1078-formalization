@@ -1,0 +1,10 @@
+{
+  "module": "JSP896.PairedDeficit",
+  "label": "002_mul_sum_api",
+  "recorded_utc": "2026-10-02T07:11:14.921812+00:00",
+  "reason": "Use pinned Mathlib global mul_sum after API namespace migration; theorem unchanged.",
+  "diagnostic_log": "verification/build/third_02_JSP896_PairedDeficit.log",
+  "before_sha256": "fcc5ba94642f2df49b81a57e39df53edae1570d5f9792275275fccd137f85bd4",
+  "after_sha256": "f51809d4da42af5b7ef73f58476c2489c302aa821bd52465966dad624f481430",
+  "statement_changed": false
+}

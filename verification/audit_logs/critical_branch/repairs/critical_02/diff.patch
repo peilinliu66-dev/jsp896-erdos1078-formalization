@@ -1,0 +1,15 @@
+--- before/JSP896/CriticalEdge.lean
++++ after/JSP896/CriticalEdge.lean
+@@ -234,10 +234,10 @@
+     simpa only [bot_sup_eq] using htree.acyclic
+   · intro i hi j hj
+     rw [hclass]
+-    have hi' : i ∈ insert (label b) {label a} := by
++    have hi' : i ∈ insert (label b) ({label a} : Finset ι) := by
+       simpa only [Finset.image_insert, Finset.image_singleton, Finset.mem_insert,
+         Finset.mem_singleton, or_comm] using hi
+-    have hj' : j ∈ insert (label b) {label a} := by
++    have hj' : j ∈ insert (label b) ({label a} : Finset ι) := by
+       simpa only [Finset.image_insert, Finset.image_singleton, Finset.mem_insert,
+         Finset.mem_singleton, or_comm] using hj
+     simpa only [bot_sup_eq] using htree.connected i hi' j hj'

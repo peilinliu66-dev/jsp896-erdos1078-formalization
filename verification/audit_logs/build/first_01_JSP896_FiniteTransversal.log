@@ -1,0 +1,66 @@
+JSP896/FiniteTransversal.lean:27:0: warning: automatically included section variable(s) unused in theorem `JSP896.FiniteTransversal.partial_empty`:
+  [Fintype V]
+  [Fintype ι]
+  [DecidableEq V]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [Fintype ι] [DecidableEq V] [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+JSP896/FiniteTransversal.lean:31:0: warning: automatically included section variable(s) unused in theorem `JSP896.FiniteTransversal.Partial.subset`:
+  [Fintype V]
+  [Fintype ι]
+  [DecidableEq V]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [Fintype ι] [DecidableEq V] [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+JSP896/FiniteTransversal.lean:39:0: warning: automatically included section variable(s) unused in theorem `JSP896.FiniteTransversal.Partial.card_image`:
+  [Fintype V]
+  [Fintype ι]
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [Fintype ι] [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+JSP896/FiniteTransversal.lean:65:32: error(lean.unknownIdentifier): Unknown identifier `x`
+JSP896/FiniteTransversal.lean:69:24: error: Application type mismatch: The argument
+  ha
+has type
+  a ∈ insert b T
+but is expected to have type
+  a ∈ T
+in the application
+  havoids a ha
+JSP896/FiniteTransversal.lean:77:61: error: Application type mismatch: The argument
+  ha
+has type
+  a ∈ insert b T
+but is expected to have type
+  a ∈ T
+in the application
+  And.intro ha
+JSP896/FiniteTransversal.lean:107:6: error: Tactic `assumption` failed
+
+V : Type u_1
+ι : Type u_2
+inst✝³ : Fintype V
+inst✝² : Fintype ι
+inst✝¹ : DecidableEq V
+inst✝ : DecidableEq ι
+G : SimpleGraph V
+label : V → ι
+T : Finset V
+hT : Partial G label T
+hno : ¬HasFull G label
+hle : T.card ≤ Fintype.card ι
+heq : T.card = Fintype.card ι
+⊢ Fintype.card ι ≤ Fintype.card ι
+JSP896/FiniteTransversal.lean:123:0: warning: automatically included section variable(s) unused in theorem `JSP896.FiniteTransversal.swap_colors`:
+  [Fintype V]
+  [Fintype ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [Fintype ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`

@@ -1,0 +1,10 @@
+{
+  "module": "JSP896.CertificateSize",
+  "label": "014_edge_finset_extensionality",
+  "recorded_utc": "2026-10-02T07:24:09.302856+00:00",
+  "reason": "Finish instance transport by edge-finset extensionality, whose membership is literal adjacency and independent of Fintype enumeration.",
+  "diagnostic_log": "verification/build/fifteenth_11_JSP896_CertificateSize.log",
+  "before_sha256": "bc979afb35e191c9eb67168f1eb9757ea08873731672791d20bd8126a41d33d0",
+  "after_sha256": "72a4373bdffeb754e8fc228bd3db92e6447e8c2838dc74addd089c05f6eb7205",
+  "statement_changed": false
+}

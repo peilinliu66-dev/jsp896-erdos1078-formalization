@@ -1,0 +1,15 @@
+JSP896/CertificateIMC.lean:42:34: error: unsolved goals
+V : Type u_1
+ι : Type u_2
+inst✝³ : Fintype V
+inst✝² : Fintype ι
+inst✝¹ : DecidableEq V
+inst✝ : DecidableEq ι
+G : SimpleGraph V
+label : V → ι
+I : Finset V
+n d : ℕ
+hparts : ∀ (i : ι), (fiber label i).card = n
+hdegree : ∀ (v : V), degree G v ≤ d
+hdom : ∀ (v : V), label v ∈ Finset.image label I → ∃ w ∈ I, G.Adj w v
+⊢ ↑(Finset.image label I).card * n = (Finset.image label I).card * n

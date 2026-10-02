@@ -1,0 +1,10 @@
+{
+  "module": "JSP896.CellCounting",
+  "label": "021_indicator_filter_identity",
+  "recorded_utc": "2026-10-02T07:36:22.921391+00:00",
+  "reason": "Prove filtered universe equals the original counted finset before applying indicator sum; normalize Nat cast rather than applying ext to a cardinal.",
+  "diagnostic_log": "verification/build/twentythird_25_JSP896_CellCounting.log",
+  "before_sha256": "1968beef9018ee80aa0a22ce5c5c694c9e675e1d4c79408028a3a44fd72c652e",
+  "after_sha256": "7eb68cb224efc8b0a94127817281fab9471268ead1b7f48e66d0e5e4983c5b3e",
+  "statement_changed": false
+}

@@ -1,0 +1,25 @@
+--- original/JSP896/OddComponentsSwitching.lean
++++ candidate/JSP896/OddComponentsSwitching.lean
+@@ -112,12 +112,16 @@
+   have havoid := white_type_avoids_switchSet O B S hc hcS hvi
+   apply hasFull_of_independent_cover (insert v (switchSet O B S))
+   · intro x hx y hy hadj
+-    rcases Finset.mem_insert.mp hx with rfl | hx <;>
+-      rcases Finset.mem_insert.mp hy with rfl | hy
+-    · exact G.loopless.irrefl v hadj
+-    · exact havoid y hy hadj
+-    · exact havoid x hx (G.adj_symm hadj)
+-    · exact switchSet_independent O B S x hx y hy hadj
++    rcases Finset.mem_insert.mp hx with hx | hx
++    · rw [hx] at hadj
++      rcases Finset.mem_insert.mp hy with hy | hy
++      · rw [hy] at hadj
++        exact G.loopless.irrefl v hadj
++      · exact havoid y hy hadj
++    · rcases Finset.mem_insert.mp hy with hy | hy
++      · rw [hy] at hadj
++        exact havoid x hx (G.adj_symm hadj)
++      · exact switchSet_independent O B S x hx y hy hadj
+   · intro x
+     by_cases hxl : x = last
+     · exact ⟨v, Finset.mem_insert_self _ _, hvl.trans hxl.symm⟩

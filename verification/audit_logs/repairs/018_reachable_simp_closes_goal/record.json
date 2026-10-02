@@ -1,0 +1,10 @@
+{
+  "module": "JSP896.MatchingCells",
+  "label": "018_reachable_simp_closes_goal",
+  "recorded_utc": "2026-10-02T07:30:29.322511+00:00",
+  "reason": "Avoid an extra tactic after rw reduces reflexive reachability and closes the goal automatically; literal class-cut construction unchanged.",
+  "diagnostic_log": "verification/build/twentieth_23_JSP896_MatchingCells.log",
+  "before_sha256": "1111a2d6548329ed2fdf5365c6f66e32a7ffd4978cf9abcae6882004ae5da6e8",
+  "after_sha256": "2d5af0cf74fcad6f79065dd52e6785d6833ecdfc06153a10aab45b461bca4fba",
+  "statement_changed": false
+}

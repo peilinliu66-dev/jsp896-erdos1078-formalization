@@ -1,0 +1,65 @@
+import JSP896.CertificateIMC
+import JSP896.MatchingOrientation
+
+/-! Exact size and domination of every literal full-class IMC. -/
+
+namespace JSP896.MatchingConfiguration
+
+open FiniteTransversal
+
+variable {V ι : Type*} [Fintype V] [Fintype ι] [DecidableEq V] [DecidableEq ι]
+
+theorem Tree.card_eq_twice_class_edges {G : SimpleGraph V} {label : V → ι}
+    {I : Finset V} {S : Finset ι} (M : Tree G label I S) :
+    I.card = 2 * (FeasiblePair.classGraph G label I).edgeFinset.card := by
+  classical
+  let H := FeasiblePair.classGraph G label I
+  let f : IVertex I → H.Dart := fun v =>
+    ⟨(label v.1, label (M.partner v).1), M.partite (M.partner_adj v),
+      v.1, v.2, (M.partner v).1, (M.partner v).2, M.partner_adj v, rfl, rfl⟩
+  have hinj : Function.Injective f := by
+    intro v w h
+    apply Subtype.ext
+    exact (M.faithful v.1 v.2 (M.partner v).1 (M.partner v).2
+      w.1 w.2 (M.partner w).1 (M.partner w).2
+      (M.partner_adj v) (M.partner_adj w)
+      (congrArg SimpleGraph.Dart.fst h) (congrArg SimpleGraph.Dart.snd h)).1
+  have hsurj : Function.Surjective f := by
+    intro e
+    obtain ⟨_, v, hv, w, hw, hvw, hvi, hwj⟩ := e.adj
+    refine ⟨⟨v, hv⟩, ?_⟩
+    apply SimpleGraph.Dart.ext
+    apply Prod.ext
+    · exact hvi
+    · change label (M.partner ⟨v, hv⟩).1 = e.snd
+      rw [← M.partner_unique ⟨v, hv⟩ hw hvw]
+      exact hwj
+  have hc := Fintype.card_of_bijective ⟨hinj, hsurj⟩
+  rw [H.dart_card_eq_twice_card_edges] at hc
+  simpa only [Fintype.card_coe, H] using hc
+
+theorem Tree.full_classGraph_isTree {G : SimpleGraph V} {label : V → ι}
+    {I : Finset V} (M : Tree G label I Finset.univ) [Nonempty ι] :
+    (FeasiblePair.classGraph G label I).IsTree where
+  connected := ⟨fun i j => M.connected i (Finset.mem_univ i) j (Finset.mem_univ j)⟩
+  isAcyclic := M.acyclic
+
+theorem Tree.full_card {G : SimpleGraph V} {label : V → ι}
+    {I : Finset V} (M : Tree G label I Finset.univ) [Nonempty ι] :
+    I.card + 2 = 2 * Fintype.card ι := by
+  have h₁ := M.card_eq_twice_class_edges
+  have h₂ := M.full_classGraph_isTree.card_edgeFinset
+  omega
+
+theorem Tree.dominates {G : SimpleGraph V} {label : V → ι}
+    {I : Finset V} (M : Tree G label I Finset.univ)
+    (hno : ¬ HasFull G label) (v : V) : ∃ w ∈ I, G.Adj w v := by
+  classical
+  by_contra h
+  obtain ⟨T, hTI, hT, hcolors⟩ := M.exists_rooted_partial (label v) (Finset.mem_univ _)
+  apply hno
+  apply full_of_rooted_partial_and_undominated hT hcolors v rfl
+  intro w hw hvw
+  exact h ⟨w, hTI hw, G.adj_symm hvw⟩
+
+end JSP896.MatchingConfiguration

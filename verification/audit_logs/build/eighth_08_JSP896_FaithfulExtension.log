@@ -1,0 +1,12 @@
+JSP896/FaithfulExtension.lean:17:25: error(lean.unknownIdentifier): Unknown identifier `c`
+JSP896/FaithfulExtension.lean:18:42: error(lean.unknownIdentifier): Unknown identifier `c`
+JSP896/FaithfulExtension.lean:19:41: error(lean.unknownIdentifier): Unknown identifier `c`
+JSP896/FaithfulExtension.lean:21:41: error(lean.unknownIdentifier): Unknown identifier `c`
+JSP896/FaithfulExtension.lean:61:43: error(lean.unknownIdentifier): Unknown identifier `c`
+JSP896/FaithfulExtension.lean:67:49: error(lean.unknownIdentifier): Unknown identifier `c`
+JSP896/FaithfulExtension.lean:68:27: error(lean.unknownIdentifier): Unknown identifier `c`
+JSP896/FaithfulExtension.lean:70:46: error(lean.unknownIdentifier): Unknown identifier `c`
+JSP896/FaithfulExtension.lean:73:43: error(lean.unknownIdentifier): Unknown identifier `c`
+JSP896/FaithfulExtension.lean:79:46: error(lean.unknownIdentifier): Unknown identifier `c`
+JSP896/FaithfulExtension.lean:81:44: error(lean.unknownIdentifier): Unknown identifier `c`
+JSP896/FaithfulExtension.lean:82:27: error(lean.unknownIdentifier): Unknown identifier `c`

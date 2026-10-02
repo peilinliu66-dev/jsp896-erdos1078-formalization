@@ -1,0 +1,26 @@
+{
+  "status": "PASSED_FROZEN",
+  "modules": [
+    {
+      "module": "OddComponentsReachability",
+      "status": "COMPILED_FROZEN",
+      "source_sha256": "4aff10299e716b3c525b93a685758ea049908f44d486e2d275089ae1900980e4",
+      "original_sha256": "c7a1343d7dfef8007f19199ca2afdc9c113f1de93b5c15bdce196cf2ca4d4566",
+      "olean_path": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate\\.lake\\build\\lib\\lean\\JSP896\\OddComponentsReachability.olean",
+      "olean_sha256": "32dea7b66cded80b820cef772944394e24d92c0b959062b10aab585ca2287cfb",
+      "successful_compilation_record": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\verification\\directed_branch\\OddComponentsReachability_02_20261002T072311838388Z.json"
+    },
+    {
+      "module": "StructureBounds",
+      "status": "COMPILED_FROZEN",
+      "source_sha256": "53ebdaafbab9e74bf137c86a8df2421eeec8c716663167a0c040e14a388af27c",
+      "original_sha256": "53ebdaafbab9e74bf137c86a8df2421eeec8c716663167a0c040e14a388af27c",
+      "olean_path": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate\\.lake\\build\\lib\\lean\\JSP896\\StructureBounds.olean",
+      "olean_sha256": "2ea292c5df71e7c5b1ac4f30fa217991fddd26f85abed648a50f5fc5f77f75c1",
+      "successful_compilation_record": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\verification\\directed_branch\\StructureBounds_01_20261002T072203948468Z.json"
+    }
+  ],
+  "version_adjustments": [],
+  "repair_count": 1,
+  "source_scope_unchanged": true
+}

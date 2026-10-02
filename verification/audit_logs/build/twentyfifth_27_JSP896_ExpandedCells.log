@@ -1,0 +1,25 @@
+JSP896/ExpandedCells.lean:38:4: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+JSP896/ExpandedCells.lean:60:40: error: Type mismatch: After simplification, term
+  hsum
+ has type
+  2 * ↑d - (↑(cell G I i).card + ↑(cell G I j).card) < ↑d
+but is expected to have type
+  ↑d - ↑(cell G I i).card + (↑d - ↑(cell G I j).card) < ↑d
+JSP896/ExpandedCells.lean:88:4: error: Type mismatch: After simplification, term
+  h
+ has type
+  ∑ i ∈ {i, M.partner i}, δ i < ↑d
+but is expected to have type
+  δ i + δ (M.partner i) < ↑d
+JSP896/ExpandedCells.lean:92:4: error: Type mismatch: After simplification, term
+  h
+ has type
+  δ j + ∑ i ∈ {i, M.partner i}, δ i < ↑d
+but is expected to have type
+  δ j + (δ i + δ (M.partner i)) < ↑d

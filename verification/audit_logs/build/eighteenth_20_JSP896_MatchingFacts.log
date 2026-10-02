@@ -1,0 +1,18 @@
+JSP896/MatchingFacts.lean:14:17: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  Fintype ↑(FeasiblePair.classGraph G label I).edgeSet
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+JSP896/MatchingFacts.lean:26:16: error(lean.unknownIdentifier): Unknown constant `SimpleGraph.Dart.fst`
+JSP896/MatchingFacts.lean:26:50: error(lean.unknownIdentifier): Unknown constant `SimpleGraph.Dart.snd`
+JSP896/MatchingFacts.lean:41:0: warning: automatically included section variable(s) unused in theorem `JSP896.MatchingConfiguration.Tree.full_classGraph_isTree`:
+  [Fintype V]
+  [DecidableEq V]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [DecidableEq V] [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+JSP896/MatchingFacts.lean:51:13: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  Fintype ↑(FeasiblePair.classGraph G label I).edgeSet
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.

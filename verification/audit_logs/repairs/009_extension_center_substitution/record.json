@@ -1,0 +1,10 @@
+{
+  "module": "JSP896.FeasibleExtension",
+  "label": "009_extension_center_substitution",
+  "recorded_utc": "2026-10-02T07:19:00.209547+00:00",
+  "reason": "Preserve common extension center c by explicitly substituting x/y/z in insertion cases; mathematical extension invariants unchanged.",
+  "diagnostic_log": "verification/build/tenth_09_JSP896_FeasibleExtension.log",
+  "before_sha256": "fcea85ab6f6c08bfc6db373713af616f303ab5d621f626332a0b060bdc430fc5",
+  "after_sha256": "aaa8f0b8f78c30dda4e2641df6d989374a94cb2ca73ef375360cae7ab5e38599",
+  "statement_changed": false
+}

@@ -1,0 +1,14 @@
+--- before/JSP896.CompatibleStars
++++ after/JSP896.CompatibleStars
+@@ -102,8 +102,9 @@
+       · exact Finset.mem_insert_self _ _
+       · exact False.elim (hvU hvLeaf.1)
+   · intro hv
+-    rcases Finset.mem_insert.mp hv with rfl | hvC
+-    · exact Finset.mem_sdiff.mpr ⟨Finset.mem_union_right _
++    rcases Finset.mem_insert.mp hv with hvw | hvC
++    · subst v
++      exact Finset.mem_sdiff.mpr ⟨Finset.mem_union_right _
+         ((mem_star G U w w).mpr (Or.inl rfl)), hwU⟩
+     · have hvI := (Finset.mem_sdiff.mp hvC).1
+       refine Finset.mem_sdiff.mpr ⟨Finset.mem_union_left _ hvI, ?_⟩

@@ -1,0 +1,10 @@
+{
+  "module": "JSP896.ExpandedCells",
+  "label": "023_control_small_set_sum_rewrites",
+  "recorded_utc": "2026-10-02T07:39:02.692539+00:00",
+  "reason": "Rewrite two/three-cell sums using explicit distinctness proofs and sum_pair, avoiding unrestricted simplification of deficits into rearranged arithmetic. All expanded-cell statements unchanged.",
+  "diagnostic_log": "verification/build/twentyfifth_27_JSP896_ExpandedCells.log",
+  "before_sha256": "698570597835ec64c1d95abfdddb95aebbf77630ff8f46a18a6cd485ad98bbd6",
+  "after_sha256": "be1d039a3f1de74ceef94d580d57feae0aa09af7abc674915a815f45502be61a",
+  "statement_changed": false
+}

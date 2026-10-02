@@ -1,0 +1,32 @@
+{
+  "module": "JSP896.CriticalEdge",
+  "command": [
+    "elan",
+    "run",
+    "leanprover/lean4:v4.35.0-rc3",
+    "lake",
+    "env",
+    "lean",
+    "-o",
+    ".lake/build/lib/lean/JSP896/CriticalEdge.olean",
+    "JSP896/CriticalEdge.lean"
+  ],
+  "cwd": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate",
+  "start_utc": "2026-10-02T07:28:58.859810+00:00",
+  "own_sources_before": {
+    "JSP896/EvenSufficiency.lean": "4ac0b43d33bb967ed3a2f03dd81d5f6aaf496090fd477cfbfe6499121be489b2",
+    "JSP896/CriticalEdge.lean": "b65ced03c9845a0b3df9aec96d96130997267ffbf9be6511b6b8adc96d295487"
+  },
+  "natural_exit_code": 0,
+  "status": "PASSED",
+  "lean_num_threads": 1,
+  "log": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\verification\\critical_branch\\critical_repaired_02.log",
+  "end_utc": "2026-10-02T07:29:24.677314+00:00",
+  "own_sources_after": {
+    "JSP896/EvenSufficiency.lean": "4ac0b43d33bb967ed3a2f03dd81d5f6aaf496090fd477cfbfe6499121be489b2",
+    "JSP896/CriticalEdge.lean": "b65ced03c9845a0b3df9aec96d96130997267ffbf9be6511b6b8adc96d295487"
+  },
+  "own_sources_unchanged_during_run": true,
+  "output_sha256": "e4d418ee6bdfd0232f3900f00ca0da337ce7ffba005cc4a9b2fe2bb255135a5b",
+  "log_sha256": "eb89c19519e7deac694bd6b3f4f506941aa8cd95d808a01a964f22d0b87e4832"
+}

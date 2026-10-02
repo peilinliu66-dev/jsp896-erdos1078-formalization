@@ -1,0 +1,10 @@
+{
+  "module": "JSP896.CellCounting",
+  "label": "020_counting_simp_scope_and_cast",
+  "recorded_utc": "2026-10-02T07:35:15.421274+00:00",
+  "reason": "Avoid extra omega after rw closes numeral comparison; use controlled indicator-card simp to prevent unfolding cell predicate; normalize Nat.cast_id. Mathematical counting statements unchanged.",
+  "diagnostic_log": "verification/build/twentysecond_25_JSP896_CellCounting.log",
+  "before_sha256": "987697608da0a5aab9b7d1c6eb549fe18806893c09459fa1ec18bc84f8ca9397",
+  "after_sha256": "1968beef9018ee80aa0a22ce5c5c694c9e675e1d4c79408028a3a44fd72c652e",
+  "statement_changed": false
+}

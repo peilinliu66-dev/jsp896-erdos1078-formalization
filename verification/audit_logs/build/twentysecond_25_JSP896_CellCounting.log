@@ -1,0 +1,72 @@
+JSP896/CellCounting.lean:13:0: warning: automatically included section variable(s) unused in theorem `JSP896.MatchingConfiguration.disjoint_family_card`:
+  [Fintype V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+JSP896/CellCounting.lean:56:8: warning: automatically included section variable(s) unused in theorem `JSP896.MatchingConfiguration.mem_matchingNeighbors`:
+  [Fintype V]
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+JSP896/CellCounting.lean:76:0: warning: automatically included section variable(s) unused in theorem `JSP896.MatchingConfiguration.incidence_sum`:
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+JSP896/CellCounting.lean:100:10: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+JSP896/CellCounting.lean:101:6: error: No goals to be solved
+JSP896/CellCounting.lean:103:10: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+JSP896/CellCounting.lean:106:78: error: unsolved goals
+V : Type u_1
+inst✝¹ : Fintype V
+inst✝ : DecidableEq V
+G : SimpleGraph V
+I : Finset V
+d : ℕ
+hdegree : ∀ (v : V), degree G v ≤ d
+hdom : ∀ (v : V), ∃ w ∈ I, G.Adj w v
+hpoint : ∀ (v : V), 2 ≤ (if v ∈ core G I then 1 else 0) + (matchingNeighbors G I v).card
+hs : ∑ i, 2 ≤ ∑ i, ((if i ∈ core G I then 1 else 0) + (matchingNeighbors G I i).card)
+⊢ {x | ∃ a ∈ I, ∀ a_1 ∈ I, G.Adj x a_1 ↔ a_1 = a}.card = (core G I).card
+JSP896/CellCounting.lean:120:8: warning: automatically included section variable(s) unused in theorem `JSP896.MatchingConfiguration.mem_multiplyDominated`:
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+JSP896/CellCounting.lean:136:10: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+JSP896/CellCounting.lean:138:10: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+JSP896/CellCounting.lean:142:38: error: unsolved goals
+V : Type u_1
+inst✝¹ : Fintype V
+inst✝ : DecidableEq V
+G : SimpleGraph V
+I : Finset V
+d : ℕ
+hdegree : ∀ (v : V), degree G v ≤ d
+hdom : ∀ (v : V), ∃ w ∈ I, G.Adj w v
+hpoint : ∀ (v : V), (1 + if v ∈ multiplyDominated G I then 1 else 0) ≤ (matchingNeighbors G I v).card
+hs : ∑ i, (1 + if i ∈ multiplyDominated G I then 1 else 0) ≤ ∑ i, (matchingNeighbors G I i).card
+⊢ {x | 2 ≤ (matchingNeighbors G I x).card}.card = (multiplyDominated G I).card
+JSP896/CellCounting.lean:155:2: error: Type mismatch: After simplification, term
+  Eq.symm h
+ has type
+  @Eq ℕ (Fintype.card V) (↑(Fintype.card ι) * n)
+but is expected to have type
+  @Eq ℕ (Fintype.card V) (Fintype.card ι * n)

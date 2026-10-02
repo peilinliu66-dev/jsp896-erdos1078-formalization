@@ -1,0 +1,165 @@
+import JSP896.CompatibleStars
+import JSP896.ClassTreeGrowth
+
+/-! Faithful class edges and the actual class tree after a new star is added. -/
+
+namespace JSP896.FeasiblePair
+
+open FiniteTransversal ClassTreeGrowth
+
+variable {V ι : Type*} [Fintype V] [Fintype ι] [DecidableEq V] [DecidableEq ι]
+
+theorem adjacent_in_star {G : SimpleGraph V} {label : V → ι} {U : Finset V}
+    (hU : Partial G label U) (c : V) {x y : V}
+    (hx : x ∈ star G U c) (hy : y ∈ star G U c) (hxy : G.Adj x y) :
+    (x = c ∧ y ∈ leaves G U c) ∨ (y = c ∧ x ∈ leaves G U c) := by
+  rcases (mem_star G U c x).mp hx with hxc | hx
+  · subst x
+    rcases (mem_star G U c y).mp hy with hyc | hy
+    · subst y
+      exact False.elim (G.loopless.irrefl c hxy)
+    · exact Or.inl ⟨rfl, (mem_leaves G U c y).mpr hy⟩
+  · rcases (mem_star G U c y).mp hy with hyc | hy
+    · subst y
+      exact Or.inr ⟨rfl, (mem_leaves G U c x).mpr hx⟩
+    · exact False.elim (hU.1 x hx.1 y hy.1 hxy)
+
+theorem extension_edge_cases {G : SimpleGraph V} {label : V → ι}
+    {I T U : Finset V} (hF : Feasible G label I T) (hU : Compatible G label I T U)
+    (c : V) (havoid : ∀ v ∈ I, ¬ G.Adj c v) {x y : V}
+    (hx : x ∈ I ∪ star G U c) (hy : y ∈ I ∪ star G U c) (hxy : G.Adj x y) :
+    (x ∈ I ∧ y ∈ I) ∨ (x = c ∧ y ∈ leaves G U c) ∨
+      (y = c ∧ x ∈ leaves G U c) := by
+  rcases Finset.mem_union.mp hx with hx | hx
+  · rcases Finset.mem_union.mp hy with hy | hy
+    · exact Or.inl ⟨hx, hy⟩
+    · exact False.elim (old_avoids_new_star hF hU c havoid hx hy hxy)
+  · rcases Finset.mem_union.mp hy with hy | hy
+    · exact False.elim (old_avoids_new_star hF hU c havoid hy hx (G.adj_symm hxy))
+    · exact Or.inr (adjacent_in_star hU.partial c hx hy hxy)
+
+theorem extension_faithful {G : SimpleGraph V} {label : V → ι}
+    {I T U : Finset V} (hF : Feasible G label I T) (hU : Compatible G label I T U)
+    (hpart : ∀ ⦃x y⦄, G.Adj x y → label x ≠ label y)
+    (c : V) (havoid : ∀ v ∈ I, ¬ G.Adj c v) :
+    PairedDeficit.FaithfulClassEdges G (I ∪ star G U c) label := by
+  intro x hx y hy x' hx' y' hy' hxy hx'y' hxx hyy
+  have hcases := extension_edge_cases hF hU c havoid hx hy hxy
+  have hcases' := extension_edge_cases hF hU c havoid hx' hy' hx'y'
+  rcases hcases with hOld | hLeft | hRight
+  · rcases hcases' with hOld' | hLeft' | hRight'
+    · exact hF.faithful x hOld.1 y hOld.2 x' hOld'.1 y' hOld'.2 hxy hx'y' hxx hyy
+    · have hbad := new_leaf_inactive hF hU c havoid hLeft'.2
+      apply False.elim
+      apply hbad
+      rw [← hyy]
+      exact Finset.mem_image.mpr ⟨y, hOld.2, rfl⟩
+    · have hbad := new_leaf_inactive hF hU c havoid hRight'.2
+      apply False.elim
+      apply hbad
+      rw [← hxx]
+      exact Finset.mem_image.mpr ⟨x, hOld.1, rfl⟩
+  · rcases hLeft with ⟨heq, hyL⟩
+    subst x
+    rcases hcases' with hOld' | hLeft' | hRight'
+    · have hbad := new_leaf_inactive hF hU c havoid hyL
+      apply False.elim
+      apply hbad
+      rw [hyy]
+      exact Finset.mem_image.mpr ⟨y', hOld'.2, rfl⟩
+    · rcases hLeft' with ⟨heq, hy'L⟩
+      subst x'
+      exact ⟨rfl, hU.partial.2 y (mem_leaves G U c y |>.mp hyL).1
+        y' (mem_leaves G U c y' |>.mp hy'L).1 hyy⟩
+    · rcases hRight' with ⟨heq, hx'L⟩
+      subst y'
+      exact False.elim (hpart (mem_leaves G U c x' |>.mp hx'L).2 hxx)
+  · rcases hRight with ⟨heq, hxL⟩
+    subst y
+    rcases hcases' with hOld' | hLeft' | hRight'
+    · have hbad := new_leaf_inactive hF hU c havoid hxL
+      apply False.elim
+      apply hbad
+      rw [hxx]
+      exact Finset.mem_image.mpr ⟨x', hOld'.1, rfl⟩
+    · rcases hLeft' with ⟨heq, hy'L⟩
+      subst x'
+      exact False.elim (hpart (mem_leaves G U c y' |>.mp hy'L).2 hyy)
+    · rcases hRight' with ⟨heq, hx'L⟩
+      subst y'
+      exact ⟨hU.partial.2 x (mem_leaves G U c x |>.mp hxL).1
+        x' (mem_leaves G U c x' |>.mp hx'L).1 hxx, rfl⟩
+
+theorem extension_classGraph {G : SimpleGraph V} {label : V → ι}
+    {I T U : Finset V} (hF : Feasible G label I T) (hU : Compatible G label I T U)
+    (c : V) (havoid : ∀ v ∈ I, ¬ G.Adj c v) :
+    classGraph G label (I ∪ star G U c) =
+      attachStar (classGraph G label I) (label c) ((leaves G U c).image label) := by
+  ext i j
+  rw [attachStar_adj]
+  constructor
+  · rintro ⟨hne, x, hx, y, hy, hxy, hxi, hyj⟩
+    rcases extension_edge_cases hF hU c havoid hx hy hxy with hOld | hLeft | hRight
+    · exact Or.inl ⟨hne, x, hOld.1, y, hOld.2, hxy, hxi, hyj⟩
+    · rcases hLeft with ⟨heq, hyL⟩
+      subst x
+      exact Or.inr (Or.inl ⟨hxi.symm, Finset.mem_image.mpr ⟨y, hyL, hyj⟩, hne⟩)
+    · rcases hRight with ⟨heq, hxL⟩
+      subst y
+      exact Or.inr (Or.inr ⟨hyj.symm, Finset.mem_image.mpr ⟨x, hxL, hxi⟩, hne⟩)
+  · rintro (hOld | hLeft | hRight)
+    · rcases hOld with ⟨hne, x, hx, y, hy, hxy, hxi, hyj⟩
+      exact ⟨hne, x, Finset.mem_union_left _ hx, y, Finset.mem_union_left _ hy,
+        hxy, hxi, hyj⟩
+    · rcases hLeft with ⟨rfl, hj, hne⟩
+      obtain ⟨y, hyL, hyj⟩ := Finset.mem_image.mp hj
+      exact ⟨hne, c, Finset.mem_union_right _ ((mem_star G U c c).mpr (Or.inl rfl)),
+        y, Finset.mem_union_right _ ((mem_star G U c y).mpr
+          (Or.inr ((mem_leaves G U c y).mp hyL))),
+        (mem_leaves G U c y |>.mp hyL).2, rfl, hyj⟩
+    · rcases hRight with ⟨rfl, hi, hne⟩
+      obtain ⟨x, hxL, hxi⟩ := Finset.mem_image.mp hi
+      exact ⟨hne, x, Finset.mem_union_right _ ((mem_star G U c x).mpr
+          (Or.inr ((mem_leaves G U c x).mp hxL))),
+        c, Finset.mem_union_right _ ((mem_star G U c c).mpr (Or.inl rfl)),
+        G.adj_symm (mem_leaves G U c x |>.mp hxL).2, hxi, rfl⟩
+
+theorem extension_classTree {G : SimpleGraph V} {label : V → ι}
+    {I T U : Finset V} (hF : Feasible G label I T) (hU : Compatible G label I T U)
+    (hpart : ∀ ⦃x y⦄, G.Adj x y → label x ≠ label y)
+    (c : V) (havoid : ∀ v ∈ I, ¬ G.Adj c v)
+    (hwhere : I = ∅ ∨ label c ∈ I.image label) :
+    TreeOn (classGraph G label (I ∪ star G U c)) ((I ∪ star G U c).image label) := by
+  classical
+  let L := (leaves G U c).image label
+  have hdis : Disjoint (I.image label) L := by
+    apply Finset.disjoint_left.mpr
+    intro i hi hiL
+    obtain ⟨v, hv, hvi⟩ := Finset.mem_image.mp hiL
+    have hbad := new_leaf_inactive hF hU c havoid hv
+    rw [hvi] at hbad
+    exact hbad hi
+  have hcL : label c ∉ L := by
+    intro hc
+    obtain ⟨v, hv, hvc⟩ := Finset.mem_image.mp hc
+    exact hpart (mem_leaves G U c v |>.mp hv).2 hvc.symm
+  have hparts : (I ∪ star G U c).image label = insert (label c) (I.image label ∪ L) := by
+    simp only [star, Finset.image_union, Finset.image_insert, L, Finset.union_insert]
+  rw [extension_classGraph hF hU c havoid, hparts]
+  change TreeOn (attachStar (classGraph G label I) (label c) L)
+    (insert (label c) (I.image label ∪ L))
+  rcases hwhere with hI | hcI
+  · subst I
+    rw [classGraph_empty]
+    have h := (singleton_tree (label c)).attach_star (label c)
+      (Finset.mem_singleton_self _) L (by simpa using hcL)
+    simpa using h
+  · have hold : TreeOn (classGraph G label I) (I.image label) := by
+      refine ⟨hF.classAcyclic, ?_, hF.classConnected⟩
+      intro i j hij
+      obtain ⟨_, v, hv, w, hw, _, hvi, hwj⟩ := hij
+      exact ⟨Finset.mem_image.mpr ⟨v, hv, hvi⟩, Finset.mem_image.mpr ⟨w, hw, hwj⟩⟩
+    have h := hold.attach_star (label c) hcI L hdis
+    simpa only [Finset.insert_eq_of_mem (Finset.mem_union_left L hcI)] using h
+
+end JSP896.FeasiblePair

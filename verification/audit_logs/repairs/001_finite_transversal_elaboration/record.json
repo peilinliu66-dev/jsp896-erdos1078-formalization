@@ -1,0 +1,10 @@
+{
+  "module": "JSP896.FiniteTransversal",
+  "label": "001_finite_transversal_elaboration",
+  "recorded_utc": "2026-10-02T07:10:00.148889+00:00",
+  "reason": "Avoid rcases rfl substituting shared insertion vertex across branches; supply reflexive card comparison explicitly. Statements unchanged.",
+  "diagnostic_log": "verification/build/first_01_JSP896_FiniteTransversal.log",
+  "before_sha256": "117e44d87e86413e324d2a4770b049ec82fbd472b8d0b3a7b7af4355528c157c",
+  "after_sha256": "1b39db58319cd8acaf487ef88c7bc542b4e6e80b71f21c94b989ae725b3b4123",
+  "statement_changed": false
+}

@@ -1,0 +1,51 @@
+JSP896/CriticalEdge.lean:31:0: warning: automatically included section variable(s) unused in theorem `JSP896.CriticalEdge.deletePair_le`:
+  [Fintype V]
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+JSP896/CriticalEdge.lean:35:0: warning: automatically included section variable(s) unused in theorem `JSP896.CriticalEdge.deletePair_not_adj`:
+  [Fintype V]
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+JSP896/CriticalEdge.lean:88:0: warning: automatically included section variable(s) unused in theorem `JSP896.CriticalEdge.endpoints_mem`:
+  [Fintype V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+JSP896/CriticalEdge.lean:182:44: error(lean.unknownIdentifier): Unknown identifier `a`
+JSP896/CriticalEdge.lean:185:44: error(lean.unknownIdentifier): Unknown identifier `b`
+JSP896/CriticalEdge.lean:203:39: error(lean.unknownIdentifier): Unknown constant `Finset.image_pair`
+JSP896/CriticalEdge.lean:261:28: error(lean.unknownIdentifier): Unknown identifier `a`
+JSP896/CriticalEdge.lean:261:30: error(lean.unknownIdentifier): Unknown identifier `a`
+JSP896/CriticalEdge.lean:262:30: error(lean.unknownIdentifier): Unknown identifier `u`
+JSP896/CriticalEdge.lean:264:11: error: Ambiguous term
+  star
+Possible interpretations:
+  FeasiblePair.star : SimpleGraph ?m.1398 → Finset ?m.1398 → ?m.1398 → Finset ?m.1398
+  
+  Star.star : ?m.1398 → ?m.1398
+JSP896/CriticalEdge.lean:264:4: error: Type mismatch: After simplification, term
+  hcard
+ has type
+  2 ≤ (FeasiblePair.star G W a).card
+but is expected to have type
+  (FeasiblePair.star G T a).card ≤ (FeasiblePair.star G W a).card
+JSP896/CriticalEdge.lean:113:0: warning: automatically included section variable(s) unused in theorem `JSP896.CriticalEdge.exists_critical_seed`:
+  [Fintype V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+JSP896/CriticalEdge.lean:204:6: warning: This simp argument is unused:
+  Finset.mem_insert
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Finset.image_singleton, Finset.image_pair, Finset.mem_inter, Finset.mem_singleton]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

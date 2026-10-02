@@ -1,0 +1,23 @@
+{
+  "module": "StructureBounds",
+  "command": [
+    "elan",
+    "run",
+    "leanprover/lean4:v4.35.0-rc3",
+    "lake",
+    "env",
+    "lean",
+    "-o",
+    ".lake/build/lib/lean/JSP896/StructureBounds.olean",
+    "JSP896/StructureBounds.lean"
+  ],
+  "cwd": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate",
+  "started_utc": "2026-10-02T07:22:03.948820+00:00",
+  "finished_utc": "2026-10-02T07:22:14.174329+00:00",
+  "natural_exit_code": 0,
+  "source_sha256_before": "53ebdaafbab9e74bf137c86a8df2421eeec8c716663167a0c040e14a388af27c",
+  "source_sha256_after": "53ebdaafbab9e74bf137c86a8df2421eeec8c716663167a0c040e14a388af27c",
+  "source_unchanged_during_compile": true,
+  "raw_log": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\verification\\directed_branch\\StructureBounds_01_20261002T072203948468Z.raw.log",
+  "LEAN_NUM_THREADS": "1"
+}

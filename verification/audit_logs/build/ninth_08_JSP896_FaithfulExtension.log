@@ -1,0 +1,149 @@
+JSP896/FaithfulExtension.lean:12:0: warning: automatically included section variable(s) unused in theorem `JSP896.FeasiblePair.adjacent_in_star`:
+  [Fintype ι]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+JSP896/FaithfulExtension.lean:62:2: error: unsolved goals
+case inr.inl
+V : Type u_1
+ι : Type u_2
+inst✝³ : Fintype V
+inst✝² : Fintype ι
+inst✝¹ : DecidableEq V
+inst✝ : DecidableEq ι
+G : SimpleGraph V
+label : V → ι
+I T U : Finset V
+hF : Feasible G label I T
+hU : Compatible G label I T U
+hpart : ∀ ⦃x y : V⦄, G.Adj x y → label x ≠ label y
+c : V
+havoid : ∀ v ∈ I, ¬G.Adj c v
+x : V
+hx : x ∈ I ∪ star G U c
+y : V
+hy : y ∈ I ∪ star G U c
+x' : V
+hx' : x' ∈ I ∪ star G U c
+y' : V
+hy' : y' ∈ I ∪ star G U c
+hxy : G.Adj x y
+hx'y' : G.Adj x' y'
+hxx : label x = label x'
+hyy : label y = label y'
+hcases' : x' ∈ I ∧ y' ∈ I ∨ x' = c ∧ y' ∈ leaves G U c ∨ y' = c ∧ x' ∈ leaves G U c
+heq : x = c
+hyL : y ∈ leaves G U c
+⊢ x = x' ∧ y = y'
+JSP896/FaithfulExtension.lean:45:65: error: unsolved goals
+case inr.inr
+V : Type u_1
+ι : Type u_2
+inst✝³ : Fintype V
+inst✝² : Fintype ι
+inst✝¹ : DecidableEq V
+inst✝ : DecidableEq ι
+G : SimpleGraph V
+label : V → ι
+I T U : Finset V
+hF : Feasible G label I T
+hU : Compatible G label I T U
+hpart : ∀ ⦃x y : V⦄, G.Adj x y → label x ≠ label y
+c : V
+havoid : ∀ v ∈ I, ¬G.Adj c v
+x : V
+hx : x ∈ I ∪ star G U c
+y : V
+hy : y ∈ I ∪ star G U c
+x' : V
+hx' : x' ∈ I ∪ star G U c
+y' : V
+hy' : y' ∈ I ∪ star G U c
+hxy : G.Adj x y
+hx'y' : G.Adj x' y'
+hxx : label x = label x'
+hyy : label y = label y'
+hcases' : x' ∈ I ∧ y' ∈ I ∨ x' = c ∧ y' ∈ leaves G U c ∨ y' = c ∧ x' ∈ leaves G U c
+hRight : y = c ∧ x ∈ leaves G U c
+⊢ x = x' ∧ y = y'
+JSP896/FaithfulExtension.lean:63:1: error: unexpected identifier; expected command
+JSP896/FaithfulExtension.lean:104:4: error: unsolved goals
+case mp.inr.inl
+V : Type u_1
+ι : Type u_2
+inst✝³ : Fintype V
+inst✝² : Fintype ι
+inst✝¹ : DecidableEq V
+inst✝ : DecidableEq ι
+G : SimpleGraph V
+label : V → ι
+I T U : Finset V
+hF : Feasible G label I T
+hU : Compatible G label I T U
+c : V
+havoid : ∀ v ∈ I, ¬G.Adj c v
+i j : ι
+hne : i ≠ j
+x : V
+hx : x ∈ I ∪ star G U c
+y : V
+hy : y ∈ I ∪ star G U c
+hxy : G.Adj x y
+hxi : label x = i
+hyj : label y = j
+heq : x = c
+hyL : y ∈ leaves G U c
+⊢ (classGraph G label I).Adj i j ∨
+    i = label c ∧ j ∈ Finset.image label (leaves G U c) ∧ i ≠ j ∨
+      j = label c ∧ i ∈ Finset.image label (leaves G U c) ∧ i ≠ j
+JSP896/FaithfulExtension.lean:101:2: error: unsolved goals
+case mp.inr.inr
+V : Type u_1
+ι : Type u_2
+inst✝³ : Fintype V
+inst✝² : Fintype ι
+inst✝¹ : DecidableEq V
+inst✝ : DecidableEq ι
+G : SimpleGraph V
+label : V → ι
+I T U : Finset V
+hF : Feasible G label I T
+hU : Compatible G label I T U
+c : V
+havoid : ∀ v ∈ I, ¬G.Adj c v
+i j : ι
+hne : i ≠ j
+x : V
+hx : x ∈ I ∪ star G U c
+y : V
+hy : y ∈ I ∪ star G U c
+hxy : G.Adj x y
+hxi : label x = i
+hyj : label y = j
+hRight : y = c ∧ x ∈ leaves G U c
+⊢ (classGraph G label I).Adj i j ∨
+    i = label c ∧ j ∈ Finset.image label (leaves G U c) ∧ i ≠ j ∨
+      j = label c ∧ i ∈ Finset.image label (leaves G U c) ∧ i ≠ j
+JSP896/FaithfulExtension.lean:97:82: error: unsolved goals
+case mpr
+V : Type u_1
+ι : Type u_2
+inst✝³ : Fintype V
+inst✝² : Fintype ι
+inst✝¹ : DecidableEq V
+inst✝ : DecidableEq ι
+G : SimpleGraph V
+label : V → ι
+I T U : Finset V
+hF : Feasible G label I T
+hU : Compatible G label I T U
+c : V
+havoid : ∀ v ∈ I, ¬G.Adj c v
+i j : ι
+⊢ (classGraph G label I).Adj i j ∨
+      i = label c ∧ j ∈ Finset.image label (leaves G U c) ∧ i ≠ j ∨
+        j = label c ∧ i ∈ Finset.image label (leaves G U c) ∧ i ≠ j →
+    (classGraph G label (I ∪ star G U c)).Adj i j
+JSP896/FaithfulExtension.lean:105:1: error: unexpected identifier; expected command

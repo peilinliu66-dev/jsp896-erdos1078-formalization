@@ -1,0 +1,34 @@
+JSP896/CertificateSize.lean:17:2: warning: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+JSP896/CertificateSize.lean:30:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  (SimpleGraph.induce (↑S) H).edgeFinset.card
+in the target expression
+  (SimpleGraph.induce (↑S) H).edgeFinset.card ≤ R.edgeFinset.card
+
+ι : Type u_2
+inst✝¹ : Fintype ι
+inst✝ : DecidableEq ι
+H : SimpleGraph ι
+S : Finset ι
+hS : S.Nonempty
+hacyclic : H.IsAcyclic
+hsupported : ∀ ⦃i j : ι⦄, H.Adj i j → i ∈ S ∧ j ∈ S
+this : Nonempty ↥S := Nonempty.intro ⟨Classical.choose hS, Classical.choose_spec hS⟩
+hsupport : H.support ⊆ ↑S
+hInduced : (SimpleGraph.induce (↑S) H).IsAcyclic
+htop : ⊤.Connected
+R : SimpleGraph ↥S
+hHR : SimpleGraph.induce (↑S) H ≤ R
+left✝ : R ≤ ⊤
+hR : R.IsTree
+hcard : R.edgeFinset.card + 1 = S.card
+hle : (SimpleGraph.induce (↑S) H).edgeFinset.card ≤ R.edgeFinset.card
+⊢ H.edgeFinset.card ≤ S.card - 1
+JSP896/CertificateSize.lean:48:52: error(lean.unknownIdentifier): Unknown constant `SimpleGraph.Dart.fst`
+JSP896/CertificateSize.lean:49:59: error(lean.unknownIdentifier): Unknown constant `SimpleGraph.Dart.snd`

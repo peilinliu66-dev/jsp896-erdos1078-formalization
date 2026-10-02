@@ -1,0 +1,10 @@
+{
+  "module": "JSP896.DominationCertificate",
+  "label": "011_image_map_implicit_argument",
+  "recorded_utc": "2026-10-02T07:21:24.327342+00:00",
+  "reason": "Specify image function by its current implicit named argument, rather than obsolete explicit position; theorem unchanged.",
+  "diagnostic_log": "verification/build/twelfth_10_JSP896_DominationCertificate.log",
+  "before_sha256": "c19c77db898e6051b88765db4aa444a61a325032f5197a084f4661ddbba8dd35",
+  "after_sha256": "0a5953b61784d6eff67abd3733d7ece4e78ea9174518b7a5cc86fea3dc23021d",
+  "statement_changed": false
+}

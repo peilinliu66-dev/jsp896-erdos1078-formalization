@@ -1,0 +1,32 @@
+--- before/JSP896.CellCounting
++++ after/JSP896.CellCounting
+@@ -103,10 +103,10 @@
+       omega
+   have hs := Finset.sum_le_sum (s := Finset.univ) (fun v _ => hpoint v)
+   have hcount : (∑ v : V, if v ∈ core G I then 1 else 0) = (core G I).card := by
+-    rw [Finset.sum_boole]
+-    congr 1
+-    ext v
+-    simp only [Finset.mem_filter, Finset.mem_univ, true_and]
++    have heq : Finset.univ.filter (fun v : V => v ∈ core G I) = core G I := by
++      ext v
++      simp only [Finset.mem_filter, Finset.mem_univ, true_and]
++    simp only [Finset.sum_boole, heq, Nat.cast_id]
+   rw [Finset.sum_add_distrib, hcount, incidence_sum] at hs
+   have hdeg : (∑ i : IVertex I, degree G i.1) ≤ I.card * d := by
+     calc
+@@ -143,10 +143,10 @@
+   have hs := Finset.sum_le_sum (s := Finset.univ) (fun v _ => hpoint v)
+   have hc : (∑ v : V, if v ∈ multiplyDominated G I then 1 else 0) =
+       (multiplyDominated G I).card := by
+-    rw [Finset.sum_boole]
+-    congr 1
+-    ext v
+-    simp only [Finset.mem_filter, Finset.mem_univ, true_and]
++    have heq : Finset.univ.filter (fun v : V => v ∈ multiplyDominated G I) = multiplyDominated G I := by
++      ext v
++      simp only [Finset.mem_filter, Finset.mem_univ, true_and]
++    simp only [Finset.sum_boole, heq, Nat.cast_id]
+   rw [Finset.sum_add_distrib, hc, incidence_sum] at hs
+   have hd : (∑ i : IVertex I, degree G i.1) ≤ I.card * d := by
+     calc

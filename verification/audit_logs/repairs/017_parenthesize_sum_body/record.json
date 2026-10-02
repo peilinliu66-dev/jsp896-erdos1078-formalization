@@ -1,0 +1,10 @@
+{
+  "module": "JSP896.PairedCellTransversal",
+  "label": "017_parenthesize_sum_body",
+  "recorded_utc": "2026-10-02T07:29:30.010623+00:00",
+  "reason": "Parenthesize finite-sum subtraction body to keep i in binder scope; theorem statements unchanged.",
+  "diagnostic_log": "verification/build/nineteenth_21_JSP896_PairedCellTransversal.log",
+  "before_sha256": "a5bd86bc1a65bd1f98a5afe43236761d0edfd843bc6764348815b9f3efebd41c",
+  "after_sha256": "306331d977386c3d6a5a4544130b9eccf38be7f9089ba1edc6eb2070c7f19c7a",
+  "statement_changed": false
+}

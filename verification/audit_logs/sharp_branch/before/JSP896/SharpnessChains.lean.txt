@@ -1,0 +1,318 @@
+import JSP896.SharpnessTools
+
+/-!
+# The two forced chains in Szabó--Tardos Construction 3.3
+
+Write `n = d + a` and `d = a + i`.  A half has `q` chain classes
+and one leftover class, each with `n` literal vertices.  A chain class has
+`d` vertices on side A of component j and `a` vertices on side B of component
+j+1.  The leftover class starts with all `d` vertices of B₀, then distributes
+its remaining `a` vertices in consecutive packets of size `i`.
+
+For the minimal q used later, the final packet is the positive remainder u;
+the two central sides consequently have size a+u.  Positions give an explicit
+injection into each component side, including the final partial packet.
+
+The reflected second half swaps A/B and joins the first half at component q.
+The independent-transversal obstruction is proved by induction along each
+chain, not asserted as an input.
+
+No Lean compiler has been run on this source.
+-/
+
+namespace JSP896.Sharpness
+
+abbrev HalfVertex (q n : ℕ) := Fin (q + 1) × Fin n
+
+def halfComponent (q d i : ℕ) {n : ℕ} (v : HalfVertex q n) : ℕ :=
+  if v.1.val < q then
+    if v.2.val < d then v.1.val else v.1.val + 1
+  else if v.2.val < d then 0 else 1 + (v.2.val - d) / i
+
+def halfSide (q d : ℕ) {n : ℕ} (v : HalfVertex q n) : Bool :=
+  if v.1.val < q ∧ v.2.val < d then false else true
+
+def halfPosition (q d a i : ℕ) {n : ℕ} (v : HalfVertex q n) : ℕ :=
+  if v.1.val < q then
+    if v.2.val < d then v.2.val else v.2.val - d
+  else if v.2.val < d then v.2.val else a + (v.2.val - d) % i
+
+theorem halfComponent_le {q d a i n : ℕ} (hi : 0 < i)
+    (hn : n = d + a) (hcapacity : a ≤ q * i) (v : HalfVertex q n) :
+    halfComponent q d i v ≤ q := by
+  have hc := v.1.isLt
+  have hx := v.2.isLt
+  by_cases hchain : v.1.val < q
+  · by_cases hsmall : v.2.val < d
+    · simp only [halfComponent, if_pos hchain, if_pos hsmall]
+      omega
+    · simp only [halfComponent, if_pos hchain, if_neg hsmall]
+      omega
+  · by_cases hsmall : v.2.val < d
+    · simp only [halfComponent, if_neg hchain, if_pos hsmall, Nat.zero_le]
+    · have htail : v.2.val - d < q * i := by omega
+      have hquot : (v.2.val - d) / i < q :=
+        (Nat.div_lt_iff_lt_mul hi).mpr htail
+      simp only [halfComponent, if_neg hchain, if_neg hsmall]
+      omega
+
+theorem halfPosition_lt {q d a i n : ℕ} (hi : 0 < i)
+    (hd : d = a + i) (hn : n = d + a) (v : HalfVertex q n) :
+    halfPosition q d a i v < d := by
+  have hx := v.2.isLt
+  have hmod := Nat.mod_lt (v.2.val - d) hi
+  by_cases hchain : v.1.val < q <;>
+    by_cases hsmall : v.2.val < d <;>
+    simp [halfPosition, hchain, hsmall] <;> omega
+
+theorem halfComponent_lt_of_side_false {q d i n : ℕ}
+    (v : HalfVertex q n) (hside : halfSide q d v = false) :
+    halfComponent q d i v < q := by
+  by_cases hc : v.1.val < q
+  · by_cases hx : v.2.val < d
+    · simpa only [halfComponent, if_pos hc, if_pos hx] using hc
+    · simp [halfSide, hc, hx] at hside
+  · simp [halfSide, hc] at hside
+
+theorem halfSide_true_at_center {q d i n : ℕ} (v : HalfVertex q n)
+    (hcenter : halfComponent q d i v = q) : halfSide q d v = true := by
+  cases hs : halfSide q d v
+  · have hlt := halfComponent_lt_of_side_false (i := i) v hs
+    omega
+  · rfl
+
+/-- The two portions of a chain class belong to consecutive components;
+the leftover class lies entirely on side B. -/
+theorem half_same_class {q d i n : ℕ} (c : Fin (q + 1)) (x y : Fin n)
+    (hc : halfComponent q d i (c, x) = halfComponent q d i (c, y)) :
+    halfSide q d (c, x) = halfSide q d (c, y) := by
+  by_cases hchain : c.val < q <;>
+    by_cases hx : x.val < d <;> by_cases hy : y.val < d <;>
+    simp [halfComponent, halfSide, hchain, hx, hy] at hc ⊢ <;> omega
+
+private theorem quotient_remainder_injective {x y i : ℕ}
+    (hq : x / i = y / i) (hr : x % i = y % i) : x = y := by
+  calc
+    x = x % i + i * (x / i) := (Nat.mod_add_div x i).symm
+    _ = y % i + i * (y / i) := by rw [hq, hr]
+    _ = y := Nat.mod_add_div y i
+
+/-- Component, side and position uniquely identify each literal vertex.
+The disjoint position ranges `[0,a)` and `[a,d)` separate chain vertices
+from leftover packets on every B-side. -/
+theorem half_labels_injective {q d a i n : ℕ}
+    (hd : d = a + i) (hn : n = d + a)
+    (v w : HalfVertex q n)
+    (hcomp : halfComponent q d i v = halfComponent q d i w)
+    (hside : halfSide q d v = halfSide q d w)
+    (hpos : halfPosition q d a i v = halfPosition q d a i w) : v = w := by
+  rcases v with ⟨c, x⟩
+  rcases w with ⟨e, y⟩
+  have hcBound := c.isLt
+  have heBound := e.isLt
+  have hxBound := x.isLt
+  have hyBound := y.isLt
+  by_cases hc : c.val < q <;> by_cases he : e.val < q <;>
+    by_cases hx : x.val < d <;> by_cases hy : y.val < d <;>
+    simp [halfComponent, halfSide, halfPosition, hc, he, hx, hy]
+      at hcomp hside hpos
+  all_goals
+    apply Prod.ext <;> apply Fin.ext
+  all_goals
+    first
+    | omega
+    | have hquot : (x.val - d) / i = (y.val - d) / i := by omega
+      have hrem : (x.val - d) % i = (y.val - d) % i := by omega
+      have htail := quotient_remainder_injective hquot hrem
+      omega
+
+/-- A choice from every half-class, with no two choices on opposite sides
+of one component, must meet the central B-side. -/
+theorem half_forces_center {q d a i n : ℕ} (hi : 0 < i)
+    (hn : n = d + a) (hcapacity : a ≤ q * i)
+    (f : Fin (q + 1) → Fin n)
+    (hcompatible : ∀ c e,
+      halfComponent q d i (c, f c) = halfComponent q d i (e, f e) →
+      halfSide q d (c, f c) = halfSide q d (e, f e)) :
+    ∃ c, halfComponent q d i (c, f c) = q ∧
+      halfSide q d (c, f c) = true := by
+  let last : Fin (q + 1) := ⟨q, Nat.lt_succ_self q⟩
+  let start := halfComponent q d i (last, f last)
+  have hstart : start ≤ q := halfComponent_le hi hn hcapacity _
+  have hlast : halfSide q d (last, f last) = true := by
+    simp [halfSide, last]
+  have hreach : ∀ j, start ≤ j → j ≤ q →
+      ∃ c, halfComponent q d i (c, f c) = j ∧
+        halfSide q d (c, f c) = true := by
+    intro j hj
+    induction j, hj using Nat.le_induction with
+    | base =>
+      intro _
+      exact ⟨last, rfl, hlast⟩
+    | succ j hj ih =>
+      intro hjq
+      obtain ⟨c, hc, hs⟩ := ih (by omega)
+      let next : Fin (q + 1) := ⟨j, by omega⟩
+      have hnext : next.val < q := by dsimp only [next]; omega
+      by_cases hsmall : (f next).val < d
+      · have hnextComp : halfComponent q d i (next, f next) = j := by
+          simp [halfComponent, hnext, hsmall, next]
+        have hnextSide : halfSide q d (next, f next) = false := by
+          simp [halfSide, hnext, hsmall]
+        have hbad := hcompatible c next (hc.trans hnextComp.symm)
+        rw [hs, hnextSide] at hbad
+        contradiction
+      · refine ⟨next, ?_, ?_⟩
+        · simp [halfComponent, hnext, hsmall, next]
+        · simp [halfSide, hnext, hsmall]
+  exact hreach q hstart le_rfl
+
+abbrev ChainClass (q : ℕ) := Bool × Fin (q + 1)
+abbrev ChainVertex (q n : ℕ) := ChainClass q × Fin n
+
+def localVertex {q n : ℕ} (v : ChainVertex q n) : HalfVertex q n :=
+  (v.1.2, v.2)
+
+def chainComponent (q d i : ℕ) {n : ℕ} (v : ChainVertex q n) : ℕ :=
+  if v.1.1 then 2 * q - halfComponent q d i (localVertex v)
+  else halfComponent q d i (localVertex v)
+
+def chainSide (q d : ℕ) {n : ℕ} (v : ChainVertex q n) : Bool :=
+  if v.1.1 then !(halfSide q d (localVertex v))
+  else halfSide q d (localVertex v)
+
+def chainPosition (q d a i : ℕ) {n : ℕ} (v : ChainVertex q n) : ℕ :=
+  halfPosition q d a i (localVertex v)
+
+private theorem not_injective_bool (a b : Bool) (h : (!a) = (!b)) : a = b := by
+  cases a <;> cases b <;> simp_all
+
+theorem chain_labels_injective {q d a i n : ℕ} (hi : 0 < i)
+    (hd : d = a + i) (hn : n = d + a) (hcapacity : a ≤ q * i)
+    (v w : ChainVertex q n)
+    (hcomp : chainComponent q d i v = chainComponent q d i w)
+    (hside : chainSide q d v = chainSide q d w)
+    (hpos : chainPosition q d a i v = chainPosition q d a i w) : v = w := by
+  rcases v with ⟨⟨b, c⟩, x⟩
+  rcases w with ⟨⟨e, z⟩, y⟩
+  have hvle := halfComponent_le hi hn hcapacity (c, x)
+  have hwle := halfComponent_le hi hn hcapacity (z, y)
+  change halfPosition q d a i (c, x) = halfPosition q d a i (z, y) at hpos
+  cases b <;> cases e
+  · change halfComponent q d i (c, x) = halfComponent q d i (z, y) at hcomp
+    change halfSide q d (c, x) = halfSide q d (z, y) at hside
+    have h := half_labels_injective hd hn (c, x) (z, y) hcomp hside hpos
+    have hc := congrArg Prod.fst h
+    have hx := congrArg Prod.snd h
+    subst z
+    subst y
+    rfl
+  · change halfComponent q d i (c, x) = 2 * q - halfComponent q d i (z, y) at hcomp
+    change halfSide q d (c, x) = !(halfSide q d (z, y)) at hside
+    have hv : halfComponent q d i (c, x) = q := by omega
+    have hw : halfComponent q d i (z, y) = q := by omega
+    have hvs := halfSide_true_at_center (c, x) hv
+    have hws := halfSide_true_at_center (z, y) hw
+    simp [hvs, hws] at hside
+  · change 2 * q - halfComponent q d i (c, x) = halfComponent q d i (z, y) at hcomp
+    change !(halfSide q d (c, x)) = halfSide q d (z, y) at hside
+    have hv : halfComponent q d i (c, x) = q := by omega
+    have hw : halfComponent q d i (z, y) = q := by omega
+    have hvs := halfSide_true_at_center (c, x) hv
+    have hws := halfSide_true_at_center (z, y) hw
+    simp [hvs, hws] at hside
+  · change 2 * q - halfComponent q d i (c, x) =
+      2 * q - halfComponent q d i (z, y) at hcomp
+    change !(halfSide q d (c, x)) = !(halfSide q d (z, y)) at hside
+    have hc : halfComponent q d i (c, x) = halfComponent q d i (z, y) := by
+      omega
+    have hs := not_injective_bool _ _ hside
+    have h := half_labels_injective hd hn (c, x) (z, y) hc hs hpos
+    have hc' := congrArg Prod.fst h
+    have hx := congrArg Prod.snd h
+    subst z
+    subst y
+    rfl
+
+theorem chain_same_class {q d a i n : ℕ} (hi : 0 < i)
+    (hn : n = d + a) (hcapacity : a ≤ q * i)
+    (c : ChainClass q) (x y : Fin n)
+    (hcomp : chainComponent q d i (c, x) = chainComponent q d i (c, y)) :
+    chainSide q d (c, x) = chainSide q d (c, y) := by
+  rcases c with ⟨b, c⟩
+  have hx := halfComponent_le hi hn hcapacity (c, x)
+  have hy := halfComponent_le hi hn hcapacity (c, y)
+  cases b
+  · exact half_same_class c x y hcomp
+  · have hc : halfComponent q d i (c, x) = halfComponent q d i (c, y) := by
+      change 2 * q - halfComponent q d i (c, x) =
+        2 * q - halfComponent q d i (c, y) at hcomp
+      omega
+    exact congrArg Bool.not (half_same_class c x y hc)
+
+/-- Both forced chains meet opposite sides of their common central
+component.  Thus every selection of one vertex per class spans an edge. -/
+theorem chain_obstruction {q d a i n : ℕ} (hi : 0 < i)
+    (hn : n = d + a) (hcapacity : a ≤ q * i)
+    (f : ChainClass q → Fin n) :
+    ∃ c e, c ≠ e ∧
+      chainComponent q d i (c, f c) = chainComponent q d i (e, f e) ∧
+      chainSide q d (c, f c) ≠ chainSide q d (e, f e) := by
+  classical
+  by_contra hnone
+  have hcompatible : ∀ c e,
+      chainComponent q d i (c, f c) = chainComponent q d i (e, f e) →
+      chainSide q d (c, f c) = chainSide q d (e, f e) := by
+    intro c e hc
+    by_contra hs
+    have hne : c ≠ e := by
+      intro h
+      subst e
+      exact hs rfl
+    exact hnone ⟨c, e, hne, hc, hs⟩
+  have hleft : ∀ c e,
+      halfComponent q d i (c, f (false, c)) =
+        halfComponent q d i (e, f (false, e)) →
+      halfSide q d (c, f (false, c)) = halfSide q d (e, f (false, e)) := by
+    intro c e hc
+    exact hcompatible (false, c) (false, e) hc
+  have hright : ∀ c e,
+      halfComponent q d i (c, f (true, c)) =
+        halfComponent q d i (e, f (true, e)) →
+      halfSide q d (c, f (true, c)) = halfSide q d (e, f (true, e)) := by
+    intro c e hc
+    apply not_injective_bool
+    apply hcompatible (true, c) (true, e)
+    change 2 * q - halfComponent q d i (c, f (true, c)) =
+      2 * q - halfComponent q d i (e, f (true, e))
+    rw [hc]
+  obtain ⟨c, hc, hs⟩ := half_forces_center hi hn hcapacity
+    (fun c => f (false, c)) hleft
+  obtain ⟨e, he, ht⟩ := half_forces_center hi hn hcapacity
+    (fun e => f (true, e)) hright
+  have hcentral : chainComponent q d i ((false, c), f (false, c)) =
+      chainComponent q d i ((true, e), f (true, e)) := by
+    change halfComponent q d i (c, f (false, c)) =
+      2 * q - halfComponent q d i (e, f (true, e))
+    rw [hc, he]
+    omega
+  have hbad := hcompatible (false, c) (true, e) hcentral
+  change halfSide q d (c, f (false, c)) = !(halfSide q d (e, f (true, e))) at hbad
+  rw [hs, ht] at hbad
+  contradiction
+
+/-- The complete, equally sized, unpadded two-chain example. -/
+theorem exists_chain_example {q d a i n : ℕ} (hi : 0 < i)
+    (hd : d = a + i) (hn : n = d + a) (hcapacity : a ≤ q * i) :
+    ∃ G : SimpleGraph (Vertex (2 * (q + 1)) n), IsPartite G ∧
+      (∀ v, degree G v ≤ d) ∧ ¬ HasIndependentTransversal G := by
+  apply exists_of_labeled_classes (C := ChainClass q)
+    (by simp [ChainClass])
+    (chainComponent q d i) (chainSide q d) (chainPosition q d a i)
+  · intro v
+    exact halfPosition_lt hi hd hn (localVertex v)
+  · exact chain_labels_injective hi hd hn hcapacity
+  · exact chain_same_class hi hn hcapacity
+  · exact chain_obstruction hi hn hcapacity
+
+end JSP896.Sharpness

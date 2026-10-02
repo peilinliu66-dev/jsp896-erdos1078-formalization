@@ -1,0 +1,40 @@
+JSP896/FiniteTransversal.lean:27:0: warning: automatically included section variable(s) unused in theorem `JSP896.FiniteTransversal.partial_empty`:
+  [Fintype V]
+  [Fintype ι]
+  [DecidableEq V]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [Fintype ι] [DecidableEq V] [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+JSP896/FiniteTransversal.lean:31:0: warning: automatically included section variable(s) unused in theorem `JSP896.FiniteTransversal.Partial.subset`:
+  [Fintype V]
+  [Fintype ι]
+  [DecidableEq V]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [Fintype ι] [DecidableEq V] [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+JSP896/FiniteTransversal.lean:39:0: warning: automatically included section variable(s) unused in theorem `JSP896.FiniteTransversal.Partial.card_image`:
+  [Fintype V]
+  [Fintype ι]
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [Fintype ι] [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+JSP896/FiniteTransversal.lean:58:0: warning: automatically included section variable(s) unused in theorem `JSP896.FiniteTransversal.partial_insert`:
+  [Fintype V]
+  [Fintype ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [Fintype ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+JSP896/FiniteTransversal.lean:130:0: warning: automatically included section variable(s) unused in theorem `JSP896.FiniteTransversal.swap_colors`:
+  [Fintype V]
+  [Fintype ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [Fintype ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`

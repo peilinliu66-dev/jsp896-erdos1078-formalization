@@ -1,0 +1,10 @@
+{
+  "module": "JSP896.CompatibleStars",
+  "label": "005_explicit_insert_substitution",
+  "recorded_utc": "2026-10-02T07:14:07.559976+00:00",
+  "reason": "Explicitly substitute inserted element v rather than shared star center w. Statement unchanged.",
+  "diagnostic_log": "verification/build/sixth_06_JSP896_CompatibleStars.log",
+  "before_sha256": "c572a479d10040fcc7981cd167358475f9f50559db8bc8160b7d30c54d34a702",
+  "after_sha256": "3ffda5e1043cef10ca964303e7659b3faa01e8f4df604acaf50fb1635eaaf452",
+  "statement_changed": false
+}

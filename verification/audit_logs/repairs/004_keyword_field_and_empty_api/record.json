@@ -1,0 +1,10 @@
+{
+  "module": "JSP896.FeasiblePair",
+  "label": "004_keyword_field_and_empty_api",
+  "recorded_utc": "2026-10-02T07:13:04.818214+00:00",
+  "reason": "Escape Lean reserved keyword partial as structure field without changing name/type; use current Finset.notMem_empty API.",
+  "diagnostic_log": "verification/build/fifth_04_JSP896_FeasiblePair.log",
+  "before_sha256": "4a273bb29fa62ae62c79db8e9dcb259a547712b51da343f4c3f31ea610a11468",
+  "after_sha256": "9267b5436faf0f35823d2278ac2a58d369f2b6019558df5784322c8275aec887",
+  "statement_changed": false
+}

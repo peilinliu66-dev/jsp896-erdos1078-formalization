@@ -1,0 +1,25 @@
+{
+  "module": "OddComponentsCentroid",
+  "command": [
+    "elan",
+    "run",
+    "leanprover/lean4:v4.35.0-rc3",
+    "lake",
+    "env",
+    "lean",
+    "-o",
+    ".lake\\build\\lib\\lean\\JSP896\\OddComponentsCentroid.olean",
+    "JSP896\\OddComponentsCentroid.lean"
+  ],
+  "cwd": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate",
+  "started_at": "2026-10-02T07:29:13.786669+00:00",
+  "source_before_sha256": "7a2e66b3813c73b566052d2277fda50633b1edb35474ce359b863506ae90ebae",
+  "natural_exit_code": 0,
+  "state": "COMPLETED",
+  "pid": 19724,
+  "ended_at": "2026-10-02T07:29:30.996124+00:00",
+  "source_after_sha256": "7a2e66b3813c73b566052d2277fda50633b1edb35474ce359b863506ae90ebae",
+  "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "olean_exists": true,
+  "source_unchanged_during_run": true
+}

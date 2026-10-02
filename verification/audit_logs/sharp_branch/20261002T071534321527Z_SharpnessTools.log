@@ -1,0 +1,44 @@
+JSP896/SharpnessTools.lean:73:30: error: Application type mismatch: The argument
+  h
+has type
+  Eq.{u_1 + 1} (lift v) (lift w)
+but is expected to have type
+  Eq.{1} v w
+in the application
+  congrArg Prod.snd h
+JSP896/SharpnessTools.lean:124:25: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+JSP896/SharpnessTools.lean:124:36: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+JSP896/SharpnessTools.lean:125:30: error: Application type mismatch: The argument
+  h
+has type
+  lower v = lower w
+but is expected to have type
+  v = w
+in the application
+  congrArg Prod.snd h
+JSP896/SharpnessTools.lean:156:38: error: Application type mismatch: The argument
+  h
+has type
+  incl i = incl j
+but is expected to have type
+  i = j
+in the application
+  congrArg Fin.val h
+JSP896/SharpnessTools.lean:162:32: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+JSP896/SharpnessTools.lean:167:32: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+JSP896/SharpnessTools.lean:186:47: error: Expected type must not contain free variables
+  (false, f false).1 ≠ (true, f true).1
+
+Hint: Use the `+revert` option to automatically clean up and revert free variables

@@ -1,0 +1,10 @@
+{
+  "module": "JSP896.CellStructure",
+  "label": "024_real_local_ite_and_pair_endpoint",
+  "recorded_utc": "2026-10-02T07:40:27.820126+00:00",
+  "reason": "Annotate local conditional cardinal branches as real to avoid unintended Nat subtraction/cast during ring reasoning; retain counted endpoint x using explicit substitution. Exported declarations and model definitions unchanged.",
+  "diagnostic_log": "verification/build/twentysixth_28_JSP896_CellStructure.log",
+  "before_sha256": "f20b72e8a871dd96ee83ca37767142992d4c00ec8c1b3fcd0bb8e82cdcc94da2",
+  "after_sha256": "b5c6e1a4df2c208165298a93ca45d9bcc9af3d3451a98157415eed391acd3be2",
+  "statement_changed": false
+}

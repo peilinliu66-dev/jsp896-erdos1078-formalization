@@ -1,0 +1,10 @@
+{
+  "module": "JSP896.MatchingExchange",
+  "label": "019_explicit_exchange_edge_cases",
+  "recorded_utc": "2026-10-02T07:32:47.537385+00:00",
+  "reason": "Explicit endpoint substitutions preserve centers/classes; avoid shadowing vertex and class inequalities; apply edge adjacency before simp normalizes reflexive equalities; update empty membership spelling. All exchange statements unchanged.",
+  "diagnostic_log": "verification/build/twentyfirst_24_JSP896_MatchingExchange.log",
+  "before_sha256": "78dbe156133753334b77af2598f0cd305b20a7a42340649c0ef1a9415c7fa5ab",
+  "after_sha256": "71bcbf38641b36a06f0c3b47fb5af8002fb3cd4bfc63578d551ce9e08f92a757",
+  "statement_changed": false
+}

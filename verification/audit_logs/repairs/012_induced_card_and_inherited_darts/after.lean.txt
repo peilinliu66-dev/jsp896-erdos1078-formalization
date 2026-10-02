@@ -1,0 +1,74 @@
+import JSP896.DominationCertificate
+import Mathlib.Combinatorics.SimpleGraph.DegreeSum
+
+/-! Cardinality of an actual faithful nonisolated class-forest certificate. -/
+
+open scoped Classical
+
+namespace JSP896.FeasiblePair
+
+variable {V ι : Type*} [Fintype V] [Fintype ι] [DecidableEq V] [DecidableEq ι]
+
+theorem acyclic_supported_edge_bound (H : SimpleGraph ι) (S : Finset ι)
+    (hS : S.Nonempty) (hacyclic : H.IsAcyclic)
+    (hsupported : ∀ ⦃i j⦄, H.Adj i j → i ∈ S ∧ j ∈ S) :
+    H.edgeFinset.card ≤ S.card - 1 := by
+  classical
+  letI : Nonempty ↥S := ⟨⟨Classical.choose hS, Classical.choose_spec hS⟩⟩
+  have hsupport : H.support ⊆ (S : Set ι) := by
+    intro i hi
+    obtain ⟨j, hij⟩ := H.mem_support.mp hi
+    exact (hsupported hij).1
+  have hInduced : (H.induce (S : Set ι)).IsAcyclic :=
+    hacyclic.embedding (SimpleGraph.Embedding.induce (G := H) (S : Set ι))
+  have htop : (⊤ : SimpleGraph ↥S).Connected := SimpleGraph.connected_top
+  obtain ⟨R, hHR, _, hR⟩ :=
+    htop.exists_isTree_le_of_le_of_isAcyclic le_top hInduced
+  have hcard : R.edgeFinset.card + 1 = S.card := by
+    simpa only [Fintype.card_coe] using hR.card_edgeFinset
+  have hle := Finset.card_le_card (SimpleGraph.edgeFinset_mono hHR)
+  have heq : (H.induce (S : Set ι)).edgeFinset.card = H.edgeFinset.card := by
+    simpa using H.card_edgeFinset_induce_of_support_subset hsupport
+  have hle' : H.edgeFinset.card ≤ R.edgeFinset.card := heq ▸ hle
+  omega
+
+theorem card_le_twice_class_edges (G : SimpleGraph V) (label : V → ι) (J : Finset V)
+    (hpart : ∀ ⦃v w⦄, G.Adj v w → label v ≠ label w)
+    (hnonisolated : ∀ v ∈ J, ∃ w ∈ J, G.Adj v w)
+    (hfaithful : PairedDeficit.FaithfulClassEdges G J label) :
+    J.card ≤ 2 * (classGraph G label J).edgeFinset.card := by
+  classical
+  let H := classGraph G label J
+  let nb : {v // v ∈ J} → V := fun v => Classical.choose (hnonisolated v.1 v.2)
+  have hnb (v : {v // v ∈ J}) : nb v ∈ J ∧ G.Adj v.1 (nb v) :=
+    Classical.choose_spec (hnonisolated v.1 v.2)
+  let f : {v // v ∈ J} → H.Dart := fun v =>
+    ⟨(label v.1, label (nb v)),
+      ⟨hpart (hnb v).2, v.1, v.2, nb v, (hnb v).1, (hnb v).2, rfl, rfl⟩⟩
+  have hf : Function.Injective f := by
+    intro v w h
+    have hfirst : label v.1 = label w.1 := congrArg (fun d : H.Dart => d.fst) h
+    have hsecond : label (nb v) = label (nb w) := congrArg (fun d : H.Dart => d.snd) h
+    apply Subtype.ext
+    exact (hfaithful v.1 v.2 (nb v) (hnb v).1 w.1 w.2 (nb w) (hnb w).1
+      (hnb v).2 (hnb w).2 hfirst hsecond).1
+  have hcard := Fintype.card_le_of_injective f hf
+  rw [H.dart_card_eq_twice_card_edges] at hcard
+  simpa only [Fintype.card_coe, H] using hcard
+
+theorem Feasible.card_le_twice_active_sub_one {G : SimpleGraph V} {label : V → ι}
+    {I T : Finset V} (hF : Feasible G label I T) (hI : I.Nonempty)
+    (hpart : ∀ ⦃v w⦄, G.Adj v w → label v ≠ label w) :
+    I.card ≤ 2 * ((I.image label).card - 1) := by
+  have hnonempty : (I.image label).Nonempty := hI.image label
+  have hsupport : ∀ ⦃i j⦄, (classGraph G label I).Adj i j →
+      i ∈ I.image label ∧ j ∈ I.image label := by
+    intro i j hij
+    obtain ⟨_, v, hv, w, hw, _, hvi, hwj⟩ := hij
+    exact ⟨Finset.mem_image.mpr ⟨v, hv, hvi⟩, Finset.mem_image.mpr ⟨w, hw, hwj⟩⟩
+  have hedge := acyclic_supported_edge_bound (classGraph G label I) (I.image label)
+    hnonempty hF.classAcyclic hsupport
+  exact (card_le_twice_class_edges G label I hpart hF.nonisolated hF.faithful).trans
+    (Nat.mul_le_mul_left 2 hedge)
+
+end JSP896.FeasiblePair

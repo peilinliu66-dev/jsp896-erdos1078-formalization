@@ -1,0 +1,10 @@
+{
+  "module": "JSP896.PairedDeficit",
+  "label": "003_explicit_ring_finset_import",
+  "recorded_utc": "2026-10-02T07:11:54.260302+00:00",
+  "reason": "Add explicit Ring.Finset dependency providing Finset.mul_sum, absent from original imports; restore correct namespace. Theorem unchanged.",
+  "diagnostic_log": "verification/build/fourth_02_JSP896_PairedDeficit.log",
+  "before_sha256": "f51809d4da42af5b7ef73f58476c2489c302aa821bd52465966dad624f481430",
+  "after_sha256": "79ab95e7c3bb3797e0c7193078a0f7ffec10fd27b8e3d8df4e0e49660dbc8f4b",
+  "statement_changed": false
+}

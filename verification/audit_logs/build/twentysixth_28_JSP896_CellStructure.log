@@ -1,0 +1,82 @@
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+JSP896/CellStructure.lean:60:90: error: unsolved goals
+case pos
+V : Type u_1
+ι : Type u_2
+inst✝³ : Fintype V
+inst✝² : Fintype ι
+inst✝¹ : DecidableEq V
+inst✝ : DecidableEq ι
+G : SimpleGraph V
+label : V → ι
+I : Finset V
+M : Tree G label I Finset.univ
+B : ExpandedPartition M
+d : ℕ
+hdegree : ∀ (v : V), degree G v ≤ d
+i : IVertex I
+hcardNat : ∑ j, (fiber B.index j).card = Fintype.card V
+hcard : ∑ j, ↑(fiber B.index j).card = ↑(Fintype.card V)
+hpoint : ∀ (j : IVertex I), ↑(fiber B.index j).card ≤ ↑(if j = i then (fiber B.index i).card else d)
+hs : ↑(Fintype.card V) ≤ ∑ i_1, ↑(if i_1 = i then (fiber B.index i).card else d)
+j : IVertex I
+hj : j ∈ Finset.univ
+h✝ : j = i
+⊢ ↑(fiber B.index i).card = ↑d + ↑((fiber B.index i).card - d)
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+JSP896/CellStructure.lean:64:15: error: unsolved goals
+V : Type u_1
+ι : Type u_2
+inst✝³ : Fintype V
+inst✝² : Fintype ι
+inst✝¹ : DecidableEq V
+inst✝ : DecidableEq ι
+G : SimpleGraph V
+label : V → ι
+I : Finset V
+M : Tree G label I Finset.univ
+B : ExpandedPartition M
+d : ℕ
+hdegree : ∀ (v : V), degree G v ≤ d
+i : IVertex I
+hcardNat : ∑ j, (fiber B.index j).card = Fintype.card V
+hcard : ∑ j, ↑(fiber B.index j).card = ↑(Fintype.card V)
+hpoint : ∀ (j : IVertex I), ↑(fiber B.index j).card ≤ ↑(if j = i then (fiber B.index i).card else d)
+hs : ↑(Fintype.card V) ≤ ∑ i_1, ↑(if i_1 = i then (fiber B.index i).card else d)
+⊢ ↑I.card * ↑d + ↑((fiber B.index i).card - d) = ↑I.card * ↑d - ↑d + ↑(fiber B.index i).card
+JSP896/CellStructure.lean:65:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ∑ j, if j = i then ↑(fiber B.index i).card else ↑d
+in the target expression
+  ↑(Fintype.card V) ≤ ∑ i_1, ↑(if i_1 = i then (fiber B.index i).card else d)
+
+V : Type u_1
+ι : Type u_2
+inst✝³ : Fintype V
+inst✝² : Fintype ι
+inst✝¹ : DecidableEq V
+inst✝ : DecidableEq ι
+G : SimpleGraph V
+label : V → ι
+I : Finset V
+M : Tree G label I Finset.univ
+B : ExpandedPartition M
+d : ℕ
+hdegree : ∀ (v : V), degree G v ≤ d
+i : IVertex I
+hcardNat : ∑ j, (fiber B.index j).card = Fintype.card V
+hcard : ∑ j, ↑(fiber B.index j).card = ↑(Fintype.card V)
+hpoint : ∀ (j : IVertex I), ↑(fiber B.index j).card ≤ ↑(if j = i then (fiber B.index i).card else d)
+hs : ↑(Fintype.card V) ≤ ∑ i_1, ↑(if i_1 = i then (fiber B.index i).card else d)
+he : (∑ j, if j = i then ↑(fiber B.index i).card else ↑d) = ↑I.card * ↑d + ↑(fiber B.index i).card - ↑d
+⊢ ↑(Fintype.card V) ≤ ↑(fiber B.index i).card + (↑I.card - 1) * ↑d
+JSP896/CellStructure.lean:92:43: error(lean.unknownIdentifier): Unknown identifier `x`

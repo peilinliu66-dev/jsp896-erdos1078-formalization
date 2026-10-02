@@ -1,0 +1,11 @@
+name = "jsp896_erdos1078"
+version = "0.1.0"
+defaultTargets = ["JSP896"]
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4.git"
+rev = "2a885768dae569d938bb9ff3474da6a8753bb90a"
+
+[[lean_lib]]
+name = "JSP896"

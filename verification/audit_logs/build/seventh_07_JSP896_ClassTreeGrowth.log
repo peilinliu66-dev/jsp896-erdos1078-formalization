@@ -1,0 +1,25 @@
+JSP896/ClassTreeGrowth.lean:17:0: warning: automatically included section variable(s) unused in theorem `JSP896.ClassTreeGrowth.singleton_tree`:
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+JSP896/ClassTreeGrowth.lean:35:10: error(lean.unknownIdentifier): Unknown constant `Set.eq_empty_iff_forall_not_mem.mpr`
+JSP896/ClassTreeGrowth.lean:36:10: error: No goals to be solved
+JSP896/ClassTreeGrowth.lean:45:40: error(lean.invalidField): Invalid field `mp`: The environment does not contain `Function.mp`, so it is not possible to project the field `mp` from an expression
+  SimpleGraph.edge_adj ?m.103 ?m.104
+of type
+  ∀ (v w : ?m.102),
+    (SimpleGraph.edge ?m.103 ?m.104).Adj v w ↔ (v = ?m.103 ∧ w = ?m.104 ∨ v = ?m.104 ∧ w = ?m.103) ∧ v ≠ w
+JSP896/ClassTreeGrowth.lean:45:50: error: Tactic `rcases` failed: `x✝ : ?m.105` is not an inductive datatype
+JSP896/ClassTreeGrowth.lean:53:39: error(lean.invalidField): Invalid field `mpr`: The environment does not contain `Function.mpr`, so it is not possible to project the field `mpr` from an expression
+  SimpleGraph.edge_adj ?m.128 ?m.129
+of type
+  ∀ (v w : ?m.127),
+    (SimpleGraph.edge ?m.128 ?m.129).Adj v w ↔ (v = ?m.128 ∧ w = ?m.129 ∨ v = ?m.129 ∧ w = ?m.128) ∧ v ≠ w
+JSP896/ClassTreeGrowth.lean:65:8: warning: automatically included section variable(s) unused in theorem `JSP896.ClassTreeGrowth.attachStar_empty`:
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`

@@ -1,0 +1,24 @@
+--- before/JSP896.CertificateSize
++++ after/JSP896.CertificateSize
+@@ -27,7 +27,9 @@
+   have hcard : R.edgeFinset.card + 1 = S.card := by
+     simpa only [Fintype.card_coe] using hR.card_edgeFinset
+   have hle := Finset.card_le_card (SimpleGraph.edgeFinset_mono hHR)
+-  rw [H.card_edgeFinset_induce_of_support_subset hsupport] at hle
++  have heq : (H.induce (S : Set ι)).edgeFinset.card = H.edgeFinset.card := by
++    simpa using H.card_edgeFinset_induce_of_support_subset hsupport
++  have hle' : H.edgeFinset.card ≤ R.edgeFinset.card := heq ▸ hle
+   omega
+ 
+ theorem card_le_twice_class_edges (G : SimpleGraph V) (label : V → ι) (J : Finset V)
+@@ -45,8 +47,8 @@
+       ⟨hpart (hnb v).2, v.1, v.2, nb v, (hnb v).1, (hnb v).2, rfl, rfl⟩⟩
+   have hf : Function.Injective f := by
+     intro v w h
+-    have hfirst : label v.1 = label w.1 := congrArg SimpleGraph.Dart.fst h
+-    have hsecond : label (nb v) = label (nb w) := congrArg SimpleGraph.Dart.snd h
++    have hfirst : label v.1 = label w.1 := congrArg (fun d : H.Dart => d.fst) h
++    have hsecond : label (nb v) = label (nb w) := congrArg (fun d : H.Dart => d.snd) h
+     apply Subtype.ext
+     exact (hfaithful v.1 v.2 (nb v) (hnb v).1 w.1 w.2 (nb w) (hnb w).1
+       (hnb v).2 (hnb w).2 hfirst hsecond).1

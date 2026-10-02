@@ -1,0 +1,10 @@
+{
+  "module": "JSP896.DominationCertificate",
+  "label": "010_image_subset_api",
+  "recorded_utc": "2026-10-02T07:20:03.092749+00:00",
+  "reason": "Use current image monotonicity lemma name; domination statement unchanged.",
+  "diagnostic_log": "verification/build/eleventh_10_JSP896_DominationCertificate.log",
+  "before_sha256": "e57f83f46381eeaf98560ee02dc570b664c4bf68707141fa4c03b457768cc1e4",
+  "after_sha256": "c19c77db898e6051b88765db4aa444a61a325032f5197a084f4661ddbba8dd35",
+  "statement_changed": false
+}

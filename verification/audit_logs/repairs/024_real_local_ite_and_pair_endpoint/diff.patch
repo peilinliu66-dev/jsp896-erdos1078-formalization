@@ -1,0 +1,32 @@
+--- before/JSP896.CellStructure
++++ after/JSP896.CellStructure
+@@ -48,7 +48,7 @@
+   have hcard : (∑ j : IVertex I, ((fiber B.index j).card : ℝ)) = Fintype.card V := by
+     exact_mod_cast hcardNat
+   have hpoint (j : IVertex I) : ((fiber B.index j).card : ℝ) ≤
+-      if j = i then (fiber B.index i).card else d := by
++      if j = i then ((fiber B.index i).card : ℝ) else (d : ℝ) := by
+     split_ifs with h
+     · subst j; exact le_rfl
+     · exact_mod_cast B.fiber_card_le d hdegree j
+@@ -57,7 +57,7 @@
+   have he : (∑ j : IVertex I, if j = i then ((fiber B.index i).card : ℝ) else d) =
+       (I.card : ℝ) * d + (fiber B.index i).card - d := by
+     calc
+-      _ = ∑ j : IVertex I, ((d : ℝ) + if j = i then (fiber B.index i).card - d else 0) := by
++      _ = ∑ j : IVertex I, ((d : ℝ) + if j = i then ((fiber B.index i).card : ℝ) - (d : ℝ) else 0) := by
+         apply Finset.sum_congr rfl
+         intro j hj
+         split_ifs <;> ring
+@@ -88,8 +88,9 @@
+     have hyv : G.Adj y.1 v := B.opposite_complete y.1 v (by simpa only [← hxy] using hvindex.symm)
+     have hpair : ({x, y} : Finset (IVertex J)) ⊆ matchingNeighbors G J v := by
+       intro z hz
+-      rcases Finset.mem_insert.mp hz with rfl | hz
+-      · exact (mem_matchingNeighbors G J v x).mpr (G.adj_symm hxv)
++      rcases Finset.mem_insert.mp hz with hzx | hz
++      · subst z
++        exact (mem_matchingNeighbors G J v x).mpr (G.adj_symm hxv)
+       · have hz' := Finset.mem_singleton.mp hz
+         subst z
+         exact (mem_matchingNeighbors G J v y).mpr (G.adj_symm hyv)

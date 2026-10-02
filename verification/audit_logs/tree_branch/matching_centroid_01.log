@@ -1,0 +1,30 @@
+JSP896/MatchingOrientationCentroid.lean:28:8: warning: automatically included section variable(s) unused in theorem `JSP896.MatchingConfiguration.mem_branch`:
+  [Fintype ι]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+JSP896/MatchingOrientationCentroid.lean:36:0: warning: automatically included section variable(s) unused in theorem `JSP896.MatchingConfiguration.tree_dist_step`:
+  [Fintype ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+JSP896/MatchingOrientationCentroid.lean:77:18: warning: Possibly looping simp theorem: `Finset.card_eq_sum_ones`
+
+Note: Possibly caused by: `Finset.sum_const`
+
+Hint: You can disable a simp theorem from the default simp set by passing `- theoremName` to `simp`.
+JSP896/MatchingOrientationCentroid.lean:77:4: error: Tactic `simp` failed with a nested error:
+maximum recursion depth has been reached
+use `set_option maxRecDepth <num>` to increase limit
+use `set_option diagnostics true` to get diagnostic information
+JSP896/MatchingOrientationCentroid.lean:111:20: error: Application type mismatch: The argument
+  S
+has type
+  Finset ι
+of sort `Type u_1` but is expected to have type
+  ℕ
+of sort `Type` in the application
+  exists_centroid ?m.42 S

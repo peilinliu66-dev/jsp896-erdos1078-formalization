@@ -1,0 +1,15 @@
+JSP896/MatchingCells.lean:144:4: error: No goals to be solved
+JSP896/MatchingCells.lean:163:8: warning: automatically included section variable(s) unused in theorem `JSP896.MatchingConfiguration.Tree.mem_strip`:
+  [Fintype V]
+  [Fintype ι]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [Fintype ι] [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+JSP896/MatchingCells.lean:245:0: warning: automatically included section variable(s) unused in theorem `JSP896.MatchingConfiguration.reachable_to_deleted_endpoint`:
+  [Fintype ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`

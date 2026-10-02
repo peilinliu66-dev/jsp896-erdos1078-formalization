@@ -1,0 +1,30 @@
+--- before/JSP896.ExpandedCells
++++ after/JSP896.ExpandedCells
+@@ -57,7 +57,8 @@
+     linarith
+   have hsum := deficit_subset_lt _ (d : ℝ) hδ hdef {i, j}
+   have hs : ((d : ℝ) - (cell G I i).card) +
+-      (d - (cell G I j).card) < d := by simpa [hij] using hsum
++      (d - (cell G I j).card) < d := by
++    simpa only [Finset.sum_pair hij] using hsum
+   have hsub : cell G I i ∪ cell G I j ⊆ neighbors G v := by
+     intro w hw
+     exact (mem_neighbors G v w).mpr ((Finset.mem_union.mp hw).elim (hi w) (hj w))
+@@ -85,11 +86,15 @@
+     linarith
+   have hpair : δ i + δ (M.partner i) < d := by
+     have h := deficit_subset_lt δ d hδ hdef {i, M.partner i}
+-    simpa [ne_comm, M.partner_ne i] using h
++    simpa only [Finset.sum_pair (Ne.symm (M.partner_ne i))] using h
+   have hthree (j : IVertex I) (hji : j ≠ i) (hjp : j ≠ M.partner i) :
+       δ j + δ i + δ (M.partner i) < d := by
+     have h := deficit_subset_lt δ d hδ hdef {j, i, M.partner i}
+-    simpa [hji, hjp, ne_comm, M.partner_ne i, add_assoc] using h
++    have hnot : j ∉ ({i, M.partner i} : Finset (IVertex I)) := by
++      simp only [Finset.mem_insert, Finset.mem_singleton]
++      exact not_or_intro hji hjp
++    simpa only [Finset.sum_insert hnot,
++      Finset.sum_pair (Ne.symm (M.partner_ne i)), add_assoc] using h
+   have hCa : C (M.partner i) ⊆ neighbors G a := fun v hv => (mem_neighbors G a v).mpr (ha v hv)
+   have hCb : C i ⊆ neighbors G b := fun v hv => (mem_neighbors G b v).mpr (hb v hv)
+   let U := (neighbors G a \ C (M.partner i)) ∪ (neighbors G b \ C i)

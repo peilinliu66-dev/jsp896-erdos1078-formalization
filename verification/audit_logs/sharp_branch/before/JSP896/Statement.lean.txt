@@ -1,0 +1,104 @@
+import Mathlib.Combinatorics.SimpleGraph.Basic
+import Mathlib.Data.Finset.Card
+import Mathlib.Data.Fintype.Prod
+
+/-!
+# JSP896 / Erdős1078: literal exact finite target
+
+The literal target is defined below. Its proof source is assembled in
+`JSP896.Main`; the project has not been compiled. Graphs have every vertex of
+every part, with literal adjacency, degrees, and transversal witnesses. No
+theorem of another author is introduced as an axiom.
+-/
+
+namespace JSP896
+
+abbrev Vertex (r n : ℕ) := Fin r × Fin n
+
+def IsPartite {r n : ℕ} (G : SimpleGraph (Vertex r n)) : Prop :=
+  ∀ ⦃v w⦄, G.Adj v w → v.1 ≠ w.1
+
+noncomputable def neighbors {r n : ℕ} (G : SimpleGraph (Vertex r n))
+    (v : Vertex r n) : Finset (Vertex r n) := by
+  classical
+  exact Finset.univ.filter (G.Adj v)
+
+noncomputable def degree {r n : ℕ} (G : SimpleGraph (Vertex r n))
+    (v : Vertex r n) : ℕ := (neighbors G v).card
+
+@[simp] theorem mem_neighbors {r n : ℕ} (G : SimpleGraph (Vertex r n))
+    (v w : Vertex r n) : w ∈ neighbors G v ↔ G.Adj v w := by
+  classical
+  simp [neighbors]
+
+def HasTransversalClique {r n : ℕ} (G : SimpleGraph (Vertex r n)) : Prop :=
+  ∃ f : Fin r → Fin n, ∀ i j, i ≠ j → G.Adj (i, f i) (j, f j)
+
+def HasIndependentTransversal {r n : ℕ} (G : SimpleGraph (Vertex r n)) : Prop :=
+  ∃ f : Fin r → Fin n, ∀ i j, i ≠ j → ¬ G.Adj (i, f i) (j, f j)
+
+/-- Complement only across the specified parts. -/
+def crossComplement {r n : ℕ} (G : SimpleGraph (Vertex r n)) :
+    SimpleGraph (Vertex r n) where
+  Adj v w := v.1 ≠ w.1 ∧ ¬ G.Adj v w
+  symm := ⟨by
+    intro v w h
+    exact ⟨Ne.symm h.1, fun h' => h.2 (G.adj_symm h')⟩⟩
+  loopless := ⟨by
+    intro v h
+    exact h.1 rfl⟩
+
+theorem crossComplement_isPartite {r n : ℕ} (G : SimpleGraph (Vertex r n)) :
+    IsPartite (crossComplement G) := by
+  intro v w h
+  exact h.1
+
+theorem crossComplement_involutive {r n : ℕ} (G : SimpleGraph (Vertex r n))
+    (hpart : IsPartite G) : crossComplement (crossComplement G) = G := by
+  classical
+  ext v w
+  change (v.1 ≠ w.1 ∧ ¬ (v.1 ≠ w.1 ∧ ¬ G.Adj v w)) ↔ G.Adj v w
+  constructor
+  · rintro ⟨hne, h⟩
+    by_contra hnot
+    exact h ⟨hne, hnot⟩
+  · intro h
+    exact ⟨hpart h, fun h' => h'.2 h⟩
+
+theorem clique_crossComplement_iff {r n : ℕ} (G : SimpleGraph (Vertex r n)) :
+    HasTransversalClique (crossComplement G) ↔ HasIndependentTransversal G := by
+  constructor
+  · rintro ⟨f, hf⟩
+    exact ⟨f, fun i j hij => (hf i j hij).2⟩
+  · rintro ⟨f, hf⟩
+    exact ⟨f, fun i j hij => ⟨hij, hf i j hij⟩⟩
+
+theorem independent_crossComplement_iff {r n : ℕ}
+    (G : SimpleGraph (Vertex r n)) :
+    HasIndependentTransversal (crossComplement G) ↔ HasTransversalClique G := by
+  classical
+  constructor
+  · rintro ⟨f, hf⟩
+    refine ⟨f, fun i j hij => ?_⟩
+    by_contra hnot
+    exact hf i j hij ⟨hij, hnot⟩
+  · rintro ⟨f, hf⟩
+    exact ⟨f, fun i j hij h => h.2 (hf i j hij)⟩
+
+/-- For r≥2 this is ceil((floor(r/2)*n)/(2*floor(r/2)−1)). -/
+def independentThreshold (r n : ℕ) : ℕ :=
+  ((r / 2) * n + (2 * (r / 2) - 1) - 1) / (2 * (r / 2) - 1)
+
+def cliqueThreshold (r n : ℕ) : ℕ :=
+  (r - 1) * n - independentThreshold r n
+
+/-- Exact finite sufficiency and an actual matching sharpness example.
+The proof source is `JSP896.full_resolution` in `JSP896.Main`. -/
+def FullResolution : Prop :=
+  ∀ r n : ℕ, 2 ≤ r → 0 < n →
+    (∀ G : SimpleGraph (Vertex r n), IsPartite G →
+      (∀ v, cliqueThreshold r n < degree G v) → HasTransversalClique G) ∧
+    ∃ G : SimpleGraph (Vertex r n), IsPartite G ∧
+      (∀ v, cliqueThreshold r n ≤ degree G v) ∧ ¬ HasTransversalClique G
+
+end JSP896

@@ -1,0 +1,26 @@
+JSP896/CriticalEdge.lean:31:0: warning: automatically included section variable(s) unused in theorem `JSP896.CriticalEdge.deletePair_le`:
+  [Fintype V]
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+JSP896/CriticalEdge.lean:35:0: warning: automatically included section variable(s) unused in theorem `JSP896.CriticalEdge.deletePair_not_adj`:
+  [Fintype V]
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+JSP896/CriticalEdge.lean:88:0: warning: automatically included section variable(s) unused in theorem `JSP896.CriticalEdge.endpoints_mem`:
+  [Fintype V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+JSP896/CriticalEdge.lean:237:36: error: typeclass instance problem is stuck
+  Singleton ι ?m.1202
+
+Note: Lean will not try to resolve this typeclass instance problem because the second type argument to `Singleton` is a metavariable. This argument must be fully determined before Lean will try to resolve the typeclass.
+
+Hint: Adding type annotations and supplying implicit arguments to functions can give Lean more information for typeclass resolution. For example, if you have a variable `x` that you intend to be a `Nat`, but Lean reports it as having an unresolved type like `?m`, replacing `x` with `(x : Nat)` can get typeclass resolution un-stuck.

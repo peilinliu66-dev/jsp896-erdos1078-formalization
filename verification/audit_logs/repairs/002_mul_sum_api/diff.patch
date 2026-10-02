@@ -1,0 +1,11 @@
+--- before/JSP896.PairedDeficit
++++ after/JSP896.PairedDeficit
+@@ -84,7 +84,7 @@
+       intro j hj
+       exact mul_le_mul_of_nonneg_right (coefficient_le P S t hs ht j) (hδ j)
+     _ = ((S.card : ℝ) - 1) * ∑ j, δ j := by
+-      rw [Finset.mul_sum]
++      rw [mul_sum]
+ 
+ /-- No such paired-cell domination certificate can cover the residual cells
+ after deletion of at most d vertices when the total deficit is below d. -/

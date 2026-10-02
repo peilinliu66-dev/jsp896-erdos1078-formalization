@@ -1,0 +1,1114 @@
+{
+  "status": "PASSED",
+  "started_utc": "2026-10-02T08:07:14.238671+00:00",
+  "project": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate",
+  "script_sha256": "93a0f9bac773e8714dddfdc7dd476b794bea4b24480fb4ecf6bd8f06985d485c",
+  "fixed_toolchain": "leanprover/lean4:v4.35.0-rc3",
+  "fixed_mathlib_rev": "2a885768dae569d938bb9ff3474da6a8753bb90a",
+  "fixed_dependency_revisions": {
+    "mathlib": "2a885768dae569d938bb9ff3474da6a8753bb90a",
+    "plausible": "b7fb2b866d25bd937a2069931f9733197521cb27",
+    "LeanSearchClient": "c35806f43135ab3f254429d0c00bd13fc0123f77",
+    "importGraph": "103cd9a46972ee39d9defb2f54ae49823b1228eb",
+    "proofwidgets": "87dfe779d5dfd03142ee4fe158911b8eb553ec98",
+    "aesop": "a92ed98e694702934d40d12f24a1a449144db43e",
+    "Qq": "37b0ba0b26109cf9f9c541f0f9557e50cfa1a3b9",
+    "batteries": "950339ce0fd0cc0673a22d87036075737586aed2",
+    "Cli": "843844fa601dd56767b1eb22b7ada5b64d5e567a"
+  },
+  "elan_install_flag": "Not used; elan run requires the fixed toolchain to be already installed",
+  "build_threads": 2,
+  "check_threads": 1,
+  "official_cache_requested": false,
+  "lake_cache_present_at_start": true,
+  "steps": [
+    {
+      "label": "lean-version",
+      "command": [
+        "elan",
+        "run",
+        "leanprover/lean4:v4.35.0-rc3",
+        "lean",
+        "--version"
+      ],
+      "cwd": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate",
+      "lean_num_threads": 1,
+      "started_utc": "2026-10-02T08:07:14.242204+00:00",
+      "status": "PASSED",
+      "log": "01-lean-version.log",
+      "raw_log": "01-lean-version.raw",
+      "natural_returncode": 0,
+      "forced_termination": false,
+      "returncode": 0,
+      "ended_utc": "2026-10-02T08:07:14.363033+00:00",
+      "elapsed_seconds": 0.11988669994752854,
+      "log_sha256": "d87bcf6f3d8d18fe8c1bd0c9e58823a7260749fa4075a3784ae49af1843d1f91",
+      "raw_log_sha256": "d87bcf6f3d8d18fe8c1bd0c9e58823a7260749fa4075a3784ae49af1843d1f91",
+      "utf8_log_identical_to_raw": true
+    },
+    {
+      "label": "whole-project-build",
+      "command": [
+        "elan",
+        "run",
+        "leanprover/lean4:v4.35.0-rc3",
+        "lake",
+        "--rehash",
+        "build",
+        "JSP896"
+      ],
+      "cwd": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate",
+      "lean_num_threads": 2,
+      "started_utc": "2026-10-02T08:07:14.371827+00:00",
+      "status": "PASSED",
+      "log": "02-whole-project-build.log",
+      "raw_log": "02-whole-project-build.raw",
+      "natural_returncode": 0,
+      "forced_termination": false,
+      "returncode": 0,
+      "ended_utc": "2026-10-02T08:07:28.586277+00:00",
+      "elapsed_seconds": 14.213570200023241,
+      "log_sha256": "d073000eebcc2757eb6e387820b0b41c1f6a391ab7b2ebd221a085e67199588a",
+      "raw_log_sha256": "d073000eebcc2757eb6e387820b0b41c1f6a391ab7b2ebd221a085e67199588a",
+      "utf8_log_identical_to_raw": true
+    },
+    {
+      "label": "dependency-mathlib-HEAD",
+      "command": [
+        "git",
+        "-C",
+        "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate\\.lake\\packages\\mathlib",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate",
+      "lean_num_threads": 1,
+      "started_utc": "2026-10-02T08:07:28.599159+00:00",
+      "status": "PASSED",
+      "log": "03-dependency-mathlib-HEAD.log",
+      "raw_log": "03-dependency-mathlib-HEAD.raw",
+      "natural_returncode": 0,
+      "forced_termination": false,
+      "returncode": 0,
+      "ended_utc": "2026-10-02T08:07:28.656813+00:00",
+      "elapsed_seconds": 0.05648459994699806,
+      "log_sha256": "0e53459a029dd2aa1d9048b1261b5e6f7a34ea8f584c7f8e14620fdcd33dbc0d",
+      "raw_log_sha256": "0e53459a029dd2aa1d9048b1261b5e6f7a34ea8f584c7f8e14620fdcd33dbc0d",
+      "utf8_log_identical_to_raw": true
+    },
+    {
+      "label": "dependency-mathlib-tracked-status",
+      "command": [
+        "git",
+        "-C",
+        "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate\\.lake\\packages\\mathlib",
+        "status",
+        "--porcelain",
+        "--untracked-files=all"
+      ],
+      "cwd": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate",
+      "lean_num_threads": 1,
+      "started_utc": "2026-10-02T08:07:28.664111+00:00",
+      "status": "PASSED",
+      "log": "04-dependency-mathlib-tracked-status.log",
+      "raw_log": "04-dependency-mathlib-tracked-status.raw",
+      "natural_returncode": 0,
+      "forced_termination": false,
+      "returncode": 0,
+      "ended_utc": "2026-10-02T08:07:28.775389+00:00",
+      "elapsed_seconds": 0.11019529995974153,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "utf8_log_identical_to_raw": true
+    },
+    {
+      "label": "dependency-plausible-HEAD",
+      "command": [
+        "git",
+        "-C",
+        "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate\\.lake\\packages\\plausible",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate",
+      "lean_num_threads": 1,
+      "started_utc": "2026-10-02T08:07:28.778991+00:00",
+      "status": "PASSED",
+      "log": "05-dependency-plausible-HEAD.log",
+      "raw_log": "05-dependency-plausible-HEAD.raw",
+      "natural_returncode": 0,
+      "forced_termination": false,
+      "returncode": 0,
+      "ended_utc": "2026-10-02T08:07:28.841782+00:00",
+      "elapsed_seconds": 0.06114550004713237,
+      "log_sha256": "80ca8b952be7adf60389824ac56352b589609b54bfe8b20eb7f78e0d87d4520a",
+      "raw_log_sha256": "80ca8b952be7adf60389824ac56352b589609b54bfe8b20eb7f78e0d87d4520a",
+      "utf8_log_identical_to_raw": true
+    },
+    {
+      "label": "dependency-plausible-tracked-status",
+      "command": [
+        "git",
+        "-C",
+        "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate\\.lake\\packages\\plausible",
+        "status",
+        "--porcelain",
+        "--untracked-files=all"
+      ],
+      "cwd": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate",
+      "lean_num_threads": 1,
+      "started_utc": "2026-10-02T08:07:28.849993+00:00",
+      "status": "PASSED",
+      "log": "06-dependency-plausible-tracked-status.log",
+      "raw_log": "06-dependency-plausible-tracked-status.raw",
+      "natural_returncode": 0,
+      "forced_termination": false,
+      "returncode": 0,
+      "ended_utc": "2026-10-02T08:07:28.981359+00:00",
+      "elapsed_seconds": 0.12954019999597222,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "utf8_log_identical_to_raw": true
+    },
+    {
+      "label": "dependency-LeanSearchClient-HEAD",
+      "command": [
+        "git",
+        "-C",
+        "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate\\.lake\\packages\\LeanSearchClient",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate",
+      "lean_num_threads": 1,
+      "started_utc": "2026-10-02T08:07:28.985175+00:00",
+      "status": "PASSED",
+      "log": "07-dependency-LeanSearchClient-HEAD.log",
+      "raw_log": "07-dependency-LeanSearchClient-HEAD.raw",
+      "natural_returncode": 0,
+      "forced_termination": false,
+      "returncode": 0,
+      "ended_utc": "2026-10-02T08:07:29.042792+00:00",
+      "elapsed_seconds": 0.056353499996475875,
+      "log_sha256": "6b988d86da78e55383613fcc6c4c3c9d217c266a80e79cf2294c75886d03e14c",
+      "raw_log_sha256": "6b988d86da78e55383613fcc6c4c3c9d217c266a80e79cf2294c75886d03e14c",
+      "utf8_log_identical_to_raw": true
+    },
+    {
+      "label": "dependency-LeanSearchClient-tracked-status",
+      "command": [
+        "git",
+        "-C",
+        "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate\\.lake\\packages\\LeanSearchClient",
+        "status",
+        "--porcelain",
+        "--untracked-files=all"
+      ],
+      "cwd": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate",
+      "lean_num_threads": 1,
+      "started_utc": "2026-10-02T08:07:29.051164+00:00",
+      "status": "PASSED",
+      "log": "08-dependency-LeanSearchClient-tracked-status.log",
+      "raw_log": "08-dependency-LeanSearchClient-tracked-status.raw",
+      "natural_returncode": 0,
+      "forced_termination": false,
+      "returncode": 0,
+      "ended_utc": "2026-10-02T08:07:29.113273+00:00",
+      "elapsed_seconds": 0.060794100048951805,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "utf8_log_identical_to_raw": true
+    },
+    {
+      "label": "dependency-importGraph-HEAD",
+      "command": [
+        "git",
+        "-C",
+        "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate\\.lake\\packages\\importGraph",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate",
+      "lean_num_threads": 1,
+      "started_utc": "2026-10-02T08:07:29.116620+00:00",
+      "status": "PASSED",
+      "log": "09-dependency-importGraph-HEAD.log",
+      "raw_log": "09-dependency-importGraph-HEAD.raw",
+      "natural_returncode": 0,
+      "forced_termination": false,
+      "returncode": 0,
+      "ended_utc": "2026-10-02T08:07:29.189651+00:00",
+      "elapsed_seconds": 0.07178619992919266,
+      "log_sha256": "a4afded6fd69fb1d65cc13bb371eaecb8bc64d315b29b23ec78de1de0cf8b996",
+      "raw_log_sha256": "a4afded6fd69fb1d65cc13bb371eaecb8bc64d315b29b23ec78de1de0cf8b996",
+      "utf8_log_identical_to_raw": true
+    },
+    {
+      "label": "dependency-importGraph-tracked-status",
+      "command": [
+        "git",
+        "-C",
+        "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate\\.lake\\packages\\importGraph",
+        "status",
+        "--porcelain",
+        "--untracked-files=all"
+      ],
+      "cwd": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate",
+      "lean_num_threads": 1,
+      "started_utc": "2026-10-02T08:07:29.199860+00:00",
+      "status": "PASSED",
+      "log": "10-dependency-importGraph-tracked-status.log",
+      "raw_log": "10-dependency-importGraph-tracked-status.raw",
+      "natural_returncode": 0,
+      "forced_termination": false,
+      "returncode": 0,
+      "ended_utc": "2026-10-02T08:07:29.267434+00:00",
+      "elapsed_seconds": 0.0663720000302419,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "utf8_log_identical_to_raw": true
+    },
+    {
+      "label": "dependency-proofwidgets-HEAD",
+      "command": [
+        "git",
+        "-C",
+        "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate\\.lake\\packages\\proofwidgets",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate",
+      "lean_num_threads": 1,
+      "started_utc": "2026-10-02T08:07:29.271006+00:00",
+      "status": "PASSED",
+      "log": "11-dependency-proofwidgets-HEAD.log",
+      "raw_log": "11-dependency-proofwidgets-HEAD.raw",
+      "natural_returncode": 0,
+      "forced_termination": false,
+      "returncode": 0,
+      "ended_utc": "2026-10-02T08:07:29.327115+00:00",
+      "elapsed_seconds": 0.05510500003583729,
+      "log_sha256": "633a6bf2922fab293630544166ed6219fe6c8c0b6464530dc636a5bba7a1056b",
+      "raw_log_sha256": "633a6bf2922fab293630544166ed6219fe6c8c0b6464530dc636a5bba7a1056b",
+      "utf8_log_identical_to_raw": true
+    },
+    {
+      "label": "dependency-proofwidgets-tracked-status",
+      "command": [
+        "git",
+        "-C",
+        "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate\\.lake\\packages\\proofwidgets",
+        "status",
+        "--porcelain",
+        "--untracked-files=all"
+      ],
+      "cwd": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate",
+      "lean_num_threads": 1,
+      "started_utc": "2026-10-02T08:07:29.335534+00:00",
+      "status": "PASSED",
+      "log": "12-dependency-proofwidgets-tracked-status.log",
+      "raw_log": "12-dependency-proofwidgets-tracked-status.raw",
+      "natural_returncode": 0,
+      "forced_termination": false,
+      "returncode": 0,
+      "ended_utc": "2026-10-02T08:07:29.401534+00:00",
+      "elapsed_seconds": 0.06433859991375357,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "utf8_log_identical_to_raw": true
+    },
+    {
+      "label": "dependency-aesop-HEAD",
+      "command": [
+        "git",
+        "-C",
+        "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate\\.lake\\packages\\aesop",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate",
+      "lean_num_threads": 1,
+      "started_utc": "2026-10-02T08:07:29.404822+00:00",
+      "status": "PASSED",
+      "log": "13-dependency-aesop-HEAD.log",
+      "raw_log": "13-dependency-aesop-HEAD.raw",
+      "natural_returncode": 0,
+      "forced_termination": false,
+      "returncode": 0,
+      "ended_utc": "2026-10-02T08:07:29.459722+00:00",
+      "elapsed_seconds": 0.0531777999131009,
+      "log_sha256": "e3f70faa0411888259fef7f62f9154b6f05b86c2af0aa5a711aebe0df75540db",
+      "raw_log_sha256": "e3f70faa0411888259fef7f62f9154b6f05b86c2af0aa5a711aebe0df75540db",
+      "utf8_log_identical_to_raw": true
+    },
+    {
+      "label": "dependency-aesop-tracked-status",
+      "command": [
+        "git",
+        "-C",
+        "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate\\.lake\\packages\\aesop",
+        "status",
+        "--porcelain",
+        "--untracked-files=all"
+      ],
+      "cwd": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate",
+      "lean_num_threads": 1,
+      "started_utc": "2026-10-02T08:07:29.467270+00:00",
+      "status": "PASSED",
+      "log": "14-dependency-aesop-tracked-status.log",
+      "raw_log": "14-dependency-aesop-tracked-status.raw",
+      "natural_returncode": 0,
+      "forced_termination": false,
+      "returncode": 0,
+      "ended_utc": "2026-10-02T08:07:29.536072+00:00",
+      "elapsed_seconds": 0.0675406000809744,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "utf8_log_identical_to_raw": true
+    },
+    {
+      "label": "dependency-Qq-HEAD",
+      "command": [
+        "git",
+        "-C",
+        "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate\\.lake\\packages\\Qq",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate",
+      "lean_num_threads": 1,
+      "started_utc": "2026-10-02T08:07:29.539773+00:00",
+      "status": "PASSED",
+      "log": "15-dependency-Qq-HEAD.log",
+      "raw_log": "15-dependency-Qq-HEAD.raw",
+      "natural_returncode": 0,
+      "forced_termination": false,
+      "returncode": 0,
+      "ended_utc": "2026-10-02T08:07:29.597236+00:00",
+      "elapsed_seconds": 0.05580500001087785,
+      "log_sha256": "a47f4c6be68b1a3391e2d1668eb3d3a8308855446f433e6efe89e8388081612c",
+      "raw_log_sha256": "a47f4c6be68b1a3391e2d1668eb3d3a8308855446f433e6efe89e8388081612c",
+      "utf8_log_identical_to_raw": true
+    },
+    {
+      "label": "dependency-Qq-tracked-status",
+      "command": [
+        "git",
+        "-C",
+        "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate\\.lake\\packages\\Qq",
+        "status",
+        "--porcelain",
+        "--untracked-files=all"
+      ],
+      "cwd": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate",
+      "lean_num_threads": 1,
+      "started_utc": "2026-10-02T08:07:29.606406+00:00",
+      "status": "PASSED",
+      "log": "16-dependency-Qq-tracked-status.log",
+      "raw_log": "16-dependency-Qq-tracked-status.raw",
+      "natural_returncode": 0,
+      "forced_termination": false,
+      "returncode": 0,
+      "ended_utc": "2026-10-02T08:07:29.672135+00:00",
+      "elapsed_seconds": 0.06443569995462894,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "utf8_log_identical_to_raw": true
+    },
+    {
+      "label": "dependency-batteries-HEAD",
+      "command": [
+        "git",
+        "-C",
+        "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate\\.lake\\packages\\batteries",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate",
+      "lean_num_threads": 1,
+      "started_utc": "2026-10-02T08:07:29.675793+00:00",
+      "status": "PASSED",
+      "log": "17-dependency-batteries-HEAD.log",
+      "raw_log": "17-dependency-batteries-HEAD.raw",
+      "natural_returncode": 0,
+      "forced_termination": false,
+      "returncode": 0,
+      "ended_utc": "2026-10-02T08:07:29.729750+00:00",
+      "elapsed_seconds": 0.05286050005815923,
+      "log_sha256": "89299862e1fa8fcbd4478d22363613503e5729a10e5504e728ff69cbe9710c5f",
+      "raw_log_sha256": "89299862e1fa8fcbd4478d22363613503e5729a10e5504e728ff69cbe9710c5f",
+      "utf8_log_identical_to_raw": true
+    },
+    {
+      "label": "dependency-batteries-tracked-status",
+      "command": [
+        "git",
+        "-C",
+        "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate\\.lake\\packages\\batteries",
+        "status",
+        "--porcelain",
+        "--untracked-files=all"
+      ],
+      "cwd": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate",
+      "lean_num_threads": 1,
+      "started_utc": "2026-10-02T08:07:29.737656+00:00",
+      "status": "PASSED",
+      "log": "18-dependency-batteries-tracked-status.log",
+      "raw_log": "18-dependency-batteries-tracked-status.raw",
+      "natural_returncode": 0,
+      "forced_termination": false,
+      "returncode": 0,
+      "ended_utc": "2026-10-02T08:07:29.810032+00:00",
+      "elapsed_seconds": 0.07098649989347905,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "utf8_log_identical_to_raw": true
+    },
+    {
+      "label": "dependency-Cli-HEAD",
+      "command": [
+        "git",
+        "-C",
+        "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate\\.lake\\packages\\Cli",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate",
+      "lean_num_threads": 1,
+      "started_utc": "2026-10-02T08:07:29.813832+00:00",
+      "status": "PASSED",
+      "log": "19-dependency-Cli-HEAD.log",
+      "raw_log": "19-dependency-Cli-HEAD.raw",
+      "natural_returncode": 0,
+      "forced_termination": false,
+      "returncode": 0,
+      "ended_utc": "2026-10-02T08:07:29.870032+00:00",
+      "elapsed_seconds": 0.054766700020991266,
+      "log_sha256": "efd27d1be1ced38a2f47b3f9f4734e733003fddfb804c5c15502042633745d26",
+      "raw_log_sha256": "efd27d1be1ced38a2f47b3f9f4734e733003fddfb804c5c15502042633745d26",
+      "utf8_log_identical_to_raw": true
+    },
+    {
+      "label": "dependency-Cli-tracked-status",
+      "command": [
+        "git",
+        "-C",
+        "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate\\.lake\\packages\\Cli",
+        "status",
+        "--porcelain",
+        "--untracked-files=all"
+      ],
+      "cwd": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate",
+      "lean_num_threads": 1,
+      "started_utc": "2026-10-02T08:07:29.877674+00:00",
+      "status": "PASSED",
+      "log": "20-dependency-Cli-tracked-status.log",
+      "raw_log": "20-dependency-Cli-tracked-status.raw",
+      "natural_returncode": 0,
+      "forced_termination": false,
+      "returncode": 0,
+      "ended_utc": "2026-10-02T08:07:29.939973+00:00",
+      "elapsed_seconds": 0.06093129992950708,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "utf8_log_identical_to_raw": true
+    },
+    {
+      "label": "expanded-statements-and-axioms",
+      "command": [
+        "elan",
+        "run",
+        "leanprover/lean4:v4.35.0-rc3",
+        "lake",
+        "env",
+        "lean",
+        "VerifyOriginalStatement.lean"
+      ],
+      "cwd": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate",
+      "lean_num_threads": 1,
+      "started_utc": "2026-10-02T08:07:29.945184+00:00",
+      "status": "PASSED",
+      "log": "21-expanded-statements-and-axioms.log",
+      "raw_log": "21-expanded-statements-and-axioms.raw",
+      "natural_returncode": 0,
+      "forced_termination": false,
+      "returncode": 0,
+      "ended_utc": "2026-10-02T08:07:45.511243+00:00",
+      "elapsed_seconds": 15.56463509995956,
+      "log_sha256": "e8f87d17b2e5a99e7aa972f3c40ea23e9c44fe6d92274f11707a802c2e8ffa0a",
+      "raw_log_sha256": "e8f87d17b2e5a99e7aa972f3c40ea23e9c44fe6d92274f11707a802c2e8ffa0a",
+      "utf8_log_identical_to_raw": true
+    },
+    {
+      "label": "proof-chain-axioms",
+      "command": [
+        "elan",
+        "run",
+        "leanprover/lean4:v4.35.0-rc3",
+        "lake",
+        "env",
+        "lean",
+        "verification/FullAxiomAudit.lean"
+      ],
+      "cwd": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate",
+      "lean_num_threads": 1,
+      "started_utc": "2026-10-02T08:07:45.523786+00:00",
+      "status": "PASSED",
+      "log": "22-proof-chain-axioms.log",
+      "raw_log": "22-proof-chain-axioms.raw",
+      "natural_returncode": 0,
+      "forced_termination": false,
+      "returncode": 0,
+      "ended_utc": "2026-10-02T08:07:59.914509+00:00",
+      "elapsed_seconds": 14.38930459995754,
+      "log_sha256": "040304fd47cfdf015a0a937848a1f46963ea2fdfe4b43fc18040cffc95c90b1b",
+      "raw_log_sha256": "040304fd47cfdf015a0a937848a1f46963ea2fdfe4b43fc18040cffc95c90b1b",
+      "utf8_log_identical_to_raw": true
+    },
+    {
+      "label": "initial-chain-axioms",
+      "command": [
+        "elan",
+        "run",
+        "leanprover/lean4:v4.35.0-rc3",
+        "lake",
+        "env",
+        "lean",
+        "verification/InitialAxiomAudit.lean"
+      ],
+      "cwd": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate",
+      "lean_num_threads": 1,
+      "started_utc": "2026-10-02T08:07:59.928917+00:00",
+      "status": "PASSED",
+      "log": "23-initial-chain-axioms.log",
+      "raw_log": "23-initial-chain-axioms.raw",
+      "natural_returncode": 0,
+      "forced_termination": false,
+      "returncode": 0,
+      "ended_utc": "2026-10-02T08:08:14.091669+00:00",
+      "elapsed_seconds": 14.161392999929376,
+      "log_sha256": "90433fe5661ddb0e6ebeb553111535accb47923898e25596aefa3f84efb52cea",
+      "raw_log_sha256": "90433fe5661ddb0e6ebeb553111535accb47923898e25596aefa3f84efb52cea",
+      "utf8_log_identical_to_raw": true
+    },
+    {
+      "label": "main-kernel-replay",
+      "command": [
+        "elan",
+        "run",
+        "leanprover/lean4:v4.35.0-rc3",
+        "lake",
+        "env",
+        "leanchecker",
+        "--verbose",
+        "JSP896.Main"
+      ],
+      "cwd": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate",
+      "lean_num_threads": 1,
+      "started_utc": "2026-10-02T08:08:14.103981+00:00",
+      "status": "PASSED",
+      "log": "24-main-kernel-replay.log",
+      "raw_log": "24-main-kernel-replay.raw",
+      "natural_returncode": 0,
+      "forced_termination": false,
+      "returncode": 0,
+      "ended_utc": "2026-10-02T08:08:46.781025+00:00",
+      "elapsed_seconds": 32.675411799922585,
+      "log_sha256": "2b755ec145fcd20eef00017b5b423dda69923b979a5a27000c7a513f906d835d",
+      "raw_log_sha256": "2b755ec145fcd20eef00017b5b423dda69923b979a5a27000c7a513f906d835d",
+      "utf8_log_identical_to_raw": true
+    }
+  ],
+  "sources_before": {
+    "JSP896/CellCounting.lean": "7eb68cb224efc8b0a94127817281fab9471268ead1b7f48e66d0e5e4983c5b3e",
+    "JSP896/CellDeletion.lean": "ab23011e1732252ea4e9295faae4f3012ee60812483ea47924dedded8215c8c0",
+    "JSP896/CellStructure.lean": "b5c6e1a4df2c208165298a93ca45d9bcc9af3d3451a98157415eed391acd3be2",
+    "JSP896/CertificateIMC.lean": "a209ea24936ca8b48bbf352be5c7387801096edd7a37996c5a76a6bab5715cd2",
+    "JSP896/CertificateMatching.lean": "4ae0a57e3524e595933671720d4455795bea16a507326cc024d5ef71d54ee18a",
+    "JSP896/CertificateMultiplicity.lean": "e269ca7d58a244a6f4c2ae87c01f7edc26094c0987561224fcfa13e61450b92c",
+    "JSP896/CertificateSize.lean": "72a4373bdffeb754e8fc228bd3db92e6447e8c2838dc74addd089c05f6eb7205",
+    "JSP896/ClassTreeGrowth.lean": "c9b87736c499412d9c767e550d89f236952d43d376cf5d6821064fb7a0a7dcc5",
+    "JSP896/CompatibleStars.lean": "3ffda5e1043cef10ca964303e7659b3faa01e8f4df604acaf50fb1635eaaf452",
+    "JSP896/Complement.lean": "be5c546d07aa1ac0c14e45629f7b09d31e21aa4804318779adc6593d1de22460",
+    "JSP896/CriticalEdge.lean": "b65ced03c9845a0b3df9aec96d96130997267ffbf9be6511b6b8adc96d295487",
+    "JSP896/DominationCertificate.lean": "0a5953b61784d6eff67abd3733d7ece4e78ea9174518b7a5cc86fea3dc23021d",
+    "JSP896/EvenSufficiency.lean": "4ac0b43d33bb967ed3a2f03dd81d5f6aaf496090fd477cfbfe6499121be489b2",
+    "JSP896/ExpandedCells.lean": "be1d039a3f1de74ceef94d580d57feae0aa09af7abc674915a815f45502be61a",
+    "JSP896/FaithfulExtension.lean": "5680cae06d28fc6cb1e36e0c73944ad9ef856b2cac9c9d473fbd0f33d18bb654",
+    "JSP896/FeasibleExtension.lean": "aaa8f0b8f78c30dda4e2641df6d989374a94cb2ca73ef375360cae7ab5e38599",
+    "JSP896/FeasibleGrowth.lean": "329ed7c41c0e0983af9007d6d069661fd2585d27c37c4a79e90f126c66483352",
+    "JSP896/FeasiblePair.lean": "9267b5436faf0f35823d2278ac2a58d369f2b6019558df5784322c8275aec887",
+    "JSP896/FiniteGraphCounting.lean": "cc4cfeb760deb7f73ad00f22a4800fed335831f929c97913bcba11945a98ed6d",
+    "JSP896/FiniteTransversal.lean": "1b39db58319cd8acaf487ef88c7bc542b4e6e80b71f21c94b989ae725b3b4123",
+    "JSP896/Main.lean": "55e08964a09ce3b9d8e87096a381239a004ab84aebe5c2ce41bc9cd44db5fd1e",
+    "JSP896/MatchingCells.lean": "2d5af0cf74fcad6f79065dd52e6785d6833ecdfc06153a10aab45b461bca4fba",
+    "JSP896/MatchingExchange.lean": "71bcbf38641b36a06f0c3b47fb5af8002fb3cd4bfc63578d551ce9e08f92a757",
+    "JSP896/MatchingFacts.lean": "cc86ad5b6e213d41404490433129a4a5bf67168bbb4f12962796c0c77f1664a0",
+    "JSP896/MatchingOrientation.lean": "f0e83af73226cde82b897d80b9f06a508b7f7680296dd0ca0c72cff0e8c33d79",
+    "JSP896/MatchingOrientationCentroid.lean": "5941047c51bfa87890f96ae3e8f62f3ba57560d7c2402d5f8f9d2229d5a162e2",
+    "JSP896/MatchingTree.lean": "713c470bbd8306b011760a33e5b22aff4a7ed77d8ee374a5d7ba78f39d01fe82",
+    "JSP896/OddComponents.lean": "808cb78ed801786bcba868fe46adaab9e8b00a9242b3c8b784967244e9eaa06f",
+    "JSP896/OddComponentsCentroid.lean": "7a2e66b3813c73b566052d2277fda50633b1edb35474ce359b863506ae90ebae",
+    "JSP896/OddComponentsCounting.lean": "1c08e221ad45307beec3ff64120bbcae730c9996a44f858843dee2051c729410",
+    "JSP896/OddComponentsOrientation.lean": "a9004f4f7f315de7183477918efc46284bfb2ee3513605f6e7f739967551ff07",
+    "JSP896/OddComponentsReachability.lean": "4aff10299e716b3c525b93a685758ea049908f44d486e2d275089ae1900980e4",
+    "JSP896/OddComponentsSwitching.lean": "6773d822717ee26d969b8a880ab136b3c318253a33b2924b3ba64e9fe45b5082",
+    "JSP896/OddComponentsTerminal.lean": "fd7f8f97bc236ae735125b2b56d061bf05fadaf1bd873d9d599f7ce8ece81622",
+    "JSP896/PairedCellTransversal.lean": "306331d977386c3d6a5a4544130b9eccf38be7f9089ba1edc6eb2070c7f19c7a",
+    "JSP896/PairedDeficit.lean": "79ab95e7c3bb3797e0c7193078a0f7ffec10fd27b8e3d8df4e0e49660dbc8f4b",
+    "JSP896/Sharpness.lean": "7af87db2d119bb54a183fbbc47cbe45a49414a8a5557b19b5b902c222ff446a1",
+    "JSP896/SharpnessChains.lean": "17f5473ed61698df7236a69890bb3f159f657914bbf8b1ebf46ed50c60ed8108",
+    "JSP896/SharpnessTools.lean": "1175af6fb27f617776affc29892967fbaf9a65b7d0a9995f8e46924e120030be",
+    "JSP896/SmallCases.lean": "9bab886da0e5ff5eccaedc7ec35890f353fb7aaf21cc6541b47fb3b2ce11f3a1",
+    "JSP896/Statement.lean": "d42fe8a6e3e7dc191423b07d836ee4221721622da42ec6056496d80951ae6944",
+    "JSP896/StructureBounds.lean": "53ebdaafbab9e74bf137c86a8df2421eeec8c716663167a0c040e14a388af27c",
+    "JSP896/ThresholdArithmetic.lean": "1c4b5a2966c9f19bc9dbe2fc463d1b00bea2c3f1e1ba0321d91a3bf7ff6ec5ed",
+    "JSP896/ThresholdAsymptotics.lean": "658f7d3fd4fbe2546a53300994123ccfe2dc4ca3113039391208b5eb0fd6d1aa",
+    "JSP896.lean": "08b876bed3a981b17ce26968aa965b9faa9956992a75b7b12f592f798086c2c4",
+    "lake-manifest.json": "30de5bdbfd5a20d462def7230969cfdbd850e04b6423ab0b21ea46469084435e",
+    "lakefile.toml": "f00869bbbc2f17e9a71207a82a5ec026f0ed04f8f9c02c0ced4d8aa5f5d96f03",
+    "lean-toolchain": "bc84812c94489d1e3e191baa1dc10d5eb684382d7fe9d2a5ab085e72c1c67e47",
+    "verification/FullAxiomAudit.lean": "2f3364382e3b9d63da7cf18ac17356fd33f3deafd8f8b533daf91261c0b74aa6",
+    "verification/InitialAxiomAudit.lean": "7bbbc6fc248ca69667676049c4691884ddecc3b1fd5e6a593f1086705a08c463",
+    "VerifyOriginalStatement.lean": "f01129d9140588c4f2c7989f851e24f6038ad928c1e390ecc9f68ac77c40248c"
+  },
+  "kernel_replay_scope": "Main module replay using imported dependency environment; no --fresh; unsafe/partial declarations skipped and axiom declarations permitted by leanchecker; separate six expanded-target, nine proof-chain and six initial-chain axiom reports required",
+  "verification_scope": "Observed process exits, exact pinned setup, expanded statement/axiom checks and Main module replay; no software installation or publication",
+  "declared_toolchain": "leanprover/lean4:v4.35.0-rc3",
+  "dependency_manifest": {
+    "version": "1.3.0",
+    "packagesDir": ".lake/packages",
+    "packages": [
+      {
+        "url": "https://github.com/leanprover-community/mathlib4.git",
+        "type": "git",
+        "subDir": null,
+        "scope": "",
+        "rev": "2a885768dae569d938bb9ff3474da6a8753bb90a",
+        "name": "mathlib",
+        "manifestFile": "lake-manifest.json",
+        "inputRev": "2a885768dae569d938bb9ff3474da6a8753bb90a",
+        "inherited": false,
+        "configFile": "lakefile.lean"
+      },
+      {
+        "url": "https://github.com/leanprover-community/plausible",
+        "type": "git",
+        "subDir": null,
+        "scope": "leanprover-community",
+        "rev": "b7fb2b866d25bd937a2069931f9733197521cb27",
+        "name": "plausible",
+        "manifestFile": "lake-manifest.json",
+        "inputRev": "main",
+        "inherited": true,
+        "configFile": "lakefile.toml"
+      },
+      {
+        "url": "https://github.com/leanprover-community/LeanSearchClient",
+        "type": "git",
+        "subDir": null,
+        "scope": "leanprover-community",
+        "rev": "c35806f43135ab3f254429d0c00bd13fc0123f77",
+        "name": "LeanSearchClient",
+        "manifestFile": "lake-manifest.json",
+        "inputRev": "main",
+        "inherited": true,
+        "configFile": "lakefile.toml"
+      },
+      {
+        "url": "https://github.com/leanprover-community/import-graph",
+        "type": "git",
+        "subDir": null,
+        "scope": "leanprover-community",
+        "rev": "103cd9a46972ee39d9defb2f54ae49823b1228eb",
+        "name": "importGraph",
+        "manifestFile": "lake-manifest.json",
+        "inputRev": "main",
+        "inherited": true,
+        "configFile": "lakefile.toml"
+      },
+      {
+        "url": "https://github.com/leanprover-community/ProofWidgets4",
+        "type": "git",
+        "subDir": null,
+        "scope": "leanprover-community",
+        "rev": "87dfe779d5dfd03142ee4fe158911b8eb553ec98",
+        "name": "proofwidgets",
+        "manifestFile": "lake-manifest.json",
+        "inputRev": "main",
+        "inherited": true,
+        "configFile": "lakefile.lean"
+      },
+      {
+        "url": "https://github.com/leanprover-community/aesop",
+        "type": "git",
+        "subDir": null,
+        "scope": "leanprover-community",
+        "rev": "a92ed98e694702934d40d12f24a1a449144db43e",
+        "name": "aesop",
+        "manifestFile": "lake-manifest.json",
+        "inputRev": "master",
+        "inherited": true,
+        "configFile": "lakefile.toml"
+      },
+      {
+        "url": "https://github.com/leanprover-community/quote4",
+        "type": "git",
+        "subDir": null,
+        "scope": "leanprover-community",
+        "rev": "37b0ba0b26109cf9f9c541f0f9557e50cfa1a3b9",
+        "name": "Qq",
+        "manifestFile": "lake-manifest.json",
+        "inputRev": "master",
+        "inherited": true,
+        "configFile": "lakefile.toml"
+      },
+      {
+        "url": "https://github.com/leanprover-community/batteries",
+        "type": "git",
+        "subDir": null,
+        "scope": "leanprover-community",
+        "rev": "950339ce0fd0cc0673a22d87036075737586aed2",
+        "name": "batteries",
+        "manifestFile": "lake-manifest.json",
+        "inputRev": "main",
+        "inherited": true,
+        "configFile": "lakefile.toml"
+      },
+      {
+        "url": "https://github.com/leanprover/lean4-cli",
+        "type": "git",
+        "subDir": null,
+        "scope": "leanprover",
+        "rev": "843844fa601dd56767b1eb22b7ada5b64d5e567a",
+        "name": "Cli",
+        "manifestFile": "lake-manifest.json",
+        "inputRev": "v4.35.0-rc3",
+        "inherited": true,
+        "configFile": "lakefile.toml"
+      }
+    ],
+    "name": "jsp896_erdos1078",
+    "lakeDir": ".lake",
+    "fixedToolchain": false
+  },
+  "actual_lean_version_output": "Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)\n",
+  "dependency_checkout_audit": {
+    "status": "PASSED",
+    "packages": [
+      {
+        "name": "mathlib",
+        "expected_revision": "2a885768dae569d938bb9ff3474da6a8753bb90a",
+        "directory": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate\\.lake\\packages\\mathlib",
+        "status": "PASSED",
+        "actual_revision": "2a885768dae569d938bb9ff3474da6a8753bb90a",
+        "tracked_status_output": "",
+        "head_matches_pin": true,
+        "tracked_clean": true
+      },
+      {
+        "name": "plausible",
+        "expected_revision": "b7fb2b866d25bd937a2069931f9733197521cb27",
+        "directory": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate\\.lake\\packages\\plausible",
+        "status": "PASSED",
+        "actual_revision": "b7fb2b866d25bd937a2069931f9733197521cb27",
+        "tracked_status_output": "",
+        "head_matches_pin": true,
+        "tracked_clean": true
+      },
+      {
+        "name": "LeanSearchClient",
+        "expected_revision": "c35806f43135ab3f254429d0c00bd13fc0123f77",
+        "directory": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate\\.lake\\packages\\LeanSearchClient",
+        "status": "PASSED",
+        "actual_revision": "c35806f43135ab3f254429d0c00bd13fc0123f77",
+        "tracked_status_output": "",
+        "head_matches_pin": true,
+        "tracked_clean": true
+      },
+      {
+        "name": "importGraph",
+        "expected_revision": "103cd9a46972ee39d9defb2f54ae49823b1228eb",
+        "directory": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate\\.lake\\packages\\importGraph",
+        "status": "PASSED",
+        "actual_revision": "103cd9a46972ee39d9defb2f54ae49823b1228eb",
+        "tracked_status_output": "",
+        "head_matches_pin": true,
+        "tracked_clean": true
+      },
+      {
+        "name": "proofwidgets",
+        "expected_revision": "87dfe779d5dfd03142ee4fe158911b8eb553ec98",
+        "directory": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate\\.lake\\packages\\proofwidgets",
+        "status": "PASSED",
+        "actual_revision": "87dfe779d5dfd03142ee4fe158911b8eb553ec98",
+        "tracked_status_output": "",
+        "head_matches_pin": true,
+        "tracked_clean": true
+      },
+      {
+        "name": "aesop",
+        "expected_revision": "a92ed98e694702934d40d12f24a1a449144db43e",
+        "directory": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate\\.lake\\packages\\aesop",
+        "status": "PASSED",
+        "actual_revision": "a92ed98e694702934d40d12f24a1a449144db43e",
+        "tracked_status_output": "",
+        "head_matches_pin": true,
+        "tracked_clean": true
+      },
+      {
+        "name": "Qq",
+        "expected_revision": "37b0ba0b26109cf9f9c541f0f9557e50cfa1a3b9",
+        "directory": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate\\.lake\\packages\\Qq",
+        "status": "PASSED",
+        "actual_revision": "37b0ba0b26109cf9f9c541f0f9557e50cfa1a3b9",
+        "tracked_status_output": "",
+        "head_matches_pin": true,
+        "tracked_clean": true
+      },
+      {
+        "name": "batteries",
+        "expected_revision": "950339ce0fd0cc0673a22d87036075737586aed2",
+        "directory": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate\\.lake\\packages\\batteries",
+        "status": "PASSED",
+        "actual_revision": "950339ce0fd0cc0673a22d87036075737586aed2",
+        "tracked_status_output": "",
+        "head_matches_pin": true,
+        "tracked_clean": true
+      },
+      {
+        "name": "Cli",
+        "expected_revision": "843844fa601dd56767b1eb22b7ada5b64d5e567a",
+        "directory": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate\\.lake\\packages\\Cli",
+        "status": "PASSED",
+        "actual_revision": "843844fa601dd56767b1eb22b7ada5b64d5e567a",
+        "tracked_status_output": "",
+        "head_matches_pin": true,
+        "tracked_clean": true
+      }
+    ]
+  },
+  "axiom_audit": {
+    "status": "PASSED",
+    "expected_reports": 6,
+    "actual_reports": 6,
+    "reports": {
+      "audit_literal_finite_clique_resolution": [
+        [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      ],
+      "audit_literal_independent_sufficiency": [
+        [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      ],
+      "audit_literal_fixed_r_limits": [
+        [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      ],
+      "audit_literal_large_r_independent_limit": [
+        [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      ],
+      "audit_literal_original_BES_large_r_limit": [
+        [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      ],
+      "JSP896.full_resolution_with_original_limits": [
+        [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      ]
+    },
+    "issues": []
+  },
+  "proof_chain_axiom_audit": {
+    "status": "PASSED",
+    "expected_reports": 9,
+    "actual_reports": 9,
+    "reports": {
+      "JSP896.FeasiblePair.exists_feasible_dominating": [
+        [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      ],
+      "JSP896.FeasiblePair.exists_matching_configuration": [
+        [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      ],
+      "JSP896.CriticalEdge.every_edge_in_matching": [
+        [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      ],
+      "JSP896.MatchingConfiguration.Tree.bipartiteModel_of_edges_in_imcs": [
+        [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      ],
+      "JSP896.OddComponents.hasFull_of_odd_components": [
+        [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      ],
+      "JSP896.independentTransversal_of_degree_lt_threshold": [
+        [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      ],
+      "JSP896.exists_sharpness_at_threshold": [
+        [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      ],
+      "JSP896.full_resolution": [
+        [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      ],
+      "JSP896.full_resolution_with_original_limits": [
+        [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      ]
+    },
+    "issues": []
+  },
+  "initial_chain_axiom_audit": {
+    "status": "PASSED",
+    "expected_reports": 6,
+    "actual_reports": 6,
+    "reports": {
+      "JSP896.crossComplement_involutive": [
+        [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      ],
+      "JSP896.independent_crossComplement_iff": [
+        [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      ],
+      "JSP896.PairedDeficit.coefficient_le": [
+        [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      ],
+      "JSP896.PairedDeficit.weighted_certificate_bound": [
+        [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      ],
+      "JSP896.PairedDeficit.no_dominating_certificate": [
+        [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      ],
+      "JSP896.clique_crossComplement_iff": [
+        []
+      ]
+    },
+    "issues": []
+  },
+  "main_replay_marker_observed": true,
+  "sources_after": {
+    "JSP896/CellCounting.lean": "7eb68cb224efc8b0a94127817281fab9471268ead1b7f48e66d0e5e4983c5b3e",
+    "JSP896/CellDeletion.lean": "ab23011e1732252ea4e9295faae4f3012ee60812483ea47924dedded8215c8c0",
+    "JSP896/CellStructure.lean": "b5c6e1a4df2c208165298a93ca45d9bcc9af3d3451a98157415eed391acd3be2",
+    "JSP896/CertificateIMC.lean": "a209ea24936ca8b48bbf352be5c7387801096edd7a37996c5a76a6bab5715cd2",
+    "JSP896/CertificateMatching.lean": "4ae0a57e3524e595933671720d4455795bea16a507326cc024d5ef71d54ee18a",
+    "JSP896/CertificateMultiplicity.lean": "e269ca7d58a244a6f4c2ae87c01f7edc26094c0987561224fcfa13e61450b92c",
+    "JSP896/CertificateSize.lean": "72a4373bdffeb754e8fc228bd3db92e6447e8c2838dc74addd089c05f6eb7205",
+    "JSP896/ClassTreeGrowth.lean": "c9b87736c499412d9c767e550d89f236952d43d376cf5d6821064fb7a0a7dcc5",
+    "JSP896/CompatibleStars.lean": "3ffda5e1043cef10ca964303e7659b3faa01e8f4df604acaf50fb1635eaaf452",
+    "JSP896/Complement.lean": "be5c546d07aa1ac0c14e45629f7b09d31e21aa4804318779adc6593d1de22460",
+    "JSP896/CriticalEdge.lean": "b65ced03c9845a0b3df9aec96d96130997267ffbf9be6511b6b8adc96d295487",
+    "JSP896/DominationCertificate.lean": "0a5953b61784d6eff67abd3733d7ece4e78ea9174518b7a5cc86fea3dc23021d",
+    "JSP896/EvenSufficiency.lean": "4ac0b43d33bb967ed3a2f03dd81d5f6aaf496090fd477cfbfe6499121be489b2",
+    "JSP896/ExpandedCells.lean": "be1d039a3f1de74ceef94d580d57feae0aa09af7abc674915a815f45502be61a",
+    "JSP896/FaithfulExtension.lean": "5680cae06d28fc6cb1e36e0c73944ad9ef856b2cac9c9d473fbd0f33d18bb654",
+    "JSP896/FeasibleExtension.lean": "aaa8f0b8f78c30dda4e2641df6d989374a94cb2ca73ef375360cae7ab5e38599",
+    "JSP896/FeasibleGrowth.lean": "329ed7c41c0e0983af9007d6d069661fd2585d27c37c4a79e90f126c66483352",
+    "JSP896/FeasiblePair.lean": "9267b5436faf0f35823d2278ac2a58d369f2b6019558df5784322c8275aec887",
+    "JSP896/FiniteGraphCounting.lean": "cc4cfeb760deb7f73ad00f22a4800fed335831f929c97913bcba11945a98ed6d",
+    "JSP896/FiniteTransversal.lean": "1b39db58319cd8acaf487ef88c7bc542b4e6e80b71f21c94b989ae725b3b4123",
+    "JSP896/Main.lean": "55e08964a09ce3b9d8e87096a381239a004ab84aebe5c2ce41bc9cd44db5fd1e",
+    "JSP896/MatchingCells.lean": "2d5af0cf74fcad6f79065dd52e6785d6833ecdfc06153a10aab45b461bca4fba",
+    "JSP896/MatchingExchange.lean": "71bcbf38641b36a06f0c3b47fb5af8002fb3cd4bfc63578d551ce9e08f92a757",
+    "JSP896/MatchingFacts.lean": "cc86ad5b6e213d41404490433129a4a5bf67168bbb4f12962796c0c77f1664a0",
+    "JSP896/MatchingOrientation.lean": "f0e83af73226cde82b897d80b9f06a508b7f7680296dd0ca0c72cff0e8c33d79",
+    "JSP896/MatchingOrientationCentroid.lean": "5941047c51bfa87890f96ae3e8f62f3ba57560d7c2402d5f8f9d2229d5a162e2",
+    "JSP896/MatchingTree.lean": "713c470bbd8306b011760a33e5b22aff4a7ed77d8ee374a5d7ba78f39d01fe82",
+    "JSP896/OddComponents.lean": "808cb78ed801786bcba868fe46adaab9e8b00a9242b3c8b784967244e9eaa06f",
+    "JSP896/OddComponentsCentroid.lean": "7a2e66b3813c73b566052d2277fda50633b1edb35474ce359b863506ae90ebae",
+    "JSP896/OddComponentsCounting.lean": "1c08e221ad45307beec3ff64120bbcae730c9996a44f858843dee2051c729410",
+    "JSP896/OddComponentsOrientation.lean": "a9004f4f7f315de7183477918efc46284bfb2ee3513605f6e7f739967551ff07",
+    "JSP896/OddComponentsReachability.lean": "4aff10299e716b3c525b93a685758ea049908f44d486e2d275089ae1900980e4",
+    "JSP896/OddComponentsSwitching.lean": "6773d822717ee26d969b8a880ab136b3c318253a33b2924b3ba64e9fe45b5082",
+    "JSP896/OddComponentsTerminal.lean": "fd7f8f97bc236ae735125b2b56d061bf05fadaf1bd873d9d599f7ce8ece81622",
+    "JSP896/PairedCellTransversal.lean": "306331d977386c3d6a5a4544130b9eccf38be7f9089ba1edc6eb2070c7f19c7a",
+    "JSP896/PairedDeficit.lean": "79ab95e7c3bb3797e0c7193078a0f7ffec10fd27b8e3d8df4e0e49660dbc8f4b",
+    "JSP896/Sharpness.lean": "7af87db2d119bb54a183fbbc47cbe45a49414a8a5557b19b5b902c222ff446a1",
+    "JSP896/SharpnessChains.lean": "17f5473ed61698df7236a69890bb3f159f657914bbf8b1ebf46ed50c60ed8108",
+    "JSP896/SharpnessTools.lean": "1175af6fb27f617776affc29892967fbaf9a65b7d0a9995f8e46924e120030be",
+    "JSP896/SmallCases.lean": "9bab886da0e5ff5eccaedc7ec35890f353fb7aaf21cc6541b47fb3b2ce11f3a1",
+    "JSP896/Statement.lean": "d42fe8a6e3e7dc191423b07d836ee4221721622da42ec6056496d80951ae6944",
+    "JSP896/StructureBounds.lean": "53ebdaafbab9e74bf137c86a8df2421eeec8c716663167a0c040e14a388af27c",
+    "JSP896/ThresholdArithmetic.lean": "1c4b5a2966c9f19bc9dbe2fc463d1b00bea2c3f1e1ba0321d91a3bf7ff6ec5ed",
+    "JSP896/ThresholdAsymptotics.lean": "658f7d3fd4fbe2546a53300994123ccfe2dc4ca3113039391208b5eb0fd6d1aa",
+    "JSP896.lean": "08b876bed3a981b17ce26968aa965b9faa9956992a75b7b12f592f798086c2c4",
+    "lake-manifest.json": "30de5bdbfd5a20d462def7230969cfdbd850e04b6423ab0b21ea46469084435e",
+    "lakefile.toml": "f00869bbbc2f17e9a71207a82a5ec026f0ed04f8f9c02c0ced4d8aa5f5d96f03",
+    "lean-toolchain": "bc84812c94489d1e3e191baa1dc10d5eb684382d7fe9d2a5ab085e72c1c67e47",
+    "verification/FullAxiomAudit.lean": "2f3364382e3b9d63da7cf18ac17356fd33f3deafd8f8b533daf91261c0b74aa6",
+    "verification/InitialAxiomAudit.lean": "7bbbc6fc248ca69667676049c4691884ddecc3b1fd5e6a593f1086705a08c463",
+    "VerifyOriginalStatement.lean": "f01129d9140588c4f2c7989f851e24f6038ad928c1e390ecc9f68ac77c40248c"
+  },
+  "sources_unchanged_during_run": true,
+  "ended_utc": "2026-10-02T08:08:46.799413+00:00"
+}

@@ -1,0 +1,10 @@
+{
+  "module": "JSP896.CriticalEdge",
+  "label": "critical_01",
+  "recorded_utc": "2026-10-02T07:28:01.890028+00:00",
+  "reason": "Preserve seed endpoint variables during equality elimination; replace unavailable image_pair with image_insert and image_singleton; disambiguate the finite feasible star. All theorem signatures and original critical-edge construction remain unchanged.",
+  "diagnostic_log": "../build/seventeenth_18_JSP896_CriticalEdge.log",
+  "before_sha256": "4a3b8026b12331700d8324d4f744545c51b2920fc8ea5fabb546d9440152f7bf",
+  "after_sha256": "cdafc6faf917abf25c44f1c57058b2e56282db64d66269859b3e04d186ccbe90",
+  "statement_changed": false
+}

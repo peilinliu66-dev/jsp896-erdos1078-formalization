@@ -1,0 +1,14 @@
+JSP896/CellDeletion.lean:35:37: error: invalid `▸` notation, expected result type of cast is 
+  ↑v ∈ C j
+however, the equality 
+  Eq.symm hvw
+of type 
+  value ⟨j, w⟩ = value ⟨i, v⟩
+does not contain the expected result type on either the left or the right hand side
+JSP896/CellDeletion.lean:92:45: error: mod_cast has type
+  ∑ i, (R i).card ≤ d
+but is expected to have type
+  ∑ i, ρ i ≤ ↑d
+JSP896/CellDeletion.lean:130:55: error(lean.invalidField): Invalid field `symm`: The environment does not contain `Function.symm`, so it is not possible to project the field `symm` from an expression
+  hpartner
+of type `P.partner i = j → False`

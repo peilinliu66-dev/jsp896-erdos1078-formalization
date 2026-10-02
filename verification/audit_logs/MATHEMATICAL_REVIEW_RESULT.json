@@ -1,0 +1,45 @@
+{
+  "problem": "JSP896 / Erdos1078",
+  "date_asia_shanghai": "2026-10-02",
+  "status": "SOURCE_REVIEWED_NO_FATAL_MATHEMATICAL_GAP_IDENTIFIED",
+  "compiler_status": "Not asserted by this reviewer; build896 owns actual compiler results",
+  "scope": {
+    "r": "every natural r >= 2",
+    "n": "every natural n >= 1",
+    "vertex_type": "Fin r x Fin n",
+    "part_structure": "no within-part adjacency",
+    "D": "ceil(floor(r/2)*n/(2*floor(r/2)-1))",
+    "T": "(r-1)*n-D",
+    "finite_sufficiency": "all actual vertex degrees > T implies actual transversal clique",
+    "finite_sharpness": "for every same r,n actual partite graph, every degree >= T, no transversal clique",
+    "fixed_r_limits": "D/n and T/n limits for every fixed r >= 2",
+    "large_r_original_limit": "literal BES c_r-(r-2) -> 1/2 follows from 1-independentCoefficient; root verification wrapper checked mathematically"
+  },
+  "review_artifacts": {
+    "MATHEMATICAL_SCOPE_AUDIT.md": "7e3bc7d784450656eaccbdfb8f2f810e9e6abf4cacde337c2d43851209ece053",
+    "mathematical_scope_snapshot.json": "48f2b93dd2e292e397a9afdcff1771f0543e69f94abe43f23424a953d0adade2",
+    "STRUCTURE_SCOPE_AUDIT.md": "5e533083956a49d6a314572a416bf574296f341f20884e665736a6578b62c940",
+    "structure_scope_read_snapshot.json": "3b20b8f69ed11b6337da716e33b6a448923edc23ed1a679065158e42212718a9",
+    "ODD_TERMINAL_SCOPE_AUDIT.md": "efa781c4911b48c7e609d0f9159e5c5791073b78260547950ff68592a1c0f73c",
+    "ODD_TERMINAL_SCOPE_AUDIT.json": "fbc0f3e16dd67ae78f646ab5f2316e16150c347205977bd50aca594a9d9b0ecc"
+  },
+  "literal_root_wrapper": "verification/root_drafts/VerifyOriginalStatement.lean",
+  "literal_root_wrapper_status": "six statements reviewed mathematically; not compiled by this reviewer",
+  "local_import_closure": "45 modules including root, complete",
+  "prohibited_executable_token_hits": [],
+  "fatal_findings": [],
+  "final_model_interfaces_discharge": "Main constructs edge-minimal H, full faithful IMC, every-edge IMC containment and literal BipartiteModel; contradicts no-full H without transferring subgraph independent sets to original G",
+  "independent_review_strategy": "Reviewed actual source bodies; two additional reviewers separately checked lower structure and odd terminal route; attached historical independent-review statements were not accepted as proof evidence",
+  "next_required_acceptance": [
+    "full successful build of frozen final sources at recorded exact dependency pins",
+    "actual expanded original-statement checks",
+    "actual final transitive axiom checks",
+    "recorded Main kernel replay and reproducible logs"
+  ],
+  "mathematical_changes_require_re_review": "changes to definitions, theorem hypotheses or quantifiers, strict bounds, faithfulness, graph witness or matching/cell constructions",
+  "primary_sources": [
+    "https://users.renyi.hu/~p_erdos/1975-19.pdf",
+    "https://www.renyi.hu/~tardos/tibortransversal.pdf",
+    "https://page.mi.fu-berlin.de/szabo/PDF/oddtransversal.pdf"
+  ]
+}

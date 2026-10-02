@@ -1,0 +1,68 @@
+--- before/JSP896.FeasibleExtension
++++ after/JSP896.FeasibleExtension
+@@ -67,18 +67,22 @@
+       exact Finset.mem_image.mpr ⟨u, Finset.mem_inter.mpr ⟨huNew, hu⟩, hui⟩
+   · intro x hx y hy
+     rw [hcenters] at hx hy
+-    rcases Finset.mem_insert.mp hx with rfl | hx
+-    · rcases Finset.mem_insert.mp hy with rfl | hy
+-      · exact G.loopless.irrefl c
++    rcases Finset.mem_insert.mp hx with heq | hx
++    · subst x
++      rcases Finset.mem_insert.mp hy with heq | hy
++      · subst y
++        exact G.loopless.irrefl c
+       · exact havoid y (Finset.mem_sdiff.mp hy).1
+-    · rcases Finset.mem_insert.mp hy with rfl | hy
+-      · intro h
++    · rcases Finset.mem_insert.mp hy with heq | hy
++      · subst y
++        intro h
+         exact havoid x (Finset.mem_sdiff.mp hx).1 (G.adj_symm h)
+       · exact hF.centersIndependent x hx y hy
+   · intro z hz
+     rw [hcenters] at hz
+-    rcases Finset.mem_insert.mp hz with rfl | hz
+-    · obtain ⟨v, hvU, hcv⟩ := undominated_extension_has_leaf hF hU c havoid hclass
++    rcases Finset.mem_insert.mp hz with heq | hz
++    · subst z
++      obtain ⟨v, hvU, hcv⟩ := undominated_extension_has_leaf hF hU c havoid hclass
+       exact ⟨v, Finset.mem_inter.mpr ⟨Finset.mem_union_right _
+         ((mem_star G U c v).mpr (Or.inr ⟨hvU, hcv⟩)), hvU⟩, hcv⟩
+     · obtain ⟨v, hv, hzv⟩ := hF.centersHaveLeaf z hz
+@@ -86,8 +90,9 @@
+         (Finset.mem_inter.mp hv).1, leaf_mem_of_compatible hF hU hv⟩, hzv⟩
+   · intro z hz v hv hzv
+     rw [hcenters] at hz
+-    rcases Finset.mem_insert.mp hz with rfl | hz
+-    · exact Finset.mem_union_right _ ((mem_star G U c v).mpr (Or.inr ⟨hv, hzv⟩))
++    rcases Finset.mem_insert.mp hz with heq | hz
++    · subst z
++      exact Finset.mem_union_right _ ((mem_star G U c v).mpr (Or.inr ⟨hv, hzv⟩))
+     · exact Finset.mem_union_left _ (compatible_center_neighbors_mem_I hF hU hz hv hzv)
+   · intro v hv
+     have hvU := (Finset.mem_inter.mp hv).2
+@@ -100,8 +105,9 @@
+       intro z' hz'
+       have hzmem := hz'.1
+       rw [hcenters] at hzmem
+-      rcases Finset.mem_insert.mp hzmem with rfl | hzmem
+-      · exact False.elim (havoid v hvI hz'.2)
++      rcases Finset.mem_insert.mp hzmem with heq | hzmem
++      · subst z'
++        exact False.elim (havoid v hvI hz'.2)
+       · exact huniq z' ⟨hzmem, hz'.2⟩
+     · have hvStar : v ∈ star G U c := (Finset.mem_union.mp hvNew).resolve_left hvI
+       have hcv : G.Adj c v := by
+@@ -120,8 +126,9 @@
+     have hColorsOld : U'.image label = T.image label := hColors.trans hU.colors
+     have hDisOld := hOldDisjoint hDis
+     rw [hcenters] at hz
+-    rcases Finset.mem_insert.mp hz with rfl | hz
+-    · apply hmin U'
++    rcases Finset.mem_insert.mp hz with heq | hz
++    · subst z
++      apply hmin U'
+       refine ⟨hPartial, hColorsOld, hDisOld, ?_⟩
+       intro z hz
+       have hzc : z ≠ c := by

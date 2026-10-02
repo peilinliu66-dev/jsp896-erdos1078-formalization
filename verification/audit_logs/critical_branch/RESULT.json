@@ -1,0 +1,60 @@
+{
+  "status": "PASSED",
+  "created_utc": "2026-10-02T07:30:43.576614+00:00",
+  "frozen": true,
+  "lean_toolchain": "leanprover/lean4:v4.35.0-rc3",
+  "source_sha256": {
+    "JSP896/EvenSufficiency.lean": "4ac0b43d33bb967ed3a2f03dd81d5f6aaf496090fd477cfbfe6499121be489b2",
+    "JSP896/CriticalEdge.lean": "b65ced03c9845a0b3df9aec96d96130997267ffbf9be6511b6b8adc96d295487"
+  },
+  "declaration_checks": {
+    "EvenSufficiency": {
+      "exported_declaration_headers_identical": true,
+      "declaration_header_count": 5,
+      "byte_identical_to_original": true
+    },
+    "CriticalEdge": {
+      "exported_declaration_headers_identical": true,
+      "declaration_header_count": 12,
+      "byte_identical_to_original": false
+    }
+  },
+  "natural_exit_codes": {
+    "EvenSufficiency": 0,
+    "CriticalEdge": 0
+  },
+  "accepted_logs": {
+    "EvenSufficiency": "../build/seventeenth_17_JSP896_EvenSufficiency.log",
+    "CriticalEdge": "critical_repaired_02.log"
+  },
+  "output_sha256": {
+    "EvenSufficiency": "f77f23c0c0b7fbe8c23ee3cd3110323e832f9ea2777fd9cfea667a72bc1e15b3",
+    "CriticalEdge": "e4d418ee6bdfd0232f3900f00ca0da337ce7ffba005cc4a9b2fe2bb255135a5b"
+  },
+  "repairs": [
+    {
+      "module": "JSP896.CriticalEdge",
+      "label": "critical_01",
+      "recorded_utc": "2026-10-02T07:28:01.890028+00:00",
+      "reason": "Preserve seed endpoint variables during equality elimination; replace unavailable image_pair with image_insert and image_singleton; disambiguate the finite feasible star. All theorem signatures and original critical-edge construction remain unchanged.",
+      "diagnostic_log": "../build/seventeenth_18_JSP896_CriticalEdge.log",
+      "before_sha256": "4a3b8026b12331700d8324d4f744545c51b2920fc8ea5fabb546d9440152f7bf",
+      "after_sha256": "cdafc6faf917abf25c44f1c57058b2e56282db64d66269859b3e04d186ccbe90",
+      "statement_changed": false
+    },
+    {
+      "module": "JSP896.CriticalEdge",
+      "label": "critical_02",
+      "recorded_utc": "2026-10-02T07:28:57.809815+00:00",
+      "reason": "Specify the finite carrier type of the local two-class membership expressions so insert/singleton elaboration is determined. The class graph, seed, hypotheses, and theorem statement are unchanged.",
+      "diagnostic_log": "critical_repaired_01.log",
+      "before_sha256": "cdafc6faf917abf25c44f1c57058b2e56282db64d66269859b3e04d186ccbe90",
+      "after_sha256": "b65ced03c9845a0b3df9aec96d96130997267ffbf9be6511b6b8adc96d295487",
+      "statement_changed": false
+    }
+  ],
+  "original_scope_preserved": true,
+  "new_assumption_interfaces": false,
+  "new_axioms_or_sorry": false,
+  "remaining_scope": "Full project build, endpoint axiom audit, and downstream modules belong to the parent build auditor."
+}

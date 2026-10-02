@@ -1,0 +1,10 @@
+{
+  "module": "JSP896.CellDeletion",
+  "label": "022_sigma_cast_removed_sum_symmetry",
+  "recorded_utc": "2026-10-02T07:37:33.878377+00:00",
+  "reason": "Expose dependent Sigma value equality before transport, unfold local cast-valued removal function before mod_cast, and explicitly reverse negated equality. Residual-cell construction unchanged.",
+  "diagnostic_log": "verification/build/twentyfourth_26_JSP896_CellDeletion.log",
+  "before_sha256": "f7c93c7cc7862b6187009b2595af2b0774f30f4fb271cd2195a6a71a467fca76",
+  "after_sha256": "ab23011e1732252ea4e9295faae4f3012ee60812483ea47924dedded8215c8c0",
+  "statement_changed": false
+}

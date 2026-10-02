@@ -1,0 +1,20 @@
+--- before/JSP896.MatchingFacts
++++ after/JSP896.MatchingFacts
+@@ -2,6 +2,8 @@
+ import JSP896.MatchingOrientation
+ 
+ /-! Exact size and domination of every literal full-class IMC. -/
++
++open scoped Classical
+ 
+ namespace JSP896.MatchingConfiguration
+ 
+@@ -23,7 +25,7 @@
+     exact (M.faithful v.1 v.2 (M.partner v).1 (M.partner v).2
+       w.1 w.2 (M.partner w).1 (M.partner w).2
+       (M.partner_adj v) (M.partner_adj w)
+-      (congrArg SimpleGraph.Dart.fst h) (congrArg SimpleGraph.Dart.snd h)).1
++      (congrArg (fun d : (FeasiblePair.classGraph G label I).Dart => d.fst) h) (congrArg (fun d : (FeasiblePair.classGraph G label I).Dart => d.snd) h)).1
+   have hsurj : Function.Surjective f := by
+     intro e
+     obtain ⟨_, v, hv, w, hw, hvw, hvi, hwj⟩ := e.adj

@@ -1,0 +1,115 @@
+JSP896/MatchingExchange.lean:62:42: error(lean.unknownIdentifier): Unknown identifier `a`
+JSP896/MatchingExchange.lean:66:42: error(lean.unknownIdentifier): Unknown identifier `b`
+JSP896/MatchingExchange.lean:77:51: error: Application type mismatch: The argument
+  hne
+has type
+  Ne.{u_1 + 1} v w
+but is expected to have type
+  Ne.{u_2 + 1} c e
+in the application
+  ⟨Or.inl ⟨Eq.symm hvc, Eq.symm hwe⟩, hne⟩
+JSP896/MatchingExchange.lean:78:51: error: Application type mismatch: The argument
+  hne
+has type
+  Ne.{u_1 + 1} w v
+but is expected to have type
+  Ne.{u_2 + 1} c e
+in the application
+  ⟨Or.inr ⟨Eq.symm hvc, Eq.symm hwe⟩, hne⟩
+JSP896/MatchingExchange.lean:94:26: error: Application type mismatch: The argument
+  rfl
+has type
+  ?m.1270 = ?m.1270
+but is expected to have type
+  True
+in the application
+  And.intro rfl
+JSP896/MatchingExchange.lean:104:27: warning: This simp argument is unused:
+  L
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+JSP896/MatchingExchange.lean:111:29: warning: This simp argument is unused:
+  L
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+JSP896/MatchingExchange.lean:118:29: warning: This simp argument is unused:
+  L
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hw.1]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+JSP896/MatchingExchange.lean:185:26: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+JSP896/MatchingExchange.lean:187:66: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+JSP896/MatchingExchange.lean:201:30: error(lean.unknownIdentifier): Unknown constant `Finset.not_mem_empty`
+JSP896/MatchingExchange.lean:201:52: warning: `if_false` has been deprecated: Use `ite_false` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵f̵a̵l̵s̵e̵i̲t̲e̲_̲f̲a̲l̲s̲e̲
+JSP896/MatchingExchange.lean:201:10: error: Type mismatch: After simplification, term
+  (M.partner i).property
+ has type
+  @Membership.mem V (Finset V) SetLike.instMembership I ↑(M.partner i)
+but is expected to have type
+  @Membership.mem V (Finset V) SetLike.instMembership I (if i ∈ ∅ then f i else ↑(M.partner i))
+JSP896/MatchingExchange.lean:204:29: error(lean.unknownIdentifier): Unknown constant `Finset.not_mem_empty`
+JSP896/MatchingExchange.lean:204:51: warning: `if_false` has been deprecated: Use `ite_false` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵f̵a̵l̵s̵e̵i̲t̲e̲_̲f̲a̲l̲s̲e̲
+JSP896/MatchingExchange.lean:202:8: error: unsolved goals
+case mpr
+V : Type u_1
+ι : Type u_2
+inst✝³ : Fintype V
+inst✝² : Fintype ι
+inst✝¹ : DecidableEq V
+inst✝ : DecidableEq ι
+G : SimpleGraph V
+label : V → ι
+I : Finset V
+M : Tree G label I Finset.univ
+hno : ¬HasFull G label
+f : IVertex I → V
+hf : ∀ (i : IVertex I), f i ∈ cell G I i
+hfedge : ∀ (i j : IVertex I), G.Adj (f i) (f j) ↔ M.partner i = j
+choose : Finset (IVertex I) → IVertex I → V := fun S i => if i ∈ S then f i else ↑(M.partner i)
+selected : Finset (IVertex I) → Finset V := fun S => Finset.image (choose S) Finset.univ
+hcell : ∀ (S : Finset (IVertex I)) (i : IVertex I), choose S i ∈ cell G I i
+hinj : ∀ (S : Finset (IVertex I)), Function.Injective (choose S)
+hflip : ∀ (i j : IVertex I), M.partner j = i ↔ M.partner i = j
+htarget : ∀ (S : Finset (IVertex I)) (i j : IVertex I), G.Adj (f i) (choose S j) ↔ M.partner i = j
+hedge : ∀ (S : Finset (IVertex I)) (i j : IVertex I), G.Adj (choose S i) (choose S j) ↔ M.partner i = j
+hmem : ∀ (S : Finset (IVertex I)) (v : V), v ∈ selected S ↔ ∃ i, choose S i = v
+v : V
+hv : v ∈ I
+⊢ (if M.partner ⟨v, hv⟩ ∈ ∅ then f (M.partner ⟨v, hv⟩) else v) = v
+JSP896/MatchingExchange.lean:221:10: warning: `simp` already closes the goal
+
+Hint: Use `simp` instead of `simpa`:
+  [apply] simp only [u, ← hj, hji]
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+JSP896/MatchingExchange.lean:267:49: warning: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+JSP896/MatchingExchange.lean:204:51: warning: This simp argument is unused:
+  if_false
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [choose, Finset.not_mem_empty, M.partner_involutive]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

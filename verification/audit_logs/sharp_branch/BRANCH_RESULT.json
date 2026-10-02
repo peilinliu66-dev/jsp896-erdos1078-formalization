@@ -1,0 +1,118 @@
+{
+  "status": "ALL_EIGHT_MODULES_DIRECT_LEAN_COMPILE_PASSED",
+  "finished_utc": "2026-10-02T07:26:15.025144+00:00",
+  "source_ownership_released": true,
+  "toolchain": "leanprover/lean4:v4.35.0-rc3",
+  "modules": [
+    {
+      "module": "JSP896.Statement",
+      "source": "JSP896/Statement.lean",
+      "changed": false,
+      "original_sha256": "d42fe8a6e3e7dc191423b07d836ee4221721622da42ec6056496d80951ae6944",
+      "final_sha256": "d42fe8a6e3e7dc191423b07d836ee4221721622da42ec6056496d80951ae6944",
+      "natural_exit_code": 0,
+      "log": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\verification\\sharp_branch\\20261002T071135432750Z_Statement.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "added_lines": 0,
+      "removed_lines": 0
+    },
+    {
+      "module": "JSP896.Complement",
+      "source": "JSP896/Complement.lean",
+      "changed": false,
+      "original_sha256": "be5c546d07aa1ac0c14e45629f7b09d31e21aa4804318779adc6593d1de22460",
+      "final_sha256": "be5c546d07aa1ac0c14e45629f7b09d31e21aa4804318779adc6593d1de22460",
+      "natural_exit_code": 0,
+      "log": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\verification\\sharp_branch\\20261002T071219935133Z_Complement.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "added_lines": 0,
+      "removed_lines": 0
+    },
+    {
+      "module": "JSP896.SmallCases",
+      "source": "JSP896/SmallCases.lean",
+      "changed": true,
+      "original_sha256": "909a824eab0808e26cc7b3fc942228743f8a82c5f1d5371964787b4d06593173",
+      "final_sha256": "9bab886da0e5ff5eccaedc7ec35890f353fb7aaf21cc6541b47fb3b2ce11f3a1",
+      "natural_exit_code": 0,
+      "log": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\verification\\sharp_branch\\20261002T071441907157Z_SmallCases.log",
+      "log_sha256": "15373b2c436afefed7198da3c7a5a4c6b70e36299537b2ae08874fece2dd6786",
+      "added_lines": 3,
+      "removed_lines": 2
+    },
+    {
+      "module": "JSP896.SharpnessTools",
+      "source": "JSP896/SharpnessTools.lean",
+      "changed": true,
+      "original_sha256": "d0794969b5cdd77cf20c7568529dad016c084e864579602a03bd629e32b1d06f",
+      "final_sha256": "1175af6fb27f617776affc29892967fbaf9a65b7d0a9995f8e46924e120030be",
+      "natural_exit_code": 0,
+      "log": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\verification\\sharp_branch\\20261002T071626362397Z_SharpnessTools.log",
+      "log_sha256": "19a410ad1107541c05ae9a8a440cb6993be2fd3ad43aadbadc04a7c03d29151c",
+      "added_lines": 4,
+      "removed_lines": 4
+    },
+    {
+      "module": "JSP896.SharpnessChains",
+      "source": "JSP896/SharpnessChains.lean",
+      "changed": true,
+      "original_sha256": "9b07379601a98efba07665fdf0383de30fb8a9443de107d0c8b986de56d93520",
+      "final_sha256": "17f5473ed61698df7236a69890bb3f159f657914bbf8b1ebf46ed50c60ed8108",
+      "natural_exit_code": 0,
+      "log": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\verification\\sharp_branch\\20261002T072139554297Z_SharpnessChains.log",
+      "log_sha256": "420ca280af2ad3a8b69006ddf1070aa4aa3ce28ced19251425e4778a828841f2",
+      "added_lines": 11,
+      "removed_lines": 9
+    },
+    {
+      "module": "JSP896.Sharpness",
+      "source": "JSP896/Sharpness.lean",
+      "changed": false,
+      "original_sha256": "7af87db2d119bb54a183fbbc47cbe45a49414a8a5557b19b5b902c222ff446a1",
+      "final_sha256": "7af87db2d119bb54a183fbbc47cbe45a49414a8a5557b19b5b902c222ff446a1",
+      "natural_exit_code": 0,
+      "log": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\verification\\sharp_branch\\20261002T072204154257Z_Sharpness.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "added_lines": 0,
+      "removed_lines": 0
+    },
+    {
+      "module": "JSP896.ThresholdArithmetic",
+      "source": "JSP896/ThresholdArithmetic.lean",
+      "changed": false,
+      "original_sha256": "1c4b5a2966c9f19bc9dbe2fc463d1b00bea2c3f1e1ba0321d91a3bf7ff6ec5ed",
+      "final_sha256": "1c4b5a2966c9f19bc9dbe2fc463d1b00bea2c3f1e1ba0321d91a3bf7ff6ec5ed",
+      "natural_exit_code": 0,
+      "log": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\verification\\sharp_branch\\20261002T072241909455Z_ThresholdArithmetic.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "added_lines": 0,
+      "removed_lines": 0
+    },
+    {
+      "module": "JSP896.ThresholdAsymptotics",
+      "source": "JSP896/ThresholdAsymptotics.lean",
+      "changed": true,
+      "original_sha256": "16fe368492235dd13df165b8a1828471620a52db200dae6073480a065839637e",
+      "final_sha256": "658f7d3fd4fbe2546a53300994123ccfe2dc4ca3113039391208b5eb0fd6d1aa",
+      "natural_exit_code": 0,
+      "log": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\verification\\sharp_branch\\20261002T072410001690Z_ThresholdAsymptotics.log",
+      "log_sha256": "7193e6522fed3c1d51705434b7f3f05da14398dd814908791e32cedf7f8b26df",
+      "added_lines": 1,
+      "removed_lines": 1
+    }
+  ],
+  "frozen_sources": {
+    "JSP896/Statement.lean": "d42fe8a6e3e7dc191423b07d836ee4221721622da42ec6056496d80951ae6944",
+    "JSP896/Complement.lean": "be5c546d07aa1ac0c14e45629f7b09d31e21aa4804318779adc6593d1de22460",
+    "JSP896/SmallCases.lean": "9bab886da0e5ff5eccaedc7ec35890f353fb7aaf21cc6541b47fb3b2ce11f3a1",
+    "JSP896/SharpnessTools.lean": "1175af6fb27f617776affc29892967fbaf9a65b7d0a9995f8e46924e120030be",
+    "JSP896/SharpnessChains.lean": "17f5473ed61698df7236a69890bb3f159f657914bbf8b1ebf46ed50c60ed8108",
+    "JSP896/Sharpness.lean": "7af87db2d119bb54a183fbbc47cbe45a49414a8a5557b19b5b902c222ff446a1",
+    "JSP896/ThresholdArithmetic.lean": "1c4b5a2966c9f19bc9dbe2fc463d1b00bea2c3f1e1ba0321d91a3bf7ff6ec5ed",
+    "JSP896/ThresholdAsymptotics.lean": "658f7d3fd4fbe2546a53300994123ccfe2dc4ca3113039391208b5eb0fd6d1aa"
+  },
+  "source_version_changes": false,
+  "full_project_build_pending_parent": true,
+  "axiom_audit_pending_parent": true,
+  "limitations": "Direct Lean compilation of this independently owned branch. The parent performs the complete project build and final axiom checks. All original parameters and construction definitions are retained."
+}

@@ -1,0 +1,45 @@
+import JSP896.OddComponentsCentroid
+import JSP896.OddComponentsTerminal
+
+/-!
+# The all-odd disjoint-bipartite-component theorem
+
+This is the literal conclusion of Haxell--Szabo Theorem 4.1.  The input is an
+actual induced matching class tree and its actual disjoint complete-bipartite
+component model.  The centroid, orientation, both finite switches, terminal
+dominator block, and small dominating set are all constructed in the imported
+proofs.  No transversal-existence or switching-existence hypothesis is used.
+
+Reference: https://page.mi.fu-berlin.de/szabo/PDF/oddtransversal.pdf,
+Theorem 4.1.  The finite dominator-block organization is an equivalent way of
+terminating the two alternating switches.  Pinned execution records are in VERIFICATION.md.
+-/
+
+namespace JSP896.OddComponents
+
+open MatchingConfiguration FiniteTransversal
+
+/-- Every literal all-odd bipartite component model below the sharp degree
+threshold has a full independent transversal. -/
+theorem hasFull_of_odd_components {t n d : ℕ}
+    (ht : 0 < t) (hn : 0 < n)
+    (G : SimpleGraph (Vertex (2 * t + 1) n))
+    {I : Finset (Vertex (2 * t + 1) n)}
+    (M : Tree G Prod.fst I Finset.univ) (B : BipartiteModel M)
+    (hdegree : ∀ v, degree G v ≤ d)
+    (hthreshold : (2 * t - 1) * d < t * n) :
+    HasFull G Prod.fst := by
+  classical
+  obtain ⟨root, _, hcentroid⟩ := M.exists_centroid t (by simp)
+  have hCcard : (Finset.univ.erase root).card = 2 * t := by simp
+  have hCpos : 0 < (Finset.univ.erase root).card := by rw [hCcard]; omega
+  obtain ⟨c, hc⟩ := Finset.card_pos.mp hCpos
+  have hne : ∃ x, x ≠ root := ⟨c, (Finset.mem_erase.mp hc).1⟩
+  obtain ⟨O⟩ := M.exists_rootOrientation root hne
+  apply hasFull_of_centroid_orientation ht hn G M B root O hdegree hthreshold
+  intro c hc
+  change (Directed.future O.Parent c).card ≤ t
+  exact O.parent_descendants_card_le
+    (fun child hedge => hcentroid child (Finset.mem_univ child) hedge) hc
+
+end JSP896.OddComponents

@@ -1,0 +1,10 @@
+{
+  "module": "JSP896.Main",
+  "label": "025_main_cast_one_normalization",
+  "recorded_utc": "2026-10-02T07:45:09.402033+00:00",
+  "reason": "Normalize the cast of the natural constant one before nlinarith. The sole change is in the local hstructure proof; every exported theorem statement, definition and parameter remains unchanged.",
+  "diagnostic_log": "verification/build/twentyseventh_44_JSP896_Main.log",
+  "before_sha256": "eb68ea71f8cda5c2e84244c1245ead49d04bcd542c1fa7cd600911b41144cf10",
+  "after_sha256": "55e08964a09ce3b9d8e87096a381239a004ab84aebe5c2ce41bc9cd44db5fd1e",
+  "statement_changed": false
+}

@@ -1,0 +1,23 @@
+{
+  "module": "OddComponentsReachability",
+  "command": [
+    "elan",
+    "run",
+    "leanprover/lean4:v4.35.0-rc3",
+    "lake",
+    "env",
+    "lean",
+    "-o",
+    ".lake/build/lib/lean/JSP896/OddComponentsReachability.olean",
+    "JSP896/OddComponentsReachability.lean"
+  ],
+  "cwd": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate",
+  "started_utc": "2026-10-02T07:22:40.466594+00:00",
+  "finished_utc": "2026-10-02T07:22:56.070369+00:00",
+  "natural_exit_code": 1,
+  "source_sha256_before": "c7a1343d7dfef8007f19199ca2afdc9c113f1de93b5c15bdce196cf2ca4d4566",
+  "source_sha256_after": "c7a1343d7dfef8007f19199ca2afdc9c113f1de93b5c15bdce196cf2ca4d4566",
+  "source_unchanged_during_compile": true,
+  "raw_log": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\verification\\directed_branch\\OddComponentsReachability_01_20261002T072240466251Z.raw.log",
+  "LEAN_NUM_THREADS": "1"
+}

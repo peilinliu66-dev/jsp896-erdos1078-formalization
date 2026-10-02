@@ -1,0 +1,49 @@
+VerifyOriginalStatement.lean:76:64: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+audit_literal_finite_clique_resolution (r n : ℕ) :
+  2 ≤ r →
+    0 < n →
+      (∀ (G : SimpleGraph (Fin r × Fin n)),
+          (∀ ⦃v w : Fin r × Fin n⦄, G.Adj v w → v.1 ≠ w.1) →
+            (∀ (v : Fin r × Fin n),
+                (r - 1) * n - (r / 2 * n + (2 * (r / 2) - 1) - 1) / (2 * (r / 2) - 1) <
+                  (Finset.filter (G.Adj v) Finset.univ).card) →
+              ∃ f, ∀ (i j : Fin r), i ≠ j → G.Adj (i, f i) (j, f j)) ∧
+        ∃ G,
+          (∀ ⦃v w : Fin r × Fin n⦄, G.Adj v w → v.1 ≠ w.1) ∧
+            (∀ (v : Fin r × Fin n),
+                (r - 1) * n - (r / 2 * n + (2 * (r / 2) - 1) - 1) / (2 * (r / 2) - 1) ≤
+                  (Finset.filter (G.Adj v) Finset.univ).card) ∧
+              ¬∃ f, ∀ (i j : Fin r), i ≠ j → G.Adj (i, f i) (j, f j)
+audit_literal_independent_sufficiency (r n : ℕ) :
+  2 ≤ r →
+    0 < n →
+      ∀ (G : SimpleGraph (Fin r × Fin n)),
+        (∀ ⦃v w : Fin r × Fin n⦄, G.Adj v w → v.1 ≠ w.1) →
+          (∀ (v : Fin r × Fin n),
+              (Finset.filter (G.Adj v) Finset.univ).card < (r / 2 * n + (2 * (r / 2) - 1) - 1) / (2 * (r / 2) - 1)) →
+            ∃ f, ∀ (i j : Fin r), i ≠ j → ¬G.Adj (i, f i) (j, f j)
+audit_literal_fixed_r_limits (r : ℕ) :
+  2 ≤ r →
+    Tendsto (fun n => ↑((r / 2 * n + (2 * (r / 2) - 1) - 1) / (2 * (r / 2) - 1)) / ↑n) atTop
+        (𝓝 (↑(r / 2) / ↑(2 * (r / 2) - 1))) ∧
+      Tendsto (fun n => ↑((r - 1) * n - (r / 2 * n + (2 * (r / 2) - 1) - 1) / (2 * (r / 2) - 1)) / ↑n) atTop
+        (𝓝 (↑(r - 1) - ↑(r / 2) / ↑(2 * (r / 2) - 1)))
+audit_literal_large_r_independent_limit : Tendsto (fun r => ↑(r / 2) / ↑(2 * (r / 2) - 1)) atTop (𝓝 (1 / 2))
+audit_literal_original_BES_large_r_limit :
+  Tendsto (fun r => ↑(r - 1) - ↑(r / 2) / ↑(2 * (r / 2) - 1) - ↑(r - 2)) atTop (𝓝 (1 / 2))
+JSP896.full_resolution_with_original_limits :
+  JSP896.FullResolution ∧
+    (∀ (r : ℕ),
+        2 ≤ r →
+          Tendsto (fun n => ↑(JSP896.independentThreshold r n) / ↑n) atTop (𝓝 (JSP896.independentCoefficient r)) ∧
+            Tendsto (fun n => ↑(JSP896.cliqueThreshold r n) / ↑n) atTop (𝓝 (JSP896.cliqueCoefficient r))) ∧
+      Tendsto JSP896.independentCoefficient atTop (𝓝 (1 / 2)) ∧
+        Tendsto (fun r => ↑(r - 1) - JSP896.cliqueCoefficient r) atTop (𝓝 (1 / 2))
+'audit_literal_finite_clique_resolution' depends on axioms: [propext, Classical.choice, Quot.sound]
+'audit_literal_independent_sufficiency' depends on axioms: [propext, Classical.choice, Quot.sound]
+'audit_literal_fixed_r_limits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'audit_literal_large_r_independent_limit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'audit_literal_original_BES_large_r_limit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'JSP896.full_resolution_with_original_limits' depends on axioms: [propext, Classical.choice, Quot.sound]

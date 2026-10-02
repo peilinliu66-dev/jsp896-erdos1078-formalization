@@ -1,0 +1,10 @@
+{
+  "module": "JSP896.FaithfulExtension",
+  "label": "008_correct_substitution_layout",
+  "recorded_utc": "2026-10-02T07:17:51.081679+00:00",
+  "reason": "Correct repair script indentation and restrict endpoint substitutions to two-field vertex cases; retain three-field class equality cases. No theorem statement changes.",
+  "diagnostic_log": "verification/build/ninth_08_JSP896_FaithfulExtension.log",
+  "before_sha256": "98077c1314a2798a01cc347bafe827e729594e89bd06ad4c07e3cf0b1fb14e56",
+  "after_sha256": "5680cae06d28fc6cb1e36e0c73944ad9ef856b2cac9c9d473fbd0f33d18bb654",
+  "statement_changed": false
+}

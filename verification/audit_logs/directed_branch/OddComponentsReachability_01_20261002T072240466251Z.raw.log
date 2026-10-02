@@ -1,0 +1,14 @@
+JSP896/OddComponentsReachability.lean:183:48: error: unexpected token ';'; expected '{' or tactic
+JSP896/OddComponentsReachability.lean:183:36: error: unsolved goals
+α : Type u_1
+inst✝¹ : Fintype α
+inst✝ : DecidableEq α
+R : α → α → Prop
+x y : α
+⊢ y ∈ future R x ↔ Reach R x y
+JSP896/OddComponentsReachability.lean:200:0: warning: automatically included section variable(s) unused in theorem `JSP896.OddComponents.Directed.Dominates.comparable`:
+  [Fintype α]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype α] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`

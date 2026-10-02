@@ -1,0 +1,8 @@
+JSP896/CompatibleStars.lean:11:0: warning: automatically included section variable(s) unused in theorem `JSP896.FeasiblePair.Feasible.star_subset`:
+  [Fintype ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+JSP896/CompatibleStars.lean:107:23: error(lean.unknownIdentifier): Unknown identifier `w`
+JSP896/CompatibleStars.lean:107:25: error(lean.unknownIdentifier): Unknown identifier `w`

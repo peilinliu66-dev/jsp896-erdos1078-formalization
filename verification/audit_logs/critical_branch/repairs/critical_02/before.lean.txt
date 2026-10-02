@@ -1,0 +1,305 @@
+import JSP896.CertificateIMC
+import JSP896.ClassTreeGrowth
+import Mathlib.Tactic
+
+/-!
+# Edge-minimal counterexamples and prescribed-edge matching certificates
+
+The seed is constructed from an actual full transversal after deleting one
+edge. Finite minimality supplies the critical-edge property; neither a seed
+nor a matching configuration is postulated as an additional hypothesis.
+
+Source-only handoff: this module has not been compiled.
+-/
+
+namespace JSP896.CriticalEdge
+
+open FiniteTransversal FeasiblePair
+
+variable {V ι : Type*} [Fintype V] [Fintype ι] [DecidableEq V] [DecidableEq ι]
+
+def deletePair (G : SimpleGraph V) (a b : V) : SimpleGraph V where
+  Adj x y := G.Adj x y ∧ ¬ ((x = a ∧ y = b) ∨ (x = b ∧ y = a))
+  symm := ⟨by
+    intro x y h
+    refine ⟨G.adj_symm h.1, ?_⟩
+    rintro (⟨hy, hx⟩ | ⟨hy, hx⟩)
+    · exact h.2 (Or.inr ⟨hx, hy⟩)
+    · exact h.2 (Or.inl ⟨hx, hy⟩)⟩
+  loopless := ⟨by intro x h; exact G.loopless.irrefl x h.1⟩
+
+theorem deletePair_le (G : SimpleGraph V) (a b : V) : deletePair G a b ≤ G := by
+  intro x y h
+  exact h.1
+
+theorem deletePair_not_adj (G : SimpleGraph V) (a b : V) :
+    ¬ (deletePair G a b).Adj a b := by
+  intro h
+  exact h.2 (Or.inl ⟨rfl, rfl⟩)
+
+noncomputable def adjacencyPairs (G : SimpleGraph V) : Finset (V × V) := by
+  classical
+  exact Finset.univ.filter fun p => G.Adj p.1 p.2
+
+theorem adjacencyPairs_delete_lt (G : SimpleGraph V) (a b : V) (hab : G.Adj a b) :
+    (adjacencyPairs (deletePair G a b)).card < (adjacencyPairs G).card := by
+  classical
+  apply Finset.card_lt_card
+  apply Finset.ssubset_iff_subset_ne.mpr
+  refine ⟨?_, ?_⟩
+  · intro p hp
+    exact Finset.mem_filter.mpr ⟨Finset.mem_univ _, (Finset.mem_filter.mp hp).2.1⟩
+  · intro heq
+    have hmem : (a, b) ∈ adjacencyPairs G := by simp [adjacencyPairs, hab]
+    rw [← heq] at hmem
+    exact deletePair_not_adj G a b (Finset.mem_filter.mp hmem).2
+
+def IsEdgeMinimal (G : SimpleGraph V) (label : V → ι) : Prop :=
+  ¬ HasFull G label ∧ ∀ a b, G.Adj a b → HasFull (deletePair G a b) label
+
+theorem exists_edgeMinimal (G : SimpleGraph V) (label : V → ι)
+    (hno : ¬ HasFull G label) :
+    ∃ H : SimpleGraph V, H ≤ G ∧ IsEdgeMinimal H label := by
+  classical
+  let candidates := (Finset.univ : Finset (SimpleGraph V)).filter
+    fun H => H ≤ G ∧ ¬ HasFull H label
+  have hmem (H : SimpleGraph V) (hHG : H ≤ G) (hn : ¬ HasFull H label) :
+      H ∈ candidates := by simp [candidates, hHG, hn]
+  have hne : candidates.Nonempty := ⟨G, hmem G le_rfl hno⟩
+  obtain ⟨H, hH, hmin⟩ := candidates.exists_min_image (fun H => (adjacencyPairs H).card) hne
+  have hHG : H ≤ G := (Finset.mem_filter.mp hH).2.1
+  have hnoH : ¬ HasFull H label := (Finset.mem_filter.mp hH).2.2
+  refine ⟨H, hHG, hnoH, ?_⟩
+  intro a b hab
+  by_contra hnoDelete
+  have hsub : deletePair H a b ≤ G := (deletePair_le H a b).trans hHG
+  have hle := hmin (deletePair H a b) (hmem _ hsub hnoDelete)
+  exact (Nat.not_lt_of_ge hle) (adjacencyPairs_delete_lt H a b hab)
+
+theorem degree_mono {G H : SimpleGraph V} (hHG : H ≤ G) (v : V) :
+    FiniteGraphCounting.degree H v ≤ FiniteGraphCounting.degree G v := by
+  classical
+  apply Finset.card_le_card
+  intro w hw
+  exact (FiniteGraphCounting.mem_neighbors G v w).mpr
+    (hHG ((FiniteGraphCounting.mem_neighbors H v w).mp hw))
+
+/-- A full transversal after deleting ab contains both endpoints. -/
+theorem endpoints_mem {G : SimpleGraph V} {label : V → ι} {a b : V}
+    (hno : ¬ HasFull G label) {U : Finset V}
+    (hU : Full (deletePair G a b) label U) : a ∈ U ∧ b ∈ U := by
+  constructor
+  · by_contra ha
+    apply hno
+    refine ⟨U, ⟨?_, hU.1.2⟩, hU.2⟩
+    intro x hx y hy hxy
+    apply hU.1.1 x hx y hy
+    refine ⟨hxy, ?_⟩
+    rintro (⟨rfl, _⟩ | ⟨_, rfl⟩)
+    · exact ha hx
+    · exact ha hy
+  · by_contra hb
+    apply hno
+    refine ⟨U, ⟨?_, hU.1.2⟩, hU.2⟩
+    intro x hx y hy hxy
+    apply hU.1.1 x hx y hy
+    refine ⟨hxy, ?_⟩
+    rintro (⟨_, rfl⟩ | ⟨rfl, _⟩)
+    · exact hb hy
+    · exact hb hx
+
+/-- The one-edge feasible seed is constructed with every original invariant,
+including local star minimality and faithful class edges. -/
+theorem exists_critical_seed (G : SimpleGraph V) (label : V → ι)
+    (hpart : ∀ ⦃x y⦄, G.Adj x y → label x ≠ label y)
+    (hno : ¬ HasFull G label) (a b : V) (hab : G.Adj a b)
+    (hfull : HasFull (deletePair G a b) label) :
+    ∃ T : Finset V, Feasible G label {a, b} T := by
+  classical
+  obtain ⟨U, hU⟩ := hfull
+  obtain ⟨haU, hbU⟩ := endpoints_mem hno hU
+  have habne : a ≠ b := by
+    intro h
+    subst b
+    exact G.loopless.irrefl a hab
+  have hlabel : label a ≠ label b := hpart hab
+  let T := U.erase a
+  have haT : a ∉ T := by simp [T]
+  have hbT : b ∈ T := Finset.mem_erase.mpr ⟨habne.symm, hbU⟩
+  have hTU : T ⊆ U := Finset.erase_subset a U
+  have hpartial : Partial G label T := by
+    refine ⟨?_, fun x hx y hy h => hU.1.2 x (hTU hx) y (hTU hy) h⟩
+    intro x hx y hy hxy
+    apply hU.1.1 x (hTU hx) y (hTU hy)
+    refine ⟨hxy, ?_⟩
+    rintro (⟨rfl, _⟩ | ⟨_, rfl⟩)
+    · exact haT hx
+    · exact haT hy
+  have hmissing : label a ∉ T.image label := by
+    intro h
+    obtain ⟨v, hv, heq⟩ := Finset.mem_image.mp h
+    have hva : v = a := hU.1.2 v (hTU hv) a haU heq
+    exact haT (hva ▸ hv)
+  have hbLabel : label b ∈ T.image label := Finset.mem_image.mpr ⟨b, hbT, rfl⟩
+  have hcardU : U.card = Fintype.card ι := by
+    rw [← hU.1.card_image, hU.2, Finset.card_univ]
+  have hcardT : T.card + 1 = Fintype.card ι := by
+    simpa only [T, hcardU] using Finset.card_erase_add_one haU
+  have hmax : Maximum G label T := by
+    refine ⟨hpartial, ?_⟩
+    intro W hW
+    have hlt := hW.card_lt_of_no_full hno
+    omega
+  have hleafOnly : ∀ x ∈ T, G.Adj a x → x = b := by
+    intro x hx hax
+    by_contra hxb
+    apply hU.1.1 a haU x (hTU hx)
+    refine ⟨hax, ?_⟩
+    rintro (⟨_, h⟩ | ⟨h, _⟩)
+    · exact hxb h
+    · exact habne h
+  have hleaves : leaves G T a = {b} := by
+    ext x
+    simp only [mem_leaves, Finset.mem_singleton]
+    constructor
+    · intro h; exact hleafOnly x h.1 h.2
+    · rintro rfl; exact ⟨hbT, hab⟩
+  have hdiff : ({a, b} : Finset V) \ T = {a} := by
+    ext x
+    simp only [Finset.mem_sdiff, Finset.mem_insert, Finset.mem_singleton]
+    aesop
+  have hinter : ({a, b} : Finset V) ∩ T = {b} := by
+    ext x
+    simp only [Finset.mem_inter, Finset.mem_insert, Finset.mem_singleton]
+    aesop
+  have hclass : classGraph G label {a, b} = SimpleGraph.edge (label a) (label b) := by
+    ext i j
+    rw [SimpleGraph.edge_adj]
+    constructor
+    · rintro ⟨hne, v, hv, w, hw, hvw, hvi, hwj⟩
+      simp only [Finset.mem_insert, Finset.mem_singleton] at hv hw
+      rcases hv with hv | hv <;> rcases hw with hw | hw <;> subst v <;> subst w
+      · exact False.elim (G.loopless.irrefl a hvw)
+      · exact ⟨Or.inl ⟨hvi.symm, hwj.symm⟩, hne⟩
+      · exact ⟨Or.inr ⟨hvi.symm, hwj.symm⟩, hne⟩
+      · exact False.elim (G.loopless.irrefl b hvw)
+    · rintro ⟨⟨rfl, rfl⟩ | ⟨rfl, rfl⟩, hne⟩
+      · exact ⟨hne, a, by simp, b, by simp, hab, rfl, rfl⟩
+      · exact ⟨hne, b, by simp, a, by simp, G.adj_symm hab, rfl, rfl⟩
+  have htree := (ClassTreeGrowth.singleton_tree (label a)).add_leaf
+    (label a) (label b) (by simp) (by simpa using hlabel.symm)
+  have hIinj : ∀ x ∈ ({a, b} : Finset V), ∀ y ∈ ({a, b} : Finset V),
+      label x = label y → x = y := by
+    intro x hx y hy hxy
+    simp only [Finset.mem_insert, Finset.mem_singleton] at hx hy
+    rcases hx with rfl | rfl <;> rcases hy with rfl | rfl
+    · rfl
+    · exact False.elim (hlabel hxy)
+    · exact False.elim (hlabel hxy.symm)
+    · rfl
+  refine ⟨T, hmax, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_⟩
+  · rw [hinter]
+    ext i
+    simp only [Finset.image_insert, Finset.image_singleton, Finset.mem_inter,
+      Finset.mem_insert, Finset.mem_singleton]
+    aesop
+  · intro x hx y hy
+    rw [hdiff] at hx hy
+    have hx' := Finset.mem_singleton.mp hx
+    have hy' := Finset.mem_singleton.mp hy
+    subst x
+    subst y
+    exact G.loopless.irrefl a
+  · intro w hw
+    rw [hdiff] at hw
+    have hw' := Finset.mem_singleton.mp hw
+    subst w
+    exact ⟨b, by rw [hinter]; simp, hab⟩
+  · intro w hw v hv h
+    rw [hdiff] at hw
+    have hw' := Finset.mem_singleton.mp hw
+    subst w
+    have hvb := hleafOnly v hv h
+    simp [hvb]
+  · intro v hv
+    rw [hinter] at hv
+    have hv' := Finset.mem_singleton.mp hv
+    subst v
+    refine ⟨a, ⟨by rw [hdiff]; simp, hab⟩, ?_⟩
+    intro w hw
+    have hw' := hw.1
+    rw [hdiff] at hw'
+    exact Finset.mem_singleton.mp hw'
+  · rw [hclass]
+    simpa only [bot_sup_eq] using htree.acyclic
+  · intro i hi j hj
+    rw [hclass]
+    have hi' : i ∈ insert (label b) {label a} := by
+      simpa only [Finset.image_insert, Finset.image_singleton, Finset.mem_insert,
+        Finset.mem_singleton, or_comm] using hi
+    have hj' : j ∈ insert (label b) {label a} := by
+      simpa only [Finset.image_insert, Finset.image_singleton, Finset.mem_insert,
+        Finset.mem_singleton, or_comm] using hj
+    simpa only [bot_sup_eq] using htree.connected i hi' j hj'
+  · intro v hv w hw v' hv' w' hw' _ _ hlabelV hlabelW
+    exact ⟨hIinj v hv v' hv' hlabelV, hIinj w hw w' hw' hlabelW⟩
+  · intro w hw W hW hcolors _ _
+    rw [hdiff] at hw
+    have hw' := Finset.mem_singleton.mp hw
+    subst w
+    have hWmax := hmax.of_colors_eq hW hcolors
+    have hWmissing : label a ∉ W.image label := by simpa only [hcolors] using hmissing
+    obtain ⟨u, hu, hau⟩ := hWmax.missing_vertex_has_neighbour a hWmissing
+    have hane : a ≠ u := by
+      intro h
+      subst u
+      exact G.loopless.irrefl a hau
+    have hsub : ({a, u} : Finset V) ⊆ star G W a := by
+      intro v hv
+      simp only [Finset.mem_insert, Finset.mem_singleton] at hv
+      rcases hv with hv | hv <;> subst v
+      · exact (mem_star G W a a).mpr (Or.inl rfl)
+      · exact (mem_star G W a u).mpr (Or.inr ⟨hu, hau⟩)
+    have hcard := Finset.card_le_card hsub
+    simpa [FeasiblePair.star, hleaves, habne, hane] using hcard
+
+/-- Every critical edge belongs to a genuine induced matching configuration. -/
+theorem critical_edge_in_matching (G : SimpleGraph V) (label : V → ι)
+    (n d : ℕ) (hr : 3 ≤ Fintype.card ι) (hn : 0 < n)
+    (hpart : ∀ ⦃x y⦄, G.Adj x y → label x ≠ label y)
+    (hparts : ∀ i, (FiniteGraphCounting.fiber label i).card = n)
+    (hdegree : ∀ v, FiniteGraphCounting.degree G v ≤ d)
+    (hdeg : (2 * (Fintype.card ι : ℝ) - 4) * d < ((Fintype.card ι : ℝ) - 1) * n)
+    (hno : ¬ HasFull G label) (a b : V) (hab : G.Adj a b)
+    (hfull : HasFull (deletePair G a b) label) :
+    ∃ I, MatchingConfiguration.Tree G label I Finset.univ ∧ a ∈ I ∧ b ∈ I := by
+  classical
+  obtain ⟨T₀, hF₀⟩ := exists_critical_seed G label hpart hno a b hab hfull
+  have hsurj : ∀ i, ∃ v, label v = i := by
+    intro i
+    have hpos : 0 < (FiniteGraphCounting.fiber label i).card := by rw [hparts]; exact hn
+    obtain ⟨v, hv⟩ := Finset.card_pos.mp hpos
+    exact ⟨v, (FiniteGraphCounting.mem_fiber _ _ _).mp hv⟩
+  obtain ⟨I, T, hF, hseed, hI, hdom⟩ :=
+    exists_dominating_extension G label hpart hsurj hno {a, b} T₀ hF₀
+  have hall := hF.full_active_of_degree hI hpart n d hr hparts hdegree hdeg hdom
+  have hmatch := hF.matched_of_degree hno n d hr hparts hdegree hdeg hall hdom
+  exact ⟨I, hF.toMatchingTree hpart hall hmatch,
+    hseed.1 (by simp), hseed.1 (by simp)⟩
+
+/-- In an edge-minimal counterexample, the prescribed-edge construction is
+available for every actual edge of the graph. -/
+theorem every_edge_in_matching (G : SimpleGraph V) (label : V → ι)
+    (n d : ℕ) (hr : 3 ≤ Fintype.card ι) (hn : 0 < n)
+    (hpart : ∀ ⦃x y⦄, G.Adj x y → label x ≠ label y)
+    (hparts : ∀ i, (FiniteGraphCounting.fiber label i).card = n)
+    (hdegree : ∀ v, FiniteGraphCounting.degree G v ≤ d)
+    (hdeg : (2 * (Fintype.card ι : ℝ) - 4) * d < ((Fintype.card ι : ℝ) - 1) * n)
+    (hminimal : IsEdgeMinimal G label) :
+    ∀ a b, G.Adj a b →
+      ∃ I, MatchingConfiguration.Tree G label I Finset.univ ∧ a ∈ I ∧ b ∈ I := by
+  intro a b hab
+  exact critical_edge_in_matching G label n d hr hn hpart hparts hdegree hdeg
+    hminimal.1 a b hab (hminimal.2 a b hab)
+
+end JSP896.CriticalEdge

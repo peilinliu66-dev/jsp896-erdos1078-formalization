@@ -1,0 +1,61 @@
+JSP896/FeasiblePair.lean:30:8: warning: automatically included section variable(s) unused in theorem `JSP896.FeasiblePair.mem_leaves`:
+  [Fintype V]
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+JSP896/FeasiblePair.lean:48:0: warning: automatically included section variable(s) unused in theorem `JSP896.FeasiblePair.classGraph_empty`:
+  [Fintype V]
+  [Fintype ι]
+  [DecidableEq V]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [Fintype ι] [DecidableEq V] [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+JSP896/FeasiblePair.lean:71:9: error: unexpected token ':'; expected 'lemma'
+JSP896/FeasiblePair.lean:88:22: error(lean.unknownIdentifier): Unknown constant `Finset.not_mem_empty`
+JSP896/FeasiblePair.lean:91:0: warning: automatically included section variable(s) unused in theorem `JSP896.FeasiblePair.Feasible.nonisolated`:
+  [Fintype V]
+  [Fintype ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [Fintype ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+JSP896/FeasiblePair.lean:102:9: error: Insufficient number of fields for `⟨...⟩` constructor: Constructor `JSP896.FeasiblePair.Compatible.mk` does not have explicit fields, but 4 were provided
+JSP896/FeasiblePair.lean:103:2: error: No goals to be solved
+JSP896/FeasiblePair.lean:113:11: error(lean.invalidField): Invalid field `stars`: The environment does not contain `JSP896.FeasiblePair.Compatible.stars`, so it is not possible to project the field `stars` from an expression
+  hU
+of type `Compatible G label I T U`
+JSP896/FeasiblePair.lean:109:40: error: unsolved goals
+V : Type u_1
+ι : Type u_2
+inst✝³ : Fintype V
+inst✝² : Fintype ι
+inst✝¹ : DecidableEq V
+inst✝ : DecidableEq ι
+G : SimpleGraph V
+label : V → ι
+I T U : Finset V
+hF : Feasible G label I T
+hU : Compatible G label I T U
+v : V
+hv : v ∈ I ∩ T
+w : V
+hw : w ∈ I \ T ∧ G.Adj w v
+right✝ : ∀ (y : V), (fun w => w ∈ I \ T ∧ G.Adj w v) y → y = w
+hmem : v ∈ star G T w
+⊢ v ∈ U
+JSP896/FeasiblePair.lean:134:13: error(lean.invalidField): Invalid field `colors`: The environment does not contain `JSP896.FeasiblePair.Compatible.colors`, so it is not possible to project the field `colors` from an expression
+  hU
+of type `Compatible G label I T U`
+JSP896/FeasiblePair.lean:141:25: error(lean.invalidField): Invalid field `partial`: The environment does not contain `JSP896.FeasiblePair.Compatible.partial`, so it is not possible to project the field `partial` from an expression
+  hU
+of type `Compatible G label I T U`
+JSP896/FeasiblePair.lean:161:52: error(lean.invalidField): Invalid field `partial`: The environment does not contain `JSP896.FeasiblePair.Compatible.partial`, so it is not possible to project the field `partial` from an expression
+  hU
+of type `Compatible G label I T U`
+JSP896/FeasiblePair.lean:161:63: error(lean.invalidField): Invalid field `colors`: The environment does not contain `JSP896.FeasiblePair.Compatible.colors`, so it is not possible to project the field `colors` from an expression
+  hU
+of type `Compatible G label I T U`

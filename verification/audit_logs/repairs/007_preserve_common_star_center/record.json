@@ -1,0 +1,10 @@
+{
+  "module": "JSP896.FaithfulExtension",
+  "label": "007_preserve_common_star_center",
+  "recorded_utc": "2026-10-02T07:16:21.001794+00:00",
+  "reason": "Explicitly substitute endpoint x/y (including primed copies), retaining common center c across every case. Literal faithful-edge/tree statements unchanged.",
+  "diagnostic_log": "verification/build/eighth_08_JSP896_FaithfulExtension.log",
+  "before_sha256": "fd2a4d19c203dc9da7012b8851e0f8f401445a94c48f521419251e64b1f2572a",
+  "after_sha256": "98077c1314a2798a01cc347bafe827e729594e89bd06ad4c07e3cf0b1fb14e56",
+  "statement_changed": false
+}

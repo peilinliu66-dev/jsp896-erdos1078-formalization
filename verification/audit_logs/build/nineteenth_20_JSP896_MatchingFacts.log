@@ -1,0 +1,8 @@
+JSP896/MatchingFacts.lean:43:0: warning: automatically included section variable(s) unused in theorem `JSP896.MatchingConfiguration.Tree.full_classGraph_isTree`:
+  [Fintype V]
+  [DecidableEq V]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [DecidableEq V] [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`

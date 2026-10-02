@@ -1,0 +1,67 @@
+{
+  "checked_utc": "2026-10-02T07:07:30.782416+00:00",
+  "toolchain": "leanprover/lean4:v4.35.0-rc3",
+  "version_stdout": "Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)\n",
+  "version_stderr": "",
+  "version_exit": 0,
+  "version_changes": [],
+  "dependencies": [
+    {
+      "name": "mathlib",
+      "expected": "2a885768dae569d938bb9ff3474da6a8753bb90a",
+      "actual": "2a885768dae569d938bb9ff3474da6a8753bb90a",
+      "status": ""
+    },
+    {
+      "name": "plausible",
+      "expected": "b7fb2b866d25bd937a2069931f9733197521cb27",
+      "actual": "b7fb2b866d25bd937a2069931f9733197521cb27",
+      "status": ""
+    },
+    {
+      "name": "LeanSearchClient",
+      "expected": "c35806f43135ab3f254429d0c00bd13fc0123f77",
+      "actual": "c35806f43135ab3f254429d0c00bd13fc0123f77",
+      "status": ""
+    },
+    {
+      "name": "importGraph",
+      "expected": "103cd9a46972ee39d9defb2f54ae49823b1228eb",
+      "actual": "103cd9a46972ee39d9defb2f54ae49823b1228eb",
+      "status": ""
+    },
+    {
+      "name": "proofwidgets",
+      "expected": "87dfe779d5dfd03142ee4fe158911b8eb553ec98",
+      "actual": "87dfe779d5dfd03142ee4fe158911b8eb553ec98",
+      "status": ""
+    },
+    {
+      "name": "aesop",
+      "expected": "a92ed98e694702934d40d12f24a1a449144db43e",
+      "actual": "a92ed98e694702934d40d12f24a1a449144db43e",
+      "status": ""
+    },
+    {
+      "name": "Qq",
+      "expected": "37b0ba0b26109cf9f9c541f0f9557e50cfa1a3b9",
+      "actual": "37b0ba0b26109cf9f9c541f0f9557e50cfa1a3b9",
+      "status": ""
+    },
+    {
+      "name": "batteries",
+      "expected": "950339ce0fd0cc0673a22d87036075737586aed2",
+      "actual": "950339ce0fd0cc0673a22d87036075737586aed2",
+      "status": ""
+    },
+    {
+      "name": "Cli",
+      "expected": "843844fa601dd56767b1eb22b7ada5b64d5e567a",
+      "actual": "843844fa601dd56767b1eb22b7ada5b64d5e567a",
+      "status": ""
+    }
+  ],
+  "dependency_reuse_path": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000865\\candidate\\.lake\\packages",
+  "project_build_unique": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\candidate\\.lake\\build",
+  "initial_all_original_hashes_match": true
+}

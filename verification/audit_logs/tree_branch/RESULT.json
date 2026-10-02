@@ -1,0 +1,43 @@
+{
+  "status": "PASSED_SOURCE_FROZEN_RETURNED_TO_PARENT",
+  "recorded_utc": "2026-10-02T07:26:28.402811+00:00",
+  "toolchain": "leanprover/lean4:v4.35.0-rc3",
+  "modules": [
+    {
+      "module": "JSP896.MatchingTree",
+      "source_sha256": "713c470bbd8306b011760a33e5b22aff4a7ed77d8ee374a5d7ba78f39d01fe82",
+      "original_sha256": "713c470bbd8306b011760a33e5b22aff4a7ed77d8ee374a5d7ba78f39d01fe82",
+      "original_bytes_unchanged": true,
+      "olean_sha256": "2a1eecda4d344313bdb7b38b0d74e6607a607efe318c7e9cf4ce4785f90dae96",
+      "accepted_log": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\verification\\tree_branch\\matching_tree_01.log",
+      "accepted_meta": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\verification\\tree_branch\\matching_tree_01-meta.json",
+      "natural_exit_code": 0
+    },
+    {
+      "module": "JSP896.MatchingOrientation",
+      "source_sha256": "f0e83af73226cde82b897d80b9f06a508b7f7680296dd0ca0c72cff0e8c33d79",
+      "original_sha256": "f0e83af73226cde82b897d80b9f06a508b7f7680296dd0ca0c72cff0e8c33d79",
+      "original_bytes_unchanged": true,
+      "olean_sha256": "3a436eadb991a428a3701ab630c5323c901675a332c708289bf620286b70c415",
+      "accepted_log": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\verification\\tree_branch\\matching_orientation_01.log",
+      "accepted_meta": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\verification\\tree_branch\\matching_orientation_01-meta.json",
+      "natural_exit_code": 0
+    },
+    {
+      "module": "JSP896.MatchingOrientationCentroid",
+      "source_sha256": "5941047c51bfa87890f96ae3e8f62f3ba57560d7c2402d5f8f9d2229d5a162e2",
+      "original_sha256": "5438a49d77e4b1e4f83260f9feea7d78bfa32fb897bb56e3f3138881d853ce86",
+      "original_bytes_unchanged": false,
+      "olean_sha256": "ad66f04bc060a3aee58e2c211ef3d5de20197c59700724a10e829551adadd358",
+      "accepted_log": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\verification\\tree_branch\\matching_centroid_02.log",
+      "accepted_meta": "C:\\Users\\28983\\Documents\\ChatGPT\\孙宇晨奖\\THREE_LEAN_AUDITS_20261002\\JSP000896\\verification\\tree_branch\\matching_centroid_02-meta.json",
+      "natural_exit_code": 0
+    }
+  ],
+  "repairs": [
+    "centroid_01"
+  ],
+  "proof_body_lines_changed": 2,
+  "mathematical_statements_definitions_hypotheses_unchanged": true,
+  "lean_processes_running": false
+}

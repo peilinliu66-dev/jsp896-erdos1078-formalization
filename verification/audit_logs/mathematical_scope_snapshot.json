@@ -1,0 +1,513 @@
+{
+  "utc": "2026-10-02T07:12:10.059692+00:00",
+  "status": "SOURCE_SCOPE_REVIEW_SNAPSHOT_NOT_A_COMPILER_RESULT",
+  "root_local_import_closure": [
+    "JSP896",
+    "JSP896.CellCounting",
+    "JSP896.CellDeletion",
+    "JSP896.CellStructure",
+    "JSP896.CertificateIMC",
+    "JSP896.CertificateMatching",
+    "JSP896.CertificateMultiplicity",
+    "JSP896.CertificateSize",
+    "JSP896.ClassTreeGrowth",
+    "JSP896.CompatibleStars",
+    "JSP896.Complement",
+    "JSP896.CriticalEdge",
+    "JSP896.DominationCertificate",
+    "JSP896.EvenSufficiency",
+    "JSP896.ExpandedCells",
+    "JSP896.FaithfulExtension",
+    "JSP896.FeasibleExtension",
+    "JSP896.FeasibleGrowth",
+    "JSP896.FeasiblePair",
+    "JSP896.FiniteGraphCounting",
+    "JSP896.FiniteTransversal",
+    "JSP896.Main",
+    "JSP896.MatchingCells",
+    "JSP896.MatchingExchange",
+    "JSP896.MatchingFacts",
+    "JSP896.MatchingOrientation",
+    "JSP896.MatchingOrientationCentroid",
+    "JSP896.MatchingTree",
+    "JSP896.OddComponents",
+    "JSP896.OddComponentsCentroid",
+    "JSP896.OddComponentsCounting",
+    "JSP896.OddComponentsOrientation",
+    "JSP896.OddComponentsReachability",
+    "JSP896.OddComponentsSwitching",
+    "JSP896.OddComponentsTerminal",
+    "JSP896.PairedCellTransversal",
+    "JSP896.PairedDeficit",
+    "JSP896.Sharpness",
+    "JSP896.SharpnessChains",
+    "JSP896.SharpnessTools",
+    "JSP896.SmallCases",
+    "JSP896.Statement",
+    "JSP896.StructureBounds",
+    "JSP896.ThresholdArithmetic",
+    "JSP896.ThresholdAsymptotics"
+  ],
+  "authored_module_count_including_root": 45,
+  "audit_lean_files": [
+    "verification/FullAxiomAudit.lean",
+    "verification/InitialAxiomAudit.lean"
+  ],
+  "all_authored_modules_are_in_root_import_closure": true,
+  "prohibited_executable_tokens": [],
+  "source_hashes": {
+    "JSP896.lean": {
+      "sha256": "08b876bed3a981b17ce26968aa965b9faa9956992a75b7b12f592f798086c2c4",
+      "bytes": 19,
+      "lines": 1
+    },
+    "JSP896/CellCounting.lean": {
+      "sha256": "987697608da0a5aab9b7d1c6eb549fe18806893c09459fa1ec18bc84f8ca9397",
+      "bytes": 7668,
+      "lines": 181
+    },
+    "JSP896/CellDeletion.lean": {
+      "sha256": "f7c93c7cc7862b6187009b2595af2b0774f30f4fb271cd2195a6a71a467fca76",
+      "bytes": 6709,
+      "lines": 156
+    },
+    "JSP896/CellStructure.lean": {
+      "sha256": "f20b72e8a871dd96ee83ca37767142992d4c00ec8c1b3fcd0bb8e82cdcc94da2",
+      "bytes": 8651,
+      "lines": 178
+    },
+    "JSP896/CertificateIMC.lean": {
+      "sha256": "1cb9e113f0e8e3f45eb4cf834db9a48aed18cf0250b04300e985b080da18d7f2",
+      "bytes": 6285,
+      "lines": 130
+    },
+    "JSP896/CertificateMatching.lean": {
+      "sha256": "4ae0a57e3524e595933671720d4455795bea16a507326cc024d5ef71d54ee18a",
+      "bytes": 3598,
+      "lines": 85
+    },
+    "JSP896/CertificateMultiplicity.lean": {
+      "sha256": "e269ca7d58a244a6f4c2ae87c01f7edc26094c0987561224fcfa13e61450b92c",
+      "bytes": 4605,
+      "lines": 98
+    },
+    "JSP896/CertificateSize.lean": {
+      "sha256": "d400932a75de1b25ea7aba900c130ac731a1ef93fd3d00551044488485feb647",
+      "bytes": 3456,
+      "lines": 72
+    },
+    "JSP896/ClassTreeGrowth.lean": {
+      "sha256": "ec633ad0622a384c784740c881cac8dae464da0dc38024934dfcca5249c82aca",
+      "bytes": 4183,
+      "lines": 102
+    },
+    "JSP896/CompatibleStars.lean": {
+      "sha256": "c572a479d10040fcc7981cd167358475f9f50559db8bc8160b7d30c54d34a702",
+      "bytes": 4976,
+      "lines": 115
+    },
+    "JSP896/Complement.lean": {
+      "sha256": "be5c546d07aa1ac0c14e45629f7b09d31e21aa4804318779adc6593d1de22460",
+      "bytes": 2727,
+      "lines": 75
+    },
+    "JSP896/CriticalEdge.lean": {
+      "sha256": "4a3b8026b12331700d8324d4f744545c51b2920fc8ea5fabb546d9440152f7bf",
+      "bytes": 12396,
+      "lines": 305
+    },
+    "JSP896/DominationCertificate.lean": {
+      "sha256": "e57f83f46381eeaf98560ee02dc570b664c4bf68707141fa4c03b457768cc1e4",
+      "bytes": 5126,
+      "lines": 114
+    },
+    "JSP896/EvenSufficiency.lean": {
+      "sha256": "4ac0b43d33bb967ed3a2f03dd81d5f6aaf496090fd477cfbfe6499121be489b2",
+      "bytes": 5924,
+      "lines": 147
+    },
+    "JSP896/ExpandedCells.lean": {
+      "sha256": "698570597835ec64c1d95abfdddb95aebbf77630ff8f46a18a6cd485ad98bbd6",
+      "bytes": 12208,
+      "lines": 258
+    },
+    "JSP896/FaithfulExtension.lean": {
+      "sha256": "fd2a4d19c203dc9da7012b8851e0f8f401445a94c48f521419251e64b1f2572a",
+      "bytes": 7463,
+      "lines": 154
+    },
+    "JSP896/FeasibleExtension.lean": {
+      "sha256": "fcea85ab6f6c08bfc6db373713af616f303ab5d621f626332a0b060bdc430fc5",
+      "bytes": 7130,
+      "lines": 157
+    },
+    "JSP896/FeasibleGrowth.lean": {
+      "sha256": "329ed7c41c0e0983af9007d6d069661fd2585d27c37c4a79e90f126c66483352",
+      "bytes": 4796,
+      "lines": 109
+    },
+    "JSP896/FeasiblePair.lean": {
+      "sha256": "4a273bb29fa62ae62c79db8e9dcb259a547712b51da343f4c3f31ea610a11468",
+      "bytes": 7188,
+      "lines": 170
+    },
+    "JSP896/FiniteGraphCounting.lean": {
+      "sha256": "cc4cfeb760deb7f73ad00f22a4800fed335831f929c97913bcba11945a98ed6d",
+      "bytes": 2388,
+      "lines": 61
+    },
+    "JSP896/FiniteTransversal.lean": {
+      "sha256": "1b39db58319cd8acaf487ef88c7bc542b4e6e80b71f21c94b989ae725b3b4123",
+      "bytes": 6364,
+      "lines": 162
+    },
+    "JSP896/Main.lean": {
+      "sha256": "eb68ea71f8cda5c2e84244c1245ead49d04bcd542c1fa7cd600911b41144cf10",
+      "bytes": 6425,
+      "lines": 141
+    },
+    "JSP896/MatchingCells.lean": {
+      "sha256": "1111a2d6548329ed2fdf5365c6f66e32a7ffd4978cf9abcae6882004ae5da6e8",
+      "bytes": 14705,
+      "lines": 340
+    },
+    "JSP896/MatchingExchange.lean": {
+      "sha256": "78dbe156133753334b77af2598f0cd305b20a7a42340649c0ef1a9415c7fa5ab",
+      "bytes": 12587,
+      "lines": 269
+    },
+    "JSP896/MatchingFacts.lean": {
+      "sha256": "2e27b785e6f841f3219e4f6d8f42a70349f799dc16c952802ff610c0d6c0e88b",
+      "bytes": 2590,
+      "lines": 65
+    },
+    "JSP896/MatchingOrientation.lean": {
+      "sha256": "f0e83af73226cde82b897d80b9f06a508b7f7680296dd0ca0c72cff0e8c33d79",
+      "bytes": 6686,
+      "lines": 149
+    },
+    "JSP896/MatchingOrientationCentroid.lean": {
+      "sha256": "5438a49d77e4b1e4f83260f9feea7d78bfa32fb897bb56e3f3138881d853ce86",
+      "bytes": 4968,
+      "lines": 113
+    },
+    "JSP896/MatchingTree.lean": {
+      "sha256": "713c470bbd8306b011760a33e5b22aff4a7ed77d8ee374a5d7ba78f39d01fe82",
+      "bytes": 3743,
+      "lines": 81
+    },
+    "JSP896/OddComponents.lean": {
+      "sha256": "808cb78ed801786bcba868fe46adaab9e8b00a9242b3c8b784967244e9eaa06f",
+      "bytes": 1949,
+      "lines": 45
+    },
+    "JSP896/OddComponentsCentroid.lean": {
+      "sha256": "7a2e66b3813c73b566052d2277fda50633b1edb35474ce359b863506ae90ebae",
+      "bytes": 4621,
+      "lines": 101
+    },
+    "JSP896/OddComponentsCounting.lean": {
+      "sha256": "1c08e221ad45307beec3ff64120bbcae730c9996a44f858843dee2051c729410",
+      "bytes": 5709,
+      "lines": 136
+    },
+    "JSP896/OddComponentsOrientation.lean": {
+      "sha256": "a9004f4f7f315de7183477918efc46284bfb2ee3513605f6e7f739967551ff07",
+      "bytes": 7774,
+      "lines": 182
+    },
+    "JSP896/OddComponentsReachability.lean": {
+      "sha256": "c7a1343d7dfef8007f19199ca2afdc9c113f1de93b5c15bdce196cf2ca4d4566",
+      "bytes": 11181,
+      "lines": 300
+    },
+    "JSP896/OddComponentsSwitching.lean": {
+      "sha256": "013d0a61a718c526d34cab8c6dfd12bdbe84c04f1878aa02e5bbfee758321832",
+      "bytes": 8144,
+      "lines": 182
+    },
+    "JSP896/OddComponentsTerminal.lean": {
+      "sha256": "fd7f8f97bc236ae735125b2b56d061bf05fadaf1bd873d9d599f7ce8ece81622",
+      "bytes": 5953,
+      "lines": 134
+    },
+    "JSP896/PairedCellTransversal.lean": {
+      "sha256": "a5bd86bc1a65bd1f98a5afe43236761d0edfd843bc6764348815b9f3efebd41c",
+      "bytes": 3470,
+      "lines": 73
+    },
+    "JSP896/PairedDeficit.lean": {
+      "sha256": "79ab95e7c3bb3797e0c7193078a0f7ffec10fd27b8e3d8df4e0e49660dbc8f4b",
+      "bytes": 4481,
+      "lines": 105
+    },
+    "JSP896/Sharpness.lean": {
+      "sha256": "7af87db2d119bb54a183fbbc47cbe45a49414a8a5557b19b5b902c222ff446a1",
+      "bytes": 5007,
+      "lines": 119
+    },
+    "JSP896/SharpnessChains.lean": {
+      "sha256": "9b07379601a98efba07665fdf0383de30fb8a9443de107d0c8b986de56d93520",
+      "bytes": 13297,
+      "lines": 318
+    },
+    "JSP896/SharpnessTools.lean": {
+      "sha256": "d0794969b5cdd77cf20c7568529dad016c084e864579602a03bd629e32b1d06f",
+      "bytes": 7641,
+      "lines": 190
+    },
+    "JSP896/SmallCases.lean": {
+      "sha256": "909a824eab0808e26cc7b3fc942228743f8a82c5f1d5371964787b4d06593173",
+      "bytes": 8510,
+      "lines": 225
+    },
+    "JSP896/Statement.lean": {
+      "sha256": "d42fe8a6e3e7dc191423b07d836ee4221721622da42ec6056496d80951ae6944",
+      "bytes": 3740,
+      "lines": 104
+    },
+    "JSP896/StructureBounds.lean": {
+      "sha256": "53ebdaafbab9e74bf137c86a8df2421eeec8c716663167a0c040e14a388af27c",
+      "bytes": 1036,
+      "lines": 31
+    },
+    "JSP896/ThresholdArithmetic.lean": {
+      "sha256": "1c4b5a2966c9f19bc9dbe2fc463d1b00bea2c3f1e1ba0321d91a3bf7ff6ec5ed",
+      "bytes": 5486,
+      "lines": 135
+    },
+    "JSP896/ThresholdAsymptotics.lean": {
+      "sha256": "16fe368492235dd13df165b8a1828471620a52db200dae6073480a065839637e",
+      "bytes": 7911,
+      "lines": 170
+    },
+    "verification/FullAxiomAudit.lean": {
+      "sha256": "2f3364382e3b9d63da7cf18ac17356fd33f3deafd8f8b533daf91261c0b74aa6",
+      "bytes": 929,
+      "lines": 20
+    },
+    "verification/InitialAxiomAudit.lean": {
+      "sha256": "7bbbc6fc248ca69667676049c4691884ddecc3b1fd5e6a593f1086705a08c463",
+      "bytes": 337,
+      "lines": 8
+    }
+  },
+  "imports": {
+    "JSP896.lean": [
+      "JSP896.Main"
+    ],
+    "JSP896/CellCounting.lean": [
+      "JSP896.MatchingExchange"
+    ],
+    "JSP896/CellDeletion.lean": [
+      "JSP896.CellCounting"
+    ],
+    "JSP896/CellStructure.lean": [
+      "JSP896.ExpandedCells"
+    ],
+    "JSP896/CertificateIMC.lean": [
+      "JSP896.CertificateMatching",
+      "Mathlib.Tactic.NormNum"
+    ],
+    "JSP896/CertificateMatching.lean": [
+      "JSP896.CertificateSize",
+      "JSP896.FiniteGraphCounting",
+      "JSP896.MatchingTree",
+      "Mathlib.Data.Fintype.EquivFin",
+      "Mathlib.Tactic.Linarith"
+    ],
+    "JSP896/CertificateMultiplicity.lean": [
+      "JSP896.PairedDeficit",
+      "Mathlib.Combinatorics.SimpleGraph.Basic",
+      "Mathlib.Data.Finset.Card",
+      "Mathlib.Tactic.Order"
+    ],
+    "JSP896/CertificateSize.lean": [
+      "JSP896.DominationCertificate",
+      "Mathlib.Combinatorics.SimpleGraph.DegreeSum"
+    ],
+    "JSP896/ClassTreeGrowth.lean": [
+      "Mathlib.Combinatorics.SimpleGraph.Acyclic",
+      "Mathlib.Data.Finset.Lattice.Fold"
+    ],
+    "JSP896/CompatibleStars.lean": [
+      "JSP896.FeasibleGrowth"
+    ],
+    "JSP896/Complement.lean": [
+      "JSP896.Statement",
+      "Mathlib.Data.Finset.Prod",
+      "Mathlib.Tactic.Order"
+    ],
+    "JSP896/CriticalEdge.lean": [
+      "JSP896.CertificateIMC",
+      "JSP896.ClassTreeGrowth",
+      "Mathlib.Tactic"
+    ],
+    "JSP896/DominationCertificate.lean": [
+      "JSP896.FeasibleExtension"
+    ],
+    "JSP896/EvenSufficiency.lean": [
+      "JSP896.CertificateIMC",
+      "JSP896.Statement",
+      "Mathlib.Tactic"
+    ],
+    "JSP896/ExpandedCells.lean": [
+      "JSP896.CellDeletion"
+    ],
+    "JSP896/FaithfulExtension.lean": [
+      "JSP896.CompatibleStars",
+      "JSP896.ClassTreeGrowth"
+    ],
+    "JSP896/FeasibleExtension.lean": [
+      "JSP896.FaithfulExtension"
+    ],
+    "JSP896/FeasibleGrowth.lean": [
+      "JSP896.FeasiblePair"
+    ],
+    "JSP896/FeasiblePair.lean": [
+      "JSP896.FiniteTransversal",
+      "JSP896.CertificateMultiplicity",
+      "Mathlib.Combinatorics.SimpleGraph.Acyclic"
+    ],
+    "JSP896/FiniteGraphCounting.lean": [
+      "JSP896.CertificateMultiplicity",
+      "Mathlib.Algebra.BigOperators.Group.Finset.Basic"
+    ],
+    "JSP896/FiniteTransversal.lean": [
+      "Mathlib.Combinatorics.SimpleGraph.Basic",
+      "Mathlib.Data.Finset.Card",
+      "Mathlib.Data.Finset.Max",
+      "Mathlib.Data.Finset.Powerset",
+      "Mathlib.Tactic.Order"
+    ],
+    "JSP896/Main.lean": [
+      "JSP896.EvenSufficiency",
+      "JSP896.CriticalEdge",
+      "JSP896.CellStructure",
+      "JSP896.OddComponents",
+      "JSP896.SmallCases",
+      "JSP896.ThresholdAsymptotics"
+    ],
+    "JSP896/MatchingCells.lean": [
+      "JSP896.MatchingFacts",
+      "JSP896.PairedCellTransversal",
+      "JSP896.StructureBounds"
+    ],
+    "JSP896/MatchingExchange.lean": [
+      "JSP896.MatchingCells"
+    ],
+    "JSP896/MatchingFacts.lean": [
+      "JSP896.CertificateIMC",
+      "JSP896.MatchingOrientation"
+    ],
+    "JSP896/MatchingOrientation.lean": [
+      "JSP896.MatchingTree",
+      "Mathlib.Combinatorics.SimpleGraph.Metric",
+      "Mathlib.Tactic"
+    ],
+    "JSP896/MatchingOrientationCentroid.lean": [
+      "JSP896.MatchingOrientation",
+      "Mathlib.Combinatorics.SimpleGraph.Acyclic",
+      "Mathlib.Algebra.BigOperators.Group.Finset.Basic",
+      "Mathlib.Data.Finset.Max"
+    ],
+    "JSP896/MatchingTree.lean": [
+      "JSP896.FeasiblePair"
+    ],
+    "JSP896/OddComponents.lean": [
+      "JSP896.OddComponentsCentroid",
+      "JSP896.OddComponentsTerminal"
+    ],
+    "JSP896/OddComponentsCentroid.lean": [
+      "JSP896.OddComponentsOrientation"
+    ],
+    "JSP896/OddComponentsCounting.lean": [
+      "JSP896.MatchingOrientationCentroid",
+      "JSP896.Statement",
+      "Mathlib.Data.Finset.Prod",
+      "Mathlib.Algebra.Order.BigOperators.Group.Finset"
+    ],
+    "JSP896/OddComponentsOrientation.lean": [
+      "JSP896.MatchingFacts",
+      "JSP896.MatchingOrientationCentroid",
+      "JSP896.OddComponentsReachability"
+    ],
+    "JSP896/OddComponentsReachability.lean": [
+      "Mathlib.Data.Finset.Max",
+      "Mathlib.Tactic"
+    ],
+    "JSP896/OddComponentsSwitching.lean": [
+      "JSP896.OddComponentsOrientation"
+    ],
+    "JSP896/OddComponentsTerminal.lean": [
+      "JSP896.OddComponentsSwitching",
+      "JSP896.OddComponentsCounting"
+    ],
+    "JSP896/PairedCellTransversal.lean": [
+      "JSP896.DominationCertificate",
+      "JSP896.FiniteGraphCounting"
+    ],
+    "JSP896/PairedDeficit.lean": [
+      "Mathlib.Algebra.Order.BigOperators.Group.Finset",
+      "Mathlib.Algebra.BigOperators.Ring.Finset",
+      "Mathlib.Data.Fintype.BigOperators",
+      "Mathlib.Data.Real.Basic",
+      "Mathlib.Tactic.Linarith",
+      "Mathlib.Tactic.NormNum",
+      "Mathlib.Tactic.Ring",
+      "Mathlib.Tactic.SplitIfs"
+    ],
+    "JSP896/Sharpness.lean": [
+      "JSP896.SharpnessChains"
+    ],
+    "JSP896/SharpnessChains.lean": [
+      "JSP896.SharpnessTools"
+    ],
+    "JSP896/SharpnessTools.lean": [
+      "JSP896.Statement",
+      "Mathlib.Data.Fintype.EquivFin",
+      "Mathlib.Tactic"
+    ],
+    "JSP896/SmallCases.lean": [
+      "JSP896.Complement",
+      "Mathlib.Data.Finset.Max",
+      "Mathlib.Tactic"
+    ],
+    "JSP896/Statement.lean": [
+      "Mathlib.Combinatorics.SimpleGraph.Basic",
+      "Mathlib.Data.Finset.Card",
+      "Mathlib.Data.Fintype.Prod"
+    ],
+    "JSP896/StructureBounds.lean": [
+      "Mathlib.Data.Real.Basic",
+      "Mathlib.Tactic.Linarith"
+    ],
+    "JSP896/ThresholdArithmetic.lean": [
+      "JSP896.Complement",
+      "JSP896.Sharpness"
+    ],
+    "JSP896/ThresholdAsymptotics.lean": [
+      "JSP896.ThresholdArithmetic",
+      "Mathlib.Analysis.SpecificLimits.Basic",
+      "Mathlib.Topology.Order.Basic"
+    ],
+    "verification/FullAxiomAudit.lean": [
+      "JSP896"
+    ],
+    "verification/InitialAxiomAudit.lean": [
+      "JSP896"
+    ]
+  },
+  "known_scope_bridge": {
+    "formula_limit_bridge": "fullResolution_with_asymptotics has explicit hfull; Main supplies full_resolution",
+    "original_BES_limit": "c_r-(r-2) = 1-((r-1)-c_r); existing limit is mathematically equivalent to the original one"
+  },
+  "scope": "all r >= 2, n >= 1; exact ceiling; strict sufficient clique degree and actual sharp graph; fixed-r and large-r limits",
+  "claims_not_made": [
+    "compiler success",
+    "kernel replay success",
+    "final transitive axiom set",
+    "global priority",
+    "award acceptance"
+  ]
+}

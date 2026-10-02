@@ -1,0 +1,170 @@
+import JSP896.FiniteTransversal
+import JSP896.CertificateMultiplicity
+import Mathlib.Combinatorics.SimpleGraph.Acyclic
+
+/-!
+# Literal feasible-pair invariants
+
+The class graph is a SimpleGraph, so its acyclicity alone cannot retain parallel
+edge information. `faithful` is therefore a separate explicit invariant, to be
+proved when new star leaves attach previously inactive classes.
+
+The empty class graph is permitted initially. Nonempty certificates will later
+be proved to have at least two active classes. Nothing in this file assumes
+the existence of a nonempty dominating certificate.
+-/
+
+namespace JSP896.FeasiblePair
+
+open FiniteTransversal
+
+variable {V ι : Type*} [Fintype V] [Fintype ι] [DecidableEq V] [DecidableEq ι]
+
+noncomputable def leaves (G : SimpleGraph V) (T : Finset V) (w : V) : Finset V := by
+  classical
+  exact T.filter (G.Adj w)
+
+noncomputable def star (G : SimpleGraph V) (T : Finset V) (w : V) : Finset V :=
+  insert w (leaves G T w)
+
+@[simp] theorem mem_leaves (G : SimpleGraph V) (T : Finset V) (w v : V) :
+    v ∈ leaves G T w ↔ v ∈ T ∧ G.Adj w v := by
+  classical
+  simp [leaves]
+
+@[simp] theorem mem_star (G : SimpleGraph V) (T : Finset V) (w v : V) :
+    v ∈ star G T w ↔ v = w ∨ v ∈ T ∧ G.Adj w v := by
+  classical
+  simp [star]
+
+def classGraph (G : SimpleGraph V) (label : V → ι) (I : Finset V) : SimpleGraph ι where
+  Adj i j := i ≠ j ∧ ∃ v ∈ I, ∃ w ∈ I, G.Adj v w ∧ label v = i ∧ label w = j
+  symm := ⟨by
+    intro i j h
+    rcases h with ⟨hne, v, hv, w, hw, hvw, hvi, hwj⟩
+    exact ⟨hne.symm, w, hw, v, hv, G.adj_symm hvw, hwj, hvi⟩⟩
+  loopless := ⟨by intro i h; exact h.1 rfl⟩
+
+theorem classGraph_empty (G : SimpleGraph V) (label : V → ι) :
+    classGraph G label ∅ = ⊥ := by
+  ext i j
+  simp [classGraph]
+
+structure Feasible (G : SimpleGraph V) (label : V → ι) (I T : Finset V) : Prop where
+  maximum : Maximum G label T
+  agreement : (I ∩ T).image label = I.image label ∩ T.image label
+  centersIndependent : ∀ x ∈ I \ T, ∀ y ∈ I \ T, ¬ G.Adj x y
+  centersHaveLeaf : ∀ w ∈ I \ T, ∃ v ∈ I ∩ T, G.Adj w v
+  centersSaturated : ∀ w ∈ I \ T, ∀ v ∈ T, G.Adj w v → v ∈ I
+  leavesUnique : ∀ v ∈ I ∩ T, ∃! w, w ∈ I \ T ∧ G.Adj w v
+  classAcyclic : (classGraph G label I).IsAcyclic
+  classConnected : ∀ i ∈ I.image label, ∀ j ∈ I.image label,
+    (classGraph G label I).Reachable i j
+  faithful : PairedDeficit.FaithfulClassEdges G I label
+  locallyMinimal : ∀ w ∈ I \ T, ∀ U : Finset V,
+    Partial G label U → U.image label = T.image label → Disjoint U (I \ T) →
+    (∀ z ∈ I \ T, z ≠ w → star G U z = star G T z) →
+      (star G T w).card ≤ (star G U w).card
+
+structure Compatible (G : SimpleGraph V) (label : V → ι)
+    (I T U : Finset V) : Prop where
+  partial : Partial G label U
+  colors : U.image label = T.image label
+  avoidsCenters : Disjoint U (I \ T)
+  stars : ∀ w ∈ I \ T, star G U w = star G T w
+
+theorem feasible_empty (G : SimpleGraph V) (label : V → ι) (T : Finset V)
+    (hT : Maximum G label T) : Feasible G label ∅ T := by
+  refine ⟨hT, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_⟩
+  · simp
+  · simp
+  · simp
+  · simp
+  · simp
+  · rw [classGraph_empty]
+    exact SimpleGraph.isAcyclic_bot
+  · simp
+  · intro v hv
+    exact False.elim (Finset.not_mem_empty v hv)
+  · simp
+
+theorem Feasible.nonisolated {G : SimpleGraph V} {label : V → ι} {I T : Finset V}
+    (hF : Feasible G label I T) : ∀ v ∈ I, ∃ w ∈ I, G.Adj v w := by
+  intro v hv
+  by_cases hvT : v ∈ T
+  · obtain ⟨w, hw, _⟩ := hF.leavesUnique v (Finset.mem_inter.mpr ⟨hv, hvT⟩)
+    exact ⟨w, (Finset.mem_sdiff.mp hw.1).1, G.adj_symm hw.2⟩
+  · obtain ⟨w, hw, hvw⟩ := hF.centersHaveLeaf v (Finset.mem_sdiff.mpr ⟨hv, hvT⟩)
+    exact ⟨w, (Finset.mem_inter.mp hw).1, hvw⟩
+
+theorem Feasible.compatible_self {G : SimpleGraph V} {label : V → ι}
+    {I T : Finset V} (hF : Feasible G label I T) : Compatible G label I T T := by
+  refine ⟨hF.maximum.1, rfl, ?_, fun _ _ => rfl⟩
+  apply Finset.disjoint_left.mpr
+  intro v hv hv'
+  exact (Finset.mem_sdiff.mp hv').2 hv
+
+theorem leaf_mem_of_compatible {G : SimpleGraph V} {label : V → ι}
+    {I T U : Finset V} (hF : Feasible G label I T) (hU : Compatible G label I T U)
+    {v : V} (hv : v ∈ I ∩ T) : v ∈ U := by
+  obtain ⟨w, hw, _⟩ := hF.leavesUnique v hv
+  have hmem : v ∈ star G T w :=
+    (mem_star G T w v).mpr (Or.inr ⟨(Finset.mem_inter.mp hv).2, hw.2⟩)
+  rw [← hU.stars w hw.1] at hmem
+  rcases (mem_star G U w v).mp hmem with hEq | hleaf
+  · have hwT : w ∉ T := (Finset.mem_sdiff.mp hw.1).2
+    exact False.elim (hwT (hEq ▸ (Finset.mem_inter.mp hv).2))
+  · exact hleaf.1
+
+theorem active_T_vertex_mem_compatible {G : SimpleGraph V} {label : V → ι}
+    {I T U : Finset V} (hF : Feasible G label I T) (hU : Compatible G label I T U)
+    {v : V} (hv : v ∈ T) (hactive : label v ∈ I.image label) : v ∈ U := by
+  have hcolor : label v ∈ (I ∩ T).image label := by
+    rw [hF.agreement]
+    exact Finset.mem_inter.mpr ⟨hactive, Finset.mem_image.mpr ⟨v, hv, rfl⟩⟩
+  obtain ⟨w, hw, hlabel⟩ := Finset.mem_image.mp hcolor
+  have hwv : w = v := hF.maximum.1.2 w (Finset.mem_inter.mp hw).2 v hv hlabel
+  subst w
+  exact leaf_mem_of_compatible hF hU hw
+
+theorem compatible_vertex_on_active_mem_T {G : SimpleGraph V} {label : V → ι}
+    {I T U : Finset V} (hF : Feasible G label I T) (hU : Compatible G label I T U)
+    {v : V} (hv : v ∈ U) (hactive : label v ∈ I.image label) : v ∈ T := by
+  have hcolor : label v ∈ T.image label := by
+    rw [← hU.colors]
+    exact Finset.mem_image.mpr ⟨v, hv, rfl⟩
+  obtain ⟨w, hw, hlabel⟩ := Finset.mem_image.mp hcolor
+  have hwactive : label w ∈ I.image label := by
+    rw [hlabel]
+    exact hactive
+  have hwU := active_T_vertex_mem_compatible hF hU hw hwactive
+  have hwv : w = v := hU.partial.2 w hwU v hv hlabel
+  exact hwv ▸ hw
+
+theorem exists_minimum_compatible_star {G : SimpleGraph V} {label : V → ι}
+    {I T : Finset V} (hF : Feasible G label I T) (w : V) :
+    ∃ U, Compatible G label I T U ∧
+      ∀ U', Compatible G label I T U' → (star G U w).card ≤ (star G U' w).card := by
+  classical
+  let candidates := (Finset.univ : Finset V).powerset.filter (Compatible G label I T)
+  have hne : candidates.Nonempty := by
+    refine ⟨T, ?_⟩
+    simp [candidates, hF.compatible_self]
+  obtain ⟨U, hU, hmin⟩ := candidates.exists_min_image (fun U => (star G U w).card) hne
+  refine ⟨U, (Finset.mem_filter.mp hU).2, ?_⟩
+  intro U' hU'
+  apply hmin U'
+  simp [candidates, hU']
+
+theorem Compatible.maximum {G : SimpleGraph V} {label : V → ι}
+    {I T U : Finset V} (hF : Feasible G label I T) (hU : Compatible G label I T U) :
+    Maximum G label U := hF.maximum.of_colors_eq hU.partial hU.colors
+
+theorem Feasible.undominated_not_mem {G : SimpleGraph V} {label : V → ι}
+    {I T : Finset V} (hF : Feasible G label I T) {w : V}
+    (havoid : ∀ v ∈ I, ¬ G.Adj w v) : w ∉ I := by
+  intro hw
+  obtain ⟨v, hv, hwv⟩ := hF.nonisolated w hw
+  exact havoid v hv hwv
+
+end JSP896.FeasiblePair

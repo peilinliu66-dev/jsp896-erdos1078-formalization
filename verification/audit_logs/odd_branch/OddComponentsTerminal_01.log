@@ -1,0 +1,3 @@
+JSP896\OddComponentsTerminal.lean:16:45: warning: Ambiguous namespace `Directed`: it is interpreted as `_root_.JSP896.OddComponents.Directed` because this `open` occurs inside `namespace JSP896.OddComponents`, while `_root_.Directed` is silently not opened. Specify the namespace unambiguously, e.g. `_root_.JSP896.OddComponents.Directed`. The warning can sometimes also be addressed by moving the `open` outside of the surrounding `namespace`.
+
+Note: This linter can be disabled with `set_option linter.ambiguousOpen false`

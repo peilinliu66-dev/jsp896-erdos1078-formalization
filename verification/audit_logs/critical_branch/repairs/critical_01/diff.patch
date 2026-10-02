@@ -1,0 +1,50 @@
+--- before/JSP896/CriticalEdge.lean
++++ after/JSP896/CriticalEdge.lean
+@@ -178,7 +178,7 @@
+     constructor
+     · rintro ⟨hne, v, hv, w, hw, hvw, hvi, hwj⟩
+       simp only [Finset.mem_insert, Finset.mem_singleton] at hv hw
+-      rcases hv with rfl | rfl <;> rcases hw with rfl | rfl
++      rcases hv with hv | hv <;> rcases hw with hw | hw <;> subst v <;> subst w
+       · exact False.elim (G.loopless.irrefl a hvw)
+       · exact ⟨Or.inl ⟨hvi.symm, hwj.symm⟩, hne⟩
+       · exact ⟨Or.inr ⟨hvi.symm, hwj.symm⟩, hne⟩
+@@ -200,7 +200,7 @@
+   refine ⟨T, hmax, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_⟩
+   · rw [hinter]
+     ext i
+-    simp only [Finset.image_singleton, Finset.image_pair, Finset.mem_inter,
++    simp only [Finset.image_insert, Finset.image_singleton, Finset.mem_inter,
+       Finset.mem_insert, Finset.mem_singleton]
+     aesop
+   · intro x hx y hy
+@@ -235,11 +235,11 @@
+   · intro i hi j hj
+     rw [hclass]
+     have hi' : i ∈ insert (label b) {label a} := by
+-      simpa only [Finset.image_pair, Finset.mem_insert, Finset.mem_singleton,
+-        or_comm] using hi
++      simpa only [Finset.image_insert, Finset.image_singleton, Finset.mem_insert,
++        Finset.mem_singleton, or_comm] using hi
+     have hj' : j ∈ insert (label b) {label a} := by
+-      simpa only [Finset.image_pair, Finset.mem_insert, Finset.mem_singleton,
+-        or_comm] using hj
++      simpa only [Finset.image_insert, Finset.image_singleton, Finset.mem_insert,
++        Finset.mem_singleton, or_comm] using hj
+     simpa only [bot_sup_eq] using htree.connected i hi' j hj'
+   · intro v hv w hw v' hv' w' hw' _ _ hlabelV hlabelW
+     exact ⟨hIinj v hv v' hv' hlabelV, hIinj w hw w' hw' hlabelW⟩
+@@ -257,11 +257,11 @@
+     have hsub : ({a, u} : Finset V) ⊆ star G W a := by
+       intro v hv
+       simp only [Finset.mem_insert, Finset.mem_singleton] at hv
+-      rcases hv with rfl | rfl
++      rcases hv with hv | hv <;> subst v
+       · exact (mem_star G W a a).mpr (Or.inl rfl)
+       · exact (mem_star G W a u).mpr (Or.inr ⟨hu, hau⟩)
+     have hcard := Finset.card_le_card hsub
+-    simpa [star, hleaves, habne, hane] using hcard
++    simpa [FeasiblePair.star, hleaves, habne, hane] using hcard
+ 
+ /-- Every critical edge belongs to a genuine induced matching configuration. -/
+ theorem critical_edge_in_matching (G : SimpleGraph V) (label : V → ι)

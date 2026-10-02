@@ -1,0 +1,24 @@
+{
+  "status": "FINITE_CHALLENGES_PASSED",
+  "checked_utc": "2026-10-02T07:11:17.429931+00:00",
+  "limitation": "Finite checks support the source review only; they do not prove the universal theorem or establish elaboration/kernel validity.",
+  "script_sha256": "d9d6a65f43fbe7e39cf7b3fd0319a76c9299fef112d1e4c4e22badb42bf9ac2d",
+  "all_topologically_ordered_dags_checked": 33866,
+  "root_reachable_dags_checked": 10105,
+  "minimum_rank_root_dominator_blocks_checked": 14909,
+  "root_reachable_dags_by_vertex_count": {
+    "2": 1,
+    "3": 3,
+    "4": 21,
+    "5": 315,
+    "6": 9765
+  },
+  "scope": "all simple topologically ordered DAGs on 2..6 vertices with root 0; invariant under relabelling; loops do not affect reachability or dominators",
+  "paired_coefficient_cases_checked": 2364,
+  "pair_counts": [
+    1,
+    2,
+    3,
+    4
+  ]
+}

@@ -1,0 +1,42 @@
+--- before/JSP896.CellCounting
++++ after/JSP896.CellCounting
+@@ -98,12 +98,15 @@
+       ⟨⟨w, hw⟩, (mem_matchingNeighbors G I v _).mpr (G.adj_symm hwv)⟩
+     by_cases hv : v ∈ core G I
+     · rw [if_pos hv, (mem_core_iff_one G I v).mp hv]
+-      omega
+     · have hn := mt (mem_core_iff_one G I v).mpr hv
+       rw [if_neg hv]
+       omega
+   have hs := Finset.sum_le_sum (s := Finset.univ) (fun v _ => hpoint v)
+-  have hcount : (∑ v : V, if v ∈ core G I then 1 else 0) = (core G I).card := by simp
++  have hcount : (∑ v : V, if v ∈ core G I then 1 else 0) = (core G I).card := by
++    rw [Finset.sum_boole]
++    congr 1
++    ext v
++    simp only [Finset.mem_filter, Finset.mem_univ, true_and]
+   rw [Finset.sum_add_distrib, hcount, incidence_sum] at hs
+   have hdeg : (∑ i : IVertex I, degree G i.1) ≤ I.card * d := by
+     calc
+@@ -139,7 +142,11 @@
+       omega
+   have hs := Finset.sum_le_sum (s := Finset.univ) (fun v _ => hpoint v)
+   have hc : (∑ v : V, if v ∈ multiplyDominated G I then 1 else 0) =
+-      (multiplyDominated G I).card := by simp
++      (multiplyDominated G I).card := by
++    rw [Finset.sum_boole]
++    congr 1
++    ext v
++    simp only [Finset.mem_filter, Finset.mem_univ, true_and]
+   rw [Finset.sum_add_distrib, hc, incidence_sum] at hs
+   have hd : (∑ i : IVertex I, degree G i.1) ≤ I.card * d := by
+     calc
+@@ -153,7 +160,7 @@
+     Fintype.card V = Fintype.card ι * n := by
+   have h := sum_fiber_card label Finset.univ
+   simpa only [hparts, Finset.sum_const, Finset.card_univ, nsmul_eq_mul,
+-    activeVertices, Finset.mem_univ, Finset.filter_true] using h.symm
++    activeVertices, Finset.mem_univ, Finset.filter_true, Nat.cast_id] using h.symm
+ 
+ theorem Tree.total_cell_deficit_lt {G : SimpleGraph V} {label : V → ι}
+     {I : Finset V} (M : Tree G label I Finset.univ) [Nonempty ι]

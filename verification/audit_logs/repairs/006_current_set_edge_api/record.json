@@ -1,0 +1,10 @@
+{
+  "module": "JSP896.ClassTreeGrowth",
+  "label": "006_current_set_edge_api",
+  "recorded_utc": "2026-10-02T07:14:54.483721+00:00",
+  "reason": "Use current notMem theorem spelling and all explicit edge_adj vertex arguments; graph/tree statement unchanged.",
+  "diagnostic_log": "verification/build/seventh_07_JSP896_ClassTreeGrowth.log",
+  "before_sha256": "ec633ad0622a384c784740c881cac8dae464da0dc38024934dfcca5249c82aca",
+  "after_sha256": "c9b87736c499412d9c767e550d89f236952d43d376cf5d6821064fb7a0a7dcc5",
+  "statement_changed": false
+}

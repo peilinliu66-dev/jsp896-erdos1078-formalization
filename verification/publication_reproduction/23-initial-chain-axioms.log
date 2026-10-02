@@ -1,0 +1,6 @@
+'JSP896.crossComplement_involutive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'JSP896.clique_crossComplement_iff' does not depend on any axioms
+'JSP896.independent_crossComplement_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'JSP896.PairedDeficit.coefficient_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'JSP896.PairedDeficit.weighted_certificate_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'JSP896.PairedDeficit.no_dominating_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -1,0 +1,50 @@
+--- before/JSP896.FiniteTransversal
++++ after/JSP896.FiniteTransversal
+@@ -60,21 +60,27 @@
+     (havoids : ∀ y ∈ T, ¬ G.Adj x y) : Partial G label (insert x T) := by
+   constructor
+   · intro a ha b hb
+-    rcases Finset.mem_insert.mp ha with rfl | ha
+-    · rcases Finset.mem_insert.mp hb with rfl | hb
+-      · exact G.loopless.irrefl x
++    rcases Finset.mem_insert.mp ha with hax | ha
++    · subst a
++      rcases Finset.mem_insert.mp hb with hbx | hb
++      · subst b
++        exact G.loopless.irrefl x
+       · exact havoids b hb
+-    · rcases Finset.mem_insert.mp hb with rfl | hb
+-      · intro h
++    · rcases Finset.mem_insert.mp hb with hbx | hb
++      · subst b
++        intro h
+         exact havoids a ha (G.adj_symm h)
+       · exact hT.1 a ha b hb
+   · intro a ha b hb hab
+-    rcases Finset.mem_insert.mp ha with rfl | ha
+-    · rcases Finset.mem_insert.mp hb with rfl | hb
+-      · rfl
++    rcases Finset.mem_insert.mp ha with hax | ha
++    · subst a
++      rcases Finset.mem_insert.mp hb with hbx | hb
++      · subst b
++        rfl
+       · exact False.elim (hmissing (Finset.mem_image.mpr ⟨b, hb, hab.symm⟩))
+-    · rcases Finset.mem_insert.mp hb with rfl | hb
+-      · exact False.elim (hmissing (Finset.mem_image.mpr ⟨a, ha, hab⟩))
++    · rcases Finset.mem_insert.mp hb with hbx | hb
++      · subst b
++        exact False.elim (hmissing (Finset.mem_image.mpr ⟨a, ha, hab⟩))
+       · exact hT.2 a ha b hb hab
+ 
+ theorem Maximum.missing_vertex_has_neighbour {G : SimpleGraph V} {label : V → ι}
+@@ -104,7 +110,8 @@
+     intro heq
+     have himage : T.image label = Finset.univ := by
+       apply Finset.eq_of_subset_of_card_le (Finset.subset_univ _)
+-      simpa only [Finset.card_univ, hT.card_image, heq]
++      simpa only [Finset.card_univ, hT.card_image, heq] using
++        (le_refl (Fintype.card ι))
+     exact hno ⟨T, hT, himage⟩
+   omega
+ 

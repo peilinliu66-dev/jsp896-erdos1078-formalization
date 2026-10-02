@@ -1,0 +1,13 @@
+--- before/JSP896/OddComponentsReachability.lean
++++ after/JSP896/OddComponentsReachability.lean
+@@ -180,7 +180,9 @@
+   exact Finset.univ.filter (Reach R x)
+ 
+ @[simp] theorem mem_future (R : α → α → Prop) (x y : α) :
+-    y ∈ future R x ↔ Reach R x y := by classical; simp [future]
++    y ∈ future R x ↔ Reach R x y := by
++  classical
++  simp [future]
+ 
+ noncomputable def rank (R : α → α → Prop) (x : α) : ℕ := (future R x).card
+ 

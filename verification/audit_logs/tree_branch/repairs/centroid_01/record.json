@@ -1,0 +1,10 @@
+{
+  "module": "JSP896.MatchingOrientationCentroid",
+  "label": "centroid_01",
+  "recorded_utc": "2026-10-02T07:24:55.670913+00:00",
+  "reason": "Restrict simplification to the three intended finite-sum rewrites to avoid looping card-to-sum-to-card simplification; fully qualify the generic centroid theorem so elaboration does not resolve to Tree.exists_centroid being defined. Definitions, theorem statements, hypotheses and mathematics are unchanged.",
+  "diagnostic_log": "verification/tree_branch/matching_centroid_01.log",
+  "before_sha256": "5438a49d77e4b1e4f83260f9feea7d78bfa32fb897bb56e3f3138881d853ce86",
+  "after_sha256": "5941047c51bfa87890f96ae3e8f62f3ba57560d7c2402d5f8f9d2229d5a162e2",
+  "statement_changed": false
+}

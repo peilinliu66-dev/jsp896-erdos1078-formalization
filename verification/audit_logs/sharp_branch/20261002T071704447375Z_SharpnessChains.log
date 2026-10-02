@@ -1,0 +1,406 @@
+JSP896/SharpnessChains.lean:47:32: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+JSP896/SharpnessChains.lean:47:47: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+JSP896/SharpnessChains.lean:49:32: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+JSP896/SharpnessChains.lean:49:47: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+JSP896/SharpnessChains.lean:52:32: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+JSP896/SharpnessChains.lean:52:47: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+JSP896/SharpnessChains.lean:56:32: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+JSP896/SharpnessChains.lean:56:47: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+JSP896/SharpnessChains.lean:73:33: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+JSP896/SharpnessChains.lean:73:44: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+JSP896/SharpnessChains.lean:91:63: warning: Unused tactic linter: `omega` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+JSP896/SharpnessChains.lean:91:63: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+JSP896/SharpnessChains.lean:124:59: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  k - l ≥ 1
+  j ≥ 0
+  h ≥ 0
+  h - j ≥ 0
+  h ≥ 0
+  g ≥ 0
+  f ≥ 0
+  f - g ≥ 1
+  b ≥ 0
+  b - 2*h + 2*j ≤ 0
+  b - h ≥ 1
+  b - h ≥ 1
+  b - h + j ≥ 0
+where
+ b := ↑n
+ f := ↑q
+ g := ↑↑e
+ h := ↑↑y
+ j := ↑(↑y - d)
+ k := ↑(↑y - d) / ↑i
+ l := ↑(↑x - d) / ↑i
+JSP896/SharpnessChains.lean:125:58: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  l ≥ 0
+  k ≥ 0
+  k - l ≥ 1
+  j ≥ 0
+  h ≥ 0
+  h - j ≥ 0
+  h ≥ 0
+  g ≥ 0
+  f ≥ 0
+  f - g ≥ 1
+  b ≥ 0
+  b - 2*h + 2*j ≤ 0
+  b - h ≥ 1
+  b - h ≥ 1
+  b - h + j ≥ 0
+where
+ b := ↑n
+ f := ↑q
+ g := ↑↑e
+ h := ↑↑y
+ j := ↑(↑y - d)
+ k := ↑(↑y - d) % ↑i
+ l := ↑(↑x - d) % ↑i
+JSP896/SharpnessChains.lean:127:6: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  m ≥ 0
+  l ≥ 0
+  l - m ≥ 1
+  k ≥ 0
+  j ≥ 0
+  h ≥ 0
+  h - j ≥ 0
+  h ≥ 0
+  g ≥ 0
+  f ≥ 0
+  f - g ≥ 1
+  b ≥ 0
+  b - 2*h + 2*j ≤ 0
+  b - h ≥ 1
+  b - h ≥ 1
+  b - h + j ≥ 0
+  b - l ≥ 1
+  b - m ≥ 1
+where
+ b := ↑n
+ f := ↑q
+ g := ↑↑e
+ h := ↑↑y
+ j := ↑(↑y - d)
+ k := ↑(↑y - d) % ↑i
+ l := ↑↑(e, y).2
+ m := ↑↑(c, x).2
+JSP896/SharpnessChains.lean:124:59: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  j - k ≥ 1
+  h ≥ 0
+  g ≥ 0
+  f ≥ 0
+  f - h ≥ 1
+  b ≥ 0
+  b - f ≤ 0
+  b - f + h ≤ -1
+  2*b - f ≤ 0
+where
+ b := ↑a
+ f := ↑n
+ g := ↑↑e
+ h := ↑↑y
+ j := ↑(↑y - d) / ↑i
+ k := ↑(↑x - d) / ↑i
+JSP896/SharpnessChains.lean:125:58: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  k ≥ 0
+  j ≥ 0
+  j - k ≥ 1
+  h ≥ 0
+  g ≥ 0
+  f ≥ 0
+  f - h ≥ 1
+  b ≥ 0
+  b - f ≤ 0
+  b - f + h ≤ -1
+  2*b - f ≤ 0
+where
+ b := ↑a
+ f := ↑n
+ g := ↑↑e
+ h := ↑↑y
+ j := ↑(↑y - d) % ↑i
+ k := ↑(↑x - d) % ↑i
+JSP896/SharpnessChains.lean:127:6: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  l ≥ 0
+  k ≥ 0
+  k - l ≥ 1
+  j ≥ 0
+  h ≥ 0
+  g ≥ 0
+  g - k ≥ 0
+  g - l ≥ 0
+  f ≥ 0
+  f - h ≥ 1
+  b ≥ 0
+  b - f ≤ 0
+  b - f + h ≤ -1
+  2*b - f ≤ 0
+where
+ b := ↑a
+ f := ↑n
+ g := ↑↑e
+ h := ↑↑y
+ j := ↑(↑y - d) % ↑i
+ k := ↑↑(e, y).1
+ l := ↑↑(c, x).1
+JSP896/SharpnessChains.lean:124:59: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  k ≤ -2
+  j ≥ 0
+  h ≥ 0
+  g ≥ 0
+  g - j ≥ 0
+  f ≥ 0
+  b ≥ 0
+  b - 2*g + j ≥ 1
+  b - 2*g + 2*j ≥ 0
+  b - g ≥ 1
+  b - g - h + j ≤ 0
+  b - g + j ≥ 0
+  b - h ≥ 1
+where
+ b := ↑n
+ f := ↑↑e
+ g := ↑↑x
+ h := ↑↑y
+ j := ↑(↑y - d) % ↑i
+ k := ↑(↑x - d) / ↑i
+JSP896/SharpnessChains.lean:125:58: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  k ≥ 0
+  j ≥ 0
+  j - k ≥ 1
+  h ≥ 0
+  g ≥ 0
+  g - j ≥ 0
+  f ≥ 0
+  b ≥ 0
+  b - 2*g + j ≥ 1
+  b - 2*g + 2*j ≥ 0
+  b - g ≥ 1
+  b - g - h + j ≤ 0
+  b - g + j ≥ 0
+  b - h ≥ 1
+where
+ b := ↑n
+ f := ↑↑e
+ g := ↑↑x
+ h := ↑↑y
+ j := ↑(↑y - d) % ↑i
+ k := ↑(↑x - d) % ↑i
+JSP896/SharpnessChains.lean:127:6: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  k ≥ 0
+  j ≥ 0
+  j - k ≥ 1
+  h ≥ 0
+  g ≥ 0
+  g - h ≥ 1
+  g ≥ 0
+  f ≥ 0
+  f - g - h ≤ 0
+  f - g ≤ -1
+  f - h ≥ 0
+  f - h ≥ 1
+  f + g - h ≥ 0
+  b ≥ 0
+  b - j ≥ 0
+  b - k ≥ 0
+where
+ b := ↑↑e
+ f := ↑↑x
+ g := ↑↑y
+ h := ↑(↑x - d) % ↑i
+ j := ↑↑(e, y).1
+ k := ↑↑(c, x).1
+JSP896/SharpnessChains.lean:124:59: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  k ≤ -2
+  j ≥ 0
+  h ≥ 0
+  g ≥ 0
+  g - j ≥ 0
+  f ≥ 0
+  b ≥ 0
+  b - 2*g + j ≥ 1
+  b - 2*g + 2*j ≥ 0
+  b - g ≥ 1
+  b - g - h + j ≤ 0
+  b - g + j ≥ 0
+  b - h ≥ 1
+where
+ b := ↑n
+ f := ↑↑e
+ g := ↑↑x
+ h := ↑↑y
+ j := ↑(↑y - d) % ↑i
+ k := ↑(↑x - d) / ↑i
+JSP896/SharpnessChains.lean:125:58: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  k ≥ 0
+  j ≥ 0
+  j - k ≥ 1
+  h ≥ 0
+  g ≥ 0
+  g - j ≥ 0
+  f ≥ 0
+  b ≥ 0
+  b - 2*g + j ≥ 1
+  b - 2*g + 2*j ≥ 0
+  b - g ≥ 1
+  b - g - h + j ≤ 0
+  b - g + j ≥ 0
+  b - h ≥ 1
+where
+ b := ↑n
+ f := ↑↑e
+ g := ↑↑x
+ h := ↑↑y
+ j := ↑(↑y - d) % ↑i
+ k := ↑(↑x - d) % ↑i
+JSP896/SharpnessChains.lean:127:6: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  k ≥ 0
+  j ≥ 0
+  j - k ≥ 1
+  h ≥ 0
+  g ≥ 0
+  g - h ≥ 1
+  g ≥ 0
+  f ≥ 0
+  f - g - h ≤ 0
+  f - g ≤ -1
+  f - h ≥ 0
+  f - h ≥ 1
+  f + g - h ≥ 0
+  f + g - h - j ≥ 1
+  f + g - h - k ≥ 1
+  b ≥ 0
+where
+ b := ↑↑e
+ f := ↑↑x
+ g := ↑↑y
+ h := ↑(↑x - d) % ↑i
+ j := ↑↑(e, y).2
+ k := ↑↑(c, x).2
+JSP896/SharpnessChains.lean:127:6: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  l ≥ 0
+  k ≥ 0
+  k - l ≥ 1
+  j ≥ 0
+  h ≥ 0
+  g ≥ 0
+  g - j ≥ 0
+  g ≥ 0
+  f ≥ 0
+  f - k ≥ 0
+  f - l ≥ 0
+  b ≥ 0
+  b - 2*g + 2*j ≤ 0
+  b - g ≥ 1
+  b - g ≥ 1
+  b - g + j ≥ 0
+where
+ b := ↑n
+ f := ↑↑e
+ g := ↑↑y
+ h := ↑(↑y - d) % ↑i
+ j := ↑(↑y - d)
+ k := ↑↑(e, y).1
+ l := ↑↑(c, x).1
+JSP896/SharpnessChains.lean:127:6: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  l ≥ 0
+  k ≥ 0
+  k - l ≥ 1
+  j ≥ 0
+  h ≥ 0
+  g ≥ 0
+  g - j ≥ 0
+  g ≥ 0
+  f ≥ 0
+  b ≥ 0
+  b - 2*g + 2*j ≤ 0
+  b - g ≥ 1
+  b - g ≥ 1
+  b - g + j ≥ 0
+  b - k ≥ 1
+  b - l ≥ 1
+where
+ b := ↑n
+ f := ↑↑e
+ g := ↑↑y
+ h := ↑(↑y - d) % ↑i
+ j := ↑(↑y - d)
+ k := ↑↑(e, y).2
+ l := ↑↑(c, x).2
+JSP896/SharpnessChains.lean:207:4: error: Tactic `subst` failed: did not find equation for eliminating 'z'
+
+case false.false
+q d a i n : ℕ
+hi : 0 < i
+hd : d = a + i
+hn : n = d + a
+hcapacity : a ≤ q * i
+x : Fin n
+c : Fin (q + 1)
+y : Fin n
+z : Fin (q + 1)
+hvle : halfComponent q d i (c, x) ≤ q
+hwle : halfComponent q d i (z, y) ≤ q
+hpos : halfPosition q d a i (c, x) = halfPosition q d a i (z, y)
+hcomp : halfComponent q d i (c, x) = halfComponent q d i (z, y)
+hside : halfSide q d (c, x) = halfSide q d (z, y)
+h : (c, x) = (z, y)
+hc : (c, x).1 = (z, y).1
+hx : (c, x).2 = (z, y).2
+⊢ ((false, c), x) = ((false, z), y)
+JSP896/SharpnessChains.lean:218:4: error: 'change' tactic failed, pattern
+  (!decide (halfSide q d (c, x) = halfSide q d (z, y))) = true
+is not definitionally equal to target
+  chainSide q d ((true, c), x) = chainSide q d ((false, z), y)
+JSP896/SharpnessChains.lean:226:4: error: 'change' tactic failed, pattern
+  (!decide (halfSide q d (c, x) = !halfSide q d (z, y))) = true
+is not definitionally equal to target
+  chainSide q d ((true, c), x) = chainSide q d ((true, z), y)
